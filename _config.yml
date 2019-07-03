@@ -12,11 +12,11 @@ social:
 # Page settings
 permalink: /:title/          # see https://jekyllrb.com/docs/permalinks/
 date_format: "%d.%m.%Y"     # see http://shopify.github.io/liquid/filters/date/
-paginate: 2                 # use "layout: paginate" in the index.html to enable pagination
+paginate: 8                 # use "layout: paginate" in the index.html to enable pagination
 
 # Theme settings
 hide_title: true            # remove site heading in the header
-hide_footer: false           # hide the "previous" and "next" links at the end of each post
+hide_footer: true           # hide the "previous" and "next" links at the end of each post
 dark_theme: true            # use the dark mode as default
 dark_header: false           # keep the header dark
 dark_footer: true           # keep the footer dark
