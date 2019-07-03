@@ -1,0 +1,50 @@
+title: "Alex Creio"
+author: "Alex Creio"
+description: "Linux и не только..."
+lang: "ru"
+
+# Page settings
+permalink: /:title/          # see https://jekyllrb.com/docs/permalinks/
+date_format: "%d.%m.%Y"     # see http://shopify.github.io/liquid/filters/date/
+paginate: 2                 # use "layout: paginate" in the index.html to enable pagination
+
+# Theme settings
+hide_title: true            # remove site heading in the header
+hide_footer: false           # hide the "previous" and "next" links at the end of each post
+dark_theme: true            # use the dark mode as default
+dark_header: false           # keep the header dark
+dark_footer: true           # keep the footer dark
+# style: minimal             # use a simpler style inspired by the minima theme
+
+navigation:                  # site navigation in the header. / & _pages
+  - index.html
+  - whois.md
+  - archive.md
+  # - README.md
+  # - Telegram: "https://t.me/cretm"       # linking external sites is also supported
+
+icons:                      # icons in the header, see http://fontawesome.com/icons
+  telegram-plane: "https://t.me/cretm"
+  github: "https://github.com/creio"
+  rss: "/blog/feed.xml"
+  # envelope: "mailto:mailcreio@gmail.com"
+
+tag_page: "/blog/tags/"
+
+include: ["_pages"]
+
+comments:
+  disqus: "creds"
+
+sass:
+  style: compressed
+  sass_dir: _sass
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-paginate
+  # - jekyll-mentions
+  - jekyll-redirect-from
+  - jemoji

@@ -1,0 +1,50 @@
+---
+layout: default
+---
+<article>
+  <header>
+    {%- assign date_format = site.date_format | default: "%B %d, %Y" -%}
+    <h1><a href="{{ page.url | relative_url }}">{{ page.title }}</a></h1>
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time>
+    {% if page.tags %} | 
+    {% for tag in page.tags %}
+    <a href="{{ site.tag_page | relative_url }}#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
+    {% endfor %}
+    {% endif %}
+  </header>
+  {% if page.post_video %}
+  <div class="embed">
+    <iframe src="https://www.youtube.com/embed/{{ page.post_video }}" frameborder="0" allowfullscreen></iframe>
+  </div>
+  {% endif %}
+  {% if page.post_video_large %}
+  <div class="large embed">
+    <iframe src="https://www.youtube.com/embed/{{ page.post_video_large }}" frameborder="0" allowfullscreen></iframe>
+  </div>
+  {% endif %}
+  {% if page.post_photo_path %}<p><img class="post-img" src="{{ page.post_photo_path }}" alt="{{ page.title }}"></p>{% endif %}
+  {{ content }}
+  <hr>
+  <div class="related">
+    <h3>Похожие записи:</h3>
+    {% for post in site.related_posts limit:5 %}
+    <div class="related-item">
+      <a href="{{ post.url | absolute_url }}">{{ post.title }}</a> <small>{{ post.date | date_to_string }}</small>
+    </div>
+    {% endfor %}
+  </div>
+  {% if site.comments.disqus %}
+    {% if page.comments %}
+    <hr><div id="disqus_thread"></div>
+    <!-- <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a> -->
+    {% endif %}
+  {% endif %}
+</article>
+{% unless site.hide_footer %}
+{% if page.previous.url or page.next.url %}
+<footer class="{% if site.dark_footer %}dark{% endif %}">
+  {% if page.next.url %}<a class="gray" href="{{ page.next.url | relative_url }}">← {{ page.next.title }}</a>{% else %}<span></span>{% endif %}
+  {% if page.previous.url %}<a class="gray" href="{{ page.previous.url | relative_url }}">{{ page.previous.title }} →</a>{% else %}<span></span>{% endif %}
+</footer>
+{% endif %}
+{% endunless %}
