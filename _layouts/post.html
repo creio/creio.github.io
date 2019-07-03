@@ -6,11 +6,6 @@ layout: default
     {%- assign date_format = site.date_format | default: "%B %d, %Y" -%}
     <h1><a href="{{ page.url | relative_url }}">{{ page.title }}</a></h1>
     <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time>
-    {% if page.tags %} | 
-    {% for tag in page.tags %}
-    <a href="{{ site.tag_page | relative_url }}#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
-    {% endfor %}
-    {% endif %}
   </header>
   {% if page.post_video %}
   <div class="embed">
@@ -24,6 +19,11 @@ layout: default
   {% endif %}
   {% if page.post_photo_path %}<p><img class="post-img" src="{{ page.post_photo_path }}" alt="{{ page.title }}"></p>{% endif %}
   {{ content }}
+  {% if page.tags %} | 
+  {% for tag in page.tags %}
+  <a href="{{ site.tag_page | relative_url }}#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
+  {% endfor %}
+  {% endif %}
   <hr>
   <div class="related">
     <h3>Похожие записи:</h3>
