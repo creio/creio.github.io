@@ -1,9 +1,9 @@
-title: "Alex Creio Blog"
-author: "Alex Creio"
-description: "Linux и не только..."
 lang: "ru"
 
 # jekyll-seo-tag
+title: Alex Creio Blog
+author: Alex Creio
+description: Blog о Linux и не только...
 logo: /assets/img/siteicon.png
 social:
   links:
