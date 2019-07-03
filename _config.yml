@@ -4,8 +4,7 @@ lang: "ru"
 title: Alex Creio Blog
 author: Alex Creio
 description: Blog о Linux и не только...
-logo: /assets/img/logo.svg
-image: /assets/img/sitepost.png
+logo: /assets/img/sitepost.png
 social:
   links:
     - https://github.com/creio
