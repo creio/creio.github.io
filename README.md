@@ -1,3 +1,8 @@
+---
+layout: null
+sitemap: false
+---
+
 <!-- ---
 title: "About"
 permalink: "/about/"

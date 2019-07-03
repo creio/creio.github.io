@@ -4,7 +4,6 @@ sitemap: false
 ---
 User-agent: *
 Disallow: /assets/katex/
-Disallow: /UNLICENSE/
 Disallow: /search/
 Disallow: /admin/
 Disallow: /keybase.txt
