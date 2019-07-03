@@ -1,5 +1,6 @@
 ---
 title: About
+image: /assets/img/sitepost.png
 permalink: /about/
 post_video: 
 post_photo_path: 
