@@ -10,6 +10,18 @@ $warning: #aa759f !default
 @function reduce ($percent)
   @return rgba(mix($dark, $light), $percent / 100)
 
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%))
+  ::-webkit-scrollbar
+      width:  $size
+      height: $size
+  ::-webkit-scrollbar-thumb
+      background: $foreground-color
+  ::-webkit-scrollbar-track
+      background: $background-color
+  body
+    scrollbar-face-color: $foreground-color
+    scrollbar-track-color: $background-color
+
 @import basic, highlight, layout, darkmode
 
 .light
@@ -22,3 +34,5 @@ $warning: #aa759f !default
 
 .emoji
   margin: 0
+
+@include scrollbars(.5em, slategray)
