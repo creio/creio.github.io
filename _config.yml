@@ -57,6 +57,6 @@ plugins:
   - jekyll-seo-tag
   - jekyll-feed
   - jekyll-paginate
-  # - jekyll-mentions
+  - jekyll-mentions
   - jekyll-redirect-from
   - jemoji
