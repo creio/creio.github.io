@@ -8,6 +8,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,500,700%7CRoboto:300,400,500,700&amp;subset=cyrillic">
   <link rel="stylesheet" href="{{ "/assets/css/index.css" | relative_url }}">
   <link rel="stylesheet" href="{{ site.style | default: "theme" | prepend: "/assets/css/" | append: ".css" | relative_url }}">
+
+  <link rel="shortcut icon" href="{{ "/assets/img/favicon/favicon.ico" | relative_url }}">
+  <link rel="icon" type="image/png" href="{{ "/assets/img/favicon/favicon-196x196.png" | relative_url }}" sizes="196x196">
+  <link rel="icon" type="image/png" href="{{ "/assets/img/favicon/favicon-32x32.png" | relative_url }}" sizes="32x32">
+  <link rel="icon" type="image/png" href="{{ "/assets/img/favicon/favicon-16x16.png" | relative_url }}" sizes="16x16">
+  <link rel="icon" type="image/png" href="{{ "/assets/img/favicon/favicon-128.png" | relative_url }}" sizes="128x128">
+  <meta name="application-name" content="{{ site.title }}">
+  <meta name="apple-mobile-web-app-title" content="{{ site.title }}">
+  <meta name="msapplication-TileColor" content="#5a74ca">
+  <meta name="msapplication-square310x310logo" content="{{ "/assets/img/favicon/mstile-310x310.png" | relative_url }}">
+  <meta name="msapplication-config" content="{{ "/assets/img/favicon/browserconfig.xml" | relative_url }}">
+  <meta name="theme-color" content="#5a74ca">
   
   {% if page.mathjax or site.mathjax %}
   <link rel="stylesheet" href="{{ "/assets/katex/katex.min.css" | relative_url }}">
