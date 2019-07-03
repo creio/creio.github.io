@@ -4,11 +4,16 @@ layout: default
 
 <article>
   <header><h1>{{ page.title }}</h1></header>
-{{ content }}
-{% if site.comments.disqus %}
+  {{ content }}
+  {% if site.comments.disqus %}
   {% if page.comments %}
   <hr><div id="disqus_thread"></div>
   <!-- <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a> -->
   {% endif %}
-{% endif %}
+  {% endif %}
 </article>
+{% unless site.hide_footer %}
+<footer class="{% if site.dark_footer %}dark{% endif %}">
+:)
+</footer>
+{% endunless %}
