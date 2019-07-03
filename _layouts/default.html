@@ -17,8 +17,10 @@
   <script defer src="{{ "/assets/katex/contrib/mathtex-script-type.min.js" | relative_url }}"></script>
   {% endif %}
 
-  {% if page.comments or site.comments.disqus %}
+  {% if site.comments.disqus %}
+  {% if page.comments %}
   <script src="//{{ site.comments.disqus }}.disqus.com/embed.js" async></script>
+  {% endif %}
   {% endif %}
 
   {% if site.google_verification %}

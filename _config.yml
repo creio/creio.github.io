@@ -37,6 +37,11 @@ include: ["_pages"]
 comments:
   disqus: "creds"
 
+google_analytics:
+ya_metrika:
+google_verification:
+yandex_verification:
+
 sass:
   style: compressed
   sass_dir: _sass
