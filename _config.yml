@@ -32,6 +32,7 @@ navigation:                  # site navigation in the header. / & _pages
 
 icons:                      # icons in the header, see http://fontawesome.com/icons
   telegram-plane: "https://t.me/cretm"
+  youtube: "https://www.youtube.com/c/creioyt?sub_confirmation=1"
   github: "https://github.com/creio"
   rss: "/feed.xml"
   # envelope: "mailto:mailcreio@gmail.com"
