@@ -1,5 +1,5 @@
 ---
-title: Text formatting examples
+title: Default
 description: bla bla
 tags: jekyll
 image: og:img
