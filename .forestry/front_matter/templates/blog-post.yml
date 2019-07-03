@@ -26,9 +26,9 @@ fields:
 - type: boolean
   name: comments
   label: comments
-- type: text
-  name: permalink
-  label: permalink
 - type: boolean
   name: mathjax
   label: mathjax
+- type: text
+  name: permalink
+  label: permalink
