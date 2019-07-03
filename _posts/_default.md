@@ -2,7 +2,7 @@
 title: Text formatting examples
 description: bla bla
 tags: jekyll
-image: 
+image: og:img
 post_photo_path: 
 post_video: 
 post_video_large: 
