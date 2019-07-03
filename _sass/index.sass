@@ -22,6 +22,8 @@ $warning: #aa759f !default
     scrollbar-face-color: $foreground-color
     scrollbar-track-color: $background-color
 
+@include scrollbars(.5em, $link-color)
+
 @import basic, highlight, layout, darkmode
 
 .light
@@ -34,5 +36,3 @@ $warning: #aa759f !default
 
 .emoji
   margin: 0
-
-@include scrollbars(.5em, slategray)
