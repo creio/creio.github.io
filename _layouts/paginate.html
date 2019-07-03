@@ -1,16 +1,16 @@
 ---
 layout: default
 ---
-{% for page in paginator.posts %}
+{% for post in paginator.posts %}
 <article>
   <header>
     {%- assign date_format = site.date_format | default: "%B %d, %Y" -%}
-    <h1><a href="{{ page.url | relative_url }}">{{ page.title }}</a></h1>
-    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time>
+    <h1><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h1>
+    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
   </header>
-  {{ page.excerpt }}
-  {% unless page.excerpt == page.content %}
-  <footer><a class="ghost" href="{{ page.url | relative_url }}">далее →</a></footer>
+  {{ post.excerpt }}
+  {% unless papostge.excerpt == post.content %}
+  <footer><a class="ghost" href="{{ post.url | relative_url }}">далее →</a></footer>
   {% endunless %}
 </article>
 {% endfor %}
