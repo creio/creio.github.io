@@ -1,0 +1,34 @@
+---
+label: Blog post
+hide_body: false
+fields:
+- type: text
+  name: title
+  label: title
+- type: text
+  name: description
+  label: description
+- type: text
+  name: tags
+  label: tags
+- type: text
+  name: image
+  label: image
+- type: text
+  name: post_photo_path
+  label: post_photo_path
+- type: text
+  name: post_video
+  label: post_video
+- type: text
+  name: post_video_large
+  label: post_video_large
+- type: boolean
+  name: comments
+  label: comments
+- type: text
+  name: permalink
+  label: permalink
+- type: boolean
+  name: mathjax
+  label: mathjax
