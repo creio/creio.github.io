@@ -17,7 +17,7 @@ Just fork the repo and adjust the `_config.yml` to use with [Github Pages](https
  - feed generation
  - responsive
  - syntax highlighting
- - supports comments via [disqus](https://disqus.com/) or [isso](http://posativ.org/isso/)
+ - supports comments [disqus](https://disqus.com/)
 
 ## Based on
 
@@ -26,17 +26,6 @@ Just fork the repo and adjust the `_config.yml` to use with [Github Pages](https
 - [Font Awesome](http://fontawesome.io/)
 - [KaTeX](https://katex.org/)
 - [Pygments](https://github.com/richleland/pygments-css)
-
-## Installation (jekyll-remote-theme method)
-
-You can use this theme with the `jekyll-remote-theme` plugin. Just create an empty repo, add `index.html` and `archive.html` files (they can be empty but need to contain front matter) and add this to your `_config.yml`:
-
-```yaml
-remote_theme: niklasbuschmann/contrast
-
-plugins:
-  - jekyll-remote-theme
-```
 
 ## License
 
