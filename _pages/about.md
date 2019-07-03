@@ -7,3 +7,5 @@ comments: true
 ---
 
 # Страница на переработке :ghost:
+
+![About](https://thumbs.gfycat.com/EarlyHomelyFoal-small.gif)
