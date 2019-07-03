@@ -1,22 +1,40 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}" class="{% if site.dark_theme %}dark{% else %}light{% endif %}">
+<head>
+  <meta charset="{{ site.encoding }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <title>{% if page.title %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}</title> -->
+  <!-- <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}"> -->
+  <!-- <meta name="author" content="{{ page.author | default: site.author | escape}}"> -->
+  <!-- <link rel="canonical" href="{{ page.url | absolute_url }}"> -->
+  {% seo %}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,500,700%7CRoboto:300,400,500,700&amp;subset=cyrillic">
+  <link rel="stylesheet" href="{{ "/assets/css/index.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ site.style | default: "theme" | prepend: "/assets/css/" | append: ".css" | relative_url }}">
+  {% if site.plugins contains "jekyll-feed" %}<link rel="alternate" type="application/atom+xml" href="{{ "/feed.xml" | relative_url }}" title="{{ site.title }}" />{% endif %}
+  
+  {% if page.mathjax or site.mathjax %}
+  <link rel="stylesheet" href="{{ "/assets/katex/katex.min.css" | relative_url }}">
+  <script defer src="{{ "/assets/katex/katex.min.js" | relative_url }}"></script>
+  <script defer src="{{ "/assets/katex/contrib/mathtex-script-type.min.js" | relative_url }}"></script>
+  {% endif %}
 
-<title>{% if page.title %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}</title>
-<meta charset="{{ site.encoding }}">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
-<meta name="author" content="{{ page.author | default: site.author | escape}}">
-<link rel="canonical" href="{{ page.url | absolute_url }}">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,500,700%7CRoboto:300,400,500,700&amp;subset=cyrillic">
-<link rel="stylesheet" href="{{ "/assets/css/index.css" | relative_url }}">
-<link rel="stylesheet" href="{{ site.style | default: "theme" | prepend: "/assets/css/" | append: ".css" | relative_url }}">
-{% if site.plugins contains "jekyll-feed" %}<link rel="alternate" type="application/atom+xml" href="{{ "/feed.xml" | relative_url }}" title="{{ site.title }}" />{% endif %}
-{% if page.mathjax or site.mathjax %}
-<link rel="stylesheet" href="{{ "/assets/katex/katex.min.css" | relative_url }}">
-<script defer src="{{ "/assets/katex/katex.min.js" | relative_url }}"></script>
-<script defer src="{{ "/assets/katex/contrib/mathtex-script-type.min.js" | relative_url }}"></script>
-{% endif %}
-{% if site.comments.disqus %}<script src="//{{ site.comments.disqus }}.disqus.com/embed.js" async></script>{% endif %}
+  {% if site.comments.disqus %}<script src="//{{ site.comments.disqus }}.disqus.com/embed.js" async></script>{% endif %}
+  {% if jekyll.environment == 'production' and site.google_verification != '' %}
+  <meta name="google-site-verification" content="{{ site.google_verification }}" />
+  {% endif %}
+  {% if jekyll.environment == 'production' and site.yandex_verification != '' %}
+  <meta name="yandex-verification" content="{{ site.yandex_verification }}" />
+  {% endif %}
+
+  {% if jekyll.environment == 'production' and site.google_analytics != '' %}
+  <script src="https://cdn.jsdelivr.net/npm/ga-lite@1/dist/ga-lite.min.js" async></script>
+  <script>
+    var galite = galite || {};
+    galite.UA = '{{ site.google_analytics }}';
+  </script>
+  {% endif %}
+</head>
 <body>
   <header class="{% if site.dark_header %}dark{% endif %}">
     {% unless site.hide_title or site.style == "minimal" %}
@@ -42,6 +60,6 @@
     {% endif %}
   </header>
   {{ content }}
-  
+
 </body>
 </html>
