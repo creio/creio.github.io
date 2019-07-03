@@ -25,4 +25,10 @@ layout: default
   <span>страница {{ paginator.page }} из {{ paginator.total_pages }}</span>
   <a {% if paginator.next_page %}class="gray" href="{{ paginator.next_page_path | relative_url }}"{% else %}class="disabled"{% endif %}>туда &rarr;</a>
 </footer>
+{% else %}
+{% unless site.hide_footer %}
+<footer class="{% if site.dark_footer %}dark{% endif %}">
+:)
+</footer>
+{% endunless %}
 {% endif %}
