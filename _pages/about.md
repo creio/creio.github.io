@@ -1,6 +1,6 @@
 ---
-title: Whois
-permalink: /whois/
+title: About
+permalink: /about/
 post_video: 
 post_photo_path: 
 comments: true

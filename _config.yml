@@ -17,8 +17,8 @@ dark_footer: true           # keep the footer dark
 # style: minimal             # use a simpler style inspired by the minima theme
 
 navigation:                  # site navigation in the header. / & _pages
-  - blog.md
-  - whois.md
+  - index.html
+  - about.md
   - archive.md
   # - README.md
   # - Telegram: "https://t.me/cretm"       # linking external sites is also supported
@@ -29,7 +29,7 @@ icons:                      # icons in the header, see http://fontawesome.com/ic
   rss: "/feed.xml"
   # envelope: "mailto:mailcreio@gmail.com"
 
-tag_page: "/blog/tags/"
+tag_page: "/tags/"
 
 include: ["_pages"]
 
