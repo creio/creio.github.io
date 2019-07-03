@@ -1,9 +1,11 @@
 ---
 title: Text formatting examples
+description: bla bla
 tags: jekyll
+image: 
+post_photo_path: 
 post_video: 
 post_video_large: 
-post_photo_path: 
 comments: true
 permalink: /whois/
 mathjax: true
