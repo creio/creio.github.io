@@ -1,23 +1,20 @@
 ---
 layout: page
 ---
-<article class="archive">
-  {{ content }}
-  <header><h1>Posts</h1></header>
-  {% for post in site.posts %}
-    {% unless post.next %}
+
+{% for post in site.posts %}
+  {% unless post.next %}
+    <small class="category-title">{{ post.date | date: '%Y' }}</small>
+  {% else %}
+    {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+    {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
+    {% if year != nyear %}
       <small class="category-title">{{ post.date | date: '%Y' }}</small>
-    {% else %}
-      {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-      {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
-      {% if year != nyear %}
-        <small class="category-title">{{ post.date | date: '%Y' }}</small>
-      {% endif %}
-    {% endunless %}
-  {%- assign date_format = site.date_format | default: "%B %d, %Y" -%}
-  <div>
-    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
-    <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-  </div>
-  {% endfor %}
-</article>
+    {% endif %}
+  {% endunless %}
+{%- assign date_format = site.date_format | default: "%B %d, %Y" -%}
+<div>
+  <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
+  <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+</div>
+{% endfor %}
