@@ -1,6 +1,6 @@
 ---
 title: Welcome to Jekyll
-tags: jekyll
+tags: jekyll blog
 comments: true
 ---
 
