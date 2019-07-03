@@ -19,6 +19,7 @@ dark_footer: true           # keep the footer dark
 navigation:                  # site navigation in the header. / & _pages
   - index.html
   - about.md
+  - tags.md
   - archive.md
   # - README.md
   # - Telegram: "https://t.me/cretm"       # linking external sites is also supported
