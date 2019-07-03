@@ -17,7 +17,7 @@ paginate: 2                 # use "layout: paginate" in the index.html to enable
 # Theme settings
 hide_title: true            # remove site heading in the header
 hide_footer: false           # hide the "previous" and "next" links at the end of each post
-dark_theme: true            # use the dark mode as default
+dark_theme: false            # use the dark mode as default
 dark_header: false           # keep the header dark
 dark_footer: true           # keep the footer dark
 # style: minimal             # use a simpler style inspired by the minima theme
