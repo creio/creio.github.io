@@ -1,5 +1,6 @@
 ---
 title: Text formatting examples
+description: bla bla
 tags: blog
 ---
 
