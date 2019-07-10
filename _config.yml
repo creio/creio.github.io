@@ -40,7 +40,6 @@ icons:                      # icons in the header, see http://fontawesome.com/ic
   github: https://github.com/creio
   vk: https://vk.com/creio
   rss: /feed.xml
-  # edit: https://github.com/creio/creio.github.io
   # envelope: "mailto:mailcreio@gmail.com"
 
 tag_page: "/tags/"
