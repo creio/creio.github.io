@@ -3,6 +3,7 @@ layout: post
 title: Pulseaudio и Discord
 tags: arch
 comments: true
+edit_url: true
 ---
 
 Шумы в Discord, при запуске.

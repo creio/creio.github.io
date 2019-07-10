@@ -9,6 +9,8 @@ social:
   links:
     - https://github.com/creio
 
+repo_url: https://github.com/creio/creio.github.io
+
 # Page settings
 permalink: /:title/          # see https://jekyllrb.com/docs/permalinks/
 date_format: "%d.%m.%Y"     # see http://shopify.github.io/liquid/filters/date/
@@ -37,7 +39,8 @@ icons:                      # icons in the header, see http://fontawesome.com/ic
   keybase: https://keybase.io/cvc
   github: https://github.com/creio
   vk: https://vk.com/creio
-  rss: "/feed.xml"
+  rss: /feed.xml
+  # edit: https://github.com/creio/creio.github.io
   # envelope: "mailto:mailcreio@gmail.com"
 
 tag_page: "/tags/"

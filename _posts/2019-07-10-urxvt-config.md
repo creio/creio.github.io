@@ -6,7 +6,7 @@ image: "/uploads/urxvt-cfg.png"
 post_photo_path: "/uploads/urxvt-cfg.png"
 tags: urxvt
 comments: true
-
+edit_url: true
 ---
 Очень быстрый терминал, но немного пугает в настройке.
 

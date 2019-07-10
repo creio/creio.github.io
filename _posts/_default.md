@@ -8,6 +8,7 @@ post_photo_path:
 post_video: 
 post_video_large: 
 comments: true
+edit_url: true
 permalink: /whois/
 mathjax: true
 ---
