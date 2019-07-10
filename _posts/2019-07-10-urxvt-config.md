@@ -2,17 +2,17 @@
 layout: post
 title: Arch Urxvt, установка и настройка
 description: Глубокое погружение в Xresources
-image: /uploads/urxvt-cfg.png
-post_photo_path: /uploads/urxvt-cfg.png
+image: "/uploads/urxvt-cfg.png"
+post_photo_path: "/uploads/urxvt-cfg.png"
 tags: urxvt
 comments: true
----
 
+---
 Очень быстрый терминал, но немного пугает в настройке.
 
 ## Установка.
 
-Я всегда устанавливаю patched версию с аура и некоторые зависимости. Мой конфиг [github](https://github.com/creio/dots/blob/master/.Xresources).
+Я всегда устанавливаю patched версию с аура, некоторые зависимости и шрифт **Hack Nerd** с набором иконок. Мой конфиг [github](https://github.com/creio/dots/blob/master/.Xresources).
 
 ```sh
 yay -S rxvt-unicode-patched urxvt-perls ttf-nerd-fonts-hack-complete-git
@@ -31,11 +31,11 @@ URxvt.antialias: true
 URxvt.iconFile: /usr/share/icons/Papirus/48x48/apps/urxvt.svg
 ```
 
-- шрифт.
-- геометрия.
-- отступ.
-- меж буквенное расстояние.
-- файл иконки, как раз за это отвечает `rxvt-unicode-patched`.
+* шрифт.
+* геометрия.
+* отступ.
+* меж буквенное расстояние.
+* файл иконки, как раз за это и отвечает `rxvt-unicode-patched`.
 
 Строки ниже, отвечают за копирование/вставка по Ctrl-Shift-c/v.
 
@@ -73,16 +73,16 @@ URxvt*transparent:false
 URxvt*depth: 32
 ```
 
-Все схемы я хроню в `~/.colors` [.colors](https://github.com/creio/dots/tree/master/.colors), а подключаю их инклюдом. `#` В данном случае не комментарий.
+Все схемы я храню в `~/.colors` [.colors](https://github.com/creio/dots/tree/master/.colors), а подключаю их инклюдом. `#` В данном случае не комментарий.
 
 ```sh
 #include ".colors/ln"
 ```
 
-Просто цвета, что тут еще сказать. Рекомендую еще создать симлинк на `xterm`.
+Просто цвета, что тут еще сказать. Рекомендую создать симлинк на `xterm`.
 
 ```sh
 sudo ln -s /usr/bin/urxvt /usr/bin/xterm
 ```
 
-Есть вопросы пиши в комментах.
+Есть вопросы, пиши в комментах.
