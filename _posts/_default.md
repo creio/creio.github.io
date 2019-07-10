@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Default
 description: bla bla
 tags: jekyll

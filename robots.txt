@@ -3,4 +3,9 @@ layout: null
 sitemap: false
 ---
 User-agent: *
-Disallow: /
+Disallow: /assets/katex/
+Disallow: /search/
+Disallow: /admin/
+Disallow: /keybase.txt
+Sitemap: {{ site.url }}/sitemap.xml
+Host: creio.github.io

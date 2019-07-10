@@ -1,4 +1,5 @@
 ---
+layout: page
 title: About
 image: /assets/img/sitepost.png
 permalink: /about/
