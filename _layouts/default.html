@@ -30,9 +30,7 @@
 
   <script src="{{ "/assets/js/jquery.min.js" | relative_url }}"></script>
   <script src="{{ "/assets/js/main.js" | relative_url }}"></script>
-  {% if site.ya_metrika %}
   {% include ya_metrika.html %}
-  {% endif %}
   {% if site.comments.disqus %}
   {% if page.comments %}
   <script src="//{{ site.comments.disqus }}.disqus.com/embed.js" async></script>
