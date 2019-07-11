@@ -10,6 +10,4 @@ comments: true
 
 # Страница на переработке :ghost:
 
-![About](https://thumbs.gfycat.com/EarlyHomelyFoal-small.gif){: .video-link}
-
-<a href="#search">link</a>
+![About](https://thumbs.gfycat.com/EarlyHomelyFoal-small.gif)
