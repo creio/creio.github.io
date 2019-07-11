@@ -12,8 +12,9 @@ webmaster_verifications:
   # google: 1234
   yandex: 88da0cac75447b72
 
-ya_metrika: 49475860
 repo_url: https://github.com/creio/creio.github.io
+
+yametrika: 49475860
 
 # Page settings
 permalink: /:title/          # see https://jekyllrb.com/docs/permalinks/
