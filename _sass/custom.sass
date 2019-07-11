@@ -4,8 +4,10 @@
 
 form.search
 	position: relative
-	width: 300px
+	width: 600px
 	// margin: 0 auto
+	@media (max-width: 40em)
+		width: 90%
 
 .search
 	background: $link-color
@@ -64,6 +66,9 @@ form.search
 	text-align: center
 	outline: none
 	padding: 10px
+
+#search input::placeholder
+	color: rgba($light,.5)
 
 #search .close
 	position: fixed
