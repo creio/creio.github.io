@@ -1,84 +1,90 @@
 #search-results
-	padding: 0
-	list-style-type: none
+  padding: 0
+  list-style-type: none
 
 form.search
-	position: relative
-	width: 600px
-	// margin: 0 auto
-	@media (max-width: 40em)
-		width: 90%
+  position: relative
+  width: 600px
+  // margin: 0 auto
+  @media (max-width: 40em)
+    width: 90%
 
 .search
-	background: $link-color
+  background: $link-color
 
 .search input
-	width: 100%
-	height: 30px
-	padding-left: 10px
-	border: 2px solid $link-color
-	border-radius: 5px
-	outline: none
+  width: 100%
+  height: 30px
+  padding-left: 10px
+  border: 2px solid $link-color
+  border-radius: 5px
+  outline: none
 
 .search button
-	position: absolute 
-	top: 0
-	right: -15px
-	width: 42px
-	height: 35px
-	border: none
-	background: $link-color
-	border-radius: 0 5px 5px 0
-	cursor: pointer
+  position: absolute 
+  top: 0
+  right: -15px
+  width: 42px
+  height: 35px
+  border: none
+  background: $link-color
+  border-radius: 0 5px 5px 0
+  cursor: pointer
 
 .search button:before
-	content: ">"
+  content: ">"
 
 
 // search form popup
 #search 
-	position: fixed
-	top: 0
-	left: 0
-	width: 100%
-	height: 100%
-	background-color: rgba($dark,.98)
-	opacity: 0
-	display: none
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: rgba($dark,.98)
+  opacity: 0
+  display: none
 
 #search.open
-	opacity: 1
-	z-index: 106
-	display: block
+  opacity: 1
+  z-index: 106
+  display: block
 
 #search input[type="search"]
-	position: absolute
-	top: 50%
-	left: 0
-	margin-top: -51px
-	width: 60%
-	margin-left: 20%
-	color: $light
-	background: transparent
-	border: 3px solid $light
-	border-radius: 4px
-	font-family: $font-family
-	font-size: 2em
-	text-align: center
-	outline: none
-	padding: 10px
+  position: absolute
+  top: 50%
+  left: 0
+  margin-top: -51px
+  width: 60%
+  margin-left: 20%
+  color: $light
+  background: transparent
+  border: 3px solid $light
+  border-radius: 4px
+  font-family: $font-family
+  font-size: 2em
+  text-align: center
+  outline: none
+  padding: 10px
 
 #search input::placeholder
-	color: rgba($light,.5)
+  color: rgba($light,.5)
 
 #search .close
-	position: fixed
-	top: 15px
-	right: 15px
-	opacity: 1
-	font-size: 27px
-	color: $light
+  position: fixed
+  top: 15px
+  right: 15px
+  opacity: 1
+  font-size: 27px
+  color: $light
 
 #search .close:hover
-	color: $warning
-	cursor: pointer
+  color: $warning
+  cursor: pointer
+// end search
+
+
+// 
+.emoji
+  margin: 0
