@@ -11,3 +11,8 @@ $(function() {
 		$('body,html').animate({scrollTop:0},300);
 	});
 });
+
+// magnific popup
+$('.video-link').magnificPopup({
+	type: 'iframe'  
+});

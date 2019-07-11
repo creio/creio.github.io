@@ -21,6 +21,8 @@ mathjax: true
   <iframe src="https://www.youtube.com/embed/{{ page.post_video }}?autoplay=0&showinfo=0&controls=1&color=red&disablekb=1&rel=0" modestbranding="1" frameborder="0" theme="dark" allowfullscreen></iframe>
 </div>
 
+<a href="https://www.youtube.com/watch?v=INOtQJ_yZE4" class="video-link">Demo Video</a>
+
 <div class="large" markdown="1">
   ![Swiss Alps](https://user-images.githubusercontent.com/4943215/55412536-edbba180-5567-11e9-9c70-6d33bca3f8ed.jpg)
 </div>

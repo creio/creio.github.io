@@ -27,6 +27,9 @@ fields:
   name: comments
   label: comments
 - type: boolean
+  name: edit_url
+  label: edit_url
+- type: boolean
   name: mathjax
   label: mathjax
 - type: text
