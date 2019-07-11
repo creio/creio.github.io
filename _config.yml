@@ -12,9 +12,10 @@ webmaster_verifications:
   # google: 1234
   yandex: 88da0cac75447b72
 
-repo_url: https://github.com/creio/creio.github.io
+google_analytics:
+ya_metrika: 49475860
 
-yametrika: 49475860
+repo_url: https://github.com/creio/creio.github.io
 
 # Page settings
 permalink: /:title/          # see https://jekyllrb.com/docs/permalinks/
@@ -53,11 +54,6 @@ include: ["_pages"]
 
 comments:
   disqus: "creds"
-
-google_analytics:
-ya_metrika:
-google_verification:
-yandex_verification:
 
 sass:
   style: compressed
