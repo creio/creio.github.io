@@ -12,9 +12,11 @@
       {% if path.first %}
       <a href="{{ path.first[1] }}">{{ path.first[0] }}</a>
       {% else %}
-      {% assign node = site.pages | where: "name", path | first %}<a href="{{ node.url | relative_url }}">{{ node.title }}</a>
+      {% assign node = site.pages | where: "name", path | first %}
+      <a href="{{ node.url | relative_url }}">{{ node.title }}</a>
       {% endif %}
       {% endfor %}
+      <a href="#search">Search</a>
     </nav>
     {% endif %}
     {% if site.icons %}
@@ -25,7 +27,14 @@
     </nav>
     {% endif %}
   </header>
-  {{ content }}
+  {{ content }}  
+  <!-- Search Form popup -->
+  <div id="search"> 
+    <span class="close">x</span>
+    <form role="search" id="searchform" action="/search/" method="get">
+      <input value="" name="q" type="search" placeholder="Введите запрос" required>
+    </form>
+  </div>
   <div id="scrollup">&uarr;</div>
 
   <script src="{{ "/assets/js/jquery.min.js" | relative_url }}"></script>
