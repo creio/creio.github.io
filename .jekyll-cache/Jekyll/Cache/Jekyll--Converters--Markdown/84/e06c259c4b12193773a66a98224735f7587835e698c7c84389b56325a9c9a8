@@ -1,0 +1,54 @@
+I"�<form class="search" action="/search/" method="get">
+  <label for="search-box"></label>
+  <input type="text" id="search-box" name="q" placeholder="Введите запрос" required="" />
+  <button type="submit"></button>
+</form>
+
+<p><strong id="search-query"></strong></p>
+
+<ul id="search-results"></ul>
+
+<script>
+  window.store = {
+    
+      "zsh-config": {
+        "title": "Zsh установка и настройка",
+        "author": "",
+        "category": "",
+        "content": "Разбор конфига ~/.zshrc, конечный результат примерно такой. Рекомендую установить и использовать терминал urxvt о настройке которого я писал в прошлом посте.Установка zsh, oh-my-zsh, fast-syntax-highlighting, zsh-autosuggestions.yay -S zsh oh-my-zsh fast-syntax-highlighting zsh-autosuggestions  oh-my-zsh: надстройка над zsh.  fast-syntax-highlighting: подсветка синтаксиса.  zsh-autosuggestions: автодополнение.Переключение шелла на zsh: chsh -s /usr/bin/zsh, обратно на bash(при необходимости): chsh -s /usr/bin/bash.Настройка.Мой конфиг .zshrc, необходимо сохранить в домашнюю директорию ~/.zshrc, если файл существует замените.Так как oh-my-zsh установлен через yay, то строка ZSH=/usr/share/oh-my-zsh/ идет от корня, это косается и плагинов.Тема оформления строки приветствия задается в данной строке ZSH_THEME=\"af-magic\". Сами темы можно выбрать тут.Плагинов из набора oh-my-zsh полно, но я их не использую, вот тут они прописываются.plugins=()Использую только то, что установил дополнительно, путем экспорта в файл. Полный путь до .zsh файла. В зависимости от способа установки путь может отличаться, в данном случае такой.source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zshsource /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zshТут задаем дерикторию кэша и условие проверки.ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh[[ ! -d $ZSH_CACHE_DIR ]] &amp;&amp; mkdir $ZSH_CACHE_DIRЭкспорт путей со скриптами и бинарниками.export PATH=$HOME/.bin:$HOME/.bin/popup:$HOME/.local/bin:/usr/local/bin:$PATHЭкспорт различных переменных.export TERM=\"rxvt-unicode\"export EDITOR=\"$(if [[ -n $DISPLAY ]]; then echo 'subl3'; else echo 'nano'; fi)\"export BROWSER=\"chromium\"export SSH_KEY_PATH=\"~/.ssh/dsa_id\"export XDG_CONFIG_HOME=\"$HOME/.config\"Условие проверки и загрузки файла. Алиасы можно и не выносить в отдельный файл, но так удобнее.[[ -f ~/.alias_zsh ]] &amp;&amp; . ~/.alias_zshДанный блок не обязателен, отвечает за fzf поиск.[[ -e \"/usr/share/fzf/fzf-extras.zsh\" ]] &amp;&amp; source /usr/share/fzf/fzf-extras.zshexport FZF_DEFAULT_COMMAND=\"fd --type file --color=always --follow --hidden --exclude .git\"export FZF_CTRL_T_COMMAND=\"$FZF_DEFAULT_COMMAND\"# export FZF_DEFAULT_OPTS=\"--ansi\"export FZF_DEFAULT_OPTS=\"--height 50% --layout=reverse --border --preview 'file {}' --preview-window down:1\"export FZF_COMPLETION_TRIGGER=\"~~\"В момент набора и появления автодополнения можно перемещаться по словам Ctrl+стрелка вправо, а просто стрелка вправо прыжок в конец подсвеченной строки.Вот собственно и все, немного пробежался по этой теме.",
+        "url": "/zsh-config/"
+      }
+      ,
+    
+      "urxvt-config": {
+        "title": "Arch Urxvt, установка и настройка",
+        "author": "",
+        "category": "",
+        "content": "Очень быстрый терминал, но немного пугает в настройке.Установка.Я всегда устанавливаю patched версию с аура, некоторые зависимости и шрифт Hack Nerd с набором иконок. Мой конфиг github.yay -S rxvt-unicode-patched urxvt-perls ttf-nerd-fonts-hack-complete-gitНастройка urxvt, файл ~/.Xresources.! Это комментарий. Строки с Xft не относятся к urxvt.URxvt.font: xft:Hack Nerd Font Mono:size=9URxvt*geometry: 84x22URxvt.internalBorder: 15URxvt.letterSpace: 0URxvt.antialias: trueURxvt.iconFile: /usr/share/icons/Papirus/48x48/apps/urxvt.svg  шрифт.  геометрия.  отступ.  меж буквенное расстояние.  файл иконки, как раз за это и отвечает rxvt-unicode-patched.Строки ниже, отвечают за копирование/вставка по Ctrl-Shift-c/v.URxvt.iso14755:        falseURxvt.iso14755_52:     falseURxvt.clipboard.autocopy: trueURxvt.keysym.Shift-Control-V: eval:paste_clipboardURxvt.keysym.Shift-Control-C: eval:selection_to_clipboardОстальное, перл плагины для открытия ссылок по клику и некоторые кастомные клавиши.URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,matcherURxvt.url-launcher: /usr/bin/xdg-openURxvt.url-select.underline: trueURxvt.matcher.button: 1URxvt.keysym.Control-Up:    \\033[1;5AURxvt.keysym.Control-Down:  \\033[1;5BURxvt.keysym.Control-Left:  \\033[1;5DURxvt.keysym.Control-Right: \\033[1;5Cconfig-reload Необходим для смены цвета на лету, не обязательно, поэтому опустил.Настройка цветовОтключение непрозрачности.URxvt*transparent:falseURxvt*depth: 32Все схемы я храню в ~/.colors .colors, а подключаю их инклюдом. # В данном случае не комментарий.#include \".colors/ln\"Просто цвета, что тут еще сказать. Все что начинается с rofi не обязательно, это цвета лаунчера rofi.Прозрачность фона я обычно задаю через [90] в процентах.*.background: [90]#111113Рекомендую создать симлинк на xterm.sudo ln -s /usr/bin/urxvt /usr/bin/xtermКомбинации клавиш.  ctrl+стрелка вправо/влево: перемешение по словам.  ctrl+a/e: перемешение в начало/конец строки.  ctrl+q: очистить строку.  ctrl+w: удалить слово.  ctrl+l: очистить экран.  ctrl+c: остановить процесс, сбросить набор.Есть вопросы, пиши в комментах.",
+        "url": "/urxvt-config/"
+      }
+      ,
+    
+      "pulseaudio-discord": {
+        "title": "Pulseaudio и Discord",
+        "author": "",
+        "category": "",
+        "content": "Шумы в Discord, при запуске.sudo nano /etc/pulse/default.paВ файле default.pa в 47 строке.load-module module-udev-detectИзменить на.load-module module-udev-detect tsched=0Перезапуск pulseaudio.pulseaudio --killpulseaudio --start",
+        "url": "/pulseaudio-discord/"
+      }
+      
+    
+  };
+</script>
+
+<script src="/assets/js/search/lunr.min.js"></script>
+
+<script src="/assets/js/search/lunr.stemmer.support.min.js"></script>
+
+<script src="/assets/js/search/lunr.ru.min.js"></script>
+
+<script src="/assets/js/search/lunr.multi.min.js"></script>
+
+<script src="/assets/js/search/search.js"></script>
+
+:ET

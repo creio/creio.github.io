@@ -1,6 +1,7 @@
+*.gem
 .DS_Store
 .bundle
 .sass-cache
-Gemfile.lock
 _site
-*.gem
+package-lock.json
+node_modules
