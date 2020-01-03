@@ -12,6 +12,13 @@ permalink: "/about/"
 
 Just fork the repo and adjust the `_config.yml` to use with [Github Pages](https://pages.github.com/) and your page is done.
 
+## Instal local
+
+- ruby
+- gem install bundler
+- bundle install
+- bundle exec jekyll serve
+
 ## Features
 
  - supports dark mode on macOS Mojave
