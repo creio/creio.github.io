@@ -27,9 +27,9 @@
     </nav>
     {% endif %}
   </header>
-  {{ content }}  
+  {{ content }}
   <!-- Search Form popup -->
-  <div id="search"> 
+  <div id="search">
     <span class="close">x</span>
     <form role="search" id="searchform" action="/search/" method="get">
       <input value="" name="q" type="search" placeholder="Введите запрос" required>
@@ -37,9 +37,10 @@
   </div>
   <div id="scrollup">&uarr;</div>
 
-  <script src="{{ "/assets/js/jquery.min.js" | relative_url }}"></script>
-  <script src="{{ "/assets/js/magnific-popup/jquery.magnific-popup.min.js" | relative_url }}"></script>  
-  <script src="{{ "/assets/js/main.js" | relative_url }}"></script>
+  <script src="{{ '/assets/js/jquery.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/magnific-popup/jquery.magnific-popup.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/bootstrap.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
   {% if site.ya_metrika %}
   <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym({{ site.ya_metrika }}, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/{{ site.ya_metrika }}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   {% endif %}

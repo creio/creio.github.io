@@ -1,0 +1,206 @@
+.nav-tabs
+  border-bottom: 1px solid #dddddd
+
+  > li
+    float: left
+    margin-bottom: -1px
+
+    > a
+      margin-right: 2px
+      line-height: 1.42857143
+      border: 1px solid transparent
+      border-radius: 4px 4px 0 0
+
+      &:hover
+        border-color: #eeeeee #eeeeee #dddddd
+
+    &.active > a
+      color: #555555
+      cursor: default
+      background-color: #ffffff
+      border: 1px solid #dddddd
+      border-bottom-color: transparent
+
+      &:hover, &:focus
+        color: #555555
+        cursor: default
+        background-color: #ffffff
+        border: 1px solid #dddddd
+        border-bottom-color: transparent
+
+  &.nav-justified
+    width: 100%
+    border-bottom: 0
+
+    >
+      li
+        float: none
+
+        > a
+          margin-bottom: 5px
+          text-align: center
+
+      .dropdown .dropdown-menu
+        top: auto
+        left: auto
+
+      li > a
+        margin-right: 0
+        border-radius: 4px
+
+      .active > a
+        border: 1px solid #dddddd
+
+        &:hover, &:focus
+          border: 1px solid #dddddd
+
+@media (min-width: 768px)
+  .nav-tabs.nav-justified > li
+    display: table-cell
+    width: 1%
+
+    > a
+      margin-bottom: 0
+
+@media (min-width: 768px)
+  .nav-tabs.nav-justified >
+    li > a
+      border-bottom: 1px solid #dddddd
+      border-radius: 4px 4px 0 0
+
+    .active > a
+      border-bottom-color: #ffffff
+
+      &:hover, &:focus
+        border-bottom-color: #ffffff
+
+.nav-pills > li
+  float: left
+
+  > a
+    border-radius: 4px
+
+  + li
+    margin-left: 2px
+
+  &.active > a
+    color: #ffffff
+    background-color: #337ab7
+
+    &:hover, &:focus
+      color: #ffffff
+      background-color: #337ab7
+
+.nav-stacked > li
+  float: none
+
+  + li
+    margin-top: 2px
+    margin-left: 0
+
+.nav-justified
+  width: 100%
+
+  >
+    li
+      float: none
+
+      > a
+        margin-bottom: 5px
+        text-align: center
+
+    .dropdown .dropdown-menu
+      top: auto
+      left: auto
+
+@media (min-width: 768px)
+  .nav-justified > li
+    display: table-cell
+    width: 1%
+
+    > a
+      margin-bottom: 0
+
+.nav-tabs-justified
+  border-bottom: 0
+
+  >
+    li > a
+      margin-right: 0
+      border-radius: 4px
+
+    .active > a
+      border: 1px solid #dddddd
+
+      &:hover, &:focus
+        border: 1px solid #dddddd
+
+@media (min-width: 768px)
+  .nav-tabs-justified >
+    li > a
+      border-bottom: 1px solid #dddddd
+      border-radius: 4px 4px 0 0
+
+    .active > a
+      border-bottom-color: #ffffff
+
+      &:hover, &:focus
+        border-bottom-color: #ffffff
+
+.tab-content >
+  .tab-pane
+    display: none
+
+  .active
+    display: block
+
+.nav-tabs .dropdown-menu
+  margin-top: -1px
+  border-top-left-radius: 0
+  border-top-right-radius: 0
+
+.clearfix
+  &:before, &:after
+    display: table
+    content: " "
+
+.nav
+  &:before, &:after
+    display: table
+    content: " "
+
+.clearfix:after, .nav:after
+  clear: both
+
+.center-block
+  display: block
+  margin-right: auto
+  margin-left: auto
+
+.pull-right
+  float: right !important
+
+.pull-left
+  float: left !important
+
+.hide
+  display: none !important
+
+.show
+  display: block !important
+
+.invisible
+  visibility: hidden
+
+.text-hide
+  font: 0/0 a
+  color: transparent
+  text-shadow: none
+  background-color: transparent
+  border: 0
+
+.hidden
+  display: none !important
+
+.affix
+  position: fixed
