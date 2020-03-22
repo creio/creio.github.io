@@ -35,10 +35,10 @@ cfdisk
 cryptsetup -y luksFormat --type luks2 /dev/sda1
 cryptsetup open /dev/sda1 cryptlvm
 
-ls -l /dev/mapper/cryptlvm
-
 pvcreate /dev/mapper/cryptlvm
 vgcreate lvarch /dev/mapper/cryptlvm
+
+ls -l /dev/mapper/cryptlvm
 ```
 
 Создаём разделы lvm.
