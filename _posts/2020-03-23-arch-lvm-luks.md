@@ -125,11 +125,13 @@ locale-gen
 echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
 ```
 
-Добавляем поддержку ru в консоле.
+Добавляем поддержку ru в консоле, системные часы.
 
 ```sh
 echo "KEYMAP=ru" >> /etc/vconsole.conf
 echo "FONT=cyr-sun16" >> /etc/vconsole.conf
+
+timedatectl set-ntp true
 ```
 
 Добавляем хуки (порядок важен) и создаем загрузочный образ.
