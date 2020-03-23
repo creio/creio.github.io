@@ -109,11 +109,12 @@ passwd liveuser
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 ```
 
-Назначаем hostname: имя машины и часовой пояс.
+Назначаем hostname: имя машины и часовой пояс, время.
 
 ```sh
 echo "ctlos" > /etc/hostname
 ln -svf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
+timedatectl set-ntp true
 ```
 
 Генерируем локали и включаем русский язык системы.
@@ -125,13 +126,11 @@ locale-gen
 echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
 ```
 
-Добавляем поддержку ru в консоле, системные часы.
+Добавляем поддержку ru в консоле.
 
 ```sh
 echo "KEYMAP=ru" >> /etc/vconsole.conf
 echo "FONT=cyr-sun16" >> /etc/vconsole.conf
-
-timedatectl set-ntp true
 ```
 
 Добавляем хуки (порядок важен) и создаем загрузочный образ.
