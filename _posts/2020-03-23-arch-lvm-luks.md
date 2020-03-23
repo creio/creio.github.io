@@ -194,7 +194,7 @@ cryptsetup luksDump /dev/sda1
 > Обязательно создайте backup заголовка.
 
 ```sh
-cryptsetup luksHeaderBackup --header-bacup-file luksheader.bac /dev/sda1
+cryptsetup luksHeaderBackup /dev/sda1 --header-backup-file luksheader.bac
 ```
 
 Шифруем.
@@ -213,7 +213,7 @@ openssl enc -d -aes-256-cbc -in luksheader.bac.enc -out luksheader.bac
 Восстанавливаем, подтверждаем: YES.
 
 ```sh
-cryptsetup luksHeaderRestore --header-bacup-file luksheader.bac /dev/sda1
+cryptsetup luksHeaderRestore --header-backup-file luksheader.bac /dev/sda1
 ```
 
 Сохраняем в надёжное место `luksheader.bac.enc`, например на usb. Стеганографируем и в публичный доступ, о этом я рассказывал в данном [видео](https://www.youtube.com/watch?v=sGIrre2OVt4&t=238s).
