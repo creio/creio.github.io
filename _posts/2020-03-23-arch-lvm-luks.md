@@ -73,7 +73,7 @@ mount /dev/sda2 /mnt/boot
 Установка базовой системы и необходимых пакетов.
 
 ```sh
-pacstrap /mnt base base-devel linux linux-headers lvm2 nano networkmanager bash-completion reflector htop openssh curl wget git rsync unzip unrar p7zip gnu-netcat pv
+pacstrap /mnt base base-devel linux linux-headers linux-firmware lvm2 nano networkmanager bash-completion reflector htop openssh curl wget git rsync unzip unrar p7zip gnu-netcat pv
 ```
 
 Генерируем и правим, если нужно `fstab`, выполняем chroot.
@@ -179,7 +179,7 @@ systemctl enable sshd
 
 ```sh
 exit
-umount -R /mnt
+umount -Rf /mnt
 vgchange -a n lvarch
 cryptsetup close cryptlvm
 ```
