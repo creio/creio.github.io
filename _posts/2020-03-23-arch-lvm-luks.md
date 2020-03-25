@@ -99,12 +99,12 @@ reflector -c "Russia" -c "Belarus" -c "Ukraine" -c "Poland" -f 20 -l 20 -p https
 passwd
 ```
 
-Создаем пользователя `liveuser` в нужных группах, назначаем пароль и включаем `sudo`.
+Создаем пользователя `st` в нужных группах, назначаем пароль и включаем `sudo`.
 
 ```sh
-useradd -m -g users -G "adm,audio,log,network,rfkill,scanner,storage,optical,power,wheel" -s /bin/bash liveuser
+useradd -m -g users -G "adm,audio,log,network,rfkill,scanner,storage,optical,power,wheel" -s /bin/bash -c "Alex Creio" st
 
-passwd liveuser
+passwd st
 
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 ```
