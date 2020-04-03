@@ -46,10 +46,10 @@ ffmpeg -i Videos/arch.mkv -b:a 320k -r 30 -s 1920x1080 Videos/out.mp4
 - Ускорение в 5 раз: `ffmpeg -i arch.mkv -vf "setpts=1/5*PTS" -r 30 -s 1920x1080 speed.mp4`
 - Замедление в 5 раз: `ffmpeg -i arch.mkv -vf "setpts=1*5*PTS" -r 30 -s 1920x1080 out.mp4`
 
-Сложный пример, комплексное ускорение видео/аудио на 20%.
+Сложный пример, комплексное ускорение видео/аудио примерно на 20%. `atempo=1/setpts`.
 
 ```sh
-ffmpeg -i arch.mkv -filter_complex "[0:v]setpts=0.8*PTS[v];[0:a]atempo=1.2[a]" -map "[v]" -map "[a]" -b:a 320k -r 30 -s 1920x1080 speed.mp4
+ffmpeg -i arch.mkv -filter_complex "[0:v]setpts=0.8*PTS[v];[0:a]atempo=1.25[a]" -map "[v]" -map "[a]" -b:a 320k -r 30 -s 1920x1080 speed.mp4
 ```
 
 ## Сводка video/mp3
