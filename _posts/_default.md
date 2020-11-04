@@ -1,16 +1,14 @@
 ---
-layout: post
 title: Default
 description: bla bla
 tags: jekyll
 image: og:img
-post_photo_path: 
-post_video: 
-post_video_large: 
+post_photo_path:
+post_video:
+post_video_large:
 comments: true
 edit_url: true
 permalink: /whois/
-mathjax: true
 ---
 
 <div class="embed">

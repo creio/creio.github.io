@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Как я записываю и монтирую видео
 description:
 image: /uploads/screencast.png

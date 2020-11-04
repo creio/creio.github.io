@@ -78,7 +78,7 @@ layout: compress
             <iframe src="https://www.youtube.com/embed/{{ page.post_video_large }}" frameborder="0" allowfullscreen></iframe>
           </div>
           {% endif %}
-          {% if page.post_photo_path %}<p><img class="post-img" src="{{ page.post_photo_path }}" alt="{{ page.title }}"></p>{% endif %}
+          {% if page.post_photo_path %}<img class="post-img" src="{{ page.post_photo_path }}" alt="{{ page.title }}">{% endif %}
         </header>
 
         <div class="page-content" itemprop="articleBody">

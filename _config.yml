@@ -12,17 +12,17 @@ mode: dark # default theme "dark" | "light"
 author:
   name: Alex Creio # author name
   bio: >- # tell to the world
-    В свободное время увлекаюсь разработкой Ctlos Linux <a href="https://ctlos.github.io" target="_blank" rel="noopener">@ctlos</a>. Не <code class="language-plaintext highlighter-rouge">su -</code> в Linux😆.
+    В свободное время увлекаюсь разработкой Ctlos Linux <a href="https://ctlos.github.io" target="_blank" rel="noopener">@ctlos</a>. Не <code class="language-plaintext highlighter-rouge">su -</code> в Linux :satisfied:.
   username: cretm # general username
   github: creio
   email: ctlos@protonmail.com
   avatar: https://avatars2.githubusercontent.com/u/20855126
 
 # URL settings
-url: "https://creio.github.io" #
+url: "https://creio.github.io"
 baseurl:
 permalink: /:title/
-google_analytics: # leave it blank if not wish
+google_analytics:
 ya_metrika: 49475860
 fb_appid:
 

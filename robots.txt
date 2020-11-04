@@ -8,5 +8,6 @@ Disallow: /cvc
 Disallow: /search
 Disallow: /admin
 Disallow: /keybase.txt
+Disallow: /tag/index.html
 Sitemap: {{ site.url }}/sitemap.xml
 Host: creio.github.io

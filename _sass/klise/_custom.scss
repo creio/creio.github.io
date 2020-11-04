@@ -82,3 +82,34 @@ $accent-color: #5a74ca !default;
 .dropdown:hover .dropbtn {
   background-color: rgba(128, 128, 128, 0.1);
 }
+
+
+// post media
+.large img, .large.embed {
+  max-width: 140%;
+  margin-right: -20%;
+  margin-left: -20%;
+}
+@media only screen and (max-width: 1000px) {
+  .large img, .large.embed {
+    max-width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+.embed {
+  position: relative;
+  padding-bottom: 56.25%;
+  margin: 1.5em 0;
+}
+.embed.large {
+  padding-bottom: 78.75%;
+}
+.embed iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+img.post-img {
+  display: block;
+}

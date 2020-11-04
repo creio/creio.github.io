@@ -32,6 +32,17 @@ layout: compress
   <div class="wrapper">
     <header class="header">
       <h1 class="header-title center" itemprop="headline">{{ page.title | escape }}.</h1>
+      {% if page.post_video %}
+      <div class="embed">
+        <iframe src="https://www.youtube.com/embed/{{ page.post_video }}" frameborder="0" allowfullscreen></iframe>
+      </div>
+      {% endif %}
+      {% if page.post_video_large %}
+      <div class="large embed">
+        <iframe src="https://www.youtube.com/embed/{{ page.post_video_large }}" frameborder="0" allowfullscreen></iframe>
+      </div>
+      {% endif %}
+      {% if page.post_photo_path %}<img class="post-img" src="{{ page.post_photo_path }}" alt="{{ page.title }}">{% endif %}
     </header>
     <main class="page-content" aria-label="Content">
       {% include anchor_headings.html html=content anchorClass="anchor-head" beforeHeading=true h_min=4 h_max=4 %}
