@@ -1,3 +1,36 @@
+(() => {
+  // Theme switch
+  const body = document.body;
+  const lamp = document.getElementById("mode");
+
+  const toggleTheme = (state) => {
+    if (state === "dark") {
+      localStorage.setItem("theme", "light");
+      body.removeAttribute("data-theme");
+    } else if (state === "light") {
+      localStorage.setItem("theme", "dark");
+      body.setAttribute("data-theme", "dark");
+    } else {
+      initTheme(state);
+    }
+  };
+
+  lamp.addEventListener("click", () =>
+    toggleTheme(localStorage.getItem("theme"))
+  );
+
+  // Blur the content when the menu is open
+  const cbox = document.getElementById("menu-trigger");
+
+  cbox.addEventListener("change", function () {
+    const area = document.querySelector(".wrapper");
+    this.checked
+      ? area.classList.add("blurry")
+      : area.classList.remove("blurry");
+  });
+})();
+
+// custom
 // scrolljump
 $(function() {
   $(window).scroll(function() {
@@ -9,23 +42,5 @@ $(function() {
   });
   $('#scrollup').click(function() {
     $('body,html').animate({scrollTop:0},300);
-  });
-});
-
-// magnific popup
-$('.video-link').magnificPopup({
-  type: 'iframe'
-});
-
-// search form popup
-$(document).ready(function(){
-  $('a[href="#search"]').on('click', function(event) {
-    $('#search').addClass('open');
-    $('#search > form > input[type="search"]').focus();
-  });
-  $('#search, #search button.close').on('click keyup', function(event) {
-    if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
-      $(this).removeClass('open');
-    }
   });
 });

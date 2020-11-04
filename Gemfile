@@ -1,16 +1,11 @@
 source "https://rubygems.org"
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
-
-gem "bundler"
-gem "jekyll"
+gem "jekyll", "~> 4.1.0"
 
 group :jekyll_plugins do
-  gem "jekyll-sitemap"
-  gem "jekyll-seo-tag"
-  gem "jekyll-feed"
-  gem "jekyll-paginate"
-  gem "jekyll-mentions"
-  gem "jekyll-redirect-from"
+  gem 'jekyll-feed', '~> 0.13'
+  gem 'jekyll-sitemap', '~> 1.4'
+  gem 'jekyll-compose', '~> 0.12.0'
+  gem 'jekyll-postfiles', '~> 3.1'
   gem "jemoji"
 end

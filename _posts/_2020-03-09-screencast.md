@@ -3,10 +3,8 @@ layout: post
 title: Как я записываю и монтирую видео
 description:
 image: /uploads/screencast.png
-post_photo_path: /uploads/screencast.png
 tags: screencast
-comments: true
-edit_url: true
+comments: false
 ---
 
 Хочу поделиться своим опытом по записи видео (screencast).

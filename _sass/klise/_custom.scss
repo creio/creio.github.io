@@ -1,0 +1,84 @@
+$accent-color: #5a74ca !default;
+
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+  ::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+@include scrollbars(.5em, $accent-color);
+
+// back-top
+#scrollup {
+  color: $white;
+  position: fixed;
+  z-index: 10000;
+  padding: 5px 15px;
+  background: rgba($accent-color,.4);
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  right: 20px;
+  bottom: 30%;
+  display: none;
+  cursor: pointer;
+}
+
+
+.icon-edit {
+  font-size: 1.35em;
+  float: right;
+}
+.icon-edit svg {
+  height: 1em;
+  width: 1em;
+  fill: currentColor;
+}
+
+.related {
+  margin-bottom: 2em;
+}
+
+// dropdown menu item
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  z-index: 1;
+  background-color: rgba($accent-color,.98);
+}
+
+.dropdown-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-radius: 0 !important;
+  color: $white !important;
+}
+
+.dropdown-content a:hover {
+  color: $dark-black !important;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: rgba(128, 128, 128, 0.1);
+}

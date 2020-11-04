@@ -1,55 +1,124 @@
 ---
-layout: default
+layout: compress
 ---
-<article>
-  <header>
-    {%- assign date_format = site.date_format | default: "%B %d, %Y" -%}
-    <h1>{{ page.title }}</h1>
-    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time>
+
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+{% include header.html %}
+
+<body data-theme="{{ site.mode }}" class="notransition">
+
+  <script>
+    const body = document.body;
+    const data = body.getAttribute("data-theme");
+
+    const initTheme = (state) => {
+      if (state === "dark") {
+        body.setAttribute("data-theme", "dark");
+      } else if (state === "light") {
+        body.removeAttribute("data-theme");
+      } else {
+        localStorage.setItem("theme", data);
+      }
+    };
+
+    initTheme(localStorage.getItem("theme"));
+
+    setTimeout(() => body.classList.remove("notransition"), 75);
+  </script>
+
+  {% include navbar.html %}
+  <div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+      <article itemscope itemtype="https://schema.org/BlogPosting">
+
+        <header class="header">
+          <!--  -->
+          {% if page.tags and page.tags != empty %}
+          <div class="tags">
+            {% for data_tag in site.data.tags %}
+              {% for tag in tags %}
+                <span itemprop="keywords">
+                {% if data_tag.name == tag %}
+                  <a class="tag" href="/tag/{{ data_tag.slug }}">
+                    {{tag | upcase }}
+                  </a>{% unless forloop.last %},{% endunless %}
+                {% endif %}
+                </span>
+              {% endfor %}
+            {% endfor %}
+          </div>
+          {% endif %}
+          <!--  -->
+          <h1 class="header-title" itemprop="headline">{{ page.title | escape }}</h1>
+          {% if page.date %}
+          <div class="post-meta">
+            <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+              {{ page.date | date: "%d %b %Y" }}
+            </time>
+            <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+              <span itemprop="name">{{ site.author.name }}</span>
+            </span>
+            <time hidden datetime="{{ page.modified | date_to_xmlschema }}" itemprop="dateModified">
+              {{ page.date | date: "%d %b %Y" }}
+            </time>
+            <span hidden itemprop="publisher" itemtype="Person">{{ site.author.name }}</span>
+            <span hidden itemprop="image">{{ page.image }}</span>
+            <span hidden itemprop="mainEntityOfPage">{{ page.excerpt }}</span>
+          </div>
+          {% endif %}
+          {% if page.post_video %}
+          <div class="embed">
+            <iframe src="https://www.youtube.com/embed/{{ page.post_video }}" frameborder="0" allowfullscreen></iframe>
+          </div>
+          {% endif %}
+          {% if page.post_video_large %}
+          <div class="large embed">
+            <iframe src="https://www.youtube.com/embed/{{ page.post_video_large }}" frameborder="0" allowfullscreen></iframe>
+          </div>
+          {% endif %}
+          {% if page.post_photo_path %}<p><img class="post-img" src="{{ page.post_photo_path }}" alt="{{ page.title }}"></p>{% endif %}
+        </header>
+
+        <div class="page-content" itemprop="articleBody">
+          {% include anchor_headings.html html=content anchorClass="anchor-head" beforeHeading=true h_min=1 h_max=4 %}
+          {% if page.tweet %}
+          <p>Comments this article on
+            <a href="https://twitter.com/{{site.twitter}}/status/{{page.tweet}}">Twitter</a>.
+          </p>
+          {% endif %}
+        </div>
+      </article>
+    </main>
+
+    {% if page.modified %}
+      <small class="post-updated-at">обновлено: {{page.modified | date: "%d-%m-%Y"}}</small>
+    {% endif %}
+
     {% if page.edit_url %}
-      <a class="icon-edit" target="_blank" href="{{ site.repo_url }}/blob/master/{{ page.relative_path }}" title="Редактировать страницу"><svg id="edit" viewBox="0 0 576 512"><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"></path></svg></a>
+    <p>Видите ошибку? Отредактируйте эту страницу на GitHub. <a class="icon-edit" target="_blank" href="{{ site.repo }}/blob/master/{{ page.relative_path }}" title="Редактировать страницу"><svg id="edit" viewBox="0 0 576 512"><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"></path></svg></a></p>
     {% endif %}
-  </header>
-  {% if page.post_video %}
-  <div class="embed">
-    <iframe src="https://www.youtube.com/embed/{{ page.post_video }}" frameborder="0" allowfullscreen></iframe>
-  </div>
-  {% endif %}
-  {% if page.post_video_large %}
-  <div class="large embed">
-    <iframe src="https://www.youtube.com/embed/{{ page.post_video_large }}" frameborder="0" allowfullscreen></iframe>
-  </div>
-  {% endif %}
-  {% if page.post_photo_path %}<p><img class="post-img" src="{{ page.post_photo_path }}" alt="{{ page.title }}"></p>{% endif %}
-  {{ content }}
-  {% if page.edit_url %}
-  <p>Видите ошибку? Отредактируйте эту страницу на GitHub. <a class="icon-edit" target="_blank" href="{{ site.repo_url }}/blob/master/{{ page.relative_path }}" title="Редактировать страницу"><svg id="edit" viewBox="0 0 576 512"><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"></path></svg></a></p>
-  {% endif %}
-  {% if page.tags %}
-  {% for tag in page.tags %}
-  <a href="{{ site.tag_page | relative_url }}#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
-  {% endfor %}
-  {% endif %}
-  <hr>
-  <div class="related">
-    <h3>Похожие записи:</h3>
-    {% for post in site.related_posts limit:5 %}
-    <div class="related-item">
-      <a href="{{ post.url | absolute_url }}">{{ post.title }}</a> <small>{{ post.date | date_to_string }}</small>
+    <hr>
+    <div class="related">
+      <h3>Похожие записи:</h3>
+      {% for post in site.related_posts limit:5 %}
+      <div class="related-item">
+        <a href="{{ post.url | absolute_url }}">{{ post.title }}</a> <small>{{ post.date | date_to_string }}</small>
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
-  </div>
-  {% if site.comments.disqus %}
+
     {% if page.comments %}
-    <hr><div id="disqus_thread"></div>
+      {% include comments.html %}
     {% endif %}
-  {% endif %}
-</article>
-{% unless site.hide_footer %}
-<footer class="{% if site.dark_footer %}dark{% endif %}">
-{% if page.previous.url or page.next.url %}
-  {% if page.next.url %}<a class="gray" href="{{ page.next.url | relative_url }}">&larr; {{ page.next.title }}</a>{% else %}<span></span>{% endif %}
-  {% if page.previous.url %}<a class="gray" href="{{ page.previous.url | relative_url }}">{{ page.previous.title }} &rarr;</a>{% else %}<span></span>{% endif %}
-{% endif %}
-</footer>
-{% endunless %}
+
+    {% if page.next or page.previous %}
+      {% include navigation.html %}
+    {% endif %}
+
+    {% include footer.html %}
+  </div>
+</body>
+
+</html>

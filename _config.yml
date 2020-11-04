@@ -1,69 +1,97 @@
-lang: "ru"
+# Site settings
+title: Alex Creio # site title
+description: >- # site description
+  Blog о Linux и не только
+lang: ru # default lang
+timezone: Europe/Moscow # set your timezone
+image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
+repo: https://github.com/creio/creio.github.io # site repo [optional]
+mode: dark # default theme "dark" | "light"
 
-# jekyll-seo-tag
-title: Alex Creio
-author: Alex Creio
-description: Blog о Linux и не только...
-logo: /assets/img/logo.png
-social:
-  links:
-    - https://github.com/creio
-webmaster_verifications:
-  # google: 1234
-  yandex: 88da0cac75447b72
+# Profile settings
+author:
+  name: Alex Creio # author name
+  bio: >- # tell to the world
+    В свободное время увлекаюсь разработкой Ctlos Linux <a href="https://ctlos.github.io" target="_blank" rel="noopener">@ctlos</a>. Не <code class="language-plaintext highlighter-rouge">su -</code> в Linux😆.
+  username: cretm # general username
+  github: creio
+  email: ctlos@protonmail.com
+  avatar: https://avatars2.githubusercontent.com/u/20855126
 
-google_analytics:
+# URL settings
+url: "https://creio.github.io" #
+baseurl:
+permalink: /:title/
+google_analytics: # leave it blank if not wish
 ya_metrika: 49475860
+fb_appid:
 
-repo_url: https://github.com/creio/creio.github.io
+  # google_verification: 1234
+yandex_verification: 88da0cac75447b72
 
-# Page settings
-permalink: /:title/          # see https://jekyllrb.com/docs/permalinks/
-date_format: "%d.%m.%Y"     # see http://shopify.github.io/liquid/filters/date/
-paginate: 8                 # use "layout: paginate" in the index.html to enable pagination
+# Collection setting
+collections:
+  posts:
+    output: true
 
-# Theme settings
-hide_title: true            # remove site heading in the header
-hide_footer: false           # hide the "previous" and "next" links at the end of each post
-dark_theme: true            # use the dark mode as default
-dark_header: false           # keep the header dark
-dark_footer: true           # keep the footer dark
-# style: minimal             # use a simpler style inspired by the minima theme
+# Markdown settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  syntax_highlighter: rouge
 
-navigation:                  # site navigation in the header. / & _pages
-  - Home: /
-  - about.md
-  - tags.md
-  - archive.md
-  # - README.md
-  # - Telegram: https://t.me/cretm       # linking external sites is also supported
-
-icons:                      # icons in the header, see http://fontawesome.com/icons
-  linux: https://ctlos.github.io
-  telegram-plane: https://t.me/ctlos
-  youtube: https://www.youtube.com/c/creioyt?sub_confirmation=1
-  keybase: https://keybase.io/cvc
-  github: https://github.com/creio
-  vk: https://vk.com/ctlos
-  rss: /feed.xml
-  # envelope: "mailto:mailcreio@gmail.com"
-
-tag_page: "/tags/"
-
-include: ["_pages"]
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: post
+      comments: true
+      edit_url: true
 
 comments:
-  disqus: "creds"
+  disqus: creds
 
+# Jekyll Compose default front matter
+jekyll_compose:
+  post_default_front_matter:
+    modified:
+    tags: []
+    description:
+  draft_default_front_matter:
+    modified:
+    tags: []
+    description:
+
+# Homepage limit posts
+number_of_posts: 7
+
+# Build settings
+# theme: klise
 sass:
   style: compressed
-  sass_dir: _sass
 
+include:
+  - _redirects
+  - .htaccess
+
+exclude:
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - CHANGELOG.md
+  - README.md
+  - node_modules
+  - CODE_OF_CONDUCT.md
+  - CONTRIBUTING.md
+  - lighthouse.png
+  - klise-*.gem
+  - klise.gemspec
+
+# Plugins
 plugins:
-  - jekyll-sitemap
-  - jekyll-seo-tag
   - jekyll-feed
-  - jekyll-paginate
-  - jekyll-mentions
-  - jekyll-redirect-from
+  - jekyll-sitemap
+  - jekyll-postfiles
   - jemoji

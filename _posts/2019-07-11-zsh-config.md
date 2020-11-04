@@ -1,11 +1,9 @@
 ---
-layout: post
 title: Zsh установка и настройка
 description: Zsh, oh-my-zsh, плагины
-image: "/uploads/zsh-cfg.png"
-tags: zsh
+image: /uploads/zsh-cfg.png
+tags: [Gnu Linux]
 comments: true
-edit_url: true
 ---
 
 Разбор конфига `~/.zshrc`, конечный результат примерно такой. Рекомендую установить и использовать терминал [urxvt](/urxvt-config/) о настройке которого я писал в прошлом посте.

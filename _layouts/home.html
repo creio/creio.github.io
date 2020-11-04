@@ -1,9 +1,10 @@
 ---
-layout: page
+layout: default
+home: true
 ---
 
-<h3 class="posts-item-note" aria-label="Recent Posts">Последние Записи Тега</h3>
-{%- for post in site.tags[page.title] -%}
+<h3 class="posts-item-note" aria-label="Recent Posts">Последние Записи</h3>
+{%- for post in site.posts limit: site.number_of_posts -%}
 <article class="post-item">
   <span class="post-item-date">{{ post.date | date: "%d %b %Y" }}</span>
   <h4 class="post-item-title">

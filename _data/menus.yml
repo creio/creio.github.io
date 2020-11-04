@@ -1,0 +1,20 @@
+- title: home
+  url: /
+  external: false
+
+- title: tags
+  url: /tags/
+  dropdown: true
+
+- title: archive
+  url: /archive/
+  external: false
+
+- title: about
+  url: /about/
+  external: false # set true if you using external link, see below
+
+# Example:
+- title: github
+  url: https://github.com/creio
+  external: true

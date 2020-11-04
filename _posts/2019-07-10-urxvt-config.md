@@ -1,12 +1,8 @@
 ---
-layout: post
 title: Arch Urxvt, установка и настройка
 description: Глубокое погружение в Xresources
-image: "/uploads/urxvt-cfg.png"
-post_photo_path: "/uploads/urxvt-cfg.png"
-tags: urxvt
-comments: true
-edit_url: true
+image: /uploads/urxvt-cfg.png
+tags: [Gnu Linux]
 ---
 
 Очень быстрый терминал, но немного пугает в настройке.

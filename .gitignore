@@ -3,6 +3,9 @@
 .bundle
 .sass-cache
 .jekyll-cache
+.jekyll-metadata
 _site
 package-lock.json
 node_modules
+klise-*.gem
+Gemfile.lock

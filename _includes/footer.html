@@ -1,0 +1,48 @@
+<footer class="footer">
+  <a class="footer_item" href="https://ctlos.github.io/donat/">thanks</a>
+  <a class="footer_item" href="/feed.xml">rss</a>
+  <span class="footer_item">&copy; {{ site.time | date: "%Y" }}</span>
+  <small class="footer_copyright">
+    <a href="https://github.com/piharpi/jekyll-klise" target="_blank" rel="noopener">:fire:</a>
+  </small>
+</footer>
+
+<div id="scrollup">&uarr;</div>
+
+<script src="/assets/js/jquery.min.js" defer="defer"></script>
+<script src="/assets/js/main.js" defer="defer"></script>
+
+{%- if page.google_analytics -%}
+  <script src="/assets/js/galite.js"></script>
+  <script>
+    var galite = galite || {};
+    galite.UA = "{{ site.google_analytics }}";
+  </script>
+{%- endif -%}
+{%- if page.url == '/archive/' -%}
+  <script src="/assets/js/search.min.js"></script>
+  <script>
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('search-results'),
+      json: '/assets/search.json',
+    });
+  </script>
+{%- endif -%}
+
+{% if site.ya_metrika %}
+<script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym({{ site.ya_metrika }}, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/{{ site.ya_metrika }}" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+{% endif %}
+
+<script>
+(function (y, e, p) {
+  e.YepsID = 'oXXr9AhgfhxXgDypD';
+  var s = y.createElement('script');
+  e[p] = e[p] || function() {
+    (e[p].q = e[p].q || []).push(arguments);
+  };
+  s.async = true;
+  s.src = 'https://widget.yeps.io/yeps.js';
+  if (y.head) y.head.appendChild(s);
+})(document, window, 'Yeps');
+</script>

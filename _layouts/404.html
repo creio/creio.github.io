@@ -1,10 +1,11 @@
 ---
 layout: compress
 ---
+
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: " en " }}">
-{% include header.html %}
 
+{% include header.html %}
 <body data-theme="{{ site.mode }}" class="notransition">
 
   <script>
@@ -28,11 +29,18 @@ layout: compress
 
   {% include navbar.html %}
   <div class="wrapper">
-    {% include author.html %}
     <main aria-label="Content">
-      {{ content }}
-    </main>
+      <div class="not-found">
+        <div class="container">
+          <div class="title">404</div>
+          <p class="phrase">😕 Hmm... Seems you lost from my journey.</p>
+          <a class="solution" href="{{ site.url }}">back home</a>
+        </div>
+      </div>
+    </main>  
     {% include footer.html %}
   </div>
+    
 </body>
+
 </html>
