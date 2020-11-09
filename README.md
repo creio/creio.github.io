@@ -2,7 +2,7 @@
 
 Fork Jekyll theme Klisé <a href="https://github.com/piharpi/jekyll-klise" target="_blank" rel="noopener">jekyll-klise</a>
 
-## Installation
+## Install
 
 Run local server:
 
