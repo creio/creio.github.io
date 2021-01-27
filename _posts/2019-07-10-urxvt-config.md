@@ -12,7 +12,7 @@ tags: [Gnu Linux]
 Я всегда устанавливаю patched версию с аура, некоторые зависимости и шрифт **Hack Nerd** с набором иконок. Мой конфиг [github](https://github.com/creio/dots/blob/master/.Xresources).
 
 ```sh
-yay -S rxvt-unicode-patched urxvt-perls ttf-nerd-fonts-hack-complete-git
+yay -S rxvt-unicode-patched urxvt-perls nerd-fonts-hack
 ```
 
 ## Настройка urxvt, файл `~/.Xresources`.
