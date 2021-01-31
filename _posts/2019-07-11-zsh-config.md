@@ -2,7 +2,7 @@
 title: Zsh установка и настройка
 description: Zsh, oh-my-zsh, плагины
 image: /uploads/zsh-cfg.png
-tags: [Gnu Linux]
+tags: [Linux]
 comments: true
 ---
 

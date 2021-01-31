@@ -1,11 +1,5 @@
-- slug: gnu-linux
-  name: Gnu Linux
-
-- slug: archlinux
-  name: Arch Linux
-
-- slug: ctlos
-  name: Ctlos Linux
+- slug: linux
+  name: Linux
 
 - slug: privacy
   name: Приватность

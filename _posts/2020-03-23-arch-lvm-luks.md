@@ -2,7 +2,7 @@
 title: Установка Arch Linux на зашифрованный раздел, LVM на LUKS 🐚
 description:
 image: /uploads/lvm-luks.png
-tags: [Arch Linux]
+tags: [Linux]
 ---
 
 Грузимся из под live-usb, устанавливаем ru язык и время.
