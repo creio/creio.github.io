@@ -7,6 +7,8 @@ tags: [Linux]
 
 Очень быстрый терминал, но немного пугает в настройке.
 
+![](/uploads/urxvt-cfg.png)
+
 ## Установка.
 
 Я всегда устанавливаю patched версию с аура, некоторые зависимости и шрифт **Hack Nerd** с набором иконок. Мой конфиг [github](https://github.com/creio/dots/blob/master/.Xresources).
