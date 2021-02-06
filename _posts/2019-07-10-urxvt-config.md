@@ -21,7 +21,7 @@ yay -S rxvt-unicode-patched urxvt-perls nerd-fonts-hack
 
 ```sh
 URxvt.font: xft:Hack Nerd Font Mono:size=9
-URxvt*geometry: 84x22
+URxvt.geometry: 84x22
 URxvt.internalBorder: 15
 URxvt.letterSpace: 0
 URxvt.antialias: true
@@ -66,8 +66,8 @@ URxvt.keysym.Control-Right: \033[1;5C
 Отключение непрозрачности.
 
 ```sh
-URxvt*transparent:false
-URxvt*depth: 32
+URxvt.transparent:false
+URxvt.depth: 32
 ```
 
 Все схемы я храню в `~/.colors` [.colors](https://github.com/creio/dots/tree/master/.colors), а подключаю их инклюдом. `#` В данном случае не комментарий.
@@ -84,10 +84,10 @@ URxvt*depth: 32
 *.background: [90]#111113
 ```
 
-Рекомендую создать симлинк на `xterm`.
+Рекомендую создать симлинк на `rxvt`.
 
 ```sh
-sudo ln -s /usr/bin/urxvt /usr/bin/xterm
+sudo ln -s /usr/bin/urxvt /usr/bin/rxvt
 ```
 
 Комбинации клавиш.
@@ -100,3 +100,9 @@ sudo ln -s /usr/bin/urxvt /usr/bin/xterm
 - ctrl+c: остановить процесс, сбросить набор.
 
 Есть вопросы, пиши в комментах.
+
+После изменения файла `~/.Xresources` необходимо считывать конфиг и перезапускать терминал.
+
+```bash
+xrdb -merge ~/.Xresources
+```
