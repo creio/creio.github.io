@@ -1,6 +1,7 @@
 ---
 title: Настройка и использование Nginx в Arch Linux | Docker Portainer
 description: Nginx reverse proxy, проброс локальной сети на сервер, через wireguard. Portainer — gui для docker контейнеров.
+image: /uploads/web-server.png
 modified: 2021-04-05
 tags: Linux
 ---
