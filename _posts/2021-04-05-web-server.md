@@ -8,6 +8,8 @@ tags: Linux
 
 Nginx reverse proxy, проброс локальной сети на сервер, через wireguard. Portainer — gui для docker контейнеров.
 
+![Web server](/uploads/web-server.png)
+
 ## Содержание
 {: .no_toc .text-delta }
 
