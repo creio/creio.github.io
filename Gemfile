@@ -1,11 +1,15 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 4.1.0"
+gem "bundler"
+gem "jekyll"
+gem "rake"
 
 group :jekyll_plugins do
-  gem 'jekyll-feed', '~> 0.13'
-  gem 'jekyll-sitemap', '~> 1.4'
-  gem 'jekyll-compose', '~> 0.12.0'
-  gem 'jekyll-postfiles', '~> 3.1'
+  gem "jekyll-menus"
+  gem "jekyll-seo-tag"
+  gem "jekyll-paginate"
+  gem "jekyll-feed"
+  gem "jekyll-sitemap"
+  gem "jekyll-target-blank"
   gem "jemoji"
 end

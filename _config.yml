@@ -1,12 +1,25 @@
-# Site settings
-title: Alex Creio # site title
-description: >- # site description
-  Blog о Linux и не только
-lang: ru # default lang
-timezone: Europe/Moscow # set your timezone
-image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
-repo: https://github.com/creio/creio.github.io # site repo [optional]
-mode: dark # default theme "dark" | "light"
+title: Alex Creio
+description: Blog о Linux и не только
+baseurl: "" # /blog
+url: "https://creio.github.io"
+lang: ru-RU
+timezone: Europe/Moscow
+# logo: /assets/img/logo.svg
+permalink: /:title/
+disqus_shortname: creds
+
+# Aux links for the upper right navigation
+aux_links:
+  - title: Архив
+    url: /archive/
+  - title: About
+    url: /about/
+  - title: GitHub
+    url: https://github.com/creio
+    new_tab: true
+  - title: RSS
+    url: /feed.xml
+    new_tab: true
 
 # Profile settings
 author:
@@ -16,82 +29,103 @@ author:
   username: cretm # general username
   github: creio
   email: ctlos@protonmail.com
-  avatar: https://avatars2.githubusercontent.com/u/20855126
+  avatar: /assets/img/ava.png
 
-# URL settings
-url: "https://creio.github.io"
-baseurl:
-permalink: /:title/
-google_analytics:
-ya_metrika: 49475860
-fb_appid:
-
-  # google_verification: 1234
-yandex_verification: 88da0cac75447b72
-
-# Collection setting
-collections:
-  posts:
-    output: true
-
-# Markdown settings
-markdown: kramdown
-highlighter: rouge
-kramdown:
-  syntax_highlighter: rouge
-
-# Default front matter
 defaults:
-  - scope:
+  -
+    scope:
       path: ""
     values:
-      layout: post
+      image: /assets/img/ogp.png
       comments: true
-      edit_url: true
+      edit: true
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+      permalink: /:title/
+      edit: true
+  -
+    scope:
+      path: ""
+    values:
+      layout: page
+      search_exclude: true
+      comments: false
+      edit: false
 
-comments:
-  disqus: creds
+# nav footer
+nav_footer_content: "Cloud <a target=\"\_blank\" href=\"https://m.do.co/c/49c4dbf3d0ca\">100$ free</a>"
+# Footer content
+back_to_top: true
+footer_content: "Copyright &copy; <a href=\"https://github.com/pmarsceill/just-the-docs/tree/master/LICENSE.txt\">MIT license.</a>"
 
-# Jekyll Compose default front matter
-jekyll_compose:
-  post_default_front_matter:
-    modified:
-    tags: []
-    description:
-  draft_default_front_matter:
-    modified:
-    tags: []
-    description:
+# Enable or disable the site search
+search_enabled: true
+
+# Set the search token separator for hyphenated-word search:
+# search_tokenizer_separator: /[\s/]+/
+
+# Enable or disable heading anchors
+heading_anchors: true
+
+# Footer last edited timestamp
+last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter
+last_edit_time_format: "%b %e %Y at %I:%M %p" # uses ruby's time format: https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
 
 # Homepage limit posts
 number_of_posts: 7
 
-# Build settings
-# theme: klise
-sass:
-  style: compressed
+feed:
+  excerpt_only: true
 
-include:
-  - _redirects
-  - .htaccess
+# Footer "Edit this page on GitHub" link text
+gh_edit_link: true
+gh_edit_link_text: "Отредактировать эту страницу на GitHub"
+gh_edit_repository: "https://github.com/creio/creio.github.io"
+gh_edit_branch: "master"
+gh_edit_view_mode: "tree"
 
-exclude:
-  - CNAME
-  - Gemfile
-  - Gemfile.lock
-  - LICENSE
-  - CHANGELOG.md
-  - README.md
-  - node_modules
-  - CODE_OF_CONDUCT.md
-  - CONTRIBUTING.md
-  - lighthouse.png
-  - klise-*.gem
-  - klise.gemspec
+# "dark", "light"/nil
+color_scheme: dark
 
-# Plugins
+# google_analytics:
+ya_metrika: 49475860
+# google_verification:
+yandex_verification: 88da0cac75447b72
+
 plugins:
+  - jekyll-menus
+  - jekyll-seo-tag
+  - jekyll-paginate
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-postfiles
+  - jekyll-target-blank
   - jemoji
+
+target-blank:
+  rel: nofollow
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: []
+  blanklines: false
+  profile: false
+
+exclude:
+  - "node_modules/"
+  - "*.gemspec"
+  - "*.gem"
+  - "Rakefile"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "package.json"
+  - "package-lock.json"
+  - "LICENSE.txt"
+  - "README.md"
+  - "lib/"
+  - "_compress_images_cache.yml"

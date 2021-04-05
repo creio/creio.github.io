@@ -9,6 +9,14 @@ tags: [Linux]
 
 ![](/uploads/urxvt-cfg.png)
 
+## Содержание
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
 ## Установка.
 
 Я всегда устанавливаю patched версию с аура, некоторые зависимости и шрифт **Hack Nerd** с набором иконок. Мой конфиг [github](https://github.com/creio/dots/blob/master/.Xresources).

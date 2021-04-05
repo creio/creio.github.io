@@ -3,12 +3,19 @@ title: Zsh установка и настройка
 description: Zsh, oh-my-zsh, плагины
 image: /uploads/zsh-cfg.png
 tags: [Linux]
-comments: true
 ---
 
 Разбор конфига `~/.zshrc`, конечный результат примерно такой. Рекомендую установить и использовать терминал [urxvt](/urxvt-config/) о настройке которого я писал в прошлом посте.
 
 ![Zsh](/uploads/zsh-cfg.png)
+
+## Содержание
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
 
 ## Установка zsh, oh-my-zsh, fast-syntax-highlighting, zsh-autosuggestions.
 

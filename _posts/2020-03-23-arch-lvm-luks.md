@@ -5,6 +5,14 @@ image: /uploads/lvm-luks.png
 tags: [Linux]
 ---
 
+## Содержание
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
 Грузимся из под live-usb, устанавливаем ru язык и время.
 
 ```sh

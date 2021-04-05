@@ -1,11 +1,9 @@
 *.gem
-.DS_Store
 .bundle
-.sass-cache
+.ruby-version
 .jekyll-cache
-.jekyll-metadata
+.sass-cache
 _site
-package-lock.json
-node_modules
-klise-*.gem
 Gemfile.lock
+node_modules
+build

@@ -1,20 +1,15 @@
-- title: home
-  url: /
-  external: false
-
-- title: tags
-  url: /tags/
-  dropdown: true
-
-- title: archive
-  url: /archive/
-  external: false
-
-- title: about
-  url: /about/
-  external: false # set true if you using external link, see below
-
-# Example:
-- title: github
-  url: https://github.com/creio
-  external: true
+sidebar_nav:
+  - title: Начало
+    identifier: install
+  - title: Оконные Менеджеры
+    identifier: wm
+  - title: Резервное копирование
+    identifier: backup
+  - title: Программы
+    identifier: packages
+  - title: Конфигурирование
+    identifier: config
+  - title: Btrfs
+    identifier: btrfs
+  - title: Прочее
+    identifier: other

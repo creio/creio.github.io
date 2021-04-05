@@ -1,6 +1,6 @@
 # Alex Creio
 
-Fork Jekyll theme Klisé <a href="https://github.com/piharpi/jekyll-klise" target="_blank" rel="noopener">jekyll-klise</a>
+Fork Jekyll theme <a href="https://pmarsceill.github.io/just-the-docs" target="_blank" rel="noopener">just-the-docs</a>
 
 ## Install
 
