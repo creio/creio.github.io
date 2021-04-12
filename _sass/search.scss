@@ -91,11 +91,11 @@
 
 .search-results-wrap {
   position: absolute;
-  left: 0;
+  // left: 0;
   display: none;
-  width: 100%;
-  max-height: calc(100% - #{$sp-10});
-  overflow-y: auto;
+  width: 97%;
+  // max-height: calc(100% - #{$sp-10});
+  // overflow-y: auto;
   background-color: $search-background-color;
   border-bottom-right-radius: $border-radius;
   border-bottom-left-radius: $border-radius;
