@@ -4,7 +4,7 @@ description: Nginx reverse proxy, проброс локальной сети н�
 image: /uploads/web-server.png
 modified: 2021-05-09
 tags: Linux
-post_video_large: IFjzUpTjsC4
+post_video: IFjzUpTjsC4
 ---
 
 Nginx reverse proxy, проброс локальной сети на сервер, через wireguard. Portainer — gui для docker контейнеров.
