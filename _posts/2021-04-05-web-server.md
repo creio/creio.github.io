@@ -129,7 +129,7 @@ server {
   error_log /var/log/nginx/home.error;
 
   location / {
-      autoindex on;
+      autoindex off;
       try_files $uri $uri/ =404;
     }
 
