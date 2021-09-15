@@ -10,6 +10,15 @@ edit_url: true
 permalink: /whois/
 ---
 
+<details open markdown="block">
+  <summary>
+    Содержание ▼
+  </summary>
+  {: .no_toc .text-delta }
+1. TOC
+{:toc}
+</details>
+
 <div class="embed">
   <iframe src="https://www.youtube.com/embed/{{ page.post_video }}" frameborder="0" allowfullscreen></iframe>
 </div>
