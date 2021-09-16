@@ -6,6 +6,7 @@ plyr_video: bTqVqk7FSmY
 plyr_no_control: false
 plyr_link: false
 sitemap: false
+comments: false
 ---
 
 

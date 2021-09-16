@@ -2,7 +2,7 @@
 layout: page
 title: About
 permalink: /about/
-comments: true
+comments: false
 image: /assets/img/ogp.png
 # post_photo_path: https://thumbs.gfycat.com/EarlyHomelyFoal-small.gif
 # post_video: YiZV20YQNG4
