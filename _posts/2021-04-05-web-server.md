@@ -27,6 +27,7 @@ sudo pacman -S nginx
 
 - [Nginx docs](http://nginx.org/ru/docs/beginners_guide.html)
 - [ArchWiki Nginx](https://wiki.archlinux.org/index.php/Nginx_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9))
+- [Certbot](https://wiki.archlinux.org/title/Certbot_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9))
 
 Глобальный конфиг, при обращении по ip, nginx будет отдавать стандартную страницу, по пути `/usr/share/nginx/html/index.html`, некоторые настройки и импорты других конфигураций `include`, user - указываю юзера `creio`, от которого я работаю и из его директории в дальнейшем буду импортировать статичный сайт `/media/files/github/ctlos/ctlos.github.io/_site`, который сгенерирован `jekyll`, точнее это не его домашняя директория, но права на нее принадлежат ему.
 
