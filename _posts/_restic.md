@@ -3,7 +3,7 @@ title: Restic
 description:
 image: /uploads/nginx-onion.png
 tags:
-  - Linux
+	- Linux
 # post_video: IFjzUpTjsC4
 ---
 
@@ -19,8 +19,7 @@ rclone config
 # uid gid
 id creio
 
-# --umask 027 запрет другим, для доступности всем --umask 002
-rclone mount google:/ ~/clouds/google --umask 027 --allow-other --allow-non-empty --vfs-cache-mode full --vfs-cache-max-age 24h --vfs-cache-max-size 4G --vfs-read-chunk-size 40M --vfs-read-chunk-size-limit 512M --dir-cache-time 12h --buffer-size 64M --log-level INFO --log-file ~/rclone.log --daemon
+rclone mount google:/ ~/clouds/google --umask 002 --allow-other --allow-non-empty --vfs-cache-mode full --vfs-cache-max-age 24h --vfs-cache-max-size 4G --vfs-read-chunk-size 40M --vfs-read-chunk-size-limit 512M --dir-cache-time 12h --buffer-size 64M --log-level INFO --log-file ~/clouds/rclone.log --daemon
 
 rclone listremotes
 rclone lsd google:/
@@ -34,7 +33,7 @@ rclone copy google:/ yandex:/ -P
 rclone copy google:/data ~/data -P
 rclone move ~/data google:/data --delete-empty-src-dirs
 
-rclone sync ~/data google:/data
+rclone sync ~/data google:/data --create-empty-src-dirs
 rclone sync google:/ ~/data
 rclone sync yandex:/ google:/
 
@@ -50,31 +49,59 @@ rclone mount google:/ ~/data
 # umount
 fusermount -u ~/clouds/google
 
-# nano /etc/systemd/system/rclone-google.service
+# nano /etc/systemd/system/rclone-mount.service
 ###
+# sudo systemctl enable rclone-mount@<rclone-remote>.service
 [Unit]
-Description=RClone Mount Service
+Description=RClone multiple Mount Service
 Wants=network-online.target
 After=network-online.target
 
 [Service]
 Type=notify
-Environment=RCLONE_CONFIG=/home/creio/.config/rclone/rclone.conf
 KillMode=none
 RestartSec=5
-ExecStart=/usr/bin/rclone mount google:/ /home/creio/clouds/google \
---uid 1000 --gid 985 --umask 027 --allow-other --allow-non-empty
---vfs-cache-mode full --vfs-cache-max-age 24h --vfs-cache-max-size 4G \
---vfs-read-chunk-size 40M --vfs-read-chunk-size-limit 512M \
---dir-cache-time 12h --buffer-size 64M \
---log-level INFO --log-file /home/creio/rclone.log
-ExecStop=/usr/bin/fusermount -uz /home/creio/clouds/google
+ExecStart=/usr/bin/rclone mount %i:/ /home/creio/clouds/%i \
+	--config /home/creio/.config/rclone/rclone.conf \
+	--uid 1000 --gid 985 --umask 002 --allow-other --allow-non-empty \
+	--vfs-cache-mode full --vfs-cache-max-age 24h --vfs-cache-max-size 4G \
+	--vfs-read-chunk-size 40M --vfs-read-chunk-size-limit 512M \
+	--dir-cache-time 12h --buffer-size 64M \
+	--log-level INFO --log-file /home/creio/clouds/rclone.log
+ExecStop=/usr/bin/fusermount -uz /home/creio/clouds/%i
 Restart=on-failure
 User=creio
 Group=users
 
 [Install]
 WantedBy=multi-user.target
+```
+
+```bash
+# yay -S mergerfs
+[Unit]
+Description = MergerFS Service
+After=rclone-mount.service
+# ConditionPathIsMountPoint=/home/creio/clouds/local
+RequiresMountsFor=/home/creio/clouds/local
+RequiresMountsFor=/home/creio/clouds/google
+
+[Service]
+Type=forking
+KillMode=process
+# ExecStart=/usr/bin/mergerfs \
+#   -o use_ino,func.getattr=newest,category.action=all \
+#   -o category.create=ff,cache.files=auto-full,threads=8 \
+#   /home/creio/clouds/local:/home/creio/clouds/google /home/creio/clouds/mergerfs
+ExecStart=/usr/bin/mergerfs \
+	-o rw,use_ino,allow_other,func.getattr=newest,category.action=all \
+	-o category.create=ff,cache.files=partial,dropcacheonclose=true \
+	/home/creio/clouds/local:/home/creio/clouds/google /home/creio/clouds/mergerfs
+ExecStop=/usr/bin/fusermount -uz /home/creio/clouds/mergerfs
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
 ```
 
 https://restic.readthedocs.io/en/stable/
