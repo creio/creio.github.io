@@ -180,6 +180,35 @@ body {
   }
 }
 
+// List of posts
+.post-item {
+  display: flex;
+  padding-top: 9px;
+  padding-bottom: 8px;
+
+  &:not(:first-child) {
+    border-top: 1px solid #1b1d25;
+  }
+
+  .post-item-date {
+    min-width: 96px;
+    font-weight: 700;
+    padding-right: 10px;
+
+    @include mq(md) {
+      font-size: 16px;
+    }
+  }
+
+  .post-item-title {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-weight: normal;
+    letter-spacing: 0.1px;
+  }
+}
+
 // stylelint-enable selector-max-type
 
 .site-footer {
