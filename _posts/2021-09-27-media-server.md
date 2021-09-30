@@ -10,6 +10,8 @@ comments: true
 
 Все будет проделано из под Arch Linux, но суть везде одна и та же, весь этот софт есть и под windows.
 
+[Второе видео](https://youtu.be/zHz9XqzUi5Q).
+
 > Задача: Максимально автоматизировать процесс скачивания как новых фильмов, так и существующих.
 
 Конечный результат, заходим на Imdb(авторизация), добавляем нужный фильм в список и на выходе получаем нужное в директории Films. Второй вариант, заходим в телеграм, отправляем боту название фильма и на выходе получаем нужное.
@@ -280,6 +282,22 @@ Sonarr я рассматривать не буду, только базовая 
 
 ```bash
 curl -X POST "http://localhost:6002/api/v3/command?apikey=6random132loremasd23" -H "accept: application/json" -d '{"name":"ImportListSync"}'
+```
+
+Настройка и запуск [крона](https://crontab.guru/#5_*_*_*_*) на 5 мин.
+
+```bash
+yay -S cronie
+
+EDITOR=nano crontab -e
+```
+
+```bash
+5 * * * * curl -X POST "http://localhost:6002/api/v3/command?apikey=6random132loremasd23" -H "accept: application/json" -d '{"name":"ImportListSync"}'
+```
+
+```bash
+sudo systemctl enable --now cronie
 ```
 
 ![Zsh](/uploads/radarr.png)
