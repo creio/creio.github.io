@@ -8,7 +8,7 @@ post_video: J85KiX2VNQo
 comments: true
 ---
 
-Все будет проделано из под Arch Linux, но суть везде одна и та же, весь этот софт есть и под windows.
+Все будет проделано из под Arch Linux, но суть везде одна, весь этот софт есть и под windows.
 
 [Второе видео](https://youtu.be/zHz9XqzUi5Q).
 
