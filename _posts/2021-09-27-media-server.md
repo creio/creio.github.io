@@ -11,6 +11,7 @@ comments: true
 Все будет проделано из под Arch Linux, но суть везде одна, весь этот софт есть и под windows.
 
 [Второе видео](https://youtu.be/zHz9XqzUi5Q).
+[Третье](https://youtu.be/DK-hcczVwq0).
 
 > Задача: Максимально автоматизировать процесс скачивания как новых фильмов, так и существующих.
 
@@ -301,6 +302,56 @@ sudo systemctl enable --now cronie
 ```
 
 ![Zsh](/uploads/radarr.png)
+
+## Qbit jackett
+
+Только поиск в qbittorrent [youtu.be/DK-hcczVwq0](https://youtu.be/DK-hcczVwq0).
+
+```bash
+mkdir ~/qbit
+cd ~/qbit
+nano docker-compose.yml
+```
+
+```bash
+---
+version: "2"
+services:
+  qbittorrent:
+    image: linuxserver/qbittorrent
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=985
+      - TZ=Europe/Moscow
+      - UMASK_SET=022
+      - WEBUI_PORT=6003
+    volumes:
+      - ./qbittorrent:/config/qBittorrent
+      - ./downloads:/downloads
+    ports:
+      - 6881:6881
+      - 6881:6881/udp
+      - 6003:6003
+    restart: unless-stopped
+
+  jackett:
+    image: linuxserver/jackett
+    container_name: jackett
+    environment:
+      - PUID=1000
+      - PGID=985
+      - TZ=Europe/Moscow
+    volumes:
+      - ./jackett:/config/Jackett
+    ports:
+      - 6004:9117
+    restart: unless-stopped
+```
+
+```bash
+docker compose up -d
+```
 
 ## Ссылки
 
