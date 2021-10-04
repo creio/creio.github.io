@@ -167,9 +167,9 @@ services:
     restart: unless-stopped
 
 networks:
-    default:
-        external:
-            name: media-proxy
+  default:
+    external: true
+    name: media-proxy
 ```
 
 Создаем gramarr конфиг.
