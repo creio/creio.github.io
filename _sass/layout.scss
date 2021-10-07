@@ -44,8 +44,7 @@
   padding-bottom: $gutter-spacing-sm;
 
   @include mq(md) {
-    padding-top: $gutter-spacing;
-    padding-bottom: $gutter-spacing;
+    padding: $gutter-spacing / 2;
   }
 }
 

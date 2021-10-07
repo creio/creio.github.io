@@ -104,6 +104,8 @@ Restart=on-failure
 WantedBy=default.target
 ```
 
+## Restic
+
 https://restic.readthedocs.io/en/stable/
 https://habr.com/ru/post/540096/
 https://russianblogs.com/article/43321691089/
@@ -156,6 +158,26 @@ restic -r /mnt/backup check
 restic -r /mnt/backup forget --keep-daily 7 --keep-weekly 5 --keep-monthly 12
 # clean repo
 restic -r /mnt/backup prune
+
+# init copy
+restic -r /local/restic init --repo2 sftp:user@123.123.123.123:/mnt/backup --copy-chunker-params
+## RESTIC_PASSWORD2='pass_repo2'
+restic -r sftp:user@123.123.123.123:/mnt/backup copy --repo2 /local/restic
+restic -r sftp:user@123.123.123.123:/mnt/backup copy --repo2 /local/restic latest
+
+# restore
+restic -r /media/autoshares/restic/mydata restore latest --target /tmp-work
+restic -r /media/autoshares/restic/mydata restore 8530cb2a --target / --include /data/yang
+
+# mount fuse
+restic -r /srv/restic-repo mount /mnt/restic
+sudo rsync -caAXuvP /mnt/restic/snapshots/latest/ /target/
+fusermount -uz /mnt/restic
+
+# dump
+restic -r /srv/restic-repo dump 098db9d5 production.sql | mysql
+restic -r /srv/restic-repo dump latest /home/other/work > restore.tar
+restic -r /srv/restic-repo dump -a zip latest /home/other/work > restore.zip
 ```
 
 Для восстановления в любом месте нужен пароль и ssh доступ.
