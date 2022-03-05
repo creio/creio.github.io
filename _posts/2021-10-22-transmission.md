@@ -196,10 +196,27 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 sudo su
 passwd
 passwd ubuntu
+exit
 
 sudo usermod -aG docker ${USER}
 su - ${USER}
 sudo systemctl enable --now docker
+```
+
+Обязательно нужно создать подкачку, если облако не сделало это автоматически, пример создания swapfile.
+
+```bash
+sudo fallocate -l 4G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo swapon --show
+```
+
+И добавляем в `/etc/fstab`.
+
+```bash
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 ```
 
 Берем готовый [compose файл](https://docs.linuxserver.io/images/docker-transmission).

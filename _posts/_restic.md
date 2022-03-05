@@ -181,3 +181,57 @@ restic -r /srv/restic-repo dump -a zip latest /home/other/work > restore.zip
 ```
 
 Для восстановления в любом месте нужен пароль и ssh доступ.
+
+## Borg
+
+[borg docs](https://borgbackup.readthedocs.io/en/stable/index.html)
+
+```bash
+# ssh://username@example.com:2022
+borg init --encryption=repokey-blake2 user@hostname:backup
+borg init -e none oc:dump
+borg init -e repokey-blake2 /local/dir
+
+borg create --stats --list -v oc:dump::"test" ~/test.sh
+borg create --compression zstd,5 /path/to/repo::arch
+
+borg list oc:dump
+borg list oc:dump::test
+
+borg mount ssh://borg@backup.example.org:2222/path/to/repo /mnt/borg
+borg mount /mnt/backup/borg_repo::myserver-system-2019-08-11 /mnt/borg
+borg mount /mnt/backup/borg_repo /mnt/borg
+borg umount /mnt/borg
+
+cd dest
+borg extract oc:dump::test
+borg extract oc:dump::test home/creio/test.sh
+
+borg delete oc:dump::test
+borg delete oc:dump
+
+borg export-tar /path/to/repo::Monday Monday.tar.gz --exclude '*.so'
+```
+
+## Cron
+
+```bash
+sudo pacman -S cronie
+# ubuntu
+sudo apt install cron -y
+
+sudo EDITOR=nano crontab -e
+```
+
+Запуск каждый день в 02:11 с логированием и отправкой в телегу при ошибке
+
+```bash
+11 02 * * * /home/cretm/.bin/borg.sh > /home/cretm/borg.log 2>&1 || curl -so /dev/null -X POST https://api.telegram.org/bot111111:BBBBBBBBBBBBBBBB/sendMessage -d text="Error borg oc" -d chat_id=222222222
+```
+
+```bash
+# arch
+sudo systemctl enable --now cronie
+# ubuntu
+sudo systemctl enable --now cron
+```
