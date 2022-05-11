@@ -1,4 +1,7 @@
 ---
+layout: redirected
+sitemap: false
+redirect_to: https://cvc.srht.site/posts/arch-lvm-luks/
 title: Установка Arch Linux на зашифрованный раздел, LVM на LUKS 🐚
 description:
 image: /uploads/lvm-luks.png

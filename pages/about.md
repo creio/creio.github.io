@@ -1,7 +1,9 @@
 ---
-layout: page
-title: About
+layout: redirected
+sitemap: false
 permalink: /about/
+redirect_to: https://cvc.srht.site/about/
+title: About
 comments: false
 image: /assets/img/ogp.png
 # post_photo_path: https://thumbs.gfycat.com/EarlyHomelyFoal-small.gif
