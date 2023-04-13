@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /whois
+Host: localhost
+
+# Comment here
+Sitemap: https://localhost/sitemap.xml
