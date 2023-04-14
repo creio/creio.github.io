@@ -31,6 +31,8 @@ Build the application for production:
 
 ```bash
 npm run build
+# or
+npm run generate
 ```
 
 Locally preview production build:
