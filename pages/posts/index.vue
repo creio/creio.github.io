@@ -2,22 +2,23 @@
 import { useMagicKeys } from "@vueuse/core";
 
 const showTags = ref(false);
-const searchType = ref("");
-const searchTypeRef = ref(null);
+// const searchType = ref("");
+// const searchTypeRef = ref(null);
 
-const searchTypes = computed(() => {
-  return [
-    searchType.value.charAt(0).toUpperCase() +
-      searchType.value.slice(1).toLowerCase(),
-    searchType.value.toLowerCase(),
-    searchType.value.toUpperCase(),
-  ];
-});
+// const searchTypes = computed(() => {
+//   return [
+//     searchType.value.charAt(0).toUpperCase() +
+//       searchType.value.slice(1).toLowerCase(),
+//     searchType.value.toLowerCase(),
+//     searchType.value.toUpperCase(),
+//   ];
+// });
 
 const { data: postsList, pending: isPostsLoading, refresh: refreshPosts } = await useAsyncData(
   "/posts", () => queryContent("/posts")
         .only(["_path", "title", "description", "date", "tags", "draft",])
-        .where([{ title: { $containsAny: searchTypes.value, }, }, { type: 'post' }, { draft: { $ne: true } }])
+        .where([{ type: 'post' }, { draft: { $ne: true } }])
+        // .where([{ title: { $containsAny: searchTypes.value, }, }, { type: 'post' }, { draft: { $ne: true } }]) // search
         .sort({ date: -1 })
         .find()
 );
@@ -29,15 +30,15 @@ const { data: tagsList } = await useAsyncData("tags", () =>
     .find()
 );
 
-watchEffect(async () => {
-  const { data: postsList, pending: isPostsLoading } = await useAsyncData(
-    "/posts", () => queryContent("/posts")
-        .only(["_path", "title", "description", "date", "tags", "draft",])
-        .where([{ title: { $containsAny: searchTypes.value, }, }, { type: 'post' }, { draft: { $ne: true } }])
-        .sort({ date: -1 })
-        .find()
-  );
-});
+// watchEffect(async () => {
+//   const { data: postsList, pending: isPostsLoading } = await useAsyncData(
+//     "/posts", () => queryContent("/posts")
+//         .only(["_path", "title", "description", "date", "tags", "draft",])
+//         .where([{ title: { $containsAny: searchTypes.value, }, }, { type: 'post' }, { draft: { $ne: true } }])
+//         .sort({ date: -1 })
+//         .find()
+//   );
+// });
 
 const flatten = (tags, key) => {
   let _tags = tags
@@ -56,12 +57,12 @@ const flatten = (tags, key) => {
 const articleTags = [...new Set(flatten(tagsList.value, "tags"))];
 const { ctrl_Slash } = useMagicKeys();
 
-watch(ctrl_Slash, (v) => {
-  if (v) {
-    searchTypeRef.value.focus();
-    refreshPosts()
-  }
-});
+// watch(ctrl_Slash, (v) => {
+//   if (v) {
+//     searchTypeRef.value.focus();
+//     refreshPosts()
+//   }
+// });
 
 const config = useRuntimeConfig().public
 
