@@ -1,0 +1,61 @@
+name: cd
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v1
+      - name: Install dependencies
+        run: |
+          touch .env
+          echo GH_USER=${GITHUB_REPOSITORY_OWNER} >> .env
+          echo GH_TOKEN=${{ secrets.GH_TOKEN }} >> .env
+          echo NOTION_ACCESS_TOKEN=${{ secrets.NOTION_ACCESS_TOKEN }} >> .env
+          echo NOTION_DATABASE=${{ secrets.NOTION_DATABASE }} >> .env
+          npm i
+      - name: Static HTML export with Nuxt
+        run: npm run generate
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./dist
+
+  deploy:
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1

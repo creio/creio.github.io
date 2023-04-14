@@ -1,0 +1,162 @@
+h1,
+h2,
+h3 {
+  font-weight: 500;
+  line-height: 1.1;
+  text-wrap: balance;
+  color: var(--headline-font-color);
+}
+h1,
+h2,
+h3,
+h4 {
+  text-shadow: 0 0 2px var(--font-color,.6);
+}
+
+.maximal-heading {
+  font-size: var(--size-step-7);
+  font-weight: 900;
+}
+
+.very-large-heading {
+  font-size: var(--size-step-6);
+  font-weight: 900;
+}
+
+.large-heading {
+  font-size: var(--size-step-5);
+  font-weight: 900;
+}
+
+h1,
+.h1-heading {
+  font-size: var(--size-step-4);
+  font-weight: 900;
+}
+
+h2,
+.h2-heading {
+  font-size: var(--size-step-3);
+}
+
+h3,
+.h3-heading {
+  font-size: var(--size-step-2);
+}
+
+h4,
+.h4-heading {
+  font-size: var(--size-step-1);
+}
+
+.small-heading {
+  font-size: var(--size-step-0);
+}
+
+.eyebrow {
+  font-size: var(--size-step--1);
+  text-transform: uppercase;
+  opacity: 0.5;
+  font-weight: 300;
+}
+
+ul,
+ol {
+  padding-inline-start: 1em;
+}
+
+blockquote {
+  position: relative;
+  padding: 2rem;
+  border-left: 4px solid var(--color-middle-gray-t);
+  font-size: var(--size-step-0);
+  background-color: var(--background-border-color);
+  border-radius: 0 var(--sizing-sm) var(--sizing-sm) 0;
+  // margin-left: calc(var(--sizing-xl) * -1);
+  // margin-right: calc(var(--sizing-xl) * -1);
+
+  // Keep these values
+  & > * + * {
+    margin-block-start: var(--flow-space, 1em);
+  }
+
+  margin-block-start: 1.5rem;
+  margin-block-end: 2.5rem;
+}
+
+hr {
+  border: none;
+  border-top: 0.25rem solid var(--border-color);
+  width: 100%;
+}
+
+/* Utilities */
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
+
+/* Flow and rythm */
+:is(h1, h2, h3, blockquote) {
+  --flow-space: 1em;
+}
+
+// :is(h1, h2, h3) + * {
+//   --flow-space: 0.5em;
+// }
+
+:is(hr) {
+  --flow-space: 2.5em;
+}
+
+h1 {
+  max-width: 20ch;
+}
+
+h2,
+h3 {
+  max-width: 28ch;
+}
+
+thead th {
+    text-align: left;
+    padding: var(--sizing-md);
+    border-bottom: var(--sizing-xxxs) dashed var(--image-background);
+}
+thead th:first-child {
+    padding-left: 0;
+}
+tbody td {
+    padding: var(--sizing-md);
+    border-bottom: var(--sizing-xxxs) dashed var(--font-color);
+}
+tbody td:first-child {
+    padding-left: 0;
+}
+tbody td {
+}
+
+/* Blocks */
+.lede {
+  font-size: var(--size-step-1);
+  text-wrap: balance;
+}
+
+.lede + * {
+  --flow-space: 0.5em;
+}
+
+code {
+  font-family: var(--code-font-family);
+  font-size: 1rem;
+  background-color: var(--border-color);
+  padding: var(--sizing-sm);
+  border-radius: var(--sizing-sm);
+}
+pre {
+  font-family: var(--code-font-family);
+}
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+}

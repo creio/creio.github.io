@@ -1,0 +1,48 @@
+{
+  "name": "nuxt3 blog",
+  "version": "1.0.0",
+  "keywords": [
+    "vue",
+    "vuejs",
+    "nuxt",
+    "website",
+    "blog",
+    "pwa"
+  ],
+  "author": {
+    "name": "creio",
+    "email": "admin@ctlos.ru",
+    "url": "https://creio.github.io"
+  },
+  "private": true,
+  "scripts": {
+    "dev": "nuxt dev",
+    "dev:clean": "rm -rf node_modules && rm -rf package-lock.json && npm i --force && nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "clean": "nuxt clean",
+    "deploy": "gh-pages --dotfiles -d .output/public"
+  },
+  "devDependencies": {
+    "@nuxt/content": "^2.5.2",
+    "@nuxt/devtools": "^0.4.0",
+    "@nuxt/image-edge": "^1.0.0-28020728.5df24eb",
+    "gh-pages": "^5.0.0",
+    "nuxt": "^3.4.1",
+    "nuxt-icon": "^0.3.3",
+    "nuxt-svgo": "^1.2.1",
+    "prettier": "^2.8.7",
+    "sass": "^1.62.0",
+    "sass-loader": "^13.2.2"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.4",
+    "@nuxtjs/robots": "^3.0.0",
+    "@vueuse/nuxt": "^9.13.0",
+    "octokit": "^2.0.14",
+    "sitemap": "^7.1.1",
+    "vee-validate": "^4.8.4",
+    "yup": "^1.1.0"
+  }
+}
