@@ -7,6 +7,8 @@ tags:
     - network
 ---
 
+Смотри видео с детальной настройкой [youtube.com](https://www.youtube.com/watch?v=iTozi7KE904).
+
 ```bash
 45.138.72.135
 root
@@ -16,12 +18,6 @@ root
 - unbound
 - wireguard
 - pihole
-
-```bash
-sudo wg-quick down ./wghub.conf # if already configured
-sudo wg-quick up ./wghub.conf
-sudo wg show
-```
 
 ```bash
 apt install wg...
@@ -38,6 +34,12 @@ sudo systemctl enable --now wg-quick@wghub
 ./easy-wg-quick bla
 sudo cp -r wghub.conf /etc/wireguard/wghub.conf
 sudo systemctl restart wg-quick@wghub
+```
+
+```bash
+sudo wg-quick down ./wghub.conf # if already configured
+sudo wg-quick up ./wghub.conf
+sudo wg show
 ```
 
 ```bash

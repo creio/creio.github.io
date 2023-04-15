@@ -554,10 +554,6 @@ sudo nano /etc/fstab
 
 ### Ссылки
 
-- Настройка zsh
-- Еще некоторые конфиги и скрипты в моем репозитории
-- VPN сервер в Linux
-
 - [Настройка zsh](/posts/zsh-config)
 - [Еще некоторые конфиги и скрипты в моем репозитории](https://github.com/creio/dots)
 - [VPN сервер в Linux](/posts/vpn)

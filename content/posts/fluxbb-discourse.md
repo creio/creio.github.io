@@ -86,9 +86,7 @@ bundle install --no-deployment --path vendor/bundle --jobs 4 --without test deve
 FLUXBB_HOST="localhost" FLUXBB_DB="fluxbb" FLUXBB_USER="fluxbb" FLUXBB_PW="fluxbb" FLUXBB_PREFIX="bb_" bundle exec ruby script/import_scripts/fluxbb.rb
 ```
 
-Изменение домена, полезно выполнить на тестовом домене, а когда все готово изменить на основной.
-
-[/t/change-the-domain-name-or-rename-my-discourse/16098](https://meta.discourse.org/t/change-the-domain-name-or-rename-my-discourse/16098)
+Изменение домена, полезно выполнить на тестовом домене, а когда все готово изменить на основной, [meta.discourse.org](https://meta.discourse.org/t/change-the-domain-name-or-rename-my-discourse/16098).
 
 ## Обновление discourse
 

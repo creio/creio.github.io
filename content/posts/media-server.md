@@ -10,7 +10,7 @@ tags:
 
 Все будет проделано из под Arch Linux, но суть везде одна, весь этот софт есть и под windows.
 
-- [youtube.com](https://www.youtube.com/watch?v=J85KiX2VNQo)
+- [odysee.com](https://odysee.com/@creio:5/%D1%81x*%D1%8F%D1%87%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D0%BE%D0%B2:3)
 - [Второе видео](https://youtu.be/zHz9XqzUi5Q)
 - [Третье](https://youtu.be/DK-hcczVwq0)
 
@@ -28,9 +28,7 @@ tags:
 
 ## Portainer docker
 
-Установим docker и веб морду для удобства администрирования.
-
-[Об этом я уже писал](/posts/web-server#docker-portainer)
+Установим docker и веб морду для удобства администрирования. [Об этом я уже писал](/posts/web-server#docker-portainer).
 
 ```bash
 sudo pacman -S docker-compose
@@ -42,9 +40,7 @@ docker volume create portainer_data
 docker run -d --network host --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
 ```
 
-Портайнер работает на http://localhost:9000
-
-[http://localhost:9000](http://localhost:9000)
+Портайнер работает на http://localhost:9000.
 
 ## Настраиваем контейнеры
 
@@ -216,8 +212,6 @@ docker-compose up -d
 
 Переходим в portainer http://localhost:9000, на вкладку stacks и видим mediaserver, перейдя в который увидим все приложения, возможно gramarr не запустился и это нормально, просто отсюда возможно удобней делать перезапуск всех разом и видеть их статус.
 
-[http://localhost:9000](http://localhost:9000)
-
 Sonarr я рассматривать не буду, только базовая доступность, но он почти похож на radarr думаю разберетесь.
 
 - Sonarr: Settings - general.
@@ -264,9 +258,7 @@ Sonarr я рассматривать не буду, только базовая 
 
 Меняем язык settings - ui, включаем вверху Show Advanced, сохраняем Save и обновляем стр.
 
-Регаем акк на imdb.com, создаем и делаем список публичным, копируем ид в адресной строке ls503478540.
-
-[www.imdb.com](https://www.imdb.com/)
+Регаем акк на [www.imdb.com](https://www.imdb.com/), создаем и делаем список публичным, копируем ид в адресной строке ls503478540.
 
 Идем в Настройки - Списки и добавляем список Imdb. Вставляем полученный UserId ls503478540, выбрать предпочтительный профиль качества. Остальное вроде по умолчанию, тест и сохранить. Если выставить удалить фильм и его файлы в Очистить уровень библиотеки, то когда убираем отслеживание в imdb фильм удаляется с radarr и Films, но в qbit остается.
 
@@ -274,9 +266,7 @@ Sonarr я рассматривать не буду, только базовая 
 
 Настройки - Индексаторы, копируем листы по очередно Torznab Feed из Jackett. Один feed - одна запись в индексатор. Заполняем имя(любое, по имени трекера например - rutor), в URL вставляем скопированный feed и *обязательно меняем* в ссылке ip и порт на внутренний: 172.23.0.54:9117. По аналогии и с другими трекерами.
 
-[Jackett http://localhost:6004](http://localhost:6004)
-
-Настройки - Профили тут просто везде поменял язык на Русский.
+[Jackett http://localhost:6004](http://localhost:6004). Настройки - Профили тут просто везде поменял язык на Русский.
 
 ## Конец
 
@@ -284,9 +274,7 @@ Sonarr я рассматривать не буду, только базовая 
 
 Авторизация у бота /auth SUPERPASS, а возможности п /help. Бот также должен ответить с выборам качества и с сохранением в /movies. Да в докере это директория /movies, а локально мы ее смонтировали в Films, также и с /downloads - локально downloadclient-downloads.
 
-После удаления из списка imdb, фильм удаляется, но вот торрент нужно удалить в qbit и он удалиться и из downloadclient-downloads.
-
-[qbit http://localhost:6003/](http://localhost:6003/)
+После удаления из списка imdb, фильм удаляется, но вот торрент нужно удалить в qbit и он удалиться и из downloadclient-downloads, [qbit http://localhost:6003/](http://localhost:6003/).
 
 > Принудительно считать imdb list, можно повесить на крон. В apikey= поставить ключ radarr.
 
@@ -306,9 +294,7 @@ EDITOR=nano crontab -e
 
 ```bash
 5 * * * * curl -X POST "http://localhost:6002/api/v3/command?apikey=6random132loremasd23" -H "accept: application/json" -d '{"name":"ImportListSync"}'
-```
 
-```bash
 sudo systemctl enable --now cronie
 ```
 

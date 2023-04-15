@@ -65,11 +65,9 @@ torify zsh
 
 Позволяет завернуть весь трафик через ssh сервер.
 
-[repo](https://github.com/sshuttle/sshuttle)
-
-[Статейка habr](https://habr.com/ru/post/318694/)
-
-[И еще одна](https://eax.me/sshuttle/)
+- [repo](https://github.com/sshuttle/sshuttle)
+- [Статейка habr](https://habr.com/ru/post/318694/)
+- [И еще одна](https://eax.me/sshuttle/)
 
 Установка.
 

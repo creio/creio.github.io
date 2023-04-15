@@ -7,8 +7,7 @@ tags:
     - bspwm
 ---
 
-- [Создано в рамках Ctlos Linux](https://ctlos.github.io/)
-- [Demo Video](https://www.youtube.com/watch?v=INOtQJ_yZE4)
+Создано в рамках [Ctlos Linux](https://ctlos.github.io/), [demo Video](https://www.youtube.com/watch?v=INOtQJ_yZE4).
 
 ![bspwm](/images/posts/bspwm.png)
 
@@ -50,9 +49,7 @@ clipit              | менеджер буфера обмена. `ctrl+alt+h` �
 
 ## Горячие клавиши
 
-Многое переопределено, никто не мешает использовать дефолт.
-
-[sxhkdrc](https://github.com/baskerville/bspwm/blob/master/examples/sxhkdrc)
+Многое переопределено, никто не мешает использовать дефолт, [sxhkdrc](https://github.com/baskerville/bspwm/blob/master/examples/sxhkdrc).
 
 ### Режимы и управление окнами
 
@@ -162,8 +159,6 @@ cava                    | визуализатор.
 gotop                   | Консольный системный монитор.
 neofetch, fetch, pfetch | информация о системе. `~/.bin/fetch`.
 
-Еще некоторые скрипты: `~/.bin`.
-
-Полный список пакетов: [packages.both](https://github.com/ctlos/ctlosiso/blob/bd44d18928ff28d33251e5af1efb93da303eba36/packages.both).
-
-Вступай в telegram чат: [t.me/ctlos](https://t.me/ctlos).
+- Еще некоторые скрипты: `~/.bin`.
+- Полный список пакетов: [packages.both](https://github.com/ctlos/ctlosiso/blob/bd44d18928ff28d33251e5af1efb93da303eba36/packages.both).
+- Вступай в telegram чат: [t.me/ctlos](https://t.me/ctlos).
