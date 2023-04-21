@@ -1,6 +1,10 @@
 User-agent: *
 Disallow: /whois
-Host: localhost
+Disallow: /cvc
+Disallow: /search
+Disallow: /admin
+Disallow: /keybase.txt
+Host: creio.github.io
 
 # Comment here
-Sitemap: https://localhost/sitemap.xml
+Sitemap: https://creio.github.io/sitemap.xml
