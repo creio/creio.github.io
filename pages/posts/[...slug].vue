@@ -13,7 +13,7 @@ const { data, error } = await useAsyncData(`content-${actualPath}`, () => {
 if (error.value) {
     throw createError({statusCode: 404, statusMessage: 'Not Found', fatal: true});
 }
-
+// console.log(actualPath)
 const pageTitle = data?.value?.title ? data?.value?.title : config.siteTitle
 const pageDesc = data?.value?.description ? data?.value?.description : config.siteDesc
 const pageImg = data?.value?.img ? data?.value?.img : config.cover
@@ -83,7 +83,7 @@ useHead({
                     <p>No content found.</p>
                 </template>
             </ContentRenderer>
-            <ArticleNavigation class="prev-next" />
+            <!-- <ArticleNavigation class="prev-next" /> -->
         </article>
     </main>
 </template>
