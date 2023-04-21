@@ -5,4 +5,4 @@ type: page
 draft: false
 ---
 
-В разработке.
+Lorem ipsum dolor sit amet.

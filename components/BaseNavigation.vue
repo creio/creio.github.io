@@ -124,6 +124,10 @@ const config = useRuntimeConfig().public
         .nav-switcher {
             display: none !important;
         }
+
+        &:hover {
+            background: var(--border-color);
+        }
     }
 
 }
