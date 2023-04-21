@@ -60,9 +60,6 @@ export default defineNuxtConfig({
         markdown: {
             anchorLinks: true,
         },
-        experimental: {
-            clientDb: true,
-        },
     },
     nitro: {
         prerender: {
