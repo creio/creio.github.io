@@ -1,7 +1,7 @@
 ---
 layout: redirected
 sitemap: false
-redirect_to: https://cvc.srht.site/
+redirect_to: https://creio.ctlos.ru/
 ---
 
 <div class="author text-center mx-auto py-5">

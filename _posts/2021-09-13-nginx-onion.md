@@ -1,7 +1,7 @@
 ---
 layout: redirected
 sitemap: false
-redirect_to: https://cvc.srht.site/posts/nginx-onion/
+redirect_to: https://creio.ctlos.ru/posts/nginx-onion/
 title: Доступность веб сервера в tor и создание onion домена | Nginx tor onion
 description: Как запустить веб приложение и открыть доступность через tor в доменной зоне onion.
 image: /uploads/nginx-onion.png

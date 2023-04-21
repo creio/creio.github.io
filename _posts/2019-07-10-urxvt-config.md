@@ -1,7 +1,7 @@
 ---
 layout: redirected
 sitemap: false
-redirect_to: https://cvc.srht.site/posts/urxvt-config/
+redirect_to: https://creio.ctlos.ru/posts/urxvt-config/
 title: Arch Urxvt, установка и настройка
 description: Глубокое погружение в Xresources
 image: /uploads/urxvt-cfg.png

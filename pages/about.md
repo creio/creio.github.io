@@ -2,7 +2,7 @@
 layout: redirected
 sitemap: false
 permalink: /about/
-redirect_to: https://cvc.srht.site/about/
+redirect_to: https://creio.ctlos.ru/about/
 title: About
 comments: false
 image: /assets/img/ogp.png

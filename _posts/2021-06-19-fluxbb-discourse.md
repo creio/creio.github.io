@@ -1,7 +1,7 @@
 ---
 layout: redirected
 sitemap: false
-redirect_to: https://cvc.srht.site/posts/fluxbb-discourse/
+redirect_to: https://creio.ctlos.ru/posts/fluxbb-discourse/
 title: Перенос форума fluxbb на discourse
 description: Как я проводил миграцию форума Ctlos на discourse в docker.
 image:

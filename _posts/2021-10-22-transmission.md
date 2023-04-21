@@ -1,7 +1,7 @@
 ---
 layout: redirected
 sitemap: false
-redirect_to: https://cvc.srht.site/posts/transmission/
+redirect_to: https://creio.ctlos.ru/posts/transmission/
 title: Transmission — раздача торрентов со своего сервера
 description: "Гайд по установке и настройки transmission для раздачи торрентов в linux"
 image: /uploads/transmission.png

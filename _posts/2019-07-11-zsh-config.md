@@ -1,7 +1,7 @@
 ---
 layout: redirected
 sitemap: false
-redirect_to: https://cvc.srht.site/posts/zsh-config/
+redirect_to: https://creio.ctlos.ru/posts/zsh-config/
 title: Zsh установка и настройка
 description: Zsh, oh-my-zsh, плагины
 image: /uploads/zsh-cfg.png

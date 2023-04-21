@@ -1,7 +1,7 @@
 ---
 layout: redirected
 sitemap: false
-redirect_to: https://cvc.srht.site/posts/media-server/
+redirect_to: https://creio.ctlos.ru/posts/media-server/
 title: Настройка автоматической загрузки фильмов с торрентов
 description: "Установка и настройка связки: sonarr/radarr - imdb list - jackett - qbittorrent - телеграм"
 image: /uploads/radarr.png

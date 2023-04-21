@@ -9,4 +9,4 @@ Disallow: /search
 Disallow: /admin
 Disallow: /keybase.txt
 Disallow: /tag/index.html
-Host: cvc.srht.site
+Host: creio.ctlos.ru
