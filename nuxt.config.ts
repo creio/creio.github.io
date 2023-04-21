@@ -66,4 +66,9 @@ export default defineNuxtConfig({
             routes: ["/sitemap.xml"],
         },
     },
+    router: {
+        options: {
+            strict: true,
+        },
+    },
 });
