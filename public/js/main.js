@@ -1,8 +1,8 @@
 let scrollpos = window.scrollY
 
-const nav = document.getElementsByClassName("base-navigation__main")
+const nav = document.getElementById("base-navigation__main")
 const scrollChange = 50
-
+// console.log(nav)
 const add_class_on_scroll = () => nav.classList.add("nav-fixed")
 const remove_class_on_scroll = () => nav.classList.remove("nav-fixed")
 

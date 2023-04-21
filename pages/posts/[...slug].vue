@@ -73,7 +73,7 @@ useHead({
                 <h1 v-html="data.title"></h1>
             </header>
             <ContentRenderer :value="data">
-                <ContentRendererMarkdown class="article-body flow" :value="data" :components="components" />
+                <ContentRendererMarkdown class="article-body flow" :value="data" />
                 <template #empty>
                     <h1>No Content</h1>
                     <p>No content found.</p>
