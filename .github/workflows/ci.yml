@@ -1,4 +1,4 @@
-name: cd
+name: ci
 
 on:
   push:
@@ -7,16 +7,6 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
 
 jobs:
   build:
@@ -27,7 +17,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: "16.20.0"
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v1
@@ -38,7 +28,7 @@ jobs:
           echo GH_TOKEN=${{ secrets.GH_TOKEN }} >> .env
           echo NOTION_ACCESS_TOKEN=${{ secrets.NOTION_ACCESS_TOKEN }} >> .env
           echo NOTION_DATABASE=${{ secrets.NOTION_DATABASE }} >> .env
-          npm i
+          npm ci
       - name: Static HTML export with Nuxt
         run: npm run generate
       - name: Upload artifact
@@ -47,9 +37,6 @@ jobs:
           path: ./dist
 
   deploy:
-    permissions:
-      pages: write
-      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

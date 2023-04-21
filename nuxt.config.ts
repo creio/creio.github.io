@@ -28,7 +28,7 @@ export default defineNuxtConfig({
         },
     },
     app: {
-        // baseURL: '/', // baseURL: '/<repository>/'
+        baseURL: '/', // baseURL: '/<repository>/'
         head: {
             htmlAttrs: {
                 lang: 'ru'
