@@ -1,19 +1,18 @@
 <script setup lang="ts">
 import { formatDate } from '@/utils/formatDate'
 
-const route = useRoute()
-const actualPath = route.path.replace(/\/$/, '');
+const { path } = useRoute()
 const config = useRuntimeConfig().public
 
-const { data, error } = await useAsyncData(`content-${actualPath}`, () => {
+const { data, error } = await useAsyncData(`content-${path}`, () => {
   return queryContent()
-    .where({ _path: actualPath })
+    .where({ _path: path })
     .findOne()
 })
 if (error.value) {
     throw createError({statusCode: 404, statusMessage: 'Not Found', fatal: true});
 }
-// console.log(actualPath)
+
 const pageTitle = data?.value?.title ? data?.value?.title : config.siteTitle
 const pageDesc = data?.value?.description ? data?.value?.description : config.siteDesc
 const pageImg = data?.value?.img ? data?.value?.img : config.cover
