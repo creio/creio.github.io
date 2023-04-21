@@ -4,10 +4,11 @@ import { formatDate } from '@/utils/formatDate'
 const { path } = useRoute()
 const config = useRuntimeConfig().public
 
-const { data } = await useAsyncData('posts', () => queryContent('/posts')
+const { data } = await useAsyncData('posts', () => {
+  return queryContent('/posts')
     .where({ _path: path })
     .findOne()
-)
+})
 
 const pageTitle = data?.value?.title ? data?.value?.title : config.siteTitle
 const pageDesc = data?.value?.description ? data?.value?.description : config.siteDesc
