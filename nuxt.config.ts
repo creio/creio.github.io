@@ -28,7 +28,7 @@ export default defineNuxtConfig({
         },
     },
     app: {
-        baseURL: '/', // baseURL: '/<repository>/'
+        // baseURL: '/', // baseURL: '/<repository>/'
         head: {
             htmlAttrs: {
                 lang: 'ru'
@@ -42,6 +42,9 @@ export default defineNuxtConfig({
                    rel: 'stylesheet',
                    href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap',
                 },
+            ],
+            script: [
+                { src: '@/js/main.js' }
             ],
         },
         pageTransition: { name: 'page', mode: 'out-in' },

@@ -7,7 +7,7 @@ const config = useRuntimeConfig().public
     <NuxtLink to="/" class="brand-link"><BaseLogo logo-large show-label /></NuxtLink>
     <nav class="base-navigation__main">
       <ul class="navigation-list">
-        <li class="navigation-list__item" v-if="config?.themeSwitcher">
+        <li class="navigation-list__item nav-switcher" v-if="config?.themeSwitcher">
           <ThemeSwitcher />
         </li>
         <li class="navigation-list__item">
@@ -26,70 +26,89 @@ const config = useRuntimeConfig().public
 
 <style lang="scss" scoped>
 .base-navigation {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 1.5rem 2rem;
-  grid-area: 'app-header';
-  border-bottom: 1px solid var(--border-color);
-
-  @media (max-width: 715px) {
-    padding: 1rem;
-  }
-
-  @media (max-width: 510px) {
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--sizing-xl);
-  }
-
-  .brand-link {
-    text-decoration: none;
-    text-underline-offset: 0;
-    line-height: 1;
     display: flex;
+    justify-content: flex-start;
     align-items: center;
-  }
+    padding: 1.5rem 2rem;
+    grid-area: 'app-header';
+    border-bottom: 1px solid var(--border-color);
 
-  &__main {
-    font-size: var(--size-step--1);
-    text-transform: uppercase;
-    font-variation-settings: 'wdth' 90;
-    letter-spacing: 0.1em;
-
-    @media (min-width: 511px) {
-      margin-left: auto;
-      font-size: var(--size-step--2);
+    @media (max-width: 715px) {
+        padding: 1rem;
     }
 
-    .navigation-list {
-      display: grid;
-      grid-auto-columns: minmax(65px, 1fr);
-      grid-auto-flow: column;
-      gap: 0.75rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-
-      &__item {
-        display: flex;
+    @media (max-width: 510px) {
+        flex-direction: column;
         justify-content: center;
+        gap: var(--sizing-xl);
+    }
+
+    .brand-link {
+        text-decoration: none;
+        text-underline-offset: 0;
+        line-height: 1;
+        display: flex;
         align-items: center;
-        margin: 0;
-        padding: 0;
+    }
 
-        &-link {
-          color: var(--font-color);
+    &__main {
+        font-size: var(--size-step--1);
+        text-transform: uppercase;
+        font-variation-settings: 'wdth' 90;
+        letter-spacing: 0.1em;
+
+        @media (min-width: 511px) {
+            margin-left: auto;
+            font-size: var(--size-step--2);
         }
-      }
+
+        .navigation-list {
+            display: grid;
+            grid-auto-columns: minmax(65px, 1fr);
+            grid-auto-flow: column;
+            gap: 0.75rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            &__item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+                padding: 0;
+
+                &-link {
+                    color: var(--font-color);
+                }
+            }
+        }
+
+        .router-link-active,
+        .active-path {
+            font-weight: 700;
+            text-decoration-thickness: 0.4ex;
+            color: var(--headline-font-color);
+        }
     }
 
-    .router-link-active,
-    .active-path {
-      font-weight: 700;
-      text-decoration-thickness: 0.4ex;
-      color: var(--headline-font-color);
+    &__main.nav-fixed {
+        position: fixed;
+        z-index: 2;
+        left: 50%;
+        transform: translate(-50%);
+        top: var(--sizing-md);
+        background-color: var(--color-primary-hover-t);
+        padding: var(--sizing-md) var(--sizing-xxl);
+        border-radius: var(--sizing-xl);
+        .navigation-list {
+            grid-auto-columns: auto;
+            gap: var(--sizing-xxl);
+        }
+        .nav-switcher {
+            display: none !important;
+        }
     }
-  }
+
 }
 </style>
