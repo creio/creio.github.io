@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { formatDate } from '@/utils/formatDate'
 
-const { path } = useRoute()
+const route = useRoute()
+const actualPath = route.path.replace(/\/$/, '');
 const config = useRuntimeConfig().public
 
-const { data, error } = await useAsyncData(`content-${path}`, () => {
+const { data, error } = await useAsyncData(`content-${actualPath}`, () => {
   return queryContent()
-    .where({ _path: path })
+    .where({ _path: actualPath })
     .findOne()
 })
 if (error.value) {
