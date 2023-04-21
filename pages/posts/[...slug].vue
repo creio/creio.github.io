@@ -4,11 +4,14 @@ import { formatDate } from '@/utils/formatDate'
 const { path } = useRoute()
 const config = useRuntimeConfig().public
 
-const { data } = await useAsyncData(`content-${path}`, () => {
-  return queryContent('/posts')
+const { data, error } = await useAsyncData(`content-${path}`, () => {
+  return queryContent()
     .where({ _path: path })
     .findOne()
 })
+if (error.value) {
+    throw createError({statusCode: 404, statusMessage: 'Not Found', fatal: true});
+}
 
 const pageTitle = data?.value?.title ? data?.value?.title : config.siteTitle
 const pageDesc = data?.value?.description ? data?.value?.description : config.siteDesc
@@ -73,7 +76,7 @@ useHead({
                 <h1 v-html="data.title"></h1>
             </header>
             <ContentRenderer :value="data">
-                <ContentRendererMarkdown class="article-body flow" :value="data" />
+                <ContentRendererMarkdown class="article-body flow" ref="nuxtContent" :value="data" />
                 <template #empty>
                     <h1>No Content</h1>
                     <p>No content found.</p>
