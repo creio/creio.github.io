@@ -82,7 +82,7 @@ useHead({
                     <p>No content found.</p>
                 </template>
             </ContentRenderer>
-            <!-- <ArticleNavigation class="prev-next" /> -->
+            <ArticleNavigation class="prev-next" />
         </article>
     </main>
 </template>
