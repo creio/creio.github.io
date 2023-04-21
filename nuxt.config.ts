@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
     ssr: true,
     experimental: {
-        payloadExtraction: false
+        payloadExtraction: true
     },
     runtimeConfig: {
         GH_TOKEN: process.env.GH_TOKEN || '',
