@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
     ssr: true,
     experimental: {
-        payloadExtraction: true
+        payloadExtraction: false
     },
     runtimeConfig: {
         GH_TOKEN: process.env.GH_TOKEN || '',
@@ -64,6 +64,11 @@ export default defineNuxtConfig({
     nitro: {
         prerender: {
             routes: ["/sitemap.xml"],
+        },
+    },
+    router: {
+        options: {
+            strict: true,
         },
     },
 });
