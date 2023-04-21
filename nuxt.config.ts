@@ -43,6 +43,15 @@ export default defineNuxtConfig({
                    href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap',
                 },
             ],
+            // script: [
+            //     {
+            //         async: true,
+            //         defer: true,
+            //         type: 'text/javascript',
+            //         body: true,
+            //         src: '/js/main.js',
+            //     },
+            // ],
         },
         pageTransition: { name: 'page', mode: 'out-in' },
     },

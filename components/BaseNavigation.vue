@@ -1,11 +1,27 @@
 <script setup lang="ts">
+import { ref, onBeforeMount } from 'vue'
+
+onBeforeMount(() => {
+    window.addEventListener('scroll', handleScroll)
+})
+
+const stickyHeader = ref(false)
+
+function handleScroll(){
+    if (window.pageYOffset) {
+        stickyHeader.value = true
+    } else {
+        stickyHeader.value = false
+    }
+}
+
 const config = useRuntimeConfig().public
 </script>
 
 <template>
   <header class="base-navigation">
     <NuxtLink to="/" class="brand-link"><BaseLogo logo-large show-label /></NuxtLink>
-    <nav class="base-navigation__main">
+    <nav :class="stickyHeader ? 'base-navigation__main nav-fixed' : 'base-navigation__main'">
       <ul class="navigation-list">
         <li class="navigation-list__item nav-switcher" v-if="config?.themeSwitcher">
           <ThemeSwitcher />
@@ -98,7 +114,7 @@ const config = useRuntimeConfig().public
         left: 50%;
         transform: translate(-50%);
         top: var(--sizing-md);
-        background-color: var(--color-primary-hover-t);
+        background: var(--border-color);
         padding: var(--sizing-md) var(--sizing-xxl);
         border-radius: var(--sizing-xl);
         .navigation-list {
