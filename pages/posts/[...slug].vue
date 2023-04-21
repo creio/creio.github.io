@@ -4,7 +4,7 @@ import { formatDate } from '@/utils/formatDate'
 const { path } = useRoute()
 const config = useRuntimeConfig().public
 
-const { data } = await useAsyncData('posts', () => {
+const { data } = await useAsyncData(`content-${path}`, () => {
   return queryContent('/posts')
     .where({ _path: path })
     .findOne()
