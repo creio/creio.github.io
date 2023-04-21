@@ -11,8 +11,8 @@ export default defineNuxtConfig({
         NOTION_DATABASE: process.env.NOTION_DATABASE || '',
 
         public: {
-            siteHost: 'creio.github.io',
-            siteUrl: 'https://creio.github.io',
+            siteHost: 'creio.ctlos.ru',
+            siteUrl: 'https://creio.ctlos.ru',
 
             siteTitle: 'Alex Creio',
             siteDesc: 'Personal website & blog. Web developer & linux enthusiast.',
