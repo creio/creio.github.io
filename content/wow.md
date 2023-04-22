@@ -54,7 +54,7 @@ draft: false
 
 ### Рекламные сети
 
-- RTB [clickadilla](https://clickadilla.com/?ref=VCMPvy4y)
+- RTB [ClickAdilla](https://clickadilla.com/?ref=VCMPvy4y)
 - [zeropark](https://zeropark.com)
 - Продвинутая сетка [propellerads](https://propellerads.com/ru/advertisers/)
 - Adult [exoclick](https://exoclick.com)
