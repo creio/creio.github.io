@@ -15,11 +15,6 @@ const theYear = computed<string>(() => {
       </div>
       <div class="meta-area flow" v-if="config.socials">
         <ul class="social-icons">
-          <li v-if="config.socials?.github">
-            <a class="footer-icon" rel="me" target="_blank" :href="`https://github.com/${config.socials?.github}`">
-                <Icon name="ph:github-logo-bold" />
-            </a>
-          </li>
           <li v-if="config.socials?.telegram">
             <a class="footer-icon" rel="me" target="_blank" :href="`https://t.me/${config.socials?.telegram}`">
                 <Icon name="ph:telegram-logo-bold" />
@@ -33,6 +28,11 @@ const theYear = computed<string>(() => {
           <li v-if="config.socials?.vk">
             <a class="footer-icon" rel="me" target="_blank" :href="`https://vk.com/${config.socials?.vk}`">
                 <Icon name="akar-icons:vk-fill" />
+            </a>
+          </li>
+          <li v-if="config.socials?.github">
+            <a class="footer-icon" rel="me" target="_blank" :href="`https://github.com/${config.socials?.github}`">
+                <Icon name="ph:github-logo-bold" />
             </a>
           </li>
           <li>

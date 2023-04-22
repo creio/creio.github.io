@@ -1,9 +1,51 @@
 <script setup lang="ts">
+const config = useRuntimeConfig().public
+
 const { data } = await useAsyncData('/wow', () => {
   return queryContent()
     .where({ _path: '/wow' })
     .findOne()
 })
+
+const pageTitle = data?.value?.title ? data?.value?.title : config.siteTitle
+const pageDesc = data?.value?.description ? data?.value?.description : config.siteDesc
+const pageImg = data?.value?.img ? data?.value?.img : config.cover
+
+useHead({
+    title: pageTitle + ' | ' + config.siteTitle,
+    meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: pageDesc,
+        },
+        {
+          hid: "og:type",
+          property: "og:type",
+          content: 'article',
+        },
+        {
+          hid: "og:url",
+          property: "og:url",
+          content: config.siteUrl + data.value._path,
+        },
+        {
+          hid: "og:title",
+          property: "og:title",
+          content: pageTitle + ' | ' + config.siteTitle,
+        },
+        {
+          hid: "og:description",
+          property: "og:description",
+          content: pageDesc,
+        },
+        {
+          hid: "og:image",
+          property: "og:image",
+          content: pageImg,
+        },
+    ],
+});
 </script>
 
 <template>
