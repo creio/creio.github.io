@@ -25,13 +25,13 @@
     "deploy": "gh-pages --dotfiles -d .output/public"
   },
   "devDependencies": {
-    "@nuxt/content": "^2.5.2",
-    "@nuxt/devtools": "^0.4.0",
+    "@nuxt/content": "^2.6.0",
+    "@nuxt/devtools": "^0.4.1",
     "@nuxt/image-edge": "^1.0.0-28020728.5df24eb",
     "gh-pages": "^5.0.0",
-    "nuxt": "^3.4.1",
+    "nuxt": "^3.4.2",
     "nuxt-icon": "^0.3.3",
-    "nuxt-svgo": "^1.2.1",
+    "nuxt-svgo": "^0.0.3",
     "prettier": "^2.8.7",
     "sass": "^1.62.0",
     "sass-loader": "^13.2.2"
@@ -39,10 +39,10 @@
   "dependencies": {
     "@notionhq/client": "^2.2.4",
     "@nuxtjs/robots": "^3.0.0",
-    "@vueuse/nuxt": "^9.13.0",
+    "@vueuse/nuxt": "^10.1.0",
     "octokit": "^2.0.14",
     "sitemap": "^7.1.1",
-    "vee-validate": "^4.8.4",
-    "yup": "^1.1.0"
+    "vee-validate": "^4.8.6",
+    "yup": "^1.1.1"
   }
 }
