@@ -5,7 +5,7 @@
 [build.environment]
   NODE_VERSION = "16.20.0"
   NPM_VERSION = "8.19.4"
-  HUGO_VERSION = "0.107.0"
+  # HUGO_VERSION = "0.107.0"
 
 [context.production]
   command = "npm run build"
@@ -22,11 +22,15 @@
 [context.next.environment]
   HUGO_ENV = "next"
 
+[functions]
+  directory = "functions"
+  node_bundler = "esbuild"
+
 [[plugins]]
   package = "netlify-plugin-submit-sitemap"
 
     [plugins.inputs]
-    baseUrl = "https://creio.ctlos.ru/"
+    baseUrl = "https://creio.ctlos.ru"
     sitemapPath = "/sitemap.xml"
     ignorePeriod = 0
     providers = [
