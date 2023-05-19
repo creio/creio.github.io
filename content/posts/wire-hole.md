@@ -149,7 +149,6 @@ server:
 sudo systemctl enable --now unbound
 ```
 
-
 ```bash
 # intfs  wghub
 curl -sSL https://install.pi-hole.net | bash

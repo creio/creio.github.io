@@ -1,5 +1,5 @@
 .card {
-    transition: 0.3s;
+  transition: 0.3s;
 }
 
 .home .card,
@@ -27,11 +27,8 @@
 .tags.list .card.card-terms:hover {
   transform: none;
 }
+
 .card.card-terms a:hover,
-.card.card-terms a:hover,
-.card.card-terms a:hover,
-.card.card-terms a:focus,
-.card.card-terms a:focus,
 .card.card-terms a:focus {
   text-decoration: none;
 }

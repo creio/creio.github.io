@@ -290,9 +290,9 @@ Sonarr я рассматривать не буду, только базовая 
 curl -X POST "http://localhost:6002/api/v3/command?apikey=6random132loremasd23" -H "accept: application/json" -d '{"name":"ImportListSync"}'
 ```
 
-Настройка и запуск крона на 5 мин.
+Настройка и запуск крона на 5 мин `#5_*_*_*_*`.
 
-[crontab.guru/#5_*_*_*_*](https://crontab.guru/#5_*_*_*_*)
+[crontab.guru/](https://crontab.guru/)
 
 ```bash
 yay -S cronie

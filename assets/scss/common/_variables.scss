@@ -1,71 +1,68 @@
 :root {
-    // Typography
-    --sans-font-family: 'Roboto', Helvetica, sans-serif;
-    --serif-font-family: Georgia, serif;
-    --code-font-family: 'JetBrains Mono', monospace;
+  // Typography
+  --sans-font-family: "Roboto", helvetica, sans-serif;
+  --serif-font-family: georgia, serif;
+  --code-font-family: "JetBrains Mono", monospace;
 
-    // Type scale: https://utopia.fyi/type/calculator/?c=320,16,1.25,1240,22,1.333,7,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
-    --size-step--2: clamp(0.64rem, calc(0.59rem + 0.23vw), 0.77rem);
-    --size-step--1: clamp(0.80rem, calc(0.72rem + 0.40vw), 1.03rem);
-    --size-step-0: clamp(1.00rem, calc(0.87rem + 0.65vw), 1.38rem);
-    --size-step-1: clamp(1.25rem, calc(1.05rem + 1.01vw), 1.83rem);
-    --size-step-2: clamp(1.56rem, calc(1.26rem + 1.53vw), 2.44rem);
-    --size-step-3: clamp(1.95rem, calc(1.50rem + 2.27vw), 3.26rem);
-    --size-step-4: clamp(2.44rem, calc(1.78rem + 3.30vw), 4.34rem);
-    --size-step-5: clamp(3.05rem, calc(2.10rem + 4.76vw), 5.79rem);
-    --size-step-6: clamp(3.82rem, calc(2.46rem + 6.78vw), 7.71rem);
-    --size-step-7: clamp(4.77rem, calc(2.85rem + 9.59vw), 10.28rem);
+  // Type scale: https://utopia.fyi/type/calculator/?c=320,16,1.25,1240,22,1.333,7,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
+  // --size-step--2: clamp(0.64rem, calc(0.59rem + 0.23vw), 0.77rem);
+  // --size-step--1: clamp(0.8rem, calc(0.72rem + 0.4vw), 1.03rem);
+  --size-step-0: clamp(1rem, calc(0.87rem + 0.65vw), 1.38rem);
+  --size-step-1: clamp(1.25rem, calc(1.05rem + 1.01vw), 1.83rem);
+  --size-step-2: clamp(1.56rem, calc(1.26rem + 1.53vw), 2.44rem);
+  --size-step-3: clamp(1.95rem, calc(1.5rem + 2.27vw), 3.26rem);
+  --size-step-4: clamp(2.44rem, calc(1.78rem + 3.3vw), 4.34rem);
+  --size-step-5: clamp(3.05rem, calc(2.1rem + 4.76vw), 5.79rem);
+  --size-step-6: clamp(3.82rem, calc(2.46rem + 6.78vw), 7.71rem);
+  --size-step-7: clamp(4.77rem, calc(2.85rem + 9.59vw), 10.28rem);
 
-    // Utilities - sizing
-    --sizing-xxxs: 0.0315rem;
-    --sizing-xxs: 0.063rem;
-    --sizing-xs: 0.125;
-    --sizing-sm: 0.313rem;
-    --sizing-md: 0.625rem;
-    --sizing-lg: 0.938rem;
-    --sizing-xl: 1.25rem;
-    --sizing-xxl: 1.875rem;
-    --sizing-xxxl: 3.125rem;
+  // Utilities - sizing
+  --sizing-xxxs: 0.0315rem;
+  --sizing-xxs: 0.063rem;
+  --sizing-xs: 0.125;
+  --sizing-sm: 0.313rem;
+  --sizing-md: 0.625rem;
+  --sizing-lg: 0.938rem;
+  --sizing-xl: 1.25rem;
+  --sizing-xxl: 1.875rem;
+  --sizing-xxxl: 3.125rem;
 
-    // Utilities - global
-    --max-width: 92.3125rem;
+  // Utilities - global
+  --max-width: 92.3125rem;
 
-    // Utilities - transitions
-    --transition: all 0.35s ease;
-    --transition-fast: all 0.125s cubic-bezier(.62,.16,.13,1.01);
-    --transition-med: all 0.5s cubic-bezier(.62,.16,.13,1.01);
-    --transition-cubic: all 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --transition-cubic-med: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --transition-cubic-slow: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --transition-slow: all 1.25s cubic-bezier(0.68, 0, 0.265, 1.55);
-    --transition-slow-ease: all 1.25s cubic-bezier(.62,.16,.13,1.01);
+  // Utilities - transitions
+  --transition: all 0.35s ease;
+  --transition-fast: all 0.125s cubic-bezier(0.62, 0.16, 0.13, 1.01);
+  --transition-med: all 0.5s cubic-bezier(0.62, 0.16, 0.13, 1.01);
+  --transition-cubic: all 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-cubic-med: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-cubic-slow: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-slow: all 1.25s cubic-bezier(0.68, 0, 0.265, 1.55);
+  --transition-slow-ease: all 1.25s cubic-bezier(0.62, 0.16, 0.13, 1.01);
 
-    // Color palette
-    --color-dark: #141419;
-    --color-dark-t: #16161C;
-    --color-dark-bg-border: #0B0B0D;
+  // Color palette
+  --color-dark: #141419;
+  --color-dark-t: #16161c;
+  --color-dark-bg-border: #0b0b0d;
+  --color-light: #efefef;
+  --color-light-t: #b3b4b6;
+  --color-light-bg-border: #e5e5e5;
+  --color-light-bg: #f9f9f9;
+  --color-primary: #778dd3;
+  --color-primary-hover: #5a74ca;
+  --color-primary-hover-t: #364160;
+  --color-middle-gray: #72748c;
+  --color-middle-hover: #5b5e71;
+  --color-middle-gray-t: #454857;
 
-    --color-light: #EFEFEF;
-    --color-light-t: #B3B4B6;
-    --color-light-bg-border: #E5E5E5;
-    --color-light-bg: #F9F9F9;
-
-    --color-primary: #778DD3;
-    --color-primary-hover: #5A74CA;
-    --color-primary-hover-t: #364160;
-
-    --color-middle-gray: #72748C;
-    --color-middle-hover: #5B5E71;
-    --color-middle-gray-t: #454857;
-
-    // Baseline theme colors
-    --background-color: var(--color-dark);
-    --font-color: var(--color-light-t);
-    --headline-font-color: var(--color-light);
-    --background-border-color: var(--color-dark-bg-border);
-    --border-color: #25252C;
-    --gradient-1: linear-gradient(160.41deg,#272B33 3.84%,#1A1B21 54.62%, #141419 79.18% );
-    --image-background: var(--color-primary);
+  // Baseline theme colors
+  --background-color: var(--color-dark);
+  --font-color: var(--color-light-t);
+  --headline-font-color: var(--color-light);
+  --background-border-color: var(--color-dark-bg-border);
+  --border-color: #25252c;
+  --gradient-1: linear-gradient(160.41deg, #272b33 3.84%, #1a1b21 54.62%, #141419 79.18%);
+  --image-background: var(--color-primary);
 }
 
 // Color system
@@ -90,13 +87,13 @@ $beige:    #fbf7f0;
 $purple:   #5d2f86;
 $brown:    #aa9c84;
 
-$blue-300: #77A5D3;
+$blue-300: #77a5d3;
 $pink-100: #fcfaff;
 $pink-500: #d32e9d;
 
 $primary: $purple;
 
-$brand: #778DD3;
+$brand: #778dd3;
 $secondary: $gray-700;
 
 $color-btn-bg: $brand;
