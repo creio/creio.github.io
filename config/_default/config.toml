@@ -1,4 +1,4 @@
-baseurl = "https://creio.ctlos.ru/"
+baseurl = "https://creio.netlify.app/"
 canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true
