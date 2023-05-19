@@ -7,16 +7,16 @@
   NPM_VERSION = "8.11.0"
 
 [context.production]
-  command = "npm run build"
+  command = "npx hugo --gc --minify && npx netlify-lambda build assets/lambda"
 
 [context.deploy-preview]
-  command = "npm run build -- -b $DEPLOY_PRIME_URL"
+  command = "npx hugo --gc --minify -b $DEPLOY_PRIME_URL"
 
 [context.branch-deploy]
-  command = "npm run build -- -b $DEPLOY_PRIME_URL"
+  command = "npx hugo --gc --minify -b $DEPLOY_PRIME_URL"
 
 [context.next]
-  command = "npm run build"
+  command = "npx hugo --gc --minify && npx netlify-lambda build assets/lambda"
 
 [context.next.environment]
   HUGO_ENV = "next"
@@ -24,18 +24,18 @@
 [[plugins]]
   package = "netlify-plugin-submit-sitemap"
 
-	[plugins.inputs]
-    baseUrl = "https://creio.ctlos.ru/"
+ [plugins.inputs]
+    baseUrl = "https://creio.ctlos.ru"
     sitemapPath = "/sitemap.xml"
-    ignorePeriod = 0
     providers = [
       "google",
+      "bing",
       "yandex"
     ]
 
 [dev]
   framework = "#custom"
-  command = "npm run start"
+  command = "npx rimraf public resources functions && npx hugo server --bind=0.0.0.0 --disableFastRender"
   targetPort = 1313
   port = 8888
   publish = "public"
