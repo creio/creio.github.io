@@ -1,47 +1,24 @@
 [build]
-  publish = "public"
-  functions = "functions"
+publish = "public"
+command = "hugo --gc --minify"
 
-[build.environment]
-  NODE_VERSION = "16.20.0"
-  NPM_VERSION = "8.19.4"
-  # HUGO_VERSION = "0.107.0"
+[context.production.environment]
+HUGO_VERSION = "0.111.3"
+HUGO_ENV = "production"
+HUGO_ENABLEGITINFO = "true"
 
-[context.production]
-  command = "npm run build"
+[context.split1]
+command = "hugo --gc --minify --enableGitInfo"
+
+[context.split1.environment]
+HUGO_VERSION = "0.111.3"
+HUGO_ENV = "production"
 
 [context.deploy-preview]
-  command = "npm run build -- -b $DEPLOY_PRIME_URL"
+command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
 
 [context.branch-deploy]
-  command = "npm run build -- -b $DEPLOY_PRIME_URL"
-
-[context.next]
-  command = "npm run build"
+command = "hugo --gc --minify -b $DEPLOY_PRIME_URL"
 
 [context.next.environment]
-  HUGO_ENV = "next"
-
-[functions]
-  directory = "functions"
-  node_bundler = "esbuild"
-
-[[plugins]]
-  package = "netlify-plugin-submit-sitemap"
-
-    [plugins.inputs]
-    baseUrl = "https://creio.ctlos.ru"
-    sitemapPath = "/sitemap.xml"
-    ignorePeriod = 0
-    providers = [
-      "google",
-      "yandex"
-    ]
-
-[dev]
-  framework = "#custom"
-  command = "npm run start"
-  targetPort = 1313
-  port = 8888
-  publish = "public"
-  autoLaunch = false
+HUGO_ENABLEGITINFO = "true"
