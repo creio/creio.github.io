@@ -1,0 +1,37 @@
+{{ define "main" }}
+    <div class="row justify-content-center">
+        {{ if ne .Params.toc false -}}
+        <nav class="docs-toc{{ if ne .Site.Params.options.navbarSticky true }} docs-toc-top{{ end }} d-none d-md-block col-md-4" aria-label="Secondary navigation">
+            {{ partial "sidebar/docs-toc.html" . }}
+        </nav>
+        {{ end -}}
+        {{ if .Params.toc -}}
+        <main class="docs-content col-md{{ if eq .Site.Params.options.fullWidth false }}-12{{ end }}">
+        {{ else -}}
+        <main class="docs-content col-lg-12 col-xl-12 mx-xl-auto">
+        {{ end -}}
+          <h1>{{ .Title }}</h1>
+          {{ partial "main/page-meta.html" . }}
+          {{ if ne .Params.images false -}}
+          <div>
+              {{- .Scratch.Set "fillImage" "1270x715 Center" -}}
+              {{ partial "content/figure.html" . }}
+          </div>
+          {{ end -}}
+            <p class="lead">{{ .Params.lead | safeHTML }}</p>
+            {{ if ne .Params.toc false -}}
+            <nav class="d-md-none" aria-label="Quaternary navigation">
+                {{ partial "sidebar/docs-toc.html" . }}
+            </nav>
+            {{ end -}}
+            {{ .Content }}
+            <div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between">
+                {{ if .Site.Params.editPage -}}
+                {{ if ne .Params.edit false -}}
+                    {{ partial "main/edit-page.html" . }}
+                {{ end -}}
+                {{ end -}}
+            </div>
+        </main>
+    </div>
+{{ end }}

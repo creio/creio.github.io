@@ -1,0 +1,83 @@
+{{ define "main" }}
+    <div class="row justify-content-center">
+        {{ if ne .Params.toc false -}}
+        <nav class="docs-toc{{ if ne .Site.Params.options.navbarSticky true }} docs-toc-top{{ end }} d-none d-md-block col-md-4" aria-label="Secondary navigation">
+            {{ partial "sidebar/docs-toc.html" . }}
+        </nav>
+        {{ end -}}
+        {{ if .Params.toc -}}
+        <main class="docs-content col-md{{ if eq .Site.Params.options.fullWidth false }}-12{{ end }}">
+        {{ else -}}
+        <main class="docs-content col-lg-12 col-xl-12 mx-xl-auto">
+        {{ end -}}
+            <h1>{{ .Title }}</h1>
+            {{ partial "main/blog-meta.html" . }}
+            {{ if $.Params.images -}}
+            <div>
+              {{- .Scratch.Set "fillImage" "1270x715 Center" -}}
+              {{ partial "content/figure.html" . }}
+            </div>
+            {{ end -}}
+            {{ with $.Params.lead -}}
+                <p class="lead">{{ .Params.lead | safeHTML }}</p>
+            {{ end -}}
+            {{ if ne .Params.toc false -}}
+            <nav class="d-md-none" aria-label="Quaternary navigation">
+                {{ partial "sidebar/docs-toc.html" . }}
+            </nav>
+            {{ end -}}
+            {{ .Content }}
+            {{ if .Params.tags -}}
+            <div class="mt-4">
+              {{ range $index, $tag := .Params.tags -}}
+                <a class="btn btn-light" href="{{ "/tags/" | absURL }}{{ . | urlize }}/" role="button">{{ . }}</a>
+              {{ end -}}
+            </div>
+            {{ end -}}
+            <div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between">
+                {{ if .Site.Params.lastMod -}}
+                    {{ partial "main/last-modified.html" . }}
+                {{ end -}}
+                {{ if .Site.Params.editPage -}}
+                {{ if ne .Params.edit false -}}
+                    {{ partial "main/edit-page.html" . }}
+                {{ end -}}
+                {{ end -}}
+            </div>
+            <!--
+            {{ if not .Site.Params.options.collapsibleSidebar -}}
+                {{ partial "main/docs-navigation.html" . }}
+            {{ else -}}
+                <div class="my-n3"></div>
+            {{ end -}}
+            -->
+        </main>
+    </div>
+
+{{ $related := .Site.RegularPages.Related . | first 3 }}
+{{ with $related }}
+<div class="related-posts">
+<div class="row justify-content-center">
+  <div class="col">
+    <div class="section-title h4">Похожие записи</div>
+  </div>
+</div>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
+  {{ range . }}
+  <div class="col d-flex align-items-stretch">
+    <div class="card" style="min-width: 100%;">
+      <div class="card-body">
+        <article>
+          <h2 class="h5"><a class="stretched-link text-body" href="{{ .RelPermalink }}">{{ .Params.title }}</a></h2>
+          <p>{{ .Params.excerpt | safeHTML }}</p>
+          {{ partial "main/blog-meta.html" . -}}
+        </article>
+      </div>
+    </div>
+  </div>
+  {{ end -}}
+</div>
+</div>
+{{ end -}}
+
+{{ end }}

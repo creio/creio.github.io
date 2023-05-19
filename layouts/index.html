@@ -1,0 +1,39 @@
+{{ define "main" }}
+<section class="section container-fluid p-0">
+  <div class="home-layout__hero">
+    <div class="profile-image">
+        {{- .Scratch.Set "fillImage" "600x670 Center" -}}
+        {{ partial "content/figure.html" . }}
+    </div>
+    <div class="home-greeting">
+      <h1 class="home-h1">Hi!</h1>
+      {{- .Content -}}
+      <a class="btn btn-primary btn-lg px-4 mb-2" href="/wow/" role="button">КЛИК</a>
+    </div>
+  </div>
+
+  <hr />
+  <div class="home-content container-fluid px-0">
+    <div class="row row-cols-2">
+        <div class="col-16 col-md-4">
+          <h2>Blog</h2>
+          <p>В основном о linux.</p>
+        </div>
+        <div class="col-16 col-md-12">
+          <ul class="article-list list-unstyled">
+            {{ range first 4 .Site.Pages }}
+            <li class="mb-1">
+              <a class="text-muted" href="{{ .Permalink }}">{{ .Title }}</a>
+              &mdash; {{ .PublishDate.Format "02 01 2006" }}
+            </li>
+            {{ end }}
+          </ul>
+          <div class="button-group mt-5">
+            <a class="btn btn-outline-primary btn-lg px-4 mb-2" href="/posts" role="button">more posts</a>
+          </div>
+        </div>
+    </div>
+  </div>
+
+</section>
+{{ end }}

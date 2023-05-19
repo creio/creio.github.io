@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="{{ .Site.Params.languageTag | default "en-US" }}">
+  {{ partial "head/head.html" . }}
+  {{ if eq .Kind "home" -}}
+    {{ .Scratch.Set "class" "home" -}}
+  {{ else if eq .Kind "404" -}}
+    {{ .Scratch.Set "class" "error404" -}}
+  {{ else if eq .Kind "page" -}}
+    {{ .Scratch.Set "class" .Type -}}
+    {{ .Scratch.Add "class" " single" -}}
+  {{ else -}}
+    {{ .Scratch.Set "class" .Type -}}
+    {{ .Scratch.Add "class" " list" -}}
+  {{ end -}}
+  <body class="{{ .Scratch.Get "class" }}"{{ if eq .Site.Params.options.scrollSpy true }} data-bs-spy="scroll" data-bs-target="#toc" data-bs-root-margin="0px 0px -90%" data-bs-smooth-scroll="true" tabindex="0"{{ end }}>
+    {{ partial "header/header.html" . }}
+    <div class="wrap container-{{ if .Site.Params.options.fullWidth }}fluid{{ else }}xxl{{ end }}" role="document">
+        {{ if .IsHome }}
+        <div id="stars--small"></div>
+        <div id="stars--normal"></div>
+        <div id="stars--big"></div>
+        {{ end }}
+      <div class="content">
+        {{ block "main" . }}{{ end }}
+        {{ block "sidebar-prefooter" . }}{{ end }}
+        {{ block "sidebar-footer" . }}{{ end }}
+      </div>
+    </div>
+    {{ partial "footer/footer.html" . }}
+    {{ if eq .Site.Params.options.toTopButton true -}}
+    <div class="fixed-bottom">
+      <a id="toTop" href="#" class="btn btn-outline-primary rounded-circle p-2 position-absolute bottom-0 end-0 mb-4 mb-lg-5 me-4 me-lg-5"><span class="visually-hidden">Top</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg></a>
+    </div>
+    {{ end }}
+    {{ partial "footer/script-footer.html" . }}
+  </body>
+</html>

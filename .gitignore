@@ -1,12 +1,7 @@
 node_modules
-*.log*
-.nuxt
-.nitro
-.cache
-.output
-.env
-dist
-.old
+public
+resources
+.netlify
+.hugo_build.lock
 .idea
 .vscode
-.netlify

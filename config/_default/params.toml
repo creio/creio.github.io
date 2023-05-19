@@ -1,0 +1,113 @@
+# Meta Data for SEO
+
+## Homepage
+title = "Alex Creio"
+titleSeparator = "|"
+titleAddition = "I’m root :)"
+description = "Personal website & blog. Web developer & linux enthusiast."
+
+languageTag = "ru-RU"
+
+## Open Graph
+images = ["cover.png"]
+ogLocale = "ru_RU"
+domainTLD = "creio.ctlos.ru"
+titleHome = "Alex Creio"
+
+## Twitter Cards
+twitterSite = "https://creio.ctlos.ru"
+twitterCreator = "Alex Creio"
+
+## JSON-LD
+schemaType = "Person"
+# schemaType = "Organization"
+schemaName = "creio"
+schemaAuthor = "Alex Creio"
+schemaAuthorTwitter = ""
+schemaAuthorLinkedIn = ""
+schemaAuthorGitHub = "https://github.com/creio"
+schemaLocale = "ru-RU"
+schemaLogo = "apple-touch-icon.png"
+schemaLogoWidth = 512
+schemaLogoHeight = 512
+schemaImage = "cover.png"
+schemaImageWidth = 1280
+schemaImageHeight = 640
+schemaTwitter = ""
+schemaLinkedIn = ""
+schemaGitHub = "https://github.com/creio/creio.github.io"
+schemaSection = "blog"
+
+## Sitelinks Search Box
+siteLinksSearchBox = false
+
+## Chrome Browser
+themeColor = "#778DD3"
+
+# Images
+quality = 85
+bgColor = "#fff"
+landscapePhotoWidths = [900, 800, 700, 600, 500]
+portraitPhotoWidths = [800, 700, 600, 500]
+lqipWidth = "20x"
+smallLimit = "300"
+
+# Images
+imageResponsive = true
+imageConvertTo = "webp"
+imageImageSizes = ["480","720","1080","1280","1600","2048"]
+singleSize = false
+imageAddClass = "img-fluid lazyload blur-up"
+
+### Image template
+profileImage = "profile.png" # put in `./assets/images/`
+defaultImage = "default-image.png" # put in `./assets/images/`
+fillImage = "1270x740 Center" # normalize image size
+
+# Footer
+footer = "Powered by <a class=\"text-muted\" target=\"_blank\" rel=\"noopener\" href=\"https://www.netlify.com/\">Netlify</a>, <a class=\"text-muted\" target=\"_blank\" rel=\"noopener\" href=\"https://gohugo.io/\">Hugo</a>, and <a class=\"text-muted\" target=\"_blank\" rel=\"noopener\" href=\"https://getdoks.org/\">Doks</a>"
+
+# Feed
+copyRight = "Copyright (c) Alex Creio"
+
+# Alert
+alert = false
+alertDismissable = true
+# alertText = "Introducing the Doks child theme, several DX + UX updates, and more! <a class=\"alert-link stretched-link\" href=\"https://getdoks.org/blog/doks-v0.2/\" target=\"_blank\" rel=\"noopener\">Check out Doks v0.2</a>"
+alertText = "Introducing the Doks child theme, several DX + UX updates, and more! <a class=\"alert-link stretched-link\" target=\"_blank\" rel=\"noopener\" href=\"https://getdoks.org/blog/doks-v0.2/\">Check out Doks v0.2</a>"
+
+# Edit Page
+# repoHost [Github | Gitea | GitLab | Bitbucket | BitbucketServer ] is used for building the edit link based on git hoster
+repoHost = "GitHub"
+docsRepo = "https://github.com/creio/creio.github.io"
+docsRepoBranch = "main"
+docsRepoSubPath = "content"
+editPage = true
+lastMod = true
+
+[sections]
+  sectionNav = ["docs", "guides"]
+
+[options]
+  lazySizes = true
+  clipBoard = true
+  instantPage = true
+  flexSearch = true
+  searchSectionsShow = []
+  searchSectionsIndex = []
+  darkMode = true
+  bootStrapJs = true
+  breadCrumb = false
+  highLight = true
+  kaTex = false
+  multilingualMode = false
+  docsVersioning = false
+  fullWidth = false
+  navbarSticky = true
+  toTopButton = true
+  scrollSpy = false # experimental; needs Bootstrap >= 5.2.0-beta1
+
+[menu]
+  [menu.section]
+    auto = true
+    collapsibleSidebar = true

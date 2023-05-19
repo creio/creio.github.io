@@ -1,9 +1,18 @@
 ---
 title: "Установка Arch Linux в Oracle Cloud"
-date: 2021-03-22
-type: post
+description: ""
+date: 2021-03-22T21:59:05+03:00
+lastmod: 2023-04-24T21:59:05+03:00
+draft: false
+weight: 50
+images: []
+categories: []
 tags:
     - archlinux
+contributors: []
+pinned: false
+toc: true
+edit: true
 ---
 
 > PS: У меня забанили аккаунт без предупреждения :).

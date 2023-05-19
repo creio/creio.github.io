@@ -1,44 +1,28 @@
-# Personal website — nuxt
+# Personal website — hugo
 
-Icons [icones.js.org](https://icones.js.org/).
+## Requirements
 
-## Setup
+- [Git](https://git-scm.com/) — latest source release
+- [Node.js](https://nodejs.org/) — latest LTS version or newer
 
-Make sure to install the dependencies:
+### Install dependencies
 
 ```bash
-# yarn
-yarn install
-
-# npm
 npm install
-
-# pnpm
-pnpm install
 ```
 
-## Development Server
-
-Start the development server on http://localhost:3000
+### Start development server
 
 ```bash
-npm run dev
+npm run start
 ```
 
-## Production
+## Other commands
 
-Build the application for production:
+Doks comes with [commands](https://getdoks.org/docs/prologue/commands/) for common tasks.
 
-```bash
-npm run build
-# or
-npm run generate
-```
+## Documentation
 
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://nuxt.com/docs/getting-started/deployment).
+- [Netlify](https://docs.netlify.com/)
+- [Hugo](https://gohugo.io/documentation/)
+- [Doks](https://getdoks.org/)

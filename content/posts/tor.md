@@ -1,9 +1,18 @@
 ---
-title: Tor проксирование
-date: 2022-05-26
-type: post
+title: "Tor проксирование"
+description: ""
+date: 2022-05-26T22:02:34+03:00
+lastmod: 2023-04-24T22:02:34+03:00
+draft: false
+weight: 50
+images: []
+categories: []
 tags:
     - network
+contributors: []
+pinned: false
+toc: true
+edit: true
 ---
 
 Задача заставить локально обрабатывать все запросы к onion, через тор, а все остальное в обычном режиме. В этом деле поможет dnsmasq, но заставить его работать я смог только с dhcpcd, не знаю возможно ли это сделать через networkmanager, не пользуюсь им. Выключаем и удаляем все сетевое, ставим dnsmasq и dhcpcd.

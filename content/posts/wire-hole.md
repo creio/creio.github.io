@@ -1,10 +1,19 @@
 ---
-title: Wireguard, pihole, unbound | предотвращаем утечку dns
-date: 2022-12-17
-type: post
+title: "Wireguard, pihole, unbound | предотвращаем утечку dns"
+description: ""
+date: 2022-12-17T22:18:35+03:00
+lastmod: 2023-04-24T22:18:35+03:00
+draft: false
+weight: 50
+images: []
+categories: []
 tags:
     - vpn
     - network
+contributors: []
+pinned: false
+toc: false
+edit: true
 ---
 
 Смотри видео с детальной настройкой [youtube.com](https://www.youtube.com/watch?v=iTozi7KE904).

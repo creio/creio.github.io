@@ -1,13 +1,20 @@
 ---
 title: "Перенос форума fluxbb на discourse"
-date: 2021-06-19
-type: post
+description: ""
+date: 2021-06-19T21:48:04+03:00
+lastmod: 2023-04-24T21:48:04+03:00
+draft: false
+weight: 50
+images: []
+categories: []
 tags:
     - dev
     - fluxbb
+contributors: []
+pinned: false
+toc: true
+edit: true
 ---
-
-## Перенос mysql
 
 Для переноса нужно получить базу данных форума fluxbb, наверняка вы знаете как это сделать, но если нет, то вот. Данные для подключение к базе, которые вы создавали, или то, что предоставил хостер, при создании.
 
