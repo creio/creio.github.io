@@ -5,7 +5,7 @@ date: 2021-04-05T22:12:42+03:00
 lastmod: 2023-04-24T22:12:42+03:00
 draft: false
 weight: 50
-images: [эweb-server.png]
+images: [web-server.png]
 categories: []
 tags:
     - vpn
