@@ -34,7 +34,7 @@
     <picture>
         {{ range $widths -}}
           {{ $webpUrl := (printf "%dx webp" . | $image.Resize).Permalink -}}
-          <source media="(min-width: {{ . }}px)" srcset="{{ $webpUrl }}" type="image/webp">
+          <source media="(max-width: {{ . }}px)" srcset="{{ $webpUrl }}" type="image/webp">
         {{ end -}}
         <img class="figure-img img-fluid lazyload blur-up" data-sizes="auto" src="{{ $lqip.Permalink }}" data-srcset="{{ $imgSrcSet }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ .Title }}">
         <noscript><img class="figure-img img-fluid" sizes="100vw" srcset="{{ $imgSrcSet }}" src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ .Title }}"></noscript>
