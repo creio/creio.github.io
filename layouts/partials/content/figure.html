@@ -11,7 +11,7 @@
 {{ end -}}
 
 {{ $image = $image.Fill $fillImage }}
-{{ $webp := $image.Resize "600x webp" -}}
+{{ $webp := $image.Resize (printf "%dx%d webp q100" $image.Width $image.Height) -}}
 {{ $lqip := $image.Resize site.Params.lqipWidth -}}
 
 {{ $imgSrc := "" -}}
