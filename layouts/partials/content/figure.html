@@ -32,7 +32,7 @@
 {{ if gt $image.Width site.Params.smallLimit -}}
 <figure class="figure">
     <picture>
-        <source media="(min-width: 901px)" srcset="{{ $webp.Permalink }}" type="image/webp">
+        <source media="(min-width: 801px)" srcset="{{ $webp.Permalink }}" type="image/webp">
         {{ range $widths -}}
           {{ $webpUrl := (printf "%dx webp" . | $image.Resize).Permalink -}}
           <source media="(max-width: {{ . }}px)" srcset="{{ $webpUrl }}" type="image/webp">
