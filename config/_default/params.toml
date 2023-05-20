@@ -6,7 +6,7 @@ titleSeparator = "|"
 titleAddition = "I’m root :)"
 description = "Personal website & blog. Web developer & linux enthusiast."
 
-languageTag = "ru-RU"
+languageTag = "ru"
 
 ## Open Graph
 images = ["cover.png"]
