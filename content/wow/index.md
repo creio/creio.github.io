@@ -23,7 +23,7 @@ edit: false
 
 ## Money
 
-- Лучшая дебетовая карта [tinkoff](https://partners.tinkoff.ru/click/c859a1f7-5d98-4566-aa39-d671c01b22d4?sub1=blog)
+<!-- - Лучшая дебетовая карта [tinkoff](https://partners.tinkoff.ru/click/c859a1f7-5d98-4566-aa39-d671c01b22d4?sub1=blog) -->
 - Вирт карты, практически для любых пополнений [epn.net](https://epn.net/)
 - Платежная система [capitalist](https://capitalist.net/reg?from=6644498e31)
 - Рейтинг обменников [bestchange](https://www.bestchange.ru/?p=1282048)
@@ -56,6 +56,7 @@ edit: false
 - [kingfin](https://kingfin.com/?referrer_id=110003)
 - [salid](https://salid.ru/partner?w=410469)
 - [adcombo](https://adcombo.com/?ref_id=80c61e4ef508edc1393c6db6eec8ecc0)
+- [advertise.ru](https://linkmy.cc/0adbf605/)
 
 ### Рекламные сети
 
@@ -72,17 +73,21 @@ edit: false
 - [spywords](https://spywords.ru/?partner=956432)
 - [Keyword Tool](https://keywordtool.io/ru)
 
+### Smm
+
+- Биржа рекламы vk [socialtrade.ru](https://socialtrade.ru/r/20537)
+- Анализ telegram [telemetr](https://telemetr.me)
+- Анализ [YouTube](https://www.tubebuddy.com/pricing?a=traff)
+
 ### Tools
 
 - Email маркетинг [sendpulse](https://sendpulse.com/ru/?ref=6599712)
 - Email маркетинг [getresponse](https://www.getresponse.com?ab=Ra7WFqGmkc)
 - Конструктор LP [lpmotor](https://lpmotor.ru/?p=G900RL-ypzy)
-- Анализ [YouTube](https://www.tubebuddy.com/pricing?a=traff)
 - [Мониторинг рекламы](https://spy.house/ads)
 - [Калькулятор ROI](https://www.comagic.ru/support/marketing_tools/roi_calculator/)
 - Пополнение рекламных кабинетов [getuniq](https://getuniq.me/)
 - [Чат боты](https://direct.smartsender.com/referrals/de1df19d-5394-4fd8-b87d-f413133eba26)
-- Анализ telegram [telemetr](https://telemetr.me)
 - Биржа копирайтинга [advego](https://advego.com/?ref=5xN7kWRgcH)
 
 ## Crypto

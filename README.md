@@ -1,5 +1,7 @@
 # Personal website — hugo
 
+Performance [page speed](https://pagespeed.web.dev/analysis/https-creio-ctlos-ru/j9ccdp29oj?form_factor=mobile) insights.
+
 ## Requirements
 
 - [Git](https://git-scm.com/) — latest source release
