@@ -76,9 +76,10 @@ edit: false
 
 ### Smm
 
-- Биржа рекламы vk [socialtrade.ru](https://socialtrade.ru/r/20537)
 - Анализ telegram [telemetr](https://telemetr.me)
 - Анализ [YouTube](https://www.tubebuddy.com/pricing?a=traff)
+- Биржа рекламы vk [socialtrade.ru](https://socialtrade.ru/r/20537)
+- Зарубежные блогеры [shoutcart](https://shoutcart.com/browse/?ref=431261)
 
 ### Tools
 
