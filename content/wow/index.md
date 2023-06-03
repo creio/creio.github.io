@@ -12,7 +12,7 @@ edit: false
 На данной странице собраны ссылки на ресурсы, которые я бы порекомендовал и которыми пользуюсь, или когда-то использовал.
 <!--more-->
 
-> Если вам нужно развернуть сервер, либо какое-то ПО(vpn, web server, cms), или что-то автоматизировать, но вы не знаете как, смело обращайтесь ко мне [@cretm](https://t.me/cretm).
+> Если вам нужно развернуть сервер, либо ПО(vpn, web server, cms), или что-то автоматизировать, но вы не знаете как, смело обращайтесь ко мне [@cretm](https://t.me/cretm). См. [проекты и услуги](/pr).
 
 - Лучший менеджер паролей [bitwarden](https://bitwarden.com)
 - Инструмент планирования и не только [notion](https://affiliate.notion.so/bvd9teqbd89k), [notion ai](https://affiliate.notion.so/af7chwpjif8i-4y5a7)
@@ -57,6 +57,7 @@ edit: false
 - [salid](https://salid.ru/partner?w=410469)
 - [adcombo](https://adcombo.com/?ref_id=80c61e4ef508edc1393c6db6eec8ecc0)
 - [advertise.ru](https://linkmy.cc/0adbf605/)
+- Email submit [cpagrip](https://www.cpagrip.com/signup.php?ref=688341)
 
 ### Рекламные сети
 
@@ -114,10 +115,11 @@ edit: false
 
 ## Прочее
 
+- [AI ChatGPT telegram](https://t.me/gpt3_unlim_chatbot?start=MTMxMjc0NjIy)
 - [writesonic](https://writesonic.com/chat?ref=cretm21)
 - [Стоковые фото, видео](https://www.pexels.com/ru-ru/)
-- [mindmaps](https://www.mindmaps.app/)
 - [Удаление фона](https://www.remove.bg/ru)
+- [mindmaps](https://www.mindmaps.app/)
 - [Sms activate](https://sms-activate.org/?ref=6815339)
 - Парсер [a-parser](https://a-parser.com/?ref=46723)
 

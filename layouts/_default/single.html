@@ -8,10 +8,12 @@
         {{ if .Params.toc -}}
         <main class="docs-content col-md{{ if eq .Site.Params.options.fullWidth false }}-12{{ end }}">
         {{ else -}}
-        <main class="docs-content col-lg-12 col-xl-12 mx-xl-auto">
+        <main class="docs-content col-lg-12 col-xl-{{ if ne .Params.full false -}}16{{ else }}12{{ end }} mx-xl-auto">
         {{ end -}}
           <h1>{{ .Title }}</h1>
-          {{ partial "main/page-meta.html" . }}
+          {{ if ne .Params.page_meta false -}}
+            {{ partial "main/page-meta.html" . }}
+          {{ end -}}
           {{ if ne .Params.images false -}}
           <div>
               {{- .Scratch.Set "fillImage" "1270x715 Center" -}}
