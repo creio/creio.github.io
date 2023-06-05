@@ -122,6 +122,7 @@ edit: false
 - [Удаление фона](https://www.remove.bg/ru)
 - [mindmaps](https://www.mindmaps.app/)
 - [Sms activate](https://sms-activate.org/?ref=6815339)
+- Grizzly [Sms activate](https://grizzlysms.com/registration?r=241463)
 - Парсер [a-parser](https://a-parser.com/?ref=46723)
 
 > PS. Зарабатывают не на рефералах, а на компаниях которые это предоставляют.
