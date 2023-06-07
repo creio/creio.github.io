@@ -8,10 +8,10 @@
   translation: "Поиск..."
 
 - id: 404-title
-  translation: "Page not found :("
+  translation: "404 Page not found"
 
 - id: 404-text
-  translation: "The page you are looking for doesn't exist or has been moved."
+  translation: "Страница, которую вы ищете, не существует или была перемещена."
 
 - id: browse
   translation: "Browse"

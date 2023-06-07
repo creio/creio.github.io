@@ -70,6 +70,10 @@
   margin: 6rem 0;
 }
 
+.fixed-bottom {
+    bottom: 10%;
+}
+
 @media (min-width: 500px) {
   .home-layout__hero {
     display: grid;
