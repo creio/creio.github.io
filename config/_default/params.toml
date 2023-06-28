@@ -8,6 +8,8 @@ description = "Personal website & blog. Web developer & linux enthusiast."
 
 languageTag = "ru"
 
+yandexVerification = "16c69e69225504ca"
+
 ## Open Graph
 images = ["cover.png"]
 ogLocale = "ru_RU"

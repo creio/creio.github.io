@@ -46,7 +46,3 @@ page_meta: false
 ### Ctlos Linux
 
 Дистрибутив на основе Arch Linux с графическим установщиком [ctlos.github.io](https://ctlos.github.io).
-
-### Ctlos Shop
-
-Магазин одежды и аксессуаров с принтами [shop.ctlos.ru](https://shop.ctlos.ru).
