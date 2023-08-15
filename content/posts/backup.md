@@ -228,6 +228,41 @@ borg export-tar /path/to/repo::Monday Monday.tar.gz --exclude '*.so'
 
 https://kopia.io/docs/getting-started/
 
+kopia repository create filesystem --path /media/files/kopia
+
+kopia repository connect filesystem --path /media/files/kopia
+
+kopia snapshot create ~/Documents
+
+kopia policy list
+kopia policy show --global
+# https://kopia.io/docs/reference/command-line/common/policy-set/
+kopia policy set --add-ignore .png --add-ignore .zip ~/Documents
+kopia policy set --keep-annual 1 --global
+kopia policy edit ~/Documents
+kopia policy edit --global
+
+kopia snapshot list ~/Documents
+
+kopia diff kb9a8420bf6b8ea280d6637ad1adbd4c5 ke2e07d38a8a902ad07eda5d2d0d3025d
+
+mkdir ~/mnt/kopia
+
+kopia mount k2716fab9b1d1ef4336133b06c9d9a79c ~/mnt/kopia
+
+# gid run: id
+sudo chown -R $USER:users ~/mnt/kopia
+sudo rsync -av ~/mnt/kopia/ ~/Documents
+
+kopia snapshot restore k2716fab9b1d1ef4336133b06c9d9a79c ~/Documents
+kopia restore k2716fab9b1d1ef4336133b06c9d9a79c/path/file ~/path/file
+
+kopia repository status
+
+kopia snapshot delete --delete k2716fab9b1d1ef4336133b06c9d9a79c
+
+kopia repository disconnect
+
 ## Cron
 
 ```bash
