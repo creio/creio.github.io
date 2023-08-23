@@ -62,7 +62,7 @@ cd mkp224o
 ./configure
 make
 # -t 2  потоки cpu, -n кол-во имен, имя topor
-./mkp224o filter topor -t 2 -v -n 1 -d ~/hs-keys
+./mkp224o topor -t 2 -v -n 1 -d ~/hs-keys
 #
 scp -r ~/hs-keys user@123.123.123.123:~/
 ```

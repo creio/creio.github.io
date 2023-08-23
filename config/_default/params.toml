@@ -1,7 +1,7 @@
 # Meta Data for SEO
 
 ## Homepage
-title = "Alex Creio"
+title = "creio"
 titleSeparator = "|"
 titleAddition = "I’m root :)"
 description = "Personal website & blog. Web developer & linux enthusiast."
@@ -14,11 +14,11 @@ yandexVerification = "16c69e69225504ca"
 images = ["cover.png"]
 ogLocale = "ru_RU"
 domainTLD = "creio.ctlos.ru"
-titleHome = "Alex Creio"
+titleHome = "creio"
 
 ## Twitter Cards
 twitterSite = "https://creio.ctlos.ru"
-twitterCreator = "Alex Creio"
+twitterCreator = "creio"
 
 ## JSON-LD
 schemaType = "Person"
@@ -70,7 +70,7 @@ fillImage = "1270x740 Center" # normalize image size
 footer = "Powered by <a class=\"text-muted\" target=\"_blank\" rel=\"noopener\" href=\"https://www.netlify.com/\">Netlify</a>, <a class=\"text-muted\" target=\"_blank\" rel=\"noopener\" href=\"https://gohugo.io/\">Hugo</a>, fork <a class=\"text-muted\" target=\"_blank\" rel=\"noopener\" href=\"https://getdoks.org/\">Doks</a>"
 
 # Feed
-copyRight = "Copyright (c) Alex Creio"
+copyRight = "Copyright (c) @creio"
 
 # Alert
 alert = false
