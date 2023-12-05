@@ -32,6 +32,7 @@ edit: false
 
 Сервера, хостинги, домены, без этого нынче в сети нечего делать.
 
+- Недорогие сервера [netangels.ru](https://netangels.ru/?p_ref=u112835)
 - [REG.RU](https://www.reg.ru/), промокод: `8A39-8FCA-CDB4-F765` на скидку 5%.
 - VPS, хостинг [fozzy](https://fozzy.com/aff.php?aff=17247), промокод: `CTLOS` на скидку 10%.
 - VPS, хостинг [timeweb](https://timeweb.com/ru/?i=107375)
