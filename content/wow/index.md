@@ -34,7 +34,6 @@ edit: false
 
 - Недорогие сервера [netangels.ru](https://netangels.ru/?p_ref=u112835)
 - [REG.RU](https://www.reg.ru/), промокод: `8A39-8FCA-CDB4-F765` на скидку 5%.
-- VPS, хостинг [fozzy](https://fozzy.com/aff.php?aff=17247), промокод: `CTLOS` на скидку 10%.
 - VPS, хостинг [timeweb](https://timeweb.com/ru/?i=107375)
 - VPS [vultr](https://www.vultr.com/?ref=8949812-8H), бонус $100.
 - Домены [internetbs](https://internetbs.net/ru/)

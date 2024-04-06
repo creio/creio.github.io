@@ -287,7 +287,7 @@ Sonarr я рассматривать не буду, только базовая 
 > Принудительно считать imdb list, можно повесить на крон. В apikey= поставить ключ radarr.
 
 ```bash
-curl -X POST "http://localhost:6002/api/v3/command?apikey=6random132loremasd23" -H "accept: application/json" -d '{"name":"ImportListSync"}'
+curl -X POST "http://localhost:6002/api/v3/command?apikey=6random132loremasd23" -H "Content-Type: application/json" -d '{"name":"ImportListSync"}'
 ```
 
 Настройка и запуск крона на 5 мин `#5_*_*_*_*`.
@@ -301,7 +301,7 @@ EDITOR=nano crontab -e
 ```
 
 ```bash
-5 * * * * curl -X POST "http://localhost:6002/api/v3/command?apikey=6random132loremasd23" -H "accept: application/json" -d '{"name":"ImportListSync"}'
+5 * * * * curl -X POST "http://localhost:6002/api/v3/command?apikey=6random132loremasd23" -H "Content-Type: application/json" -d '{"name":"ImportListSync"}'
 
 sudo systemctl enable --now cronie
 ```
