@@ -19,7 +19,7 @@ edit: false
 - Медиа редактор [canva](https://www.canva.com/)
 - Антидетект браузер [dolphin](https://anty.dolphin.ru.com/a/2352400)
 - Vpn [YouFast](https://t.me/YouFast_vpn_bot?start=131274622), как поднять [свой vpn](/posts/vpn)
-- [Глаз Бога](https://t.me/wnc14f5b32q_bot_bot?start=131274622), продвинутый бот пробива информации о людях в интернете.
+- [Глаз Бога](https://t.me/stopmizulina_bot), продвинутый бот пробива информации о людях в интернете.
 
 ## Money
 
