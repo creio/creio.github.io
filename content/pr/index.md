@@ -4,7 +4,7 @@ description: "Предоставляю услуги системного адм�
 date: 2023-06-03T15:26:11+03:00
 lastmod: 2023-06-03T15:26:11+03:00
 draft: false
-images: false
+image: false
 toc: true
 edit: false
 full: true

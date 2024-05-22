@@ -5,7 +5,7 @@ date: 2021-09-27T21:51:28+03:00
 lastmod: 2023-04-24T21:51:28+03:00
 draft: false
 weight: 50
-images: ['radarr.png']
+image: "/images/radarr.png"
 categories: []
 tags:
     - docker

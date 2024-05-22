@@ -5,7 +5,7 @@ date: 2022-05-12T22:15:06+03:00
 lastmod: 2023-04-24T22:15:06+03:00
 draft: false
 weight: 50
-images: ['weechat.png']
+image: "/images/weechat.png"
 categories: []
 tags:
     - config

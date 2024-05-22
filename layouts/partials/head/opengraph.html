@@ -34,10 +34,8 @@
   {{ .Scratch.Set "title" .Title -}}
 {{ end -}}
 
-{{ with $.Params.images -}}
-  {{ range first 6 . -}}
-  <meta property="og:image" content="{{ $.Permalink }}{{ . }}">
-  {{ end -}}
+{{ with $.Params.image -}}
+  <meta property="og:image" content="{{ . }}">
 {{ else -}}
   {{ $images := $.Resources.ByType "image" -}}
   {{ $featured := $images.GetMatch "*feature*" -}}

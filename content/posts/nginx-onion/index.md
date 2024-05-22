@@ -5,7 +5,7 @@ date: 2021-09-13T21:55:04+03:00
 lastmod: 2023-04-24T21:55:04+03:00
 draft: false
 weight: 50
-images: ['nginx-onion.png']
+image: "/images/nginx-onion.png"
 categories: []
 tags:
     - dev

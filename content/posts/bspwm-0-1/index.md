@@ -6,7 +6,7 @@ date: 2020-03-13T20:23:06+03:00
 lastmod: 2023-04-24T20:23:06+03:00
 draft: false
 weight: 50
-images: ['bspwm.png']
+image: "/images/bspwm.png"
 categories: []
 tags:
     - bspwm

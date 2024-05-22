@@ -6,6 +6,6 @@ lead: "An appendix of hosted documentation for nearly every release of Doks, fro
 date: 2021-09-24T08:50:23+02:00
 lastmod: 2021-09-24T08:50:23+02:00
 draft: true
-images: []
+image: false
 url: "/docs/versions/"
 ---

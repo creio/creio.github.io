@@ -5,7 +5,7 @@ date: 2021-10-23T21:45:16+03:00
 lastmod: 2023-04-24T21:45:16+03:00
 draft: false
 weight: 50
-images: []
+image: false
 categories: []
 tags:
     - firewall

@@ -14,7 +14,7 @@
           {{ if ne .Params.page_meta false -}}
             {{ partial "main/page-meta.html" . }}
           {{ end -}}
-          {{ if ne .Params.images false -}}
+          {{ if $.Params.image -}}
           <div>
               {{- .Scratch.Set "fillImage" "1270x715 Center" -}}
               {{ partial "content/figure.html" . }}

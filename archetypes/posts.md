@@ -5,7 +5,7 @@ date: {{ .Date }}
 lastmod: {{ .Date }}
 draft: false
 weight: 50
-images: []
+image: false
 categories: []
 tags: []
 contributors: []

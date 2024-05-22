@@ -5,7 +5,7 @@ date: 2021-10-22T22:04:41+03:00
 lastmod: 2023-04-24T22:04:41+03:00
 draft: false
 weight: 50
-images: ['transmission.png']
+image: "/images/transmission.png"
 categories: []
 tags:
     - torrents

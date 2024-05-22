@@ -5,7 +5,7 @@ date: 2019-07-10T22:07:49+03:00
 lastmod: 2023-04-24T22:07:49+03:00
 draft: false
 weight: 50
-images: ['urxvt-cfg.png']
+image: "/images/urxvt-cfg.png"
 categories: []
 tags:
     - terminal

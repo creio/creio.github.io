@@ -3,7 +3,8 @@
   {{ $fillImage = site.Params.fillImage }}
 {{ end -}}
 
-{{ $image := .Resources.GetMatch (printf "**%s" (index .Params.images 0)) }}
+{{ $image := resources.GetMatch .Params.Image }}
+
 {{ if .IsHome -}}
   {{ $image = resources.Get (printf "%s%s" "images/" site.Params.profileImage) }}
 {{ else if not $image -}}

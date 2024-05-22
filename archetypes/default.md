@@ -4,6 +4,6 @@ description: ""
 date: {{ .Date }}
 lastmod: {{ .Date }}
 draft: true
-images: []
+image: false
 toc: false
 ---

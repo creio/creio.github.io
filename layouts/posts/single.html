@@ -12,7 +12,7 @@
         {{ end -}}
             <h1>{{ .Title }}</h1>
             {{ partial "main/blog-meta.html" . }}
-            {{ if $.Params.images -}}
+            {{ if $.Params.image -}}
             <div>
               {{- .Scratch.Set "fillImage" "1270x715 Center" -}}
               {{ partial "content/figure.html" . }}
