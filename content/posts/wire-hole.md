@@ -4,7 +4,6 @@ title: 'Wireguard, pihole, unbound | предотвращаем утечку dns
 description: ''
 image: ''
 date: 2022-12-17T19:18:35.000Z
-lastmod: 2023-04-27T19:18:00.000Z
 tags:
   - vpn
   - network

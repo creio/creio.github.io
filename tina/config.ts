@@ -77,14 +77,6 @@ export default defineConfig({
             },
           },
           {
-            type: "datetime",
-            name: "lastmod",
-            label: "Last mod",
-            ui: {
-              timeFormat: "HH:mm"
-            },
-          },
-          {
             type: 'string',
             name: 'tags',
             label: 'Tags',
