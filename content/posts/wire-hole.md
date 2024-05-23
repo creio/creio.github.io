@@ -1,16 +1,16 @@
 ---
-title: "Wireguard, pihole, unbound | предотвращаем утечку dns"
-description: ""
-date: 2022-12-17T22:18:35+03:00
-lastmod: 2023-04-24T22:18:35+03:00
-draft: false
 weight: 50
-image: false
-categories: []
+title: 'Wireguard, pihole, unbound | предотвращаем утечку dns'
+description: ''
+image: /images/bspwm.png
+date: 2022-12-17T19:18:35.000Z
+lastmod: 2023-04-24T19:18:35.000Z
 tags:
-    - vpn
-    - network
+  - vpn
+  - network
+categories: []
 contributors: []
+draft: false
 pinned: false
 toc: false
 edit: true
@@ -24,11 +24,11 @@ root
 747AuBOZ7WNt
 ```
 
-- unbound
-- wireguard
-- pihole
+* unbound
+* wireguard
+* pihole
 
-```bash
+```
 apt install wg...
 
 
@@ -204,6 +204,6 @@ sudo ufw reject https
 ss -tulpn
 ```
 
-- 45.138.72.135/admin
-- http://pi.hole/admin
-- https://dnsleak.com
+* 45.138.72.135/admin
+* [http://pi.hole/admin](http://pi.hole/admin)
+* [https://dnsleak.com](https://dnsleak.com)
