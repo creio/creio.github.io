@@ -2,7 +2,7 @@
 weight: 50
 title: 'Wireguard, pihole, unbound | предотвращаем утечку dns'
 description: ''
-image: /images/bspwm.png
+image: ''
 date: 2022-12-17T19:18:35.000Z
 lastmod: 2023-04-24T19:18:35.000Z
 tags:

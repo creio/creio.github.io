@@ -5,7 +5,7 @@ date: 2021-06-19T21:48:04+03:00
 lastmod: 2023-04-24T21:48:04+03:00
 draft: false
 weight: 50
-image: false
+image: ""
 categories: []
 tags:
     - dev

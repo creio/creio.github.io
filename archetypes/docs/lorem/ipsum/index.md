@@ -5,7 +5,7 @@ lead: ""
 date: 2022-01-25T14:41:39+01:00
 lastmod: 2022-01-25T14:41:39+01:00
 draft: false
-image: false
+image: ""
 type: docs
 menu:
   {{ .Section }}:

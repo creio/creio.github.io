@@ -4,7 +4,7 @@ description: ""
 date: 2023-04-09T18:49:51+03:00
 lastmod: 2023-04-23T18:49:51+03:00
 draft: false
-image: false
+image: ""
 toc: true
 edit: false
 ---

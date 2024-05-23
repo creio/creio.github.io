@@ -5,7 +5,7 @@ lead: ""
 date: {{ .Date }}
 lastmod: {{ .Date }}
 draft: true
-image: false
+image: ""
 menu:
   docs:
     parent: ""
