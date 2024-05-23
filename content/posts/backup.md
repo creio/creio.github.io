@@ -1,24 +1,26 @@
 ---
-title: "Backup"
-description: ""
-excerpt: ""
-date: 2022-05-10T20:12:00+03:00
-draft: true
+excerpt: ''
 weight: 50
-image: ""
-categories: []
-tags: ['linux', 'backup']
-contributors: []
-pinned: false
 homepage: false
+title: Backup
+description: ''
+image: ''
+date: 2022-05-10T17:12:00.000Z
+tags:
+  - linux
+  - backup
+categories: []
+contributors: []
+draft: true
+pinned: false
 toc: true
 edit: false
 ---
 
-- [rclone.org/](https://rclone.org/)
-- [docs.usbx.me/books/rclone/page/rclone-vfs-and-mergerfs-setup](https://docs.usbx.me/books/rclone/page/rclone-vfs-and-mergerfs-setup)
+* [rclone.org/](https://rclone.org/)
+* [docs.usbx.me/books/rclone/page/rclone-vfs-and-mergerfs-setup](https://docs.usbx.me/books/rclone/page/rclone-vfs-and-mergerfs-setup)
 
-```bash
+```shell
 # uncomment   user_allow_other
 sudo nano /etc/fuse.conf
 mkdir -p ~/clouds/google
@@ -225,36 +227,39 @@ borg export-tar /path/to/repo::Monday Monday.tar.gz --exclude '*.so'
 
 ## Kopia
 
-https://kopia.io/docs/getting-started/
+[https://kopia.io/docs/getting-started/](https://kopia.io/docs/getting-started/)
 
 kopia repository create filesystem --path /media/files/kopia
 
 kopia repository connect filesystem --path /media/files/kopia
 
-kopia snapshot create ~/Documents
+kopia snapshot create \~/Documents
 
 kopia policy list
 kopia policy show --global
-# https://kopia.io/docs/reference/command-line/common/policy-set/
-kopia policy set --add-ignore .png --add-ignore .zip ~/Documents
+
+# [https://kopia.io/docs/reference/command-line/common/policy-set/](https://kopia.io/docs/reference/command-line/common/policy-set/)
+
+kopia policy set --add-ignore .png --add-ignore .zip \~/Documents
 kopia policy set --keep-annual 1 --global
-kopia policy edit ~/Documents
+kopia policy edit \~/Documents
 kopia policy edit --global
 
-kopia snapshot list ~/Documents
+kopia snapshot list \~/Documents
 
 kopia diff kb9a8420bf6b8ea280d6637ad1adbd4c5 ke2e07d38a8a902ad07eda5d2d0d3025d
 
-mkdir ~/mnt/kopia
+mkdir \~/mnt/kopia
 
-kopia mount k2716fab9b1d1ef4336133b06c9d9a79c ~/mnt/kopia
+kopia mount k2716fab9b1d1ef4336133b06c9d9a79c \~/mnt/kopia
 
 # gid run: id
-sudo chown -R $USER:users ~/mnt/kopia
-sudo rsync -av ~/mnt/kopia/ ~/Documents
 
-kopia snapshot restore k2716fab9b1d1ef4336133b06c9d9a79c ~/Documents
-kopia restore k2716fab9b1d1ef4336133b06c9d9a79c/path/file ~/path/file
+sudo chown -R $USER:users \~/mnt/kopia
+sudo rsync -av \~/mnt/kopia/ \~/Documents
+
+kopia snapshot restore k2716fab9b1d1ef4336133b06c9d9a79c \~/Documents
+kopia restore k2716fab9b1d1ef4336133b06c9d9a79c/path/file \~/path/file
 
 kopia repository status
 
