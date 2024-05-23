@@ -2,7 +2,6 @@
 title: "Настройка автоматической загрузки фильмов с торрентов"
 description: ""
 date: 2021-09-27T21:51:28+03:00
-lastmod: 2023-04-24T21:51:28+03:00
 draft: false
 weight: 50
 image: "/images/radarr.png"

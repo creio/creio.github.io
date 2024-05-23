@@ -3,7 +3,6 @@ title: "Backup"
 description: ""
 excerpt: ""
 date: 2022-05-10T20:12:00+03:00
-lastmod: 2023-04-24T20:12:00+03:00
 draft: true
 weight: 50
 image: ""

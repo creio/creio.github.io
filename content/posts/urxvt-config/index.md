@@ -2,7 +2,6 @@
 title: "Arch Urxvt, установка и настройка"
 description: ""
 date: 2019-07-10T22:07:49+03:00
-lastmod: 2023-04-24T22:07:49+03:00
 draft: false
 weight: 50
 image: "/images/urxvt-cfg.png"

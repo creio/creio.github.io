@@ -4,7 +4,6 @@ title: Настройка и использование weechat в linux
 description: ''
 image: /images/weechat.png
 date: 2022-05-12T19:15:06.000Z
-lastmod: 2024-05-20T21:00:00.000Z
 tags:
   - config
   - network

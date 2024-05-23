@@ -2,7 +2,6 @@
 title: "Psiphon linux, обходим блокировку трафика"
 description: ""
 date: 2020-08-10T22:01:13+03:00
-lastmod: 2023-04-24T22:01:13+03:00
 draft: false
 weight: 50
 image: ""

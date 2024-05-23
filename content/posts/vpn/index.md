@@ -2,7 +2,6 @@
 title: "Как Создать и Настроить VPN сервер в Linux | Wireguard"
 description: ""
 date: 2021-01-31T09:19:42+01:00
-lastmod: 2022-11-04T09:19:42+01:00
 draft: false
 weight: 50
 image: ""

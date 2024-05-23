@@ -2,7 +2,6 @@
 title: "Установка Arch Linux на зашифрованный раздел, LVM на LUKS"
 description: ""
 date: 2020-03-23T20:14:38+03:00
-lastmod: 2023-04-24T20:14:38+03:00
 draft: false
 weight: 50
 image: "/images/lvm-luks.png"

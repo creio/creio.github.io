@@ -2,7 +2,6 @@
 title : "Alex Creio. I’m root :)"
 description: "Personal website & blog. Web developer & linux enthusiast."
 date: 2020-10-06T08:47:36+00:00
-lastmod: 2020-10-06T08:47:36+00:00
 draft: false
 image: ""
 ---

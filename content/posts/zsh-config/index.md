@@ -2,7 +2,6 @@
 title: "Zsh Config"
 description: ""
 date: 2019-07-11T22:20:38+03:00
-lastmod: 2023-04-24T22:20:38+03:00
 draft: false
 weight: 50
 image: "/images/zsh-cfg.png"

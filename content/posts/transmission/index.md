@@ -2,7 +2,6 @@
 title: "Transmission — раздача торрентов со своего сервера"
 description: ""
 date: 2021-10-22T22:04:41+03:00
-lastmod: 2023-04-24T22:04:41+03:00
 draft: false
 weight: 50
 image: "/images/transmission.png"
