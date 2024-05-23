@@ -18,8 +18,9 @@
     "create": "exec-bin node_modules/.bin/hugo/hugo new",
     "prestart": "npm run clean",
     "dev": "exec-bin node_modules/.bin/hugo/hugo server --bind=0.0.0.0 --disableFastRender",
+    "tina": "tinacms dev -c \"exec-bin node_modules/.bin/hugo/hugo server --bind=0.0.0.0 --disableFastRender\"",
     "prebuild": "npm run clean",
-    "build": "exec-bin node_modules/.bin/hugo/hugo --gc --minify",
+    "build": "tinacms build && \"exec-bin node_modules/.bin/hugo/hugo --gc --minify\"",
     "build:preview": "npm run build -D -F",
     "clean": "shx rm -rf public resources",
     "clean:install": "shx rm -rf package-lock.json node_modules ",
@@ -43,6 +44,8 @@
     "@babel/preset-env": "^7.18",
     "@fullhuman/postcss-purgecss": "^4.1",
     "@hyas/images": "^0.2.2",
+    "@tinacms/cli": "^1.5.45",
+    "@types/node": "^20.12.12",
     "auto-changelog": "^2.4",
     "autoprefixer": "^10.4",
     "bootstrap": "^5.2.0-beta1",
@@ -67,5 +70,8 @@
   },
   "otherDependencies": {
     "hugo": "0.107.0"
+  },
+  "dependencies": {
+    "tinacms": "^1.6.3"
   }
 }

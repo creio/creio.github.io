@@ -1,16 +1,15 @@
 ---
-title: "Настройка и использование weechat в linux"
-description: ""
-date: 2022-05-12T22:15:06+03:00
-lastmod: 2023-04-24T22:15:06+03:00
-draft: false
 weight: 50
-image: "/images/weechat.png"
-categories: []
+title: Настройка и использование weechat в linux
+description: ''
+image: /images/weechat.png
+date: 2022-05-12T19:15:06.000Z
+lastmod: 2024-05-20T21:00:00.000Z
 tags:
-    - config
-    - network
+  - config
+  - network
 contributors: []
+draft: false
 pinned: false
 toc: true
 edit: true
@@ -20,7 +19,7 @@ Weechat — консольный чат клиент для irc сетей и н
 
 ## Установка
 
-```bash
+```shell
 yay -S weechat
 ```
 
@@ -151,7 +150,7 @@ weechat
 
 ## Подключение к matrix
 
-[Matrix](https://matrix.to/#/#ctlos:matrix.org) отдельный сервер, точнее целая сеть, проще всего создать аккаунт через веб интерфейс riot.im(element), а затем уже его прописать в weechat. В репозитории лежит пакет weechat-matrix, но он криво работает, поэтому ставим rs.
+[Matrix](https://matrix.to) отдельный сервер, точнее целая сеть, проще всего создать аккаунт через веб интерфейс riot.im(element), а затем уже его прописать в weechat. В репозитории лежит пакет weechat-matrix, но он криво работает, поэтому ставим rs.
 
 ```bash
 yay -S weechat-matrix-rs-git
@@ -214,9 +213,9 @@ yay -S weechat-matrix-rs-git
 
 Не забудь заглянуть в чаты Ctlos Linux:
 
-- [Matrix](https://matrix.to/#/#ctlos:matrix.org)
-- [Matrix Libera](https://matrix.to/#/#ctlos:libera.chat)
-- [Web Kiwiirc](https://web.libera.chat/#ctlos)
+* [Matrix](https://matrix.to)
+* [Matrix Libera](https://matrix.to)
+* [Web Kiwiirc](https://web.libera.chat)
 
 ```bash
 /join #ctlos
@@ -224,7 +223,7 @@ yay -S weechat-matrix-rs-git
 
 ## Подключение через Matrix
 
-Авторизовавшись через web морду, например riot.im(element) по ссылкам выше, можно войти практически в любой irc сервер под своими учетными данными, через мосты, так сервисы крупных irc сетей уже присутствуют в матриксе, покажу на примере libera. Откройте диалоги с ботами [@appservice:libera.chat](https://matrix.to/#/@appservice:libera.chat) и [@NickServ:libera.chat](https://matrix.to/#/@NickServ:libera.chat), просто начните с ними чат.
+Авторизовавшись через web морду, например riot.im(element) по ссылкам выше, можно войти практически в любой irc сервер под своими учетными данными, через мосты, так сервисы крупных irc сетей уже присутствуют в матриксе, покажу на примере libera. Откройте диалоги с ботами [@appservice:libera.chat](https://matrix.to) и [@NickServ:libera.chat](https://matrix.to), просто начните с ними чат.
 
 Первой командой вы меняете ник, сообщаете серверу, что это вы.
 
