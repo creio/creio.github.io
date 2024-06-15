@@ -8,7 +8,6 @@ image: ''
 date: 2022-05-10T17:12:00.000Z
 tags:
   - linux
-  - backup
 categories: []
 contributors: []
 draft: true

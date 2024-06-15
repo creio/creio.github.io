@@ -20,6 +20,34 @@ edit: false
 - Vpn [YouFast](https://t.me/YouFast_vpn_bot?start=131274622), как поднять [свой vpn](/posts/vpn)
 - [Глаз Бога](https://t.me/stopmizulina_bot), продвинутый бот пробива информации о людях в интернете.
 
+## Crypto
+
+Прогонать крипту, или получить drop.
+
+### Tap-to-earn
+
+Notcoin задал тренд на [проекты внутри Telegram](/posts/crypto-taps/).
+
+### Биржи
+
+- [BingX](https://bingx.com/invite/QLGJ0Z)
+- [OKX](https://www.okx.com/join/7547847)
+- [Kucoin](https://www.kucoin.com/r/rf/QBA6MNZ6)
+- [Dex биржа](https://dydx.exchange/r/WWPFCWVK)
+- [Phemex](https://phemex.com/ru/register?referralCode=CPVJH5)
+- [Опционы](https://www.delta.exchange/?code=LYAYNF)
+
+### Обмен
+
+- P2P обмен крипты [bitpapa.com](https://bitpapa.com/?ref=YWE3NTVlYm)
+- [Dex агрегатор](https://app.1inch.io)
+
+### Tools
+
+- Мониторинг [coinglass.com](https://www.coinglass.com/)
+- Мониторинг [coinstats.app](https://coinstats.app/refer/CoinStatsAffiliate?utm_source=CoinStatsAffiliate&utm_medium=aff&utm_campaign=inf&utm_id=CoinStatsAffiliate&fpr=cretm22)
+- Портфель [zapper](https://zapper.xyz/ru/)
+
 ## Money
 
 <!-- - Лучшая дебетовая карта [tinkoff](https://partners.tinkoff.ru/click/c859a1f7-5d98-4566-aa39-d671c01b22d4?sub1=blog) -->
@@ -90,28 +118,6 @@ edit: false
 - Пополнение рекламных кабинетов [getuniq](https://getuniq.me/)
 - [Чат боты](https://direct.smartsender.com/referrals/de1df19d-5394-4fd8-b87d-f413133eba26)
 - Биржа копирайтинга [advego](https://advego.com/?ref=5xN7kWRgcH)
-
-## Crypto
-
-Если возникает потребность прогонать крипту, а иногда и поторговать, либо купить.
-
-### Биржи
-
-- [Dex биржа](https://dydx.exchange/r/WWPFCWVK)
-- [OKX](https://www.okx.com/join/7547847)
-- [Phemex](https://phemex.com/ru/register?referralCode=CPVJH5)
-- [Опционы](https://www.delta.exchange/?code=LYAYNF)
-
-### Обмен
-
-- P2P обмен крипты [bitpapa.com](https://bitpapa.com/?ref=YWE3NTVlYm)
-- [Dex агрегатор](https://app.1inch.io)
-
-### Tools
-
-- Мониторинг [coinglass.com](https://www.coinglass.com/)
-- Мониторинг [coinstats.app](https://coinstats.app/refer/CoinStatsAffiliate?utm_source=CoinStatsAffiliate&utm_medium=aff&utm_campaign=inf&utm_id=CoinStatsAffiliate&fpr=cretm22)
-- Портфель [zapper](https://zapper.xyz/ru/)
 
 ## Прочее
 

@@ -7,9 +7,8 @@ weight: 50
 image: "/images/web-server.png"
 categories: []
 tags:
-    - vpn
-    - docker
-    - webserver
+    - linux
+    - dev
 contributors: []
 pinned: false
 toc: true

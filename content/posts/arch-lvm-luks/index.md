@@ -7,7 +7,6 @@ weight: 50
 image: "/images/lvm-luks.png"
 tags:
     - archlinux
-    - crypt
 contributors: []
 pinned: false
 toc: true

@@ -7,7 +7,8 @@ weight: 50
 image: ""
 categories: []
 tags:
-    - firewall
+  - linux
+  - network
 contributors: []
 pinned: false
 toc: true

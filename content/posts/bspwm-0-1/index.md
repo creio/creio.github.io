@@ -8,7 +8,7 @@ weight: 50
 image: "/images/bspwm.png"
 categories: []
 tags:
-    - bspwm
+    - archlinux
 contributors: []
 pinned: false
 toc: true

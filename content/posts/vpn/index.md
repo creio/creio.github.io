@@ -7,7 +7,7 @@ weight: 50
 image: ""
 categories: []
 tags:
-    - vpn
+    - network
 contributors: []
 pinned: false
 toc: true

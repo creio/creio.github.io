@@ -7,8 +7,7 @@ weight: 50
 image: "/images/radarr.png"
 categories: []
 tags:
-    - docker
-    - mediaserver
+  - dev
 contributors: []
 pinned: false
 toc: true

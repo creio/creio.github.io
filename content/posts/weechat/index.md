@@ -5,7 +5,7 @@ description: ''
 image: /images/weechat.png
 date: 2022-05-12T19:15:06.000Z
 tags:
-  - config
+  - linux
   - network
 contributors: []
 draft: false

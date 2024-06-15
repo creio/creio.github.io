@@ -7,7 +7,7 @@ weight: 50
 image: "/images/urxvt-cfg.png"
 categories: []
 tags:
-    - terminal
+    - linux
 contributors: []
 pinned: false
 toc: true

@@ -8,7 +8,7 @@ image: "/images/nginx-onion.png"
 categories: []
 tags:
     - dev
-    - webserver
+    - linux
 contributors: []
 pinned: false
 toc: true

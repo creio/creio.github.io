@@ -7,8 +7,7 @@ weight: 50
 image: "/images/zsh-cfg.png"
 categories: []
 tags:
-    - config
-    - terminal
+  - linux
 contributors: []
 pinned: false
 toc: true

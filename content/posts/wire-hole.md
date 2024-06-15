@@ -5,7 +5,6 @@ description: ''
 image: ''
 date: 2022-12-17T19:18:35.000Z
 tags:
-  - vpn
   - network
 categories: []
 contributors: []
@@ -27,7 +26,7 @@ root
 * wireguard
 * pihole
 
-```
+```bash
 apt install wg...
 
 

@@ -60,6 +60,9 @@
   {{ $slice = $slice | append $toTopButton -}}
 {{ end -}}
 
+{{ $custom := resources.Get "js/custom.js" | js.Build -}}
+{{ $slice = $slice | append $custom -}}
+
 {{ $js := $slice | resources.Concat "main.js" -}}
 
 {{ if eq (hugo.Environment) "development" -}}

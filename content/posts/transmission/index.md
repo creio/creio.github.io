@@ -7,7 +7,8 @@ weight: 50
 image: "/images/transmission.png"
 categories: []
 tags:
-    - torrents
+  - dev
+  - linux
 contributors: []
 pinned: false
 toc: true
