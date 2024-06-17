@@ -237,7 +237,7 @@ kopia snapshot create \~/Documents
 kopia policy list
 kopia policy show --global
 
-# [https://kopia.io/docs/reference/command-line/common/policy-set/](https://kopia.io/docs/reference/command-line/common/policy-set/)
+[https://kopia.io/docs/reference/command-line/common/policy-set/](https://kopia.io/docs/reference/command-line/common/policy-set/)
 
 kopia policy set --add-ignore .png --add-ignore .zip \~/Documents
 kopia policy set --keep-annual 1 --global
@@ -252,7 +252,7 @@ mkdir \~/mnt/kopia
 
 kopia mount k2716fab9b1d1ef4336133b06c9d9a79c \~/mnt/kopia
 
-# gid run: id
+<!-- gid run: id -->
 
 sudo chown -R $USER:users \~/mnt/kopia
 sudo rsync -av \~/mnt/kopia/ \~/Documents
