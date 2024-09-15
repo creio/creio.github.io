@@ -59,7 +59,8 @@ Notcoin задал тренд на [проекты внутри Telegram](/posts
 
 Сервера, хостинги, домены, без этого нынче в сети нечего делать.
 
-- Недорогие сервера [netangels.ru](https://netangels.ru/?p_ref=u112835)
+- Топ провайдер серверов [https://pq.hosting](https://pq.hosting/?from=724778)
+- Недорогие сервера [https://netangels.ru](https://netangels.ru/?p_ref=u112835)
 - [REG.RU](https://www.reg.ru/), промокод: `8A39-8FCA-CDB4-F765` на скидку 5%.
 - VPS, хостинг [timeweb](https://timeweb.com/ru/?i=107375)
 - VPS [vultr](https://www.vultr.com/?ref=8949812-8H), бонус $100.
