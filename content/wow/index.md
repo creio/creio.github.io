@@ -17,6 +17,7 @@ edit: false
 - Инструмент планирования и не только [notion](https://affiliate.notion.so/bvd9teqbd89k), [notion ai](https://affiliate.notion.so/af7chwpjif8i-4y5a7)
 - Медиа редактор [canva](https://www.canva.com/)
 - Антидетект браузер [dolphin](https://anty.dolphin.ru.com/a/2352400)
+- [PQ VPN](https://pq.hosting/?from=724778)
 - Vpn [YouFast](https://t.me/YouFast_vpn_bot?start=131274622), как поднять [свой vpn](/posts/vpn)
 - [Глаз Бога](https://ref131274622.telegram.black), продвинутый бот пробива информации о людях в интернете.
 
@@ -30,6 +31,7 @@ Notcoin задал тренд на [проекты внутри Telegram](/posts
 
 ### Биржи
 
+- [bybit.com](https://www.bybit.com/invite?ref=YWVLZM)
 - [BingX](https://bingx.com/invite/QLGJ0Z)
 - [OKX](https://www.okx.com/join/7547847)
 - [Kucoin](https://www.kucoin.com/r/rf/QBA6MNZ6)
@@ -62,7 +64,8 @@ Notcoin задал тренд на [проекты внутри Telegram](/posts
 - Топ провайдер серверов [https://pq.hosting](https://pq.hosting/?from=724778)
 - Недорогие сервера [https://netangels.ru](https://netangels.ru/?p_ref=u112835)
 - [REG.RU](https://www.reg.ru/), промокод: `8A39-8FCA-CDB4-F765` на скидку 5%.
-- VPS, хостинг [timeweb](https://timeweb.com/ru/?i=107375)
+- [timeweb.cloud](https://timeweb.cloud/r/creio)
+- VPS, хостинг [timeweb.com](https://timeweb.com/ru/?i=107375)
 - VPS [vultr](https://www.vultr.com/?ref=8949812-8H), бонус $100.
 - Домены [internetbs](https://internetbs.net/ru/)
 - DNS и не только [cloudflare](https://www.cloudflare.com/)

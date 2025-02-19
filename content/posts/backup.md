@@ -58,9 +58,11 @@ rclone mount google:/ ~/data
 # umount
 fusermount -u ~/clouds/google
 
-# nano /etc/systemd/system/rclone-mount.service
+# gui
+rclone rcd --rc-web-gui
+
+# nano ~/.config/systemd/user/rclone-mount@.service
 ###
-# sudo systemctl enable rclone-mount@<rclone-remote>.service
 [Unit]
 Description=RClone multiple Mount Service
 Wants=network-online.target
@@ -70,20 +72,22 @@ After=network-online.target
 Type=notify
 KillMode=none
 RestartSec=5
-ExecStart=/usr/bin/rclone mount %i:/ /home/creio/clouds/%i
-    --config /home/creio/.config/rclone/rclone.conf
-    --uid 1000 --gid 985 --umask 002 --allow-other --allow-non-empty
+ExecStartPre=-/usr/bin/mkdir -p %h/clouds/%i
+ExecStart=/usr/bin/rclone mount %i:/ %h/clouds/%i
+    --config %h/.config/rclone/rclone.conf
+    --umask 002 --allow-other --allow-non-empty
     --vfs-cache-mode full --vfs-cache-max-age 24h --vfs-cache-max-size 4G
     --vfs-read-chunk-size 40M --vfs-read-chunk-size-limit 512M
     --dir-cache-time 12h --buffer-size 64M
-    --log-level INFO --log-file /home/creio/clouds/rclone.log
-ExecStop=/usr/bin/fusermount -uz /home/creio/clouds/%i
+    --log-level INFO --log-file %h/clouds/rclone.log
+ExecStop=/usr/bin/fusermount -uz %h/clouds/%i
 Restart=on-failure
-User=creio
-Group=users
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
+###
+# systemctl --user daemon-reload
+# systemctl --user enable --now rclone-mount@<rclone-remote>
 ```
 
 ```bash
