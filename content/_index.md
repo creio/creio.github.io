@@ -8,6 +8,6 @@ image: ""
 
 **Я Alex**, более 5 лет веду и поддерживаю свободный проект Ctlos Linux [@ctlos](https://t.me/ctlos). Иногда публикую видео на [YouTube](https://youtube.com/c/creioyt?sub_confirmation=1), подпишись.
 
-Сторонник открытого Интернета. Интересуюсь блокчейном и технологиями вокруг него, подписывайся на [tg канал о крипте](https://t.me/cvcstart).
+Сторонник открытого Интернета. Интересуюсь блокчейном и технологиями вокруг него.
 
 Keybase proof [keybase.io/cvc](https://keybase.io/cvc).
