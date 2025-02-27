@@ -21,16 +21,32 @@ edit: false
 - Vpn [YouFast](https://t.me/YouFast_vpn_bot?start=131274622), как поднять [свой vpn](/posts/vpn)
 - [Глаз Бога](https://ref131274622.telegram.black), продвинутый бот пробива информации о людях в интернете.
 
+## Web Dev
+- [Отличные премиум темы wordpress](https://wpshop.ru/?partner=28135)
+- DNS и не только [cloudflare](https://www.cloudflare.com/)
+- Панель управления [hestiacp](https://hestiacp.com/)
+- Панель управления [cloudpanel](https://www.cloudpanel.io/)
+- [Docker LAMP](http://devilbox.org/)
+
+## Host
+
+Сервера, хостинги, домены.
+
+- Топ провайдер серверов [https://pq.hosting](https://pq.hosting/?from=724778)
+- Недорогие сервера [https://netangels.ru](https://netangels.ru/?p_ref=u112835)
+- [REG.RU](https://www.reg.ru/), промокод: `8A39-8FCA-CDB4-F765` на скидку 5%.
+- [timeweb.cloud](https://timeweb.cloud/r/creio)
+- VPS, хостинг [timeweb.com](https://timeweb.com/ru/?i=107375)
+- VPS [vultr](https://www.vultr.com/?ref=8949812-8H), бонус $100.
+- Домены [internetbs.net](https://internetbs.net/ru/)
+
 ## Crypto
 
 Прогонать крипту, или получить drop.
 
-### Tap-to-earn
-
-Notcoin задал тренд на [проекты внутри Telegram](/posts/crypto-taps/).
-
 ### Биржи
 
+- [Crypto Bot](https://t.me/send?start=r-qpxv4) в telegram.
 - [bybit.com](https://www.bybit.com/invite?ref=YWVLZM)
 - [BingX](https://bingx.com/invite/QLGJ0Z)
 - [OKX](https://www.okx.com/join/7547847)
@@ -56,22 +72,6 @@ Notcoin задал тренд на [проекты внутри Telegram](/posts
 - Вирт карты, практически для любых пополнений [epn.net](https://epn.net/)
 - Платежная система [capitalist](https://capitalist.net/reg?from=6644498e31)
 - Рейтинг обменников [bestchange](https://www.bestchange.ru/?p=1282048)
-
-## Host
-
-Сервера, хостинги, домены, без этого нынче в сети нечего делать.
-
-- Топ провайдер серверов [https://pq.hosting](https://pq.hosting/?from=724778)
-- Недорогие сервера [https://netangels.ru](https://netangels.ru/?p_ref=u112835)
-- [REG.RU](https://www.reg.ru/), промокод: `8A39-8FCA-CDB4-F765` на скидку 5%.
-- [timeweb.cloud](https://timeweb.cloud/r/creio)
-- VPS, хостинг [timeweb.com](https://timeweb.com/ru/?i=107375)
-- VPS [vultr](https://www.vultr.com/?ref=8949812-8H), бонус $100.
-- Домены [internetbs](https://internetbs.net/ru/)
-- DNS и не только [cloudflare](https://www.cloudflare.com/)
-- Панель управления [hestiacp](https://hestiacp.com/)
-- Панель управления [cloudpanel](https://www.cloudpanel.io/)
-- [Docker LAMP](http://devilbox.org/)
 
 ## Affiliate marketing
 
@@ -125,7 +125,6 @@ Notcoin задал тренд на [проекты внутри Telegram](/posts
 
 ## Прочее
 
-- [AI ChatGPT telegram](https://t.me/gpt3_unlim_chatbot?start=MTMxMjc0NjIy)
 - [writesonic](https://writesonic.com/chat?ref=cretm21)
 - [Стоковые фото, видео](https://www.pexels.com/ru-ru/)
 - [Удаление фона](https://www.remove.bg/ru)
@@ -133,5 +132,3 @@ Notcoin задал тренд на [проекты внутри Telegram](/posts
 - [Sms activate](https://sms-activate.org/?ref=6815339)
 - Grizzly [Sms activate](https://grizzlysms.com/registration?r=241463)
 - Парсер [a-parser](https://a-parser.com/?ref=46723)
-
-> PS. Зарабатывают не на рефералах, а на компаниях которые это предоставляют.
