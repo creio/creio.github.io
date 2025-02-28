@@ -67,7 +67,7 @@ defaultImage = "default-image.png" # put in `./assets/images/`
 fillImage = "1270x740 Center" # normalize image size
 
 # Footer
-footer = "Powered by <a class=\"text-muted\" target=\"_blank\" rel=\"noopener\" href=\"https://www.netlify.com/\">Netlify</a>, <a class=\"text-muted\" target=\"_blank\" rel=\"noopener\" href=\"https://gohugo.io/\">Hugo</a>, fork <a class=\"text-muted\" target=\"_blank\" rel=\"noopener\" href=\"https://getdoks.org/\">Doks</a> | <a target=\"_blank\" rel=\"noopener\" href=\"https://cloud.umami.is/share/UrYcvYQYoCSNcee4/creio.ctlos.ru\">Analytics</a>"
+footer = "Powered by <a class=\"text-muted\" target=\"_blank\" rel=\"noopener\" href=\"https://www.netlify.com/\">Netlify</a>, <a class=\"text-muted\" target=\"_blank\" rel=\"noopener\" href=\"https://gohugo.io/\">Hugo</a>, fork <a class=\"text-muted\" target=\"_blank\" rel=\"noopener\" href=\"https://getdoks.org/\">Doks</a> | <a class=\"text-muted\" target=\"_blank\" rel=\"noopener\" href=\"https://cloud.umami.is/share/UrYcvYQYoCSNcee4/creio.ctlos.ru\">Analytics</a>"
 
 # Feed
 copyRight = "Copyright (c) @creio"
