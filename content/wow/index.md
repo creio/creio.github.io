@@ -23,10 +23,11 @@ edit: false
 
 ## Web Dev
 - [Отличные премиум темы wordpress](https://wpshop.ru/?partner=28135)
-- DNS и не только [cloudflare](https://www.cloudflare.com/)
-- Панель управления [hestiacp](https://hestiacp.com/)
-- Панель управления [cloudpanel](https://www.cloudpanel.io/)
-- [Docker LAMP](http://devilbox.org/)
+- DNS и не только [cloudflare](https://www.cloudflare.com)
+- [openpanel.com](https://openpanel.com)
+- Панель управления [hestiacp](https://hestiacp.com)
+- Панель управления [cloudpanel](https://www.cloudpanel.io)
+- [Docker LAMP](http://devilbox.org)
 
 ## Host
 
