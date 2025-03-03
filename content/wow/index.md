@@ -11,14 +11,18 @@ edit: false
 На данной странице собраны ссылки на ресурсы, которые я бы порекомендовал и которыми пользуюсь, или когда-то использовал.
 <!--more-->
 
-> Если вам нужно развернуть сервер, либо ПО(vpn, web server, cms), или что-то автоматизировать, но вы не знаете как, смело обращайтесь ко мне [@cretm](https://t.me/cretm). См. [проекты и услуги](/pr).
+> Если вам нужно развернуть сервер, либо ПО(vpn, web server, cms), или что-то автоматизировать, но вы не знаете как, смело обращайтесь ко мне [@cretm](https://t.me/cretm). См. [Услуги](/pr).
+
+- [Блокировщик рекламы AdGuard](https://adguard.info?aid=135431&source=creio), блокирует все виды рекламы.
+- [AdGuard VPN](https://adguard-vpn.cc?aid=135431&source=creio), 65+ локаций.
+- [AdGuard DNS](https://adguard-dns.io?aid=135431&source=creio)
+- [PQ VPN](https://pq.hosting/?from=724778)
+- Vpn [YouFast](https://t.me/YouFast_vpn_bot?start=131274622), как поднять [свой vpn](/posts/vpn)
 
 - Лучший менеджер паролей [bitwarden](https://bitwarden.com)
 - Инструмент планирования и не только [notion](https://affiliate.notion.so/bvd9teqbd89k), [notion ai](https://affiliate.notion.so/af7chwpjif8i-4y5a7)
 - Медиа редактор [canva](https://www.canva.com/)
 - Антидетект браузер [dolphin](https://anty.dolphin.ru.com/a/2352400)
-- [PQ VPN](https://pq.hosting/?from=724778)
-- Vpn [YouFast](https://t.me/YouFast_vpn_bot?start=131274622), как поднять [свой vpn](/posts/vpn)
 - [Глаз Бога](https://ref131274622.telegram.black), продвинутый бот пробива информации о людях в интернете.
 
 ## Web Dev

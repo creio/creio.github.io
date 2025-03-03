@@ -228,6 +228,29 @@ borg delete oc:dump
 borg export-tar /path/to/repo::Monday Monday.tar.gz --exclude '*.so'
 ```
 
+### Cron
+
+```bash
+sudo pacman -S cronie
+# ubuntu
+sudo apt install cron -y
+
+sudo EDITOR=nano crontab -e
+```
+
+Запуск каждый день в 02:11 с логированием и отправкой в телегу при ошибке
+
+```bash
+11 02 * * * /home/cretm/.bin/borg.sh > /home/cretm/borg.log 2>&1 || curl -so /dev/null -X POST https://api.telegram.org/bot111111:BBBBBBBBBBBBBBBB/sendMessage -d text="Error borg oc" -d chat_id=222222222
+```
+
+```bash
+# arch
+sudo systemctl enable --now cronie
+# ubuntu
+sudo systemctl enable --now cron
+```
+
 ## Kopia
 
 [https://kopia.io/docs/getting-started/](https://kopia.io/docs/getting-started/)
@@ -269,26 +292,3 @@ kopia repository status
 kopia snapshot delete --delete k2716fab9b1d1ef4336133b06c9d9a79c
 
 kopia repository disconnect
-
-## Cron
-
-```bash
-sudo pacman -S cronie
-# ubuntu
-sudo apt install cron -y
-
-sudo EDITOR=nano crontab -e
-```
-
-Запуск каждый день в 02:11 с логированием и отправкой в телегу при ошибке
-
-```bash
-11 02 * * * /home/cretm/.bin/borg.sh > /home/cretm/borg.log 2>&1 || curl -so /dev/null -X POST https://api.telegram.org/bot111111:BBBBBBBBBBBBBBBB/sendMessage -d text="Error borg oc" -d chat_id=222222222
-```
-
-```bash
-# arch
-sudo systemctl enable --now cronie
-# ubuntu
-sudo systemctl enable --now cron
-```
