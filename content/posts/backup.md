@@ -16,107 +16,6 @@ toc: true
 edit: false
 ---
 
-- [rclone.org/](https://rclone.org/)
-- [docs.usbx.me/books/rclone/page/rclone-vfs-and-mergerfs-setup](https://docs.usbx.me/books/rclone/page/rclone-vfs-and-mergerfs-setup)
-
-```shell
-# uncomment   user_allow_other
-sudo nano /etc/fuse.conf
-mkdir -p ~/clouds/google
-
-rclone config
-# uid gid
-id creio
-
-rclone mount google:/ ~/clouds/google --umask 002 --allow-other --allow-non-empty --vfs-cache-mode full --vfs-cache-max-age 24h --vfs-cache-max-size 4G --vfs-read-chunk-size 40M --vfs-read-chunk-size-limit 512M --dir-cache-time 12h --buffer-size 64M --log-level INFO --log-file ~/clouds/rclone.log --daemon
-
-rclone listremotes
-rclone lsd google:/
-rclone tree google:/
-rclone about google:/
-# clean trash
-rclone cleanup google:/ -q
-
-# -P/--progress
-rclone copy google:/ yandex:/ -P
-rclone copy google:/data ~/data -P
-rclone move ~/data google:/data --delete-empty-src-dirs
-
-rclone sync ~/data google:/data --create-empty-src-dirs
-rclone sync google:/ ~/data
-rclone sync yandex:/ google:/
-
-# --dry-run
-rclone delete – удалить только файлы, не трогая структуру смотрит на исключения;
-rclone purge – удалить весь контент минуя исключения;
-rclone dedupe – найти дубликаты файлов и удалить;
-rclone mkdir – создать каталог;
-rclone check – проверить, совпадают ли файлы источника и назначения;
-
-rclone mount google:/ ~/data
-
-# umount
-fusermount -u ~/clouds/google
-
-# gui
-rclone rcd --rc-web-gui
-
-# nano ~/.config/systemd/user/rclone-mount@.service
-###
-[Unit]
-Description=RClone multiple Mount Service
-Wants=network-online.target
-After=network-online.target
-
-[Service]
-Type=notify
-KillMode=none
-RestartSec=5
-ExecStartPre=-/usr/bin/mkdir -p %h/clouds/%i
-ExecStart=/usr/bin/rclone mount %i:/ %h/clouds/%i
-    --config %h/.config/rclone/rclone.conf
-    --umask 002 --allow-other --allow-non-empty
-    --vfs-cache-mode full --vfs-cache-max-age 24h --vfs-cache-max-size 4G
-    --vfs-read-chunk-size 40M --vfs-read-chunk-size-limit 512M
-    --dir-cache-time 12h --buffer-size 64M
-    --log-level INFO --log-file %h/clouds/rclone.log
-ExecStop=/usr/bin/fusermount -uz %h/clouds/%i
-Restart=on-failure
-
-[Install]
-WantedBy=default.target
-###
-# systemctl --user daemon-reload
-# systemctl --user enable --now rclone-mount@<rclone-remote>
-```
-
-```bash
-# yay -S mergerfs
-[Unit]
-Description = MergerFS Service
-After=rclone-mount.service
-# ConditionPathIsMountPoint=/home/creio/clouds/local
-RequiresMountsFor=/home/creio/clouds/local
-RequiresMountsFor=/home/creio/clouds/google
-
-[Service]
-Type=forking
-KillMode=process
-# ExecStart=/usr/bin/mergerfs
-#   -o use_ino,func.getattr=newest,category.action=all
-#   -o category.create=ff,cache.files=auto-full,threads=8
-#   /home/creio/clouds/local:/home/creio/clouds/google /home/creio/clouds/mergerfs
-ExecStart=/usr/bin/mergerfs
-    -o rw,use_ino,allow_other,func.getattr=newest,category.action=all
-    -o category.create=ff,cache.files=partial,dropcacheonclose=true
-    /home/creio/clouds/local:/home/creio/clouds/google /home/creio/clouds/mergerfs
-ExecStop=/usr/bin/fusermount -uz /home/creio/clouds/mergerfs
-Restart=on-failure
-
-[Install]
-WantedBy=default.target
-```
-
 ## Restic
 
 [restic.readthedocs.io/en/stable/](https://restic.readthedocs.io/en/stable/)
@@ -259,33 +158,31 @@ kopia repository create filesystem --path /media/files/kopia
 
 kopia repository connect filesystem --path /media/files/kopia
 
-kopia snapshot create \~/Documents
+kopia snapshot create ~/Documents
 
 kopia policy list
 kopia policy show --global
 
 [https://kopia.io/docs/reference/command-line/common/policy-set/](https://kopia.io/docs/reference/command-line/common/policy-set/)
 
-kopia policy set --add-ignore .png --add-ignore .zip \~/Documents
+kopia policy set --add-ignore .png --add-ignore .zip ~/Documents
 kopia policy set --keep-annual 1 --global
-kopia policy edit \~/Documents
+kopia policy edit ~/Documents
 kopia policy edit --global
 
-kopia snapshot list \~/Documents
+kopia snapshot list ~/Documents
 
 kopia diff kb9a8420bf6b8ea280d6637ad1adbd4c5 ke2e07d38a8a902ad07eda5d2d0d3025d
 
-mkdir \~/mnt/kopia
+mkdir ~/mnt/kopia
 
-kopia mount k2716fab9b1d1ef4336133b06c9d9a79c \~/mnt/kopia
+kopia mount k2716fab9b1d1ef4336133b06c9d9a79c ~/mnt/kopia
 
-<!-- gid run: id -->
+sudo chown -R $USER:users ~/mnt/kopia
+sudo rsync -av ~/mnt/kopia/ ~/Documents
 
-sudo chown -R $USER:users \~/mnt/kopia
-sudo rsync -av \~/mnt/kopia/ \~/Documents
-
-kopia snapshot restore k2716fab9b1d1ef4336133b06c9d9a79c \~/Documents
-kopia restore k2716fab9b1d1ef4336133b06c9d9a79c/path/file \~/path/file
+kopia snapshot restore k2716fab9b1d1ef4336133b06c9d9a79c ~/Documents
+kopia restore k2716fab9b1d1ef4336133b06c9d9a79c/path/file ~/path/file
 
 kopia repository status
 
