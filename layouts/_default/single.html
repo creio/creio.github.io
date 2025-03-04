@@ -28,13 +28,13 @@
             {{ end -}}
             {{ .Content }}
             {{ partial "main/share-buttons.html" . }}
-            <div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between">
-                {{ if .Site.Params.editPage -}}
-                {{ if ne .Params.edit false -}}
-                    {{ partial "main/edit-page.html" . }}
-                {{ end -}}
-                {{ end -}}
-            </div>
+            {{ if .Site.Params.editPage -}}
+              {{ if ne .Params.edit false -}}
+              <div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between">
+                {{ partial "main/edit-page.html" . }}
+              </div>
+              {{ end -}}
+            {{ end -}}
         </main>
     </div>
 {{ end }}
