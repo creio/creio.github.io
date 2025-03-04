@@ -16,8 +16,8 @@ toc: true
 edit: false
 ---
 
-* [rclone.org/](https://rclone.org/)
-* [docs.usbx.me/books/rclone/page/rclone-vfs-and-mergerfs-setup](https://docs.usbx.me/books/rclone/page/rclone-vfs-and-mergerfs-setup)
+- [rclone.org/](https://rclone.org/)
+- [docs.usbx.me/books/rclone/page/rclone-vfs-and-mergerfs-setup](https://docs.usbx.me/books/rclone/page/rclone-vfs-and-mergerfs-setup)
 
 ```shell
 # uncomment   user_allow_other

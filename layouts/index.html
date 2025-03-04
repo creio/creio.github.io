@@ -22,7 +22,7 @@
         <div class="col-16 col-md-12">
           <ul class="article-list list-unstyled">
             {{ $pinnedPost := where .Site.Pages "Params.pinned" "==" true | first 1 }}
-            {{ $latestPosts := where .Site.Pages "Params.pinned" "==" false | first 3 }}
+            {{ $latestPosts := where .Site.Pages "Params.pinned" "==" false | first 5 }}
             {{ range $pinnedPost }}
             <li class="mb-1">
               <a class="text-muted" href="{{ .Permalink }}">{{ .Title }}</a>

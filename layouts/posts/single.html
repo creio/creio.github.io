@@ -34,14 +34,20 @@
               {{ end -}}
             </div>
             {{ end -}}
+            {{ if ne .Params.donate false -}}
+              <blockquote>
+                Поддержать проект или купить мне кофе можно <a href="{{ "/pr/#donate" }}">тут</a>. Без него я начинаю путать терминал с телепортом. 🚀☕️
+              </blockquote>
+            {{ end -}}
+            {{ partial "main/share-buttons.html" . }}
             <div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between">
                 {{ if .Site.Params.lastMod -}}
                     {{ partial "main/last-modified.html" . }}
                 {{ end -}}
                 {{ if .Site.Params.editPage -}}
-                {{ if ne .Params.edit false -}}
-                    {{ partial "main/edit-page.html" . }}
-                {{ end -}}
+                  {{ if ne .Params.edit false -}}
+                      {{ partial "main/edit-page.html" . }}
+                  {{ end -}}
                 {{ end -}}
             </div>
             <!--
