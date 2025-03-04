@@ -76,10 +76,10 @@ rel  = "sitemap"
   includeNewer = true
   toLower = false
     [[related.indices]]
-    name = "categories"
+    name = "tags"
     weight = 100
     [[related.indices]]
-    name = "tags"
+    name = "categories"
     weight = 80
     [[related.indices]]
     name = "date"
