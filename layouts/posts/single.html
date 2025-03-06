@@ -39,7 +39,19 @@
                 Поддержать проект или купить мне кофе можно <a href="{{ "/pr/#donate" }}">тут</a>. Без него я начинаю путать терминал с телепортом. 🚀☕️
               </blockquote>
             {{ end -}}
-            {{ partial "main/share-buttons.html" . }}
+            {{ if not .Params.disableShare -}}
+            <div>
+              <a class="btn btn-primary my-2"
+                data-bs-toggle="collapse" href="#collapseExample" role="button"
+                aria-expanded="false" aria-controls="collapseExample"
+              >
+                Поделиться
+              </a>
+              <div class="collapse" id="collapseExample">
+                {{ partial "main/share-buttons.html" . }}
+              </div>
+            </div>
+            {{ end -}}
             <div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between">
                 {{ if .Site.Params.lastMod -}}
                     {{ partial "main/last-modified.html" . }}
