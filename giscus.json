@@ -1,0 +1,10 @@
+{
+  "origins": [
+    "https://creio.github.io",
+    "https://creio.ctlos.ru"
+  ],
+  "originsRegex": [
+    "http://localhost:[0-9]+"
+  ],
+  "defaultCommentOrder": "newest"
+}
