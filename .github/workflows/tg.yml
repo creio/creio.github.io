@@ -19,6 +19,12 @@ on:
   #   branches:
   #     - master
 
+name: Telegram Notification on Discussion Comment
+
+on:
+  discussion_comment:
+    types: [created]
+
 jobs:
   tg_alert:
     runs-on: ubuntu-latest
@@ -29,11 +35,11 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           message: |
-            🚀 Discussion!
-            Title: ${{ github.event.discussion_comment.discussion.title }}
-            Comment: ${{ github.event.discussion_comment.comment.html_url }}
-            User: ${{ github.event.discussion_comment.comment.user.url }}
-            Repository: ${{ github.repository }}
+            🚀 New Discussion Comment!
+            Title: ${{ github.event.discussion.title }}
+            Comment URL: ${{ github.event.comment.html_url }}
+            Author: ${{ github.event.comment.user.login }}
+            Body: ${{ github.event.comment.body }}
 
 # jobs:
 #   tg_alert:
