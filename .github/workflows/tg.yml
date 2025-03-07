@@ -28,23 +28,10 @@ jobs:
         with:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          format: html
-          disable_web_page_preview: true
+          format: markdown
           message: |
             🚀 New Discussion Comment!
             Title: ${{ github.event.discussion.title }}
-            Comment URL: ${{ github.event.comment.html_url }}
             Author: ${{ github.event.comment.user.login }}
+            Comment URL: ${{ github.event.comment.html_url }}
             Body: ${{ github.event.comment.body }}
-
-# jobs:
-#   tg_alert:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: tg alert
-#         uses: georgepstaylor/telegram-github-notifier@v0.0.1
-#         with:
-#           telegram_bot_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-#           telegram_chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
-#           gh_event: ${{ toJson(github.event) }}
-#           gh_actor: ${{ github.actor }}
