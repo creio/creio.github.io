@@ -36,4 +36,3 @@ jobs:
             Title: ${{ github.event.discussion.title }}
             Author: ${{ github.event.comment.user.login }}
             Comment URL: ${{ github.event.comment.html_url }}
-            Body: ${{ github.event.comment.body }}
