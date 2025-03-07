@@ -31,11 +31,9 @@ jobs:
           message: |
             🚀 New Discussion Comment!
             Title: ${{ github.event.discussion.title }}
+            Body: ${{ github.event.comment.body }}
             Comment URL: ${{ github.event.comment.html_url }}
             Author: ${{ github.event.comment.user.login }}
-            Body: ${{ github.event.comment.body }}
-            Actor: ${{ github.actor }}
-            Repository: ${{ github.repository }}
 
 # jobs:
 #   tg_alert:
