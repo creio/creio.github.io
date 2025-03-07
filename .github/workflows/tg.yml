@@ -33,6 +33,6 @@ jobs:
           message: |
             🚀 New Discussion Comment!
             Title: ${{ github.event.discussion.title }}
-            Comment URL: ${{ github.event.comment.html_url }}
+            Comment URL: [ссылка](${{ github.event.comment.html_url }})
             Author: ${{ github.event.comment.user.login }}
             Body: ${{ github.event.comment.body }}
