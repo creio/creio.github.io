@@ -19,7 +19,6 @@ on:
   #   branches:
   #     - master
 
-# Body: ${{ github.event.comment.body }}
 jobs:
   tg_alert:
     runs-on: ubuntu-latest
@@ -29,10 +28,11 @@ jobs:
         with:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          # parse-mode: markdown
+          parse-mode: markdown
           disable-web-page-preview: true
           message: |
             🚀 New Discussion Comment!
             Title: ${{ github.event.discussion.title }}
+            Comment URL: [ссылка](${{ github.event.comment.html_url }})
             Author: ${{ github.event.comment.user.login }}
-            Comment URL: ${{ github.event.comment.html_url }}
+            Body: ${{ github.event.comment.body }}
