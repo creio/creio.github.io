@@ -28,7 +28,6 @@ jobs:
         with:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          parse-mode: markdownv2
           disable-web-page-preview: true
           message: |
             🚀 New Discussion Comment!
