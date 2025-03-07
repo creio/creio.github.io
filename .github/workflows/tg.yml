@@ -28,16 +28,14 @@ jobs:
         with:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          format: markdown
+          format: html
+          disable_web_page_preview: true
           message: |
             🚀 New Discussion Comment!
             Title: ${{ github.event.discussion.title }}
             Comment URL: ${{ github.event.comment.html_url }}
             Author: ${{ github.event.comment.user.login }}
-            Body:
-            ```
-            ${{ github.event.comment.body }}
-            ```
+            Body: ${{ github.event.comment.body }}
 
 # jobs:
 #   tg_alert:
