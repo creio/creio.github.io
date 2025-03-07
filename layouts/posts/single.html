@@ -52,16 +52,16 @@
               </div>
             </div>
             {{ end -}}
-            <div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between">
-                {{ if .Site.Params.lastMod -}}
-                    {{ partial "main/last-modified.html" . }}
-                {{ end -}}
-                {{ if .Site.Params.editPage -}}
-                  {{ if ne .Params.edit false -}}
-                      {{ partial "main/edit-page.html" . }}
-                  {{ end -}}
-                {{ end -}}
-            </div>
+            {{ if or (.Site.Params.lastMod) (and (.Site.Params.editPage) (ne .Params.edit false)) -}}
+              <div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between">
+              {{ if .Site.Params.lastMod -}}
+                {{ partial "main/last-modified.html" . }}
+              {{ end -}}
+              {{ if and (.Site.Params.editPage) (ne .Params.edit false) -}}
+                {{ partial "main/edit-page.html" . }}
+              {{ end -}}
+              </div>
+            {{ end -}}
             <!--
             {{ if not .Site.Params.options.collapsibleSidebar -}}
                 {{ partial "main/docs-navigation.html" . }}
@@ -75,27 +75,31 @@
 {{ $related := .Site.RegularPages.Related . | first 3 }}
 {{ with $related }}
 <div class="related-posts">
-<div class="row justify-content-center">
-  <div class="col">
-    <div class="section-title h4">Похожие записи</div>
-  </div>
-</div>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
-  {{ range . }}
-  <div class="col d-flex align-items-stretch">
-    <div class="card" style="min-width: 100%;">
-      <div class="card-body">
-        <article>
-          <h2 class="h5"><a class="stretched-link text-body" href="{{ .RelPermalink }}">{{ .Params.title }}</a></h2>
-          <p>{{ .Params.excerpt | safeHTML }}</p>
-          {{ partial "main/blog-meta.html" . -}}
-        </article>
-      </div>
+  <div class="row justify-content-center">
+    <div class="col">
+      <div class="section-title h4">Похожие записи</div>
     </div>
   </div>
-  {{ end -}}
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
+    {{ range . }}
+    <div class="col d-flex align-items-stretch">
+      <div class="card" style="min-width: 100%;">
+        <div class="card-body">
+          <article>
+            <h2 class="h5"><a class="stretched-link text-body" href="{{ .RelPermalink }}">{{ .Params.title }}</a></h2>
+            <p>{{ .Params.excerpt | safeHTML }}</p>
+            {{ partial "main/blog-meta.html" . -}}
+          </article>
+        </div>
+      </div>
+    </div>
+    {{ end -}}
+  </div>
 </div>
-</div>
+{{ end -}}
+
+{{ if and (ne .Params.comments false) (ne .Site.Params.options.comments false) -}}
+  <div class="giscus my-5"></div>
 {{ end -}}
 
 {{ end }}
