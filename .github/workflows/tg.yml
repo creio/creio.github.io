@@ -29,9 +29,11 @@ jobs:
         with:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          format: markdown
+          parse-mode: markdown
+          disable-web-page-preview: true
           message: |
             🚀 New Discussion Comment!
             Title: ${{ github.event.discussion.title }}
             Author: ${{ github.event.comment.user.login }}
             Comment URL: ${{ github.event.comment.html_url }}
+            Body: ${{ github.event.comment.body }}
