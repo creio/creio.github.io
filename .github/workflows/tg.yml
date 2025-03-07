@@ -19,31 +19,30 @@ on:
   #   branches:
   #     - master
 
-# jobs:
-#   tg_alert:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Send Telegram Notification
-#         uses: cbrgm/telegram-github-action@v1
-#         with:
-#           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-#           to: ${{ secrets.TELEGRAM_CHAT_ID }}
-#           message: |
-#             🚀 Discussion!
-#             Title: ${{ github.event.discussion.title }}
-#             Comment: ${{ github.event.discussion.comments }}
-#             User: ${{ github.event.discussion.user.url }}
-#             Actor: ${{ github.actor }}
-#             Repository: ${{ github.repository }}
-
 jobs:
   tg_alert:
     runs-on: ubuntu-latest
     steps:
-      - name: tg alert
-        uses: georgepstaylor/telegram-github-notifier@v0.0.1
+      - name: Send Telegram Notification
+        uses: cbrgm/telegram-github-action@v1
         with:
-          telegram_bot_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          telegram_chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
-          gh_event: ${{ toJson(github.event) }}
-          gh_actor: ${{ github.actor }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          message: |
+            🚀 Discussion!
+            Title: ${{ github.event.discussion_comment.discussion.title }}
+            Comment: ${{ github.event.discussion_comment.comment.html_url }}
+            User: ${{ github.event.discussion_comment.comment.user.url }}
+            Repository: ${{ github.repository }}
+
+# jobs:
+#   tg_alert:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: tg alert
+#         uses: georgepstaylor/telegram-github-notifier@v0.0.1
+#         with:
+#           telegram_bot_token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+#           telegram_chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}
+#           gh_event: ${{ toJson(github.event) }}
+#           gh_actor: ${{ github.actor }}
