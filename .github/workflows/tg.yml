@@ -19,12 +19,6 @@ on:
   #   branches:
   #     - master
 
-name: Telegram Notification on Discussion Comment
-
-on:
-  discussion_comment:
-    types: [created]
-
 jobs:
   tg_alert:
     runs-on: ubuntu-latest
@@ -40,6 +34,8 @@ jobs:
             Comment URL: ${{ github.event.comment.html_url }}
             Author: ${{ github.event.comment.user.login }}
             Body: ${{ github.event.comment.body }}
+            Actor: ${{ github.actor }}
+            Repository: ${{ github.repository }}
 
 # jobs:
 #   tg_alert:
