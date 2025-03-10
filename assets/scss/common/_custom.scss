@@ -2,6 +2,10 @@
   justify-content: center;
 }
 
+.formkit-input {
+  max-width: 20rem;
+}
+
 .home-layout__hero {
   margin-block-end: 2rem;
   margin-block-start: 2rem;
@@ -67,7 +71,7 @@
 }
 
 .home-content {
-  margin: 6rem 0;
+  margin: 5rem 0;
 }
 
 .fixed-bottom {
@@ -84,8 +88,8 @@
   .home-layout__hero {
     grid-template-columns: repeat(28, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    margin-block-end: 6rem;
-    margin-block-start: 6rem;
+    margin-block-end: 5rem;
+    margin-block-start: 5rem;
   }
 
   .home-greeting {

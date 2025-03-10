@@ -1,0 +1,33 @@
+<iframe src="https://ctlos.substack.com/embed" width="480" height="100" frameborder="0" scrolling="no"></iframe>
+
+<style>
+  .csw-theme-custom button:hover {
+    background-color: #889bd9 !important;
+  }
+</style>
+<div class="subscribe d-flex flex-column mt-5">
+  <div class="subscribe-info mb-2">
+    <div class="display-5">Подпишись на рассылку</div>
+    <div class="text-muted d-flex flex-column">
+      <span>Получайте полезный контент о Linux и веб-разработке.</span>
+      {{/*<span>Получайте обновления о новых постах.</span>*/}}
+      <span>Никакого спама.</span>
+    </div>
+  </div>
+  <div id="custom-substack-embed" class=""></div>
+</div>
+<script>
+  window.CustomSubstackWidget = {
+    substackUrl: "ctlos.substack.com",
+    placeholder: "введите email",
+    buttonText: "ПОДПИСАТЬСЯ",
+    theme: "custom",
+    colors: {
+      primary: "#7b90d4",
+      input: "transparent",
+      email: "#b3b4b6",
+      text: "#151519",
+    }
+  };
+</script>
+<script src="https://substackapi.com/widget.js" async></script>

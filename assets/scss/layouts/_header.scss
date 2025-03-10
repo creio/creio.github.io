@@ -20,6 +20,7 @@ header {
 }
 
 .brand-logo {
+  font-weight: normal;
   align-items: center;
   display: flex;
   gap: 0.5rem;
@@ -177,7 +178,7 @@ button#doks-versions {
 }
 */
 
-@include media-breakpoint-up(md) {
+@include media-breakpoint-up(lg) {
   .navbar-brand {
     margin-right: 0.75rem !important;
   }
@@ -193,7 +194,7 @@ button#doks-versions {
   }
 
   .doks-search {
-    max-width: 20rem;
+    max-width: 14rem;
     margin-top: 0.125rem;
     margin-bottom: 0.125rem;
   }
@@ -207,12 +208,15 @@ button#doks-versions {
   */
 }
 
+.form-control {
+  border: 1px solid transparent;
+  background: $beige;
+}
+
 .form-control.is-search {
   padding-right: 4rem;
-  border: 1px solid transparent;
-  background: $gray-100;
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     width: calc(100% + 2rem);
   }
 
@@ -241,7 +245,7 @@ button#doks-versions {
   border: 1px solid $gray-300;
   border-radius: 0.25rem;
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     right: -1.4625rem;
   }
 

@@ -16,7 +16,7 @@
   </div>
 </div>
 <div class="page-links d-none d-md-block">
-  <div class="h6 text-uppercase">{{ i18n "on-this-page" }}</div>
+  <div class="h6 text-uppercase mb-2">{{ i18n "on-this-page" }}</div>
   {{ if eq .Site.Params.options.scrollSpy true -}}
     {{ .TableOfContents | replaceRE "<nav id=\"TableOfContents\">" "<nav id=\"toc\">" | safeHTML }}
   {{ else -}}

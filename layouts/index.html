@@ -8,40 +8,42 @@
     <div class="home-greeting">
       <h1 class="home-h1">Hi!</h1>
       {{- .Content -}}
-      <a class="btn btn-primary btn-lg px-4 mb-2" href="/wow/" role="button">КЛИК</a>
+      <a class="btn btn-primary btn-md px-5 mb-2" href="/wow/" role="button">КЛИК</a>
     </div>
   </div>
 
   <hr />
   <div class="home-content container-fluid px-0">
     <div class="row row-cols-2">
-        <div class="col-16 col-md-4">
-          <h2>Blog</h2>
-          <p>В основном о linux.</p>
+      <div class="col-16 col-md-4">
+        <h2>Blog</h2>
+        <p>В основном о linux.</p>
+      </div>
+      <div class="col-16 col-md-12">
+        <ul class="article-list list-unstyled">
+          {{ $pinnedPost := where .Site.Pages "Params.pinned" "==" true | first 1 }}
+          {{ $latestPosts := where .Site.Pages "Params.pinned" "==" false | first 5 }}
+          {{ range $pinnedPost }}
+          <li class="mb-1">
+            <a class="text-muted" href="{{ .Permalink }}">{{ .Title }}</a>
+            &mdash; {{ .PublishDate.Format "02 01 2006" }}
+          </li>
+          {{ end }}
+          {{ range $latestPosts }}
+          <li class="mb-1">
+            <a class="text-muted" href="{{ .Permalink }}">{{ .Title }}</a>
+            &mdash; {{ .PublishDate.Format "02 01 2006" }}
+          </li>
+          {{ end }}
+        </ul>
+        <div class="button-group mt-3">
+          <a class="btn btn-primary btn-md px-4 mb-2" href="/posts/" role="button">more posts</a>
         </div>
-        <div class="col-16 col-md-12">
-          <ul class="article-list list-unstyled">
-            {{ $pinnedPost := where .Site.Pages "Params.pinned" "==" true | first 1 }}
-            {{ $latestPosts := where .Site.Pages "Params.pinned" "==" false | first 5 }}
-            {{ range $pinnedPost }}
-            <li class="mb-1">
-              <a class="text-muted" href="{{ .Permalink }}">{{ .Title }}</a>
-              &mdash; {{ .PublishDate.Format "02 01 2006" }}
-            </li>
-            {{ end }}
-            {{ range $latestPosts }}
-            <li class="mb-1">
-              <a class="text-muted" href="{{ .Permalink }}">{{ .Title }}</a>
-              &mdash; {{ .PublishDate.Format "02 01 2006" }}
-            </li>
-            {{ end }}
-          </ul>
-          <div class="button-group mt-5">
-            <a class="btn btn-outline-primary btn-lg px-4 mb-2" href="/posts/" role="button">more posts</a>
-          </div>
-        </div>
+      </div>
     </div>
   </div>
+  <hr>
+  {{ partial "main/kit.html" . }}
 
 </section>
 {{ end }}

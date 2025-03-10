@@ -10,10 +10,6 @@
   max-width: calc(400px - 3rem);
   z-index: $zindex-dropdown;
 
-  @include media-breakpoint-up(md) {
-    right: -2rem;
-  }
-
   @include media-breakpoint-up(lg) {
     right: 0;
   }
@@ -70,6 +66,8 @@
   #suggestions {
     width: 31.125rem;
     max-width: 31.125rem;
+    max-height: 85vh;
+    overflow: auto;
   }
 
   #suggestions a {
