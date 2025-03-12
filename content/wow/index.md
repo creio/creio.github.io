@@ -13,6 +13,7 @@ edit: false
 
 > Если вам нужно развернуть сервер, либо ПО(vpn, web server, cms), или что-то автоматизировать, но вы не знаете как, смело обращайтесь ко мне [@cretm](https://t.me/cretm). См. [Услуги](/pr).
 
+- Vpn [hidemy.name](https://hidemy.name/ru/vpn/#tag=67d144badd8a0&bid=11110002&chan=creio_website), 47 стран.
 - [Блокировщик рекламы AdGuard](https://adguard.info?aid=135431&source=creio), блокирует все виды рекламы.
 - [AdGuard VPN](https://adguard-vpn.cc?aid=135431&source=creio), 65+ локаций.
 - [AdGuard DNS](https://adguard-dns.io?aid=135431&source=creio)
@@ -38,6 +39,10 @@ edit: false
 
 Сервера, хостинги, домены.
 
+- [aeza.net](https://aeza.net/?ref=681303), бонус +15% к пополнению.
+- [webhost1.ru](https://webhost1.ru/?r=158596), промокод: `7efd94-5` на скидку 5%.
+- [vdsina.com](https://www.vdsina.com/?partner=3it9g3zgx9), скидка 10%.
+- [ishosting.com](https://ishosting.com/affiliate/NTM3NSM2)
 - Топ провайдер серверов [https://pq.hosting](https://pq.hosting/?from=724778)
 - Недорогие сервера [https://netangels.ru](https://netangels.ru/?p_ref=u112835)
 - [REG.RU](https://www.reg.ru/), промокод: `8A39-8FCA-CDB4-F765` на скидку 5%.
