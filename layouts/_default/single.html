@@ -2,7 +2,8 @@
     <div class="row justify-content-center">
         {{ if ne .Params.toc false -}}
         <nav class="docs-toc{{ if ne .Site.Params.options.navbarSticky true }} docs-toc-top{{ end }} d-none d-md-block col-md-4" aria-label="Secondary navigation">
-            {{ partial "sidebar/docs-toc.html" . }}
+          <a href="https://aeza.net/?ref=681303" target="_blank" rel="nofollow noopener noreferrer" class="d-block"><img src="/images/aeza-sidebar.jpg" alt="promo"></a>
+          {{ partial "sidebar/docs-toc.html" . }}
         </nav>
         {{ end -}}
         {{ if .Params.toc -}}
