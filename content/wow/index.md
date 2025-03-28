@@ -80,6 +80,7 @@ edit: false
 ## Money
 
 <!-- - Лучшая дебетовая карта [tinkoff](https://partners.tinkoff.ru/click/c859a1f7-5d98-4566-aa39-d671c01b22d4?sub1=blog) -->
+- Вирт карты, для оплаты зарубежных сервисов [wanttopay.net](https://wanttopay.net/?pid=XH7ME), [telegram bot](https://t.me/WantToPayBot?start=w17851188--XH7ME)
 - Вирт карты, практически для любых пополнений [epn.net](https://epn.net/)
 - Платежная система [capitalist](https://capitalist.net/reg?from=6644498e31)
 - Рейтинг обменников [bestchange](https://www.bestchange.ru/?p=1282048)
