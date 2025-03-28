@@ -57,7 +57,7 @@ page_meta: false
 
 Помогите мне оставаться в тонусе и не засыпать на клавиатуре. Ваш донат — это как `Ctrl + Alt + Del` для моей продуктивности!
 
-- Boosty: https://boosty.to/cvc
+- Boosty: [boosty.to/cvc](https://boosty.to/cvc)
 
 ```bash
 # BTC
