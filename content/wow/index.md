@@ -30,9 +30,11 @@ edit: false
 
 - [Отличные премиум темы wordpress](https://wpshop.ru/?partner=28135)
 - DNS и не только [cloudflare](https://www.cloudflare.com)
-- [openpanel.com](https://openpanel.com)
-- Панель управления [hestiacp](https://hestiacp.com)
+- Панель управления [coolify.io](https://coolify.io/)
+- Панель управления [openpanel.com](https://openpanel.com)
 - Панель управления [cloudpanel](https://www.cloudpanel.io)
+- Панель управления [fastpanel](https://fastpanel.direct/)
+- Панель управления [hestiacp](https://hestiacp.com)
 - [Docker LAMP](http://devilbox.org)
 
 ## Host
