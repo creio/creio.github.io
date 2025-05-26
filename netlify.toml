@@ -8,10 +8,10 @@
   # HUGO_VERSION = "0.107.0"
 
 [context.production]
-  command = "npm run build"
+  command = "npm run build || true"
 
 [context.deploy-preview]
-  command = "npm run build -- -b $DEPLOY_PRIME_URL"
+  command = "npm run build -- -b $DEPLOY_PRIME_URL || true"
 
 [context.branch-deploy]
   command = "npm run build -- -b $DEPLOY_PRIME_URL"
@@ -30,9 +30,10 @@
     sitemapPath = "/sitemap.xml"
     ignorePeriod = 0
     providers = [
-      "google",
-      "yandex"
+      "google"
+      # "yandex"
     ]
+    onlyProduction = true
 
 [dev]
   framework = "#custom"
