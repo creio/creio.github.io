@@ -73,6 +73,6 @@
     "hugo": "0.107.0"
   },
   "dependencies": {
-    "tinacms": "^1.6.3"
+    "tinacms": "^2.7.7"
   }
 }
