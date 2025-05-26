@@ -3,8 +3,8 @@
   functions = "functions"
 
 [build.environment]
-  NODE_VERSION = "16.20.0"
-  NPM_VERSION = "8.19.4"
+  NODE_VERSION = "18.20.8"
+  NPM_VERSION = "10.8.2"
   # HUGO_VERSION = "0.107.0"
 
 [context.production]
@@ -30,8 +30,8 @@
     sitemapPath = "/sitemap.xml"
     ignorePeriod = 0
     providers = [
-      "google"
-      # "yandex"
+      "google",
+      "yandex"
     ]
     onlyProduction = true
 
