@@ -28,12 +28,11 @@
     [plugins.inputs]
     baseUrl = "https://creio.ctlos.ru"
     sitemapPath = "/sitemap.xml"
-    ignorePeriod = 0
+    ignorePeriod = 24
     providers = [
       "google",
       "yandex"
     ]
-    onlyProduction = true
 
 [dev]
   framework = "#custom"
