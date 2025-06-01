@@ -20,7 +20,7 @@ edit: true
 Video: [https://youtu.be/tXoCfyIWmwA](https://youtu.be/tXoCfyIWmwA)
 
 - 🔥 aeza бонус 15% к пополнению: [https://aeza.net/](https://aeza.net/?ref=681303)
-- 🔥 Приватная Email рассылка: [https://kit.ctlos.ru/subscribe](https://kit.ctlos.ru/subscribe?utm_source=notion)
+- 🔥 Приватная Email рассылка: [https://kit.ctlos.ru/subscribe](https://kit.ctlos.ru/subscribe?utm_source=ubuntu-docker)
 
 ## 1. Создание пользователя
 
