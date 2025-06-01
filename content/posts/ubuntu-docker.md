@@ -17,7 +17,7 @@ edit: true
 
 В этой статье описан процесс настройки сервера Ubuntu 24.04 с акцентом на безопасность, установку Docker, Nginx и удобного инструмента управления контейнерами Dockge. Мы создадим пользователя, настроим SSH, установим необходимые сервисы и обеспечим базовую защиту сети.
 
-https://youtu.be/tXoCfyIWmwA
+Video: [https://youtu.be/tXoCfyIWmwA](https://youtu.be/tXoCfyIWmwA)
 
 - 🔥 aeza бонус 15% к пополнению: [https://aeza.net/](https://aeza.net/?ref=681303)
 - 🔥 Приватная Email рассылка: [https://kit.ctlos.ru/subscribe](https://kit.ctlos.ru/subscribe?utm_source=notion)
@@ -29,7 +29,7 @@ https://youtu.be/tXoCfyIWmwA
 ```bash
 groupadd ubuntu
 
-useradd -m -g ubuntu -G "adm,users,sudo" -s /bin/bash ubuntu
+useradd -m -g ubuntu -G "adm,users,sudo,docker" -s /bin/bash ubuntu
 
 passwd ubuntu
 
