@@ -78,7 +78,7 @@
               </li>
             {{ else if $isExternal }}
               <li class="nav-item">
-                <a class="nav-link{{ if $class }} btn btn-primary btn-sm px-2 py-0 d-md-inline d-lg-block{{else}} py-1 ps-0{{ end }}"
+                <a class="{{ if $class }}btn btn-primary btn-md px-2 py-0 d-md-inline d-lg-block{{else}} py-1 ps-0{{ end }}"
                    href="{{ .URL | relLangURL }}"
                    {{ if $isExternal }} target="_blank" rel="nofollow noopener noreferrer"{{ end }}>
                   {{ .Name }}
