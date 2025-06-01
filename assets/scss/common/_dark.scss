@@ -65,8 +65,8 @@ $navbar-dark-active-color:          $link-color-dark;
   color: $brand;
 }
 
+// [data-dark-mode] body .btn-outline-primary:focus,
 [data-dark-mode] body .btn-outline-primary:hover,
-[data-dark-mode] body .btn-outline-primary:focus,
 [data-dark-mode] body .btn-outline-primary:active {
   color: $body-bg-dark;
 }
