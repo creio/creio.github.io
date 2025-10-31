@@ -20,17 +20,19 @@ edit: false
 - [PQ VPN](https://pq.hosting/?from=724778)
 - Vpn [YouFast](https://t.me/YouFast_vpn_bot?start=131274622), как поднять [свой vpn](/posts/vpn)
 
+---
+
 - Лучший менеджер паролей [bitwarden](https://bitwarden.com)
 - Инструмент планирования и не только [notion](https://affiliate.notion.so/bvd9teqbd89k), [notion ai](https://affiliate.notion.so/af7chwpjif8i-4y5a7)
 - Медиа редактор [canva](https://www.canva.com/)
 - Антидетект браузер [dolphin](https://anty.dolphin.ru.com/a/2352400)
-- [Глаз Бога](https://ref131274622.telegram.black), продвинутый бот пробива информации о людях в интернете.
 
 ## Web Dev
 
 - [Отличные премиум темы wordpress](https://wpshop.ru/?partner=28135)
 - DNS и не только [cloudflare](https://www.cloudflare.com)
 - Панель управления [coolify.io](https://coolify.io/)
+- Панель управления [dokploy.com](https://dokploy.com/)
 - Панель управления [openpanel.com](https://openpanel.com)
 - Панель управления [cloudpanel](https://www.cloudpanel.io)
 - Панель управления [fastpanel](https://fastpanel.direct/)
