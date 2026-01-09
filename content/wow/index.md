@@ -66,7 +66,7 @@ edit: false
 - [BingX](https://bingx.com/invite/QLGJ0Z)
 - [OKX](https://www.okx.com/join/7547847)
 - [Kucoin](https://www.kucoin.com/r/rf/QBA6MNZ6)
-- [Dex биржа](https://dydx.exchange/r/WWPFCWVK)
+<!-- - [Dex биржа](https://dydx.exchange/r/WWPFCWVK) -->
 - [Phemex](https://phemex.com/ru/register?referralCode=CPVJH5)
 - [Опционы](https://www.delta.exchange/?code=LYAYNF)
 
