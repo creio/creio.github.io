@@ -38,7 +38,7 @@
     "@babel/preset-env": "^7.18",
     "@fullhuman/postcss-purgecss": "^4.1",
     "@hyas/images": "^0.2.2",
-    "@tinacms/cli": "^1.5.45",
+    "@tinacms/cli": "^2.0.7",
     "@types/node": "^20.12.12",
     "auto-changelog": "^2.4",
     "autoprefixer": "^10.4",
