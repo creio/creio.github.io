@@ -1,5 +1,5 @@
 .footer {
-  border-top: 1px solid $gray-200;
+  border-top: 1px solid var(--border);
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -9,12 +9,12 @@
 }
 
 .footer li {
-  font-size: $font-size-sm;
+  font-size: 0.875rem;
   margin-bottom: 0;
 }
 
 @include media-breakpoint-up(md) {
   .footer li {
-    font-size: $font-size-base;
+    font-size: 1rem;
   }
 }

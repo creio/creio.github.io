@@ -27,12 +27,12 @@
 }
 
 #suggestions a:focus {
-  background: $gray-100;
+  background: var(--secondary);
   outline: 0;
 }
 
 #suggestions div:not(:first-child) {
-  border-top: 1px dashed $gray-200;
+  border-top: 1px dashed var(--border);
 }
 
 #suggestions div:first-child {
@@ -44,22 +44,22 @@
 }
 
 #suggestions a:hover {
-  background: $gray-200;
+  background: var(--secondary);
 }
 
 #suggestions span {
   display: flex;
-  font-size: $font-size-base;
+  font-size: 1rem;
 }
 
 .suggestion__title {
-  font-weight: $headings-font-weight;
-  color: $black;
+  font-weight: 700;
+  color: var(--foreground);
 }
 
 .suggestion__description,
 .suggestion__no-results {
-  color: $gray-700;
+  color: var(--muted-foreground);
 }
 
 @include media-breakpoint-up(lg) {
@@ -77,7 +77,7 @@
   .suggestion__title {
     width: 9rem;
     padding-right: 1rem;
-    border-right: 1px solid $gray-200;
+    border-right: 1px solid var(--border);
     display: inline-block;
     text-align: right;
   }

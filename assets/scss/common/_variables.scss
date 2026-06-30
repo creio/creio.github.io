@@ -5,8 +5,8 @@
   --code-font-family: "JetBrains Mono", monospace;
 
   // Type scale: /* @link https://utopia.fyi/type/calculator?c=320,16,1.25,1240,20,1.333,7,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
-  --size-step--2: clamp(0.64rem, 0.6179rem + 0.1104vw, 0.7035rem);
-  --size-step--1: clamp(0.8rem, 0.7521rem + 0.2395vw, 0.9377rem);
+  --size-step-minus-2: clamp(0.64rem, 0.6179rem + 0.1104vw, 0.7035rem);
+  --size-step-minus-1: clamp(0.8rem, 0.7521rem + 0.2395vw, 0.9377rem);
   --size-step-0: clamp(1rem, 0.913rem + 0.4348vw, 1.25rem);
   --size-step-1: clamp(1.25rem, 1.1052rem + 0.7239vw, 1.6663rem);
   --size-step-2: clamp(1.5625rem, 1.3334rem + 1.1454vw, 2.2211rem);
@@ -117,7 +117,7 @@ $pink-500: #d32e9d;
 
 $primary: $brand;
 
-$secondary: $gray-700;
+$secondary-dark: $gray-700;
 
 $color-btn-bg: $brand;
 $color-btn-border: darken($brand, 5%);

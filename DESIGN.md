@@ -295,7 +295,7 @@ Minimal shadow usage. Hierarchy through borders and background shifts.
 
 ### Quick Color Reference
 
-```
+```text
 Primary:        #4b64b4 (light) / #5a74ca (dark)
 Background:     #ffffff (light) / #141419 (dark)
 Foreground:     #0a0a0a (light) / #b3b4b6 (dark)

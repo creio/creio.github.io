@@ -9,7 +9,7 @@ Based on Ascetic by (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
   overflow-x: auto;
   padding: 1.25rem 1.5rem;
   background: var(--color-beige);
-  color: $body-color;
+  color: var(--foreground);
 }
 
 .hljs-string,
@@ -45,8 +45,8 @@ Based on Ascetic by (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
 }
 
 [data-dark-mode] body .hljs {
-  background: $body-overlay-dark;
-  color: $body-color-dark;
+  background: var(--secondary);
+  color: var(--foreground);
 }
 
 [data-dark-mode] body .hljs-string,

@@ -1,10 +1,12 @@
 # Meta Data for SEO
 
 ## Homepage
-title = "creio"
+title = "Alex Creio"
 titleSeparator = "|"
 titleAddition = "I’m root :)"
 description = "Personal website & blog. Web developer & linux enthusiast."
+name = "Alex Creio"
+email = ""
 
 languageTag = "ru"
 

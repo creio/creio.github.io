@@ -60,7 +60,7 @@ header {
 .navbar {
   z-index: 1000;
   background-color: var(--navbar-bg);
-  border-bottom: 1px solid $gray-200;
+  border-bottom: 1px solid var(--border);
 
   /*
   margin-top: 4px;
@@ -132,12 +132,12 @@ button#doks-versions {
 }
 
 .offcanvas .nav-link {
-  color: $body-color;
+  color: var(--foreground);
 }
 
 .doks-subnavbar {
   background-color: var(--navbar-bg);
-  border-bottom: 1px solid $gray-200;
+  border-bottom: 1px solid var(--border);
 }
 
 .doks-subnavbar .nav-link {
@@ -150,11 +150,11 @@ button#doks-versions {
 
 .offcanvas .nav-link:hover,
 .offcanvas .nav-link:focus {
-  color: $link-color;
+  color: var(--primary);
 }
 
 .offcanvas .nav-link.active {
-  color: $link-color;
+  color: var(--primary);
 }
 
 .header-bar {
@@ -226,7 +226,7 @@ button#doks-versions {
 }
 
 .form-control.is-search:focus {
-  border: 1px solid $primary;
+  border: 1px solid var(--primary);
 }
 
 .doks-search::after {
@@ -239,10 +239,10 @@ button#doks-versions {
   height: 1.5rem;
   padding-right: 0.3125rem;
   padding-left: 0.3125rem;
-  font-size: $font-size-base * 0.75;
-  color: $gray-700;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
   content: "Ctrl + /";
-  border: 1px solid $gray-300;
+  border: 1px solid var(--border);
   border-radius: var(--radius);
 
   @include media-breakpoint-up(lg) {
@@ -339,7 +339,7 @@ button#doks-versions {
 }
 
 .algolia-autocomplete .algolia-docsearch-suggestion--category-header {
-  color: $black;
+  color: var(--foreground);
 }
 
 .algolia-autocomplete .algolia-docsearch-suggestion--title {
@@ -378,7 +378,7 @@ button#doks-versions {
 }
 
 .navbar .menu-icon .navicon {
-  background: $navbar-light-color;
+  background: var(--foreground);
   display: block;
   height: 2px;
   position: relative;
@@ -388,7 +388,7 @@ button#doks-versions {
 
 .navbar .menu-icon .navicon::before,
 .navbar .menu-icon .navicon::after {
-  background: $navbar-light-color;
+  background: var(--foreground);
   content: "";
   display: block;
   height: 100%;
@@ -482,19 +482,19 @@ button#doks-versions {
 .navbar-light .navbar-brand,
 .navbar-light .navbar-brand:hover,
 .navbar-light .navbar-brand:active {
-  color: $body-color;
+  color: var(--foreground);
 }
 
 .navbar-light .navbar-nav .active .nav-link {
-  color: $primary;
+  color: var(--primary);
 }
 
 .dropdown-divider {
-  border-top: 1px dashed $gray-200;
+  border-top: 1px dashed var(--border);
 }
 
 .dropdown-item:hover {
-  background: $gray-100;
+  background: var(--secondary);
 }
 
 .dropdown-item:active {

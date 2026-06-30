@@ -4,8 +4,8 @@
   functions = "functions"
 
 [build.environment]
-  NODE_VERSION = "18.20.8"
-  NPM_VERSION = "10.8.2"
+  NODE_VERSION = "24.25.0"
+  NPM_VERSION = "11.12.1"
   # HUGO_VERSION = "0.107.0"
 
 [context.production]
@@ -27,7 +27,7 @@
   package = "netlify-plugin-submit-sitemap"
 
     [plugins.inputs]
-    baseUrl = "https://creio.ctlos.ru"
+    baseUrl = "https://creio.github.io"
     sitemapPath = "/sitemap.xml"
     ignorePeriod = 24
     providers = [

@@ -57,7 +57,7 @@ h1 {
 }
 
 .offcanvas-header {
-  border-bottom: 1px solid $gray-300;
+  border-bottom: 1px solid var(--border);
   padding-top: 1.0625rem;
   padding-bottom: 0.8125rem;
 }
@@ -160,7 +160,7 @@ body {
 @include media-breakpoint-up(lg) {
   .docs-sidebar {
     order: 0;
-    border-right: 1px solid $gray-200;
+    border-right: 1px solid var(--border);
   }
 
   @supports ((position:-webkit-sticky) or (position:sticky)) {
@@ -235,14 +235,14 @@ body {
 }
 
 .docs-navigation {
-  border-top: 1px solid $gray-200;
+  border-top: 1px solid var(--border);
   margin-top: 2rem;
   margin-bottom: 0;
   padding-top: 2rem;
 }
 
 .docs-navigation a {
-  font-size: $font-size-base * 0.9;
+  font-size: 0.9rem;
 }
 
 @include media-breakpoint-up(lg) {
@@ -251,7 +251,7 @@ body {
   }
 
   .docs-navigation a {
-    font-size: $font-size-base;
+    font-size: 1rem;
   }
 }
 
@@ -267,7 +267,7 @@ body {
 }
 
 #toc a.active {
-  color: $primary;
+  color: var(--primary);
   font-weight: 500;
 }
 
@@ -276,7 +276,7 @@ body {
 }
 
 .bg-dots {
-  background-image: radial-gradient($gray-300 15%, transparent 15%);
+  background-image: radial-gradient(var(--border) 15%, transparent 15%);
   background-position: 0 0;
   background-size: 1rem 1rem;
   -webkit-mask: linear-gradient(to top, #fff, transparent);
@@ -308,7 +308,7 @@ body {
 }
 
 .katex {
-  font-size: $font-size-md;
+  font-size: 1.125rem;
 }
 
 .card-bar {
@@ -318,7 +318,7 @@ body {
 }
 
 .modal-backdrop {
-  background-color: #fff;
+  background-color: var(--background);
 }
 
 .modal-backdrop.show {
@@ -328,5 +328,15 @@ body {
 @include media-breakpoint-up(md) {
   .modal-backdrop.show {
     opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

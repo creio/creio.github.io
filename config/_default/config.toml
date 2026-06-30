@@ -9,7 +9,7 @@ paginate = 12
 rssLimit = 10
 
 summaryLength = 25
-languageCode = 'ru'
+locale = 'ru'
 
 # Multilingual
 defaultContentLanguage = "ru"
@@ -50,9 +50,9 @@ noUgly = true
 rel  = "sitemap"
 
 [caches]
-  [caches.getjson]
-    dir = ":cacheDir/:project"
+  [caches.modules]
     maxAge = "10s"
+    dir = ":cacheDir/:project"
 
 [sitemap]
   changefreq = "weekly"
@@ -65,7 +65,7 @@ rel  = "sitemap"
   tag = "tags"
 
 [permalinks]
-  posts = "/posts/:slugorfilename/"
+  posts = "/posts/:slugorcontentbasename/"
 # docs = "/docs/1.0/:sections[1:]/:title/"
 
 [minify.tdewolff.html]
@@ -88,7 +88,7 @@ rel  = "sitemap"
 [module]
   [module.hugoVersion]
     extended = true
-    min = "0.80.0"
+    min = "0.103.0"
     max = ""
   [[module.mounts]]
     source = "assets"

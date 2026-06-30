@@ -1,23 +1,7 @@
 /** Theme variables */
 
-// Source: https://material.io/design/color/dark-theme.html
-
-$body-bg-dark: $gray-900;
-$body-overlay-dark: darken($body-bg-dark, 2.5%);
-
-/*
-var(--border-color): darken($body-bg-dark, 2.5%);
-*/
-$body-color-dark: $gray-300;
-$dots-dark: darken($body-color-dark, 50%);
-
-$link-color-dark: $brand;
+// Only $button-color-dark is kept — required for Bootstrap button-variant() mixin
 $button-color-dark: lighten($brand, 1%);
-$focus-color-dark: lighten($link-color-dark, 2.5%);
-
-$navbar-dark-color:                 $body-color-dark;
-$navbar-dark-hover-color:           $link-color-dark;
-$navbar-dark-active-color:          $link-color-dark;
 
 /** Theme styles */
 
@@ -26,7 +10,6 @@ $navbar-dark-active-color:          $link-color-dark;
   --border: #25252c;
   --input: #25252c;
   --navbar-bg: rgba(20, 20, 25, 0.95);
-
   --background: var(--color-dark);
   --foreground: var(--color-light-t);
   --card: var(--color-dark);
@@ -71,6 +54,31 @@ $navbar-dark-active-color:          $link-color-dark;
   color: var(--primary);
 }
 
+[data-dark-mode] body .alert-primary a {
+  color: var(--background);
+}
+
+[data-dark-mode] body .alert-doks {
+  background: var(--secondary);
+  color: var(--foreground);
+}
+
+[data-dark-mode] body .alert-doks a {
+  color: var(--primary);
+}
+
+[data-dark-mode] body .page-links a {
+  color: var(--foreground);
+}
+
+[data-dark-mode] body .btn-toggle-nav a {
+  color: var(--foreground);
+}
+
+[data-dark-mode] body .showcase-meta a {
+  color: var(--foreground);
+}
+
 [data-dark-mode] body .content a {
   text-decoration: underline;
   text-decoration-style: dashed;
@@ -85,6 +93,11 @@ $navbar-dark-active-color:          $link-color-dark;
   text-decoration: none;
 }
 
+[data-dark-mode] body .showcase-meta a:hover,
+[data-dark-mode] body .showcase-meta a:focus {
+  color: var(--primary);
+}
+
 [data-dark-mode] body a.text-body {
   color: var(--foreground) !important;
 }
@@ -92,19 +105,19 @@ $navbar-dark-active-color:          $link-color-dark;
 [data-dark-mode] body .btn-primary {
   @include button-variant($button-color-dark, $button-color-dark);
 
-  color: $white !important;
+  color: var(--foreground) !important;
 }
 
 [data-dark-mode] body .btn-outline-primary {
   @include button-outline-variant($button-color-dark, $button-color-dark);
 
-  color: $brand;
+  color: var(--primary);
 }
 
 // [data-dark-mode] body .btn-outline-primary:focus,
 [data-dark-mode] body .btn-outline-primary:hover,
 [data-dark-mode] body .btn-outline-primary:active {
-  color: $body-bg-dark;
+  color: var(--background);
 }
 
 [data-dark-mode] body .btn-doks-light {
@@ -186,36 +199,6 @@ $navbar-dark-active-color:          $link-color-dark;
 
 [data-dark-mode] body .navbar-light .navbar-text {
   color: var(--foreground);
-}
-
-[data-dark-mode] body .alert-primary a {
-  color: var(--background);
-}
-
-[data-dark-mode] body .alert-doks {
-  background: var(--secondary);
-  color: var(--foreground);
-}
-
-[data-dark-mode] body .alert-doks a {
-  color: var(--primary);
-}
-
-[data-dark-mode] body .page-links a {
-  color: var(--foreground);
-}
-
-[data-dark-mode] body .btn-toggle-nav a {
-  color: var(--foreground);
-}
-
-[data-dark-mode] body .showcase-meta a {
-  color: var(--foreground);
-}
-
-[data-dark-mode] body .showcase-meta a:hover,
-[data-dark-mode] body .showcase-meta a:focus {
-  color: var(--primary);
 }
 
 [data-dark-mode] body .docs-link:hover,
@@ -318,7 +301,7 @@ $navbar-dark-active-color:          $link-color-dark;
 
 [data-dark-mode] body .form-control {
   color: var(--foreground);
-  background: var(--color-dark);
+  background: var(--background);
   border: 1px solid transparent;
 }
 
@@ -428,7 +411,7 @@ $navbar-dark-active-color:          $link-color-dark;
 }
 
 [data-dark-mode] body .card:hover {
-  background: var(--color-dark-bg-border);
+  background: var(--secondary);
 }
 
 [data-dark-mode] body .card.bg-light {
