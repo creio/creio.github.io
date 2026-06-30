@@ -41,7 +41,6 @@
   --transition-slow-ease: all 1.25s cubic-bezier(0.62, 0.16, 0.13, 1.01);
 
   // Color palette
-  // --color-dark: #141419;
   --color-dark: #0a0a0a;
   --color-dark-t: #16161c;
   --color-dark-bg-border: #0b0b0d;
@@ -75,8 +74,6 @@
   --primary-foreground: #fff;
   --secondary: #f5f5f5;
   --secondary-foreground: #18181b;
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
   --accent: #f4f4f5;
   --accent-foreground: #18181b;
   --destructive: #ef4444;
@@ -89,13 +86,17 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) * 1.4);
   --radius-2xl: calc(var(--radius) * 1.8);
+  --muted-foreground: #71717a;
+  --muted: 240, 240, 240;
 
   // Semantic aliases
   --color-beige: #fbf7f0;
-  --navbar-bg: rgba(255, 255, 255, 0.95);
+  --navbar-bg: rgba(var(--muted), 0.95);
 }
 
 // Color system
+$brand:    #4b64b4;
+$beige:    #fbf7f0;
 
 $white:    #fff;
 $gray-100: #f8f9fa;
@@ -108,9 +109,6 @@ $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #151519;
 $black:    #1d2d35;
-$beige:    #fbf7f0;
-
-$brand:    #4b64b4;
 
 $blue-300: #77a5d3;
 $pink-500: #d32e9d;

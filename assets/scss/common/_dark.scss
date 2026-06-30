@@ -1,10 +1,11 @@
-/** Theme variables */
+/**
+ * Dark mode — CSS custom properties handle most color switching.
+ * Only rules that need explicit overrides (mixins, SVG icons, hover states) stay here.
+ */
 
-// Only $button-color-dark is kept — required for Bootstrap button-variant() mixin
 $button-color-dark: lighten($brand, 1%);
 
-/** Theme styles */
-
+// === CSS Custom Properties ===
 [data-dark-mode] {
   --destructive: #dc2626;
   --border: #25252c;
@@ -26,6 +27,7 @@ $button-color-dark: lighten($brand, 1%);
   --color-beige: var(--color-dark-secondary);
 }
 
+// === Base ===
 [data-dark-mode] body {
   background: var(--background);
   color: var(--foreground);
@@ -35,23 +37,41 @@ $button-color-dark: lighten($brand, 1%);
   background: var(--background) !important;
 }
 
-[data-dark-mode] h1,
-[data-dark-mode] h2,
-[data-dark-mode] h3,
-[data-dark-mode] h4,
-[data-dark-mode] h5,
-[data-dark-mode] h6,
-[data-dark-mode] .h1,
-[data-dark-mode] .h2,
-[data-dark-mode] .h3,
-[data-dark-mode] .h4,
-[data-dark-mode] .h5,
-[data-dark-mode] .h6 {
-  color: var(--foreground);
-}
-
+// === Links ===
 [data-dark-mode] body a {
   color: var(--primary);
+}
+
+[data-dark-mode] body a.text-body {
+  color: var(--foreground) !important;
+}
+
+// === Content links ===
+[data-dark-mode] body .content a {
+  text-decoration: underline;
+  text-decoration-style: dashed;
+}
+
+[data-dark-mode] body .card-list a {
+  text-decoration: none;
+}
+
+[data-dark-mode] body .content a:hover {
+  text-decoration-style: solid;
+}
+
+[data-dark-mode] body .btn-light:hover {
+  background-color: var(--color-dark);
+}
+
+[data-dark-mode] body .content a.btn {
+  text-decoration: none;
+}
+
+// === Alerts ===
+[data-dark-mode] body .alert-primary {
+  background: var(--primary);
+  color: var(--background);
 }
 
 [data-dark-mode] body .alert-primary a {
@@ -67,45 +87,11 @@ $button-color-dark: lighten($brand, 1%);
   color: var(--primary);
 }
 
-[data-dark-mode] body .page-links a {
-  color: var(--foreground);
-}
-
-[data-dark-mode] body .btn-toggle-nav a {
-  color: var(--foreground);
-}
-
-[data-dark-mode] body .showcase-meta a {
-  color: var(--foreground);
-}
-
-[data-dark-mode] body .content a {
-  text-decoration: underline;
-  text-decoration-style: dashed;
-}
-
-[data-dark-mode] body .content a:hover {
-  text-decoration: underline;
-  text-decoration-style: solid;
-}
-
-[data-dark-mode] body .content a.btn {
-  text-decoration: none;
-}
-
-[data-dark-mode] body .showcase-meta a:hover,
-[data-dark-mode] body .showcase-meta a:focus {
-  color: var(--primary);
-}
-
-[data-dark-mode] body a.text-body {
-  color: var(--foreground) !important;
-}
-
+// === Buttons — Bootstrap mixins (can't use CSS vars) ===
 [data-dark-mode] body .btn-primary {
   @include button-variant($button-color-dark, $button-color-dark);
 
-  color: var(--foreground) !important;
+  color: var(--foreground);
 }
 
 [data-dark-mode] body .btn-outline-primary {
@@ -114,7 +100,6 @@ $button-color-dark: lighten($brand, 1%);
   color: var(--primary);
 }
 
-// [data-dark-mode] body .btn-outline-primary:focus,
 [data-dark-mode] body .btn-outline-primary:hover,
 [data-dark-mode] body .btn-outline-primary:active {
   color: var(--background);
@@ -131,11 +116,7 @@ $button-color-dark: lighten($brand, 1%);
 }
 
 [data-dark-mode] body .btn-menu svg {
-  color: var(--foreground);
-}
-
-[data-dark-mode] body .doks-sidebar-toggle {
-  color: var(--foreground);
+  color: $body-color-dark;
 }
 
 [data-dark-mode] body .btn-menu:hover,
@@ -144,41 +125,34 @@ $button-color-dark: lighten($brand, 1%);
   background: var(--secondary);
 }
 
-/*
-[data-dark-mode] body .dropdown-menu {
-  @extend .dropdown-menu-dark;
+[data-dark-mode] body .btn-toggle::before {
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%28222, 226, 230, 0.75%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
 }
-*/
 
+[data-dark-mode] body .btn-toggle-nav a:hover,
+[data-dark-mode] body .btn-toggle-nav a:focus,
+[data-dark-mode] body .btn-toggle-nav a.active {
+  color: var(--primary);
+}
+
+[data-dark-mode] body .content .btn-link {
+  color: var(--primary);
+}
+
+[data-dark-mode] body .navbar .btn-link:hover,
+[data-dark-mode] body .navbar .btn-link:active {
+  color: var(--primary);
+}
+
+// === Navbar ===
 [data-dark-mode] body .navbar,
 [data-dark-mode] body .doks-subnavbar {
   background-color: var(--navbar-bg);
   border-bottom: 1px solid var(--border);
 }
 
-[data-dark-mode] body .offcanvas-header {
-  border-bottom: 1px solid var(--border);
-}
-
-[data-dark-mode] body .offcanvas .nav-link {
-  color: var(--foreground);
-}
-
-[data-dark-mode] body .offcanvas .nav-link:hover,
-[data-dark-mode] body .offcanvas .nav-link:focus {
-  color: var(--primary);
-}
-
-[data-dark-mode] body .offcanvas .nav-link.active {
-  color: var(--primary);
-}
-
-[data-dark-mode] body .navbar-light .navbar-brand {
+[data-dark-mode] body .navbar-brand {
   color: var(--foreground) !important;
-}
-
-[data-dark-mode] body .navbar-light .navbar-nav .nav-link {
-  color: var(--foreground);
 }
 
 [data-dark-mode] body .navbar-light .navbar-nav .nav-link:hover,
@@ -197,108 +171,52 @@ $button-color-dark: lighten($brand, 1%);
   color: var(--primary);
 }
 
-[data-dark-mode] body .navbar-light .navbar-text {
-  color: var(--foreground);
-}
-
-[data-dark-mode] body .docs-link:hover,
-[data-dark-mode] body .docs-link.active,
-[data-dark-mode] body .page-links a:hover {
-  text-decoration: none;
-  color: var(--primary);
-}
-
-[data-dark-mode] body .btn-toggle {
-  color: var(--foreground);
-  background-color: transparent;
-  border: 0;
-}
-
-[data-dark-mode] body .btn-toggle:hover,
-[data-dark-mode] body .btn-toggle:focus {
-  color: var(--foreground);
-}
-
-[data-dark-mode] body .btn-toggle::before {
-  width: 1.25em;
-  line-height: 0;
-  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%28222, 226, 230, 0.75%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
-  transition: var(--transition);
-  transform-origin: 0.5em 50%;
-  margin-bottom: 0.125rem;
-}
-
-[data-dark-mode] body .btn-toggle[aria-expanded="true"] {
-  color: var(--foreground);
-}
-
-[data-dark-mode] body .btn-toggle[aria-expanded="true"]::before {
-  transform: rotate(90deg);
-}
-
-[data-dark-mode] body .btn-toggle-nav a:hover,
-[data-dark-mode] body .btn-toggle-nav a:focus {
-  color: var(--primary);
-}
-
-[data-dark-mode] body .btn-toggle-nav a.active {
-  color: var(--primary);
-}
-
-[data-dark-mode] body .navbar-light .navbar-text a {
-  color: var(--primary);
-}
-
-[data-dark-mode] body .docs-links h3.sidebar-link a,
-[data-dark-mode] body .page-links h3.sidebar-link a {
-  color: var(--foreground);
-}
-
 [data-dark-mode] body .navbar-light .navbar-text a:hover,
 [data-dark-mode] body .navbar-light .navbar-text a:focus {
   color: var(--primary);
 }
 
-[data-dark-mode] body .navbar .btn-link {
-  color: var(--foreground);
+[data-dark-mode] body .menu-icon .navicon,
+[data-dark-mode] body .menu-icon .navicon::before,
+[data-dark-mode] body .menu-icon .navicon::after {
+  background: var(--foreground);
 }
 
-[data-dark-mode] body .content .btn-link {
+[data-dark-mode] body .logo-light {
+  display: none !important;
+}
+
+[data-dark-mode] body .logo-dark {
+  display: inline-block !important;
+}
+
+// === Offcanvas ===
+[data-dark-mode] body .offcanvas {
+  background-color: var(--background);
+}
+
+[data-dark-mode] body .offcanvas-header {
+  border-bottom: 1px solid var(--border);
+}
+
+[data-dark-mode] body .offcanvas .nav-link:hover,
+[data-dark-mode] body .offcanvas .nav-link:focus,
+[data-dark-mode] body .offcanvas .nav-link.active {
   color: var(--primary);
 }
 
-[data-dark-mode] body .content .btn-link:hover {
-  color: var(--primary);
+[data-dark-mode] body .btn-close {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNkZWUyZTYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLXgiPjxsaW5lIHgxPSIxOCIgeTE9IjYiIHgyPSI2IiB5Mj0iMTgiPjwvbGluZT48bGluZSB4MT0iNiIgeTE9IjYiIHgyPSIxOCIgeTI9IjE4Ij48L2xpbmU+PC9zdmc+");
+  background-size: 1.5rem;
 }
 
-[data-dark-mode] body .content img[src^="https://latex.codecogs.com/svg.latex"] {
-  filter: invert(1);
-}
-
-[data-dark-mode] body .navbar .btn-link:hover {
-  color: var(--primary);
-}
-
-[data-dark-mode] body .navbar .btn-link:active {
-  color: var(--primary);
-}
-
+// === Search ===
 [data-dark-mode] body .doks-search::after {
   color: var(--muted-foreground);
   border: 1px solid var(--border);
 }
 
-[data-dark-mode] body .text-dark {
-  color: var(--foreground) !important;
-}
-
-/*
-[data-dark-mode] body .navbar-form::after {
-  color: $gray-600;
-  border: 1px solid $gray-800;
-}
-*/
-
+// === Forms ===
 [data-dark-mode] body .form-control {
   color: var(--foreground);
   background: var(--background);
@@ -314,207 +232,6 @@ $button-color-dark: lighten($brand, 1%);
   opacity: 1;
 }
 
-[data-dark-mode] body .border-top {
-  border-top: 1px solid var(--border) !important;
-}
-
-@include media-breakpoint-up(lg) {
-  [data-dark-mode] body .docs-sidebar {
-    order: 0;
-    border-right: 1px solid var(--border);
-  }
-}
-
-[data-dark-mode] body .docs-navigation {
-  border-top: 1px solid var(--border);
-}
-
-[data-dark-mode] body pre code::-webkit-scrollbar-thumb {
-  background: var(--muted-foreground);
-}
-
-[data-dark-mode] body code:not(.hljs) {
-  background: var(--secondary);
-  color: var(--foreground);
-}
-
-[data-dark-mode] body pre code:hover {
-  scrollbar-width: thin;
-  scrollbar-color: var(--border) transparent;
-}
-
-[data-dark-mode] body pre code::-webkit-scrollbar-thumb:hover {
-  background: var(--muted-foreground);
-}
-
-[data-dark-mode] body blockquote {
-  border-left: 3px solid var(--border);
-  background-color: var(--secondary);
-}
-
-[data-dark-mode] body .footer {
-  border-top: 1px solid var(--border);
-}
-
-[data-dark-mode] body .docs-links,
-[data-dark-mode] body .docs-toc {
-  scrollbar-width: thin;
-  scrollbar-color: var(--background) var(--background);
-}
-
-[data-dark-mode] body .docs-links::-webkit-scrollbar,
-[data-dark-mode] body .docs-toc::-webkit-scrollbar {
-  width: 5px;
-}
-
-[data-dark-mode] body .docs-links::-webkit-scrollbar-track,
-[data-dark-mode] body .docs-toc::-webkit-scrollbar-track {
-  background: var(--background);
-}
-
-[data-dark-mode] body .docs-links::-webkit-scrollbar-thumb,
-[data-dark-mode] body .docs-toc::-webkit-scrollbar-thumb {
-  background: var(--background);
-}
-
-[data-dark-mode] body .docs-links:hover,
-[data-dark-mode] body .docs-toc:hover {
-  scrollbar-width: thin;
-  scrollbar-color: var(--border) var(--background);
-}
-
-[data-dark-mode] body .docs-links:hover::-webkit-scrollbar-thumb,
-[data-dark-mode] body .docs-toc:hover::-webkit-scrollbar-thumb {
-  background: var(--border);
-}
-
-[data-dark-mode] body .docs-links::-webkit-scrollbar-thumb:hover,
-[data-dark-mode] body .docs-toc::-webkit-scrollbar-thumb:hover {
-  background: var(--border);
-}
-
-[data-dark-mode] body .docs-links h3:not(:first-child) {
-  border-top: 1px solid var(--border);
-}
-
-[data-dark-mode] body a.docs-link {
-  color: var(--foreground);
-}
-
-[data-dark-mode] body .page-links li:not(:first-child) {
-  border-top: 1px dashed var(--border);
-}
-
-[data-dark-mode] body .card {
-  background: var(--card);
-  border: 1px solid var(--border);
-}
-
-[data-dark-mode] body .card:hover {
-  background: var(--secondary);
-}
-
-[data-dark-mode] body .card.bg-light {
-  background: var(--secondary) !important;
-}
-
-[data-dark-mode] body .navbar .menu-icon .navicon {
-  background: var(--foreground);
-}
-
-[data-dark-mode] body .navbar .menu-icon .navicon::before,
-[data-dark-mode] body .navbar .menu-icon .navicon::after {
-  background: var(--foreground);
-}
-
-[data-dark-mode] body .logo-light {
-  display: none !important;
-}
-
-[data-dark-mode] body .logo-dark {
-  display: inline-block !important;
-}
-
-[data-dark-mode] body .bg-light {
-  background: var(--secondary) !important;
-}
-
-[data-dark-mode] body .bg-dots {
-  background-image: radial-gradient(var(--muted-foreground) 15%, transparent 15%);
-}
-
-[data-dark-mode] body .text-muted {
-  color: var(--muted-foreground) !important;
-}
-
-[data-dark-mode] body .alert-primary {
-  background: var(--primary);
-  color: var(--background);
-}
-
-[data-dark-mode] body .figure-caption {
-  color: var(--foreground);
-}
-
-[data-dark-mode] body table {
-  @extend .table-dark;
-}
-
-[data-dark-mode] body .copy-status::after {
-  content: "Copy";
-  display: block;
-  color: var(--foreground);
-}
-
-[data-dark-mode] body .copy-status:hover::after {
-  content: "Copy";
-  display: block;
-  color: var(--primary);
-}
-
-[data-dark-mode] body .copy-status:focus::after,
-[data-dark-mode] body .copy-status:active::after {
-  content: "Copied";
-  display: block;
-  color: var(--primary);
-}
-
-/*
-[data-dark-mode] body .dropdown-toggle:focus,
-[data-dark-mode] body .doks-sidebar-toggle:focus {
-  box-shadow: 0 0 0 0.2rem $focus-color-dark;
-}
-*/
-
-[data-dark-mode] body .offcanvas {
-  background-color: var(--background);
-}
-
-[data-dark-mode] body .btn-close {
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNkZWUyZTYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLXgiPjxsaW5lIHgxPSIxOCIgeTE9IjYiIHgyPSI2IiB5Mj0iMTgiPjwvbGluZT48bGluZSB4MT0iNiIgeTE9IjYiIHgyPSIxOCIgeTI9IjE4Ij48L2xpbmU+PC9zdmc+");
-  background-size: 1.5rem;
-}
-
-@include media-breakpoint-up(md) {
-  [data-dark-mode] body .alert-dismissible .btn-close {
-    background-size: 1.25rem;
-  }
-}
-
-/*
-[data-dark-mode] body .btn-close:focus {
-  box-shadow: 0 0 0 0.2rem $focus-color-dark;
-}
-*/
-
-[data-dark-mode] .dropdown-item {
-  color: var(--background);
-}
-
-[data-dark-mode] body hr.text-black-50 {
-  color: var(--muted-foreground) !important;
-}
-
 [data-dark-mode] body .email-form .form-control {
   background: var(--secondary);
   border: 1px solid transparent;
@@ -524,6 +241,143 @@ $button-color-dark: lighten($brand, 1%);
   border: 1px solid var(--primary);
 }
 
+// === Sidebar ===
+@include media-breakpoint-up(lg) {
+  [data-dark-mode] body .docs-sidebar {
+    order: 0;
+    border-right: 1px solid var(--border);
+  }
+}
+
+[data-dark-mode] body .docs-links h3:not(:first-child),
+[data-dark-mode] body .docs-navigation,
+[data-dark-mode] body .border-top,
+[data-dark-mode] body .footer {
+  border-color: var(--border) !important;
+}
+
+[data-dark-mode] body .docs-link:hover,
+[data-dark-mode] body .docs-link.active,
+[data-dark-mode] body .page-links a:hover {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+[data-dark-mode] body .page-links li:not(:first-child) {
+  border-top: 1px dashed var(--border);
+}
+
+// === Scrollbar ===
+[data-dark-mode] body .docs-links,
+[data-dark-mode] body .docs-toc {
+  scrollbar-width: thin;
+  scrollbar-color: var(--background) var(--background);
+}
+
+[data-dark-mode] body pre code::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+}
+
+[data-dark-mode] body pre code:hover {
+  scrollbar-color: var(--border) transparent;
+}
+
+// === Code ===
+[data-dark-mode] body code:not(.hljs) {
+  background: var(--secondary);
+  color: var(--foreground);
+}
+
+[data-dark-mode] body blockquote {
+  border-left: 3px solid var(--border);
+  background-color: var(--secondary);
+}
+
+[data-dark-mode] body img[src^="https://latex.codecogs.com/svg.latex"] {
+  filter: invert(1);
+}
+
+// === Cards ===
+[data-dark-mode] body .card {
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+[data-dark-mode] body .card.bg-light,
+[data-dark-mode] body .bg-light {
+  background: var(--secondary) !important;
+}
+
+// === Utility ===
+[data-dark-mode] body .text-dark,
+[data-dark-mode] body .text-muted,
+[data-dark-mode] body .figure-caption {
+  color: var(--foreground) !important;
+}
+
+[data-dark-mode] body .text-muted {
+  color: var(--muted-foreground) !important;
+}
+
+[data-dark-mode] body hr.text-black-50 {
+  color: var(--muted-foreground) !important;
+}
+
+[data-dark-mode] body .bg-dots {
+  background-image: radial-gradient(var(--muted-foreground) 15%, transparent 15%);
+}
+
+// === Table ===
+[data-dark-mode] body table {
+  @extend .table-dark;
+}
+
+// === Copy button ===
+[data-dark-mode] body .copy-status::after {
+  content: "Copy";
+  color: var(--foreground);
+}
+
+[data-dark-mode] body .copy-status:hover::after,
+[data-dark-mode] body .copy-status:focus::after,
+[data-dark-mode] body .copy-status:active::after {
+  color: var(--primary);
+}
+
+[data-dark-mode] body .copy-status:focus::after,
+[data-dark-mode] body .copy-status:active::after {
+  content: "Copied";
+}
+
+// === Dropdown ===
+[data-dark-mode] .dropdown-item {
+  color: var(--background);
+}
+
+[data-dark-mode] .dropdown-menu {
+  background: var(--secondary);
+}
+
+[data-dark-mode] .dropdown-menu .dropdown-item {
+  color: var(--foreground);
+}
+
+[data-dark-mode] .dropdown-menu .dropdown-item:hover,
+[data-dark-mode] .dropdown-menu .dropdown-item.active,
+[data-dark-mode] .dropdown-menu .dropdown-item:focus {
+  color: var(--primary);
+  background: var(--background);
+}
+
+[data-dark-mode] .doks-navbar .dropdown-item.current,
+[data-dark-mode] .doks-subnavbar .dropdown-item.current {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23dee2e6' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem top 0.6rem;
+  background-size: 0.75rem 0.75rem;
+}
+
+// === Pagination ===
 [data-dark-mode] .page-link {
   color: var(--primary);
   background-color: transparent;
@@ -533,11 +387,6 @@ $button-color-dark: lighten($brand, 1%);
     color: var(--background);
     background-color: var(--foreground);
     border-color: var(--foreground);
-  }
-
-  &:focus {
-    color: var(--background);
-    background-color: var(--foreground);
   }
 }
 
@@ -557,33 +406,7 @@ $button-color-dark: lighten($brand, 1%);
   }
 }
 
-[data-dark-mode] .dropdown-menu {
-  background: var(--secondary);
-}
-
-[data-dark-mode] .dropdown-menu .dropdown-item {
-  color: var(--foreground);
-}
-
-[data-dark-mode] .dropdown-menu .dropdown-item:hover {
-  color: var(--primary);
-  background: var(--background);
-}
-
-[data-dark-mode] .dropdown-menu .dropdown-item.active,
-[data-dark-mode] .dropdown-menu .dropdown-item:focus {
-  color: var(--primary);
-  background: var(--background);
-}
-
-[data-dark-mode] .doks-navbar .dropdown-item.current,
-[data-dark-mode] .doks-subnavbar .dropdown-item.current {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23dee2e6' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 1rem top 0.6rem;
-  background-size: 0.75rem 0.75rem;
-}
-
+// === Details ===
 [data-dark-mode] details {
   border: 1px solid var(--border);
 }
@@ -604,6 +427,7 @@ $button-color-dark: lighten($brand, 1%);
   color: var(--primary);
 }
 
+// === Btn light ===
 [data-dark-mode] .btn-light {
   color: var(--primary);
   background: var(--secondary);

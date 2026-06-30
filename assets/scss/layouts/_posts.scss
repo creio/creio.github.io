@@ -22,6 +22,10 @@
   transform: scale(1.025);
 }
 
+.posts.list .card:hover {
+  background: var(--secondary);
+}
+
 .contributors.list .card.card-terms:hover,
 .categories.list .card.card-terms:hover,
 .tags.list .card.card-terms:hover {
