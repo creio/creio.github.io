@@ -20,7 +20,7 @@
 
 [[main]]
   name = "Подписка"
-  url = "https://kit.ctlos.ru/subscribe?utm_source=creio"
+  url = "https://creio.kit.com/subscribe?utm_source=creio"
   target = true
   weight = 45
   [main.params]

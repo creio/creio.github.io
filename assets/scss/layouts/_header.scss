@@ -59,7 +59,7 @@ header {
 
 .navbar {
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: var(--navbar-bg);
   border-bottom: 1px solid $gray-200;
 
   /*
@@ -136,7 +136,7 @@ button#doks-versions {
 }
 
 .doks-subnavbar {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: var(--navbar-bg);
   border-bottom: 1px solid $gray-200;
 }
 
@@ -210,7 +210,7 @@ button#doks-versions {
 
 .form-control {
   border: 1px solid transparent;
-  background: $beige;
+  background: var(--color-beige);
 }
 
 .form-control.is-search {
@@ -243,7 +243,7 @@ button#doks-versions {
   color: $gray-700;
   content: "Ctrl + /";
   border: 1px solid $gray-300;
-  border-radius: 0.25rem;
+  border-radius: var(--radius);
 
   @include media-breakpoint-up(lg) {
     right: -1.4625rem;
@@ -318,7 +318,7 @@ button#doks-versions {
 }
 
 .algolia-autocomplete .ds-dropdown-menu {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
 }
 
 @include media-breakpoint-down(sm) {

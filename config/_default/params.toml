@@ -13,11 +13,11 @@ yandexVerification = "16c69e69225504ca"
 ## Open Graph
 images = ["cover.png"]
 ogLocale = "ru_RU"
-domainTLD = "creio.ctlos.ru"
+domainTLD = "creio.github.io"
 titleHome = "creio"
 
 ## Twitter Cards
-twitterSite = "https://creio.ctlos.ru"
+twitterSite = "https://creio.github.io"
 twitterCreator = "creio"
 
 ## JSON-LD
@@ -44,7 +44,7 @@ schemaSection = "blog"
 siteLinksSearchBox = false
 
 ## Chrome Browser
-themeColor = "#778DD3"
+themeColor = "#4b64b4"
 
 # Images
 quality = 85
@@ -67,7 +67,7 @@ defaultImage = "default-image.png" # put in `./assets/images/`
 fillImage = "1270x740 Center" # normalize image size
 
 # Footer
-footer = "Powered by <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://www.netlify.com/\">Netlify</a>, <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://gohugo.io/\">Hugo</a>, fork <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://getdoks.org/\">Doks</a> | <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://cloud.umami.is/share/UrYcvYQYoCSNcee4/creio.ctlos.ru\">Analytics</a>"
+footer = "Powered by <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://www.netlify.com/\">Netlify</a>, <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://gohugo.io/\">Hugo</a>, fork <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://getdoks.org/\">Doks</a> | <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://cloud.umami.is/share/UrYcvYQYoCSNcee4/creio.github.io\">Analytics</a>"
 
 # Feed
 copyRight = "Copyright (c) @creio"

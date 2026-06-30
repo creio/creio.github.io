@@ -1,4 +1,4 @@
-baseurl = "https://creio.ctlos.ru/"
+baseurl = "https://creio.github.io/"
 canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true

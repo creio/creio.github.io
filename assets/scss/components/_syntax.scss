@@ -8,7 +8,7 @@ Based on Ascetic by (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
   display: block;
   overflow-x: auto;
   padding: 1.25rem 1.5rem;
-  background: $beige;
+  background: var(--color-beige);
   color: $body-color;
 }
 
@@ -28,7 +28,7 @@ Based on Ascetic by (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
 .hljs-quote,
 .hljs-meta,
 .hljs-deletion {
-  color: #888;
+  color: var(--muted-foreground);
 }
 
 .hljs-keyword,

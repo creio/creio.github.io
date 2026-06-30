@@ -60,14 +60,14 @@
   background-color: var(--color-primary);
   mix-blend-mode: screen;
   z-index: 1;
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .home .figure::before {
   background: var(--gradient-1);
   mix-blend-mode: normal;
   z-index: 3;
-  opacity: 0.5;
+  opacity: 0;
 }
 
 .home-content {
@@ -88,20 +88,20 @@
   .home-layout__hero {
     grid-template-columns: repeat(28, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    margin-block-end: 5rem;
-    margin-block-start: 5rem;
+    margin-block-start: 4rem;
+    margin-block-end: 4rem;
   }
 
   .home-greeting {
     align-self: center;
-    grid-column: 2/span 10;
+    grid-column: 2/span 13;
     grid-row: 1/span 3;
   }
 
   .profile-image {
     align-self: center;
     aspect-ratio: 1/1.125;
-    grid-column: 14/-2;
+    grid-column: 16/-2;
     grid-row: 1/span 3;
   }
 }

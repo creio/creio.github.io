@@ -8,7 +8,7 @@ samp {
 }
 
 code {
-  background: $beige;
+  background: var(--color-beige);
   color: $black;
   padding: 0.25rem 0.5rem;
 }
@@ -40,7 +40,7 @@ pre code {
   }
 
   pre {
-    margin: 2rem -1.5rem;
+    margin: 2rem -1rem;
   }
 }
 

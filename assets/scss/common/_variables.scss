@@ -4,17 +4,17 @@
   --serif-font-family: georgia, serif;
   --code-font-family: "JetBrains Mono", monospace;
 
-  // Type scale: https://utopia.fyi/type/calculator/?c=320,16,1.25,1240,22,1.333,7,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
-  // --size-step--2: clamp(0.64rem, calc(0.59rem + 0.23vw), 0.77rem);
-  // --size-step--1: clamp(0.8rem, calc(0.72rem + 0.4vw), 1.03rem);
-  --size-step-0: clamp(1rem, calc(0.87rem + 0.65vw), 1.38rem);
-  --size-step-1: clamp(1.25rem, calc(1.05rem + 1.01vw), 1.83rem);
-  --size-step-2: clamp(1.56rem, calc(1.26rem + 1.53vw), 2.44rem);
-  --size-step-3: clamp(1.95rem, calc(1.5rem + 2.27vw), 3.26rem);
-  --size-step-4: clamp(2.44rem, calc(1.78rem + 3.3vw), 4.34rem);
-  --size-step-5: clamp(3.05rem, calc(2.1rem + 4.76vw), 5.79rem);
-  --size-step-6: clamp(3.82rem, calc(2.46rem + 6.78vw), 7.71rem);
-  --size-step-7: clamp(4.77rem, calc(2.85rem + 9.59vw), 10.28rem);
+  // Type scale: /* @link https://utopia.fyi/type/calculator?c=320,16,1.25,1240,20,1.333,7,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
+  --size-step--2: clamp(0.64rem, 0.6179rem + 0.1104vw, 0.7035rem);
+  --size-step--1: clamp(0.8rem, 0.7521rem + 0.2395vw, 0.9377rem);
+  --size-step-0: clamp(1rem, 0.913rem + 0.4348vw, 1.25rem);
+  --size-step-1: clamp(1.25rem, 1.1052rem + 0.7239vw, 1.6663rem);
+  --size-step-2: clamp(1.5625rem, 1.3334rem + 1.1454vw, 2.2211rem);
+  --size-step-3: clamp(1.9531rem, 1.6026rem + 1.7524vw, 2.9607rem);
+  --size-step-4: clamp(2.4414rem, 1.9178rem + 2.6178vw, 3.9467rem);
+  --size-step-5: clamp(3.0518rem, 2.2834rem + 3.842vw, 5.2609rem);
+  --size-step-6: clamp(3.8147rem, 2.7023rem + 5.5619vw, 7.0128rem);
+  --size-step-7: clamp(4.7684rem, 3.1754rem + 7.9647vw, 9.3481rem);
 
   // Utilities - sizing
   --sizing-xxxs: 0.0315rem;
@@ -41,11 +41,13 @@
   --transition-slow-ease: all 1.25s cubic-bezier(0.62, 0.16, 0.13, 1.01);
 
   // Color palette
-  --color-dark: #141419;
+  // --color-dark: #141419;
+  --color-dark: #0a0a0a;
   --color-dark-t: #16161c;
   --color-dark-bg-border: #0b0b0d;
-  --color-light: #efefef;
-  --color-light-t: #b3b4b6;
+  --color-dark-secondary: #141419;
+  --color-light: #fafafa;
+  --color-light-t: #efefef;
   --color-light-bg-border: #e5e5e5;
   --color-light-bg: #f9f9f9;
   --color-primary: #4b64b4;
@@ -56,13 +58,41 @@
   --color-middle-gray-t: #454857;
 
   // Baseline theme colors
-  --background-color: var(--color-dark);
+  --background-color: var(--color-dark-bg-border);
   --font-color: var(--color-light-t);
   --headline-font-color: var(--color-light);
   --background-border-color: var(--color-dark-bg-border);
   --border-color: #25252c;
   --gradient-1: linear-gradient(160.41deg, #272b33 3.84%, #1a1b21 54.62%, #141419 79.18%);
   --image-background: var(--color-primary);
+
+  // DESIGN.md tokens — Light mode
+  --background: #fff;
+  --foreground: #0a0a0a;
+  --card: #fff;
+  --card-foreground: #0a0a0a;
+  --primary: var(--color-primary);
+  --primary-foreground: #fff;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #18181b;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #f4f4f5;
+  --accent-foreground: #18181b;
+  --destructive: #ef4444;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --ring: var(--color-primary);
+  --radius: 0.375rem;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+
+  // Semantic aliases
+  --color-beige: #fbf7f0;
+  --navbar-bg: rgba(255, 255, 255, 0.95);
 }
 
 // Color system
@@ -77,19 +107,12 @@ $gray-600: #6c757d;
 $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #151519;
-$black:    #000;
-
-$yellow:   #ffe000;
 $black:    #1d2d35;
 $beige:    #fbf7f0;
 
-// $red:      #e55235;
-$purple:   #5d2f86;
-$brown:    #aa9c84;
 $brand:    #4b64b4;
 
 $blue-300: #77a5d3;
-$pink-100: #fcfaff;
 $pink-500: #d32e9d;
 
 $primary: $brand;

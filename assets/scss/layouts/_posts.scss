@@ -1,5 +1,5 @@
 .card {
-  transition: 0.3s;
+  transition: var(--transition);
 }
 
 .home .card,
@@ -10,7 +10,7 @@
 .tags.list .card {
   margin-top: 2rem;
   margin-bottom: 2rem;
-  transition: 0.3s;
+  transition: var(--transition);
 }
 
 .home .card:hover,
@@ -22,6 +22,10 @@
   transform: scale(1.025);
 }
 
+/*.posts.list .card:hover {
+  background: var(--secondary);
+}*/
+
 .contributors.list .card.card-terms:hover,
 .categories.list .card.card-terms:hover,
 .tags.list .card.card-terms:hover {
@@ -31,6 +35,15 @@
 .card.card-terms a:hover,
 .card.card-terms a:focus {
   text-decoration: none;
+}
+
+.related-posts-card {
+  min-width: 100%;
+}
+
+.related-posts-card a,
+.related-posts-card a:hover {
+  text-decoration: none !important;
 }
 
 .home .card-body,
@@ -59,4 +72,8 @@
 
 h2.section-title {
   margin-bottom: 1.25rem;
+}
+
+.pagination a {
+  text-decoration: none !important;
 }

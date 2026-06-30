@@ -73,6 +73,14 @@ rclone mount google:/ ~/clouds/google \
   --daemon
 ```
 
+## Размонтирование
+
+Чтобы размонтировать облачное хранилище, используйте:
+
+```bash
+fusermount -u ~/clouds/google
+```
+
 ## Проверка монтирования
 
 Список удалённых хранилищ:
@@ -92,6 +100,10 @@ rclone tree google:/
 
 ```bash
 rclone about google:/
+# размер файлов
+rclone size synology_c2:ctlos
+# через ncdu
+rclone ncdu synology_c2:ctlos
 ```
 
 ## Очистка корзины
@@ -122,7 +134,7 @@ rclone move ~/data google:/data --delete-empty-src-dirs
 
 ### Синхронизация
 
-Синхронизация локальной папки с облаком:
+Синхронизация локальной директории с облаком:
 
 ```bash
 rclone sync ~/data google:/data --create-empty-src-dirs
@@ -136,11 +148,17 @@ rclone sync yandex:/ google:/
 
 ## Другие команды
 
+Создание директории:
+
+```bash
+rclone mkdir google:/new_folder
+```
+
 Удаление файлов:
 
 ```bash
 rclone delete google:/path  # Удаляет только файлы
-rclone purge google:/path   # Удаляет всё, включая папки
+rclone purge google:/path   # Удаляет всё, включая директории
 ```
 
 Поиск дубликатов:
@@ -149,24 +167,10 @@ rclone purge google:/path   # Удаляет всё, включая папки
 rclone dedupe google:/path
 ```
 
-Создание директории:
-
-```bash
-rclone mkdir google:/new_folder
-```
-
 Проверка совпадения файлов:
 
 ```bash
 rclone check ~/data google:/data
-```
-
-## Размонтирование
-
-Чтобы размонтировать облачное хранилище, используйте:
-
-```bash
-fusermount -u ~/clouds/google
 ```
 
 ## Веб-интерфейс Rclone
@@ -195,18 +199,26 @@ After=network-online.target
 
 [Service]
 Type=notify
-KillMode=none
-RestartSec=5
+# Создаем папку перед запуском
 ExecStartPre=-/usr/bin/mkdir -p %h/clouds/%i
+# Каждая строка/параметр ниже (кроме последней) заканчивается на " \"
+# --log-file %h/clouds/rclone.log
 ExecStart=/usr/bin/rclone mount %i:/ %h/clouds/%i \
     --config %h/.config/rclone/rclone.conf \
-    --umask 002 --allow-other --allow-non-empty \
-    --vfs-cache-mode full --vfs-cache-max-age 24h --vfs-cache-max-size 4G \
-    --vfs-read-chunk-size 40M --vfs-read-chunk-size-limit 512M \
-    --dir-cache-time 12h --buffer-size 64M \
-    --log-level INFO --log-file %h/clouds/rclone.log
+    --umask 002 \
+    --allow-other \
+    --allow-non-empty \
+    --vfs-cache-mode full \
+    --vfs-cache-max-age 24h \
+    --vfs-cache-max-size 4G \
+    --vfs-read-chunk-size 40M \
+    --vfs-read-chunk-size-limit 512M \
+    --dir-cache-time 12h \
+    --buffer-size 64M \
+    --log-level INFO
 ExecStop=/usr/bin/fusermount -uz %h/clouds/%i
 Restart=on-failure
+RestartSec=10
 
 [Install]
 WantedBy=default.target
