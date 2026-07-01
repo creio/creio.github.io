@@ -60,13 +60,11 @@
   {{ $slice = $slice | append $toTopButton -}}
 {{ end -}}
 
+{{ $stars := resources.Get "js/stars.js" | js.Build -}}
+{{ $slice = $slice | append $stars -}}
+
 {{ $custom := resources.Get "js/custom.js" | js.Build -}}
 {{ $slice = $slice | append $custom -}}
-
-{{ if .IsHome -}}
-  {{ $stars := resources.Get "js/stars.js" | js.Build -}}
-  {{ $slice = $slice | append $stars -}}
-{{ end -}}
 
 {{ $js := $slice | resources.Concat "main.js" -}}
 

@@ -1,8 +1,11 @@
 (() => {
   const canvas = document.createElement('canvas');
   canvas.id = 'stars-canvas';
-  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none';
-  document.body.prepend(canvas);
+  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none';
+
+  if (document.body.classList.contains('home')) {
+    document.body.prepend(canvas);
+  }
 
   const ctx = canvas.getContext('2d');
   let w, h;
