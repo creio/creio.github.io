@@ -5,10 +5,12 @@
 #suggestions {
   position: absolute;
   right: 0;
-  margin-top: 0.5rem;
+  margin-top: 0.2rem;
   width: calc(100vw - 3rem);
   max-width: calc(400px - 3rem);
   z-index: $zindex-dropdown;
+  background: var(--card);
+  border: 1px solid var(--border);
 
   @include media-breakpoint-up(lg) {
     right: 0;
@@ -60,6 +62,9 @@
 .suggestion__description,
 .suggestion__no-results {
   color: var(--muted-foreground);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 @include media-breakpoint-up(lg) {
@@ -79,11 +84,18 @@
     padding-right: 1rem;
     border-right: 1px solid var(--border);
     display: inline-block;
-    text-align: right;
+    // text-align: right;
+    flex-shrink: 0;
+    overflow: hidden;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
   }
 
   .suggestion__description {
     width: 19rem;
     padding-left: 1rem;
+    overflow: hidden;
+    // text-overflow: ellipsis;
+    white-space: wrap;
   }
 }
