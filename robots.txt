@@ -1,10 +1,4 @@
 User-agent: *
-Disallow: /whois
-Disallow: /cvc
-Disallow: /search
-Disallow: /admin
-Disallow: /keybase.txt
-Host: creio.github.io
+Allow: /
 
-# Comment here
 Sitemap: https://creio.github.io/sitemap.xml

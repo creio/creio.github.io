@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog posts | Alex Creio</title><link>https://creio.github.io/posts/</link><description>Recent content in Blog posts on Alex Creio</description><language>ru</language><copyright>Copyright (c) @creio</copyright><lastBuildDate>Tue, 06 Oct 2020 08:49:55 +0000</lastBuildDate><atom:link href="https://creio.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Настройка сервера Ubuntu 24.04 с Docker, Nginx, Dockge, uptime-kuma</title><link>https://creio.github.io/posts/ubuntu-docker/</link><pubDate>Fri, 09 May 2025 12:41:39 +0300</pubDate><guid>https://creio.github.io/posts/ubuntu-docker/</guid><description>&lt;p&gt;В этой статье описан процесс настройки сервера Ubuntu 24.04 с акцентом на безопасность, установку Docker, Nginx и удобного инструмента управления контейнерами Dockge. Мы создадим пользователя, настроим SSH, установим необходимые сервисы и обеспечим базовую защиту сети.&lt;/p&gt;</description></item><item><title>Настройка и использование Rclone для работы с облачными хранилищами</title><link>https://creio.github.io/posts/rclone/</link><pubDate>Tue, 04 Mar 2025 07:12:00 +0000</pubDate><guid>https://creio.github.io/posts/rclone/</guid><description>&lt;p&gt;Rclone — это мощный инструмент для управления облачными хранилищами, который поддерживает множество провайдеров, включая Google Drive, Yandex Disk, Dropbox и другие. В этом посте я расскажу, как настроить Rclone, монтировать облачные хранилища и использовать его для синхронизации и управления файлами.&lt;/p&gt;</description></item><item><title>Wireguard, pihole, unbound | предотвращаем утечку dns</title><link>https://creio.github.io/posts/wire-hole/</link><pubDate>Sat, 17 Dec 2022 19:18:35 +0000</pubDate><guid>https://creio.github.io/posts/wire-hole/</guid><description>&lt;p&gt;Смотри видео с детальной настройкой &lt;a href="https://www.youtube.com/watch?v=iTozi7KE904" target="_blank" rel="nofollow noopener noreferrer" &gt;youtube.com&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;45.138.72.135
+root
+747AuBOZ7WNt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;unbound&lt;/li&gt;
+&lt;li&gt;wireguard&lt;/li&gt;
+&lt;li&gt;pihole&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;apt install wg...
+wget https://raw.githubusercontent.com/burghardt/easy-wg-quick/master/easy-wg-quick
+chmod +x easy-wg-quick
+./easy-wg-quick
+sudo cp wghub.conf /etc/wireguard/wghub.conf
+sudo systemctl enable --now wg-quick@wghub
+# new client
+./easy-wg-quick bla
+sudo cp -r wghub.conf /etc/wireguard/wghub.conf
+sudo systemctl restart wg-quick@wghub
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;sudo wg-quick down ./wghub.conf # if already configured
+sudo wg-quick up ./wghub.conf
+sudo wg show
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;# sudo nano /etc/sysctl.conf
+net.core.default_qdisc = fq
+net.ipv4.tcp_congestion_control = bbr
+net.ipv4.ip_forward = 1
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.tcp_syncookies = 1
+# sudo sysctl -p
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;sudo cat /etc/wireguard/wghub.conf
+# open port
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;curl -o /var/lib/unbound/root.hints https://www.internic.net/domain/named.cache
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;# mv access-control: 10.134.99.0/24 &amp;gt; wg network | ip a
+# sudo nano /etc/unbound/unbound.conf.d/pi-hole.conf
+server:
+# if no logfile is specified, syslog is used
+# logfile: &amp;quot;/var/log/unbound/unbound.log&amp;quot;
+verbosity: 1
+port: 5353
+do-ip4: yes
+do-udp: yes
+do-tcp: yes
+# may be set to yes if you have IPv6 connectivity
+do-ip6: no
+# use this only when you downloaded the list of primary root servers
+root-hints: &amp;quot;/var/lib/unbound/root.hints&amp;quot;
+# respond to DNS requests on all interfaces
+interface: 0.0.0.0
+max-udp-size: 3072
+# IPs authorised to access the DNS Server
+access-control: 0.0.0.0/0 refuse
+access-control: 127.0.0.1 allow
+access-control: 10.134.99.0/24 allow
+# hide DNS Server info
+hide-identity: yes
+hide-version: yes
+# limit DNS fraud and use DNSSEC
+harden-glue: yes
+harden-dnssec-stripped: yes
+harden-referral-path: yes
+# add an unwanted reply threshold to clean the cache and avoid, when possible, DNS poisoning
+unwanted-reply-threshold: 10000000
+# have the validator print validation failures to the log val-log-level: 1
+# don't use Capitalisation randomisation as it known to cause DNSSEC issues sometimes
+# see https://discourse.pi-hole.net/t/unbound-stubby-or-dnscrypt-proxy/9378 for further details
+use-caps-for-id: no
+# reduce EDNS reassembly buffer size
+# suggested by the unbound man page to reduce fragmentation reassembly problems
+edns-buffer-size: 1472
+# TTL bounds for cache
+cache-min-ttl: 3600
+cache-max-ttl: 86400
+# perform prefetching of close to expired message cache entries
+# this only applies to domains that have been frequently queried
+prefetch: yes
+prefetch-key: yes
+# one thread should be sufficient, can be increased on beefy machines
+num-threads: 1
+# ensure kernel buffer is large enough to not lose messages in traffic spikes
+so-rcvbuf: 1m
+# ensure privacy of local IP ranges
+private-address: 192.168.0.0/16
+private-address: 169.254.0.0/16
+private-address: 172.16.0.0/12
+private-address: 10.0.0.0/8
+private-address: fd00::/8
+private-address: fe80::/10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;sudo systemctl enable --now unbound
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;# intfs wghub
+curl -sSL https://install.pi-hole.net | bash
+http://ip/admin
+# Settings - DNS наш Unbound 127.0.0.1#5353
+# open port 5353
+dig pi-hole.net @127.0.0.1 -p 5353 # NOERROR
+dig sigok.verteiltesysteme.net @127.0.0.1 -p 5353
+dig sigfail.verteiltesysteme.net @127.0.0.1 -p 5353 # SERFAIL
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;# wg client conf dns &amp;gt; wghub | ip a
+# wg
+nano intnetdns.txt
+# replace ip 1.1.1.1 default &amp;gt; wghub ip : 10.148.135.1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;# dns wghub ip : 10.148.135.1
+# 10: 10 &amp;gt; wgclient_10.conf
+[Interface]
+Address = 10.148.135.10/24
+DNS = 10.148.135.1
+PrivateKey = oBj9b47cvZaGaCdHQUl1tu6in6L4yoL8hXxUd1EpU1c=
+MTU = 1280
+[Peer]
+PublicKey = G7VcOHBqXYFPppKNUZ25RJLjEXEDq+Gsn/jmczX5HB0=
+PresharedKey = LDgByqF8J/TgBI9vE+17aRNWnlJwQoD6i6xZCbwbdBk=
+AllowedIPs = 0.0.0.0/0, ::/0
+Endpoint = 45.138.72.135:44828
+PersistentKeepalive = 25
+# open ports
+ufw allow ssh
+ufw allow 44828/udp
+# net
+ufw allow 80/tcp
+ufw allow 53/udp
+# wg
+sudo ufw allow from 10.134.99.0/24 to any port 80
+sudo ufw allow from 10.134.99.0/24 to any port 53
+sudo ufw reject https
+ss -tulpn
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;45.138.72.135/admin&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://pi.hole/admin" target="_blank" rel="nofollow noopener noreferrer" &gt;http://pi.hole/admin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dnsleak.com" target="_blank" rel="nofollow noopener noreferrer" &gt;https://dnsleak.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Tor проксирование</title><link>https://creio.github.io/posts/tor/</link><pubDate>Thu, 26 May 2022 22:02:34 +0300</pubDate><guid>https://creio.github.io/posts/tor/</guid><description>&lt;p&gt;Задача заставить локально обрабатывать все запросы к onion, через тор, а все остальное в обычном режиме. В этом деле поможет dnsmasq, но заставить его работать я смог только с dhcpcd, не знаю возможно ли это сделать через networkmanager, не пользуюсь им. Выключаем и удаляем все сетевое, ставим dnsmasq и dhcpcd.&lt;/p&gt;</description></item><item><title>Настройка и использование weechat в linux</title><link>https://creio.github.io/posts/weechat/</link><pubDate>Thu, 12 May 2022 19:15:06 +0000</pubDate><guid>https://creio.github.io/posts/weechat/</guid><description>&lt;p&gt;Weechat — консольный чат клиент для irc сетей и не только, &lt;a href="https://weechat.org/about/" target="_blank" rel="nofollow noopener noreferrer" &gt;weechat about&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="установка"&gt;Установка &lt;a href="#%d1%83%d1%81%d1%82%d0%b0%d0%bd%d0%be%d0%b2%d0%ba%d0%b0" class="anchor" aria-hidden="true"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;pre&gt;&lt;code class="language-shell"&gt;yay -S weechat
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Запуск.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;weechat
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="основные-команды"&gt;Основные команды &lt;a href="#%d0%be%d1%81%d0%bd%d0%be%d0%b2%d0%bd%d1%8b%d0%b5-%d0%ba%d0%be%d0%bc%d0%b0%d0%bd%d0%b4%d1%8b" class="anchor" aria-hidden="true"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;# записать изменения в конфиги
+/save
+# перезагрузить
+/reload
+# выход
+/quit
+# изменения значений, через
+/set
+# показ значений, типо справка
+/fset
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="подключение-к-сети-libera"&gt;Подключение к сети Libera &lt;a href="#%d0%bf%d0%be%d0%b4%d0%ba%d0%bb%d1%8e%d1%87%d0%b5%d0%bd%d0%b8%d0%b5-%d0%ba-%d1%81%d0%b5%d1%82%d0%b8-libera" class="anchor" aria-hidden="true"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Настройка подключения к irc сети Libera.Chat. Актуальные данные для подключения уточняйте на их сайте, порт и хост. &lt;a href="https://libera.chat/guides/connect" target="_blank" rel="nofollow noopener noreferrer" &gt;libera.chat guides&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Firewall в linux | iptables | ufw</title><link>https://creio.github.io/posts/firewall/</link><pubDate>Sat, 23 Oct 2021 21:45:16 +0300</pubDate><guid>https://creio.github.io/posts/firewall/</guid><description>&lt;p&gt;Firewall — межсетевой экран. Просмотр инфы по портам, в пакете iproute2.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;ss -tulpn
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Самый распространенный iptables, над ним как правило уже обертки, типо ufw. Я использую ufw, так как не нужно городить огромные команды, как это происходит в чистом iptables.&lt;/p&gt;</description></item><item><title>Transmission — раздача торрентов со своего сервера</title><link>https://creio.github.io/posts/transmission/</link><pubDate>Fri, 22 Oct 2021 22:04:41 +0300</pubDate><guid>https://creio.github.io/posts/transmission/</guid><description>&lt;h2 id="установка-transmission-daemon"&gt;Установка transmission-daemon &lt;a href="#%d1%83%d1%81%d1%82%d0%b0%d0%bd%d0%be%d0%b2%d0%ba%d0%b0-transmission-daemon" class="anchor" aria-hidden="true"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Установка, копирование конфигов в директорию юзера и создание нужных директорий.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;sudo apt update &amp;amp;&amp;amp; sudo apt upgrade -y
+sudo apt install transmission-daemon -y
+sudo systemctl stop transmission-daemon
+sudo cp -R /etc/transmission-daemon ~/.config/
+sudo chown -R $USER ~/.config/transmission-daemon
+mkdir ~/Torrents
+mkdir -p ~/Downloads/.incomplete
+nano ~/.config/transmission-daemon/settings.json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="конфигурация-демана"&gt;Конфигурация демана &lt;a href="#%d0%ba%d0%be%d0%bd%d1%84%d0%b8%d0%b3%d1%83%d1%80%d0%b0%d1%86%d0%b8%d1%8f-%d0%b4%d0%b5%d0%bc%d0%b0%d0%bd%d0%b0" class="anchor" aria-hidden="true"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;В rpc-whitelist укажите свой ip, узнать curl ident.me, можно указать маску &lt;em&gt;.&lt;/em&gt;.&lt;em&gt;.&lt;/em&gt;, но это откроет веб морду для любого ip. Создайте хороший пароль если будете открывать веб морду по маске.&lt;/p&gt;</description></item><item><title>Настройка автоматической загрузки фильмов с торрентов</title><link>https://creio.github.io/posts/media-server/</link><pubDate>Mon, 27 Sep 2021 21:51:28 +0300</pubDate><guid>https://creio.github.io/posts/media-server/</guid><description>&lt;p&gt;Все будет проделано из под Arch Linux, но суть везде одна, весь этот софт есть и под windows.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://odysee.com/@creio:5/%D1%81x*%D1%8F%D1%87%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%84%D0%B8%D0%BB%D1%8C%D0%BC%D0%BE%D0%B2:3" target="_blank" rel="nofollow noopener noreferrer" &gt;odysee.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://youtu.be/zHz9XqzUi5Q" target="_blank" rel="nofollow noopener noreferrer" &gt;Второе видео&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://youtu.be/DK-hcczVwq0" target="_blank" rel="nofollow noopener noreferrer" &gt;Третье&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Задача: Максимально автоматизировать процесс скачивания как новых фильмов, так и существующих.&lt;/p&gt;</description></item><item><title>Доступность веб сервера в tor и создание onion домена | Nginx tor onion</title><link>https://creio.github.io/posts/nginx-onion/</link><pubDate>Mon, 13 Sep 2021 21:55:04 +0300</pubDate><guid>https://creio.github.io/posts/nginx-onion/</guid><description>&lt;p&gt;Как запустить веб приложение и открыть доступность через tor в доменной зоне onion.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=1ioGn-2JaiM" target="_blank" rel="nofollow noopener noreferrer" &gt;Video&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Все действия выполняются на Arch Linux, но суть везде одинакова, разница только в пакетном менеджере.&lt;/p&gt;</description></item><item><title>Перенос форума fluxbb на discourse</title><link>https://creio.github.io/posts/fluxbb-discourse/</link><pubDate>Sat, 19 Jun 2021 21:48:04 +0300</pubDate><guid>https://creio.github.io/posts/fluxbb-discourse/</guid><description>&lt;p&gt;Для переноса нужно получить базу данных форума fluxbb, наверняка вы знаете как это сделать, но если нет, то вот. Данные для подключение к базе, которые вы создавали, или то, что предоставил хостер, при создании.&lt;/p&gt;</description></item><item><title>Настройка и использование Nginx в Arch Linux | Docker Portainer</title><link>https://creio.github.io/posts/web-server/</link><pubDate>Mon, 05 Apr 2021 22:12:42 +0300</pubDate><guid>https://creio.github.io/posts/web-server/</guid><description>&lt;p&gt;Nginx reverse proxy, проброс локальной сети на сервер, через wireguard. Portainer — gui для docker контейнеров.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=IFjzUpTjsC4" target="_blank" rel="nofollow noopener noreferrer" &gt;Video&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="nginx-локально"&gt;Nginx локально &lt;a href="#nginx-%d0%bb%d0%be%d0%ba%d0%b0%d0%bb%d1%8c%d0%bd%d0%be" class="anchor" aria-hidden="true"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Для установки на Arch.&lt;/p&gt;</description></item><item><title>Установка Arch Linux в Oracle Cloud</title><link>https://creio.github.io/posts/oci/</link><pubDate>Mon, 22 Mar 2021 21:59:05 +0300</pubDate><guid>https://creio.github.io/posts/oci/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;PS: У меня забанили аккаунт без предупреждения :).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Существует такое предложение от Oracle Cloud, можно получить 2 сервера в минимальной комплектации навсегда и первые 30 дней тестирования более широкого функционала, нужно привязать карту с которой спишут примерно 1 евро(мне вернули практически сразу) и телефон. Доступные дистрибутивы на free тарифе: ubuntu, centos, oracle linux &lt;a href="https://www.oracle.com/cloud/free/" target="_blank" rel="nofollow noopener noreferrer" &gt;oracle.com/cloud/free/&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Как Создать и Настроить VPN сервер в Linux | Wireguard</title><link>https://creio.github.io/posts/vpn/</link><pubDate>Sun, 31 Jan 2021 09:19:42 +0100</pubDate><guid>https://creio.github.io/posts/vpn/</guid><description>&lt;p&gt;Речь пойдет о шифровании трафика в сети и обходе блокировок, рассмотрю несколько способов.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=4FmWp04auX4" target="_blank" rel="nofollow noopener noreferrer" &gt;Video&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://m.do.co/c/49c4dbf3d0ca" target="_blank" rel="nofollow noopener noreferrer" &gt;Всё реализовано в дроплете Digital Ocean&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Psiphon linux, обходим блокировку трафика</title><link>https://creio.github.io/posts/psiphon/</link><pubDate>Mon, 10 Aug 2020 22:01:13 +0300</pubDate><guid>https://creio.github.io/posts/psiphon/</guid><description>&lt;p&gt;Обходим блокировку сайтов с помощью psiphon.&lt;/p&gt;
+&lt;h2 id="archlinux"&gt;Archlinux &lt;a href="#archlinux" class="anchor" aria-hidden="true"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;В aur лежит пакет.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://aur.archlinux.org/packages/brainfuck-psiphon-pro-go-bin/" target="_blank" rel="nofollow noopener noreferrer" &gt;brainfuck-psiphon-pro-go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/aztecrabbit/brainfuck-psiphon-pro-go" target="_blank" rel="nofollow noopener noreferrer" &gt;Репо проекта&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="установка"&gt;Установка &lt;a href="#%d1%83%d1%81%d1%82%d0%b0%d0%bd%d0%be%d0%b2%d0%ba%d0%b0" class="anchor" aria-hidden="true"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;yay -S brainfuck-psiphon-pro-go-bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="использование"&gt;Использование &lt;a href="#%d0%b8%d1%81%d0%bf%d0%be%d0%bb%d1%8c%d0%b7%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d0%b5" class="anchor" aria-hidden="true"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Запуск командой sudo brainfuck-psiphon-pro-go. Увидите примерно такой вывод.&lt;/p&gt;</description></item><item><title>Установка Arch Linux на зашифрованный раздел, LVM на LUKS</title><link>https://creio.github.io/posts/arch-lvm-luks/</link><pubDate>Mon, 23 Mar 2020 20:14:38 +0300</pubDate><guid>https://creio.github.io/posts/arch-lvm-luks/</guid><description>&lt;p&gt;Грузимся из под live-usb, устанавливаем ru язык и время.&lt;/p&gt;
+&lt;!-- more ---&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;loadkeys ru
+setfont cyr-sun16
+timedatectl set-ntp true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="подготовка-к-установке"&gt;Подготовка к установке &lt;a href="#%d0%bf%d0%be%d0%b4%d0%b3%d0%be%d1%82%d0%be%d0%b2%d0%ba%d0%b0-%d0%ba-%d1%83%d1%81%d1%82%d0%b0%d0%bd%d0%be%d0%b2%d0%ba%d0%b5" class="anchor" aria-hidden="true"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Создаем таблицу на диске MBR(DOS) и 2 первичных раздела.&lt;/p&gt;</description></item><item><title>Ctlos Linux Bspwm v0.1.0</title><link>https://creio.github.io/posts/bspwm-0-1/</link><pubDate>Fri, 13 Mar 2020 20:23:06 +0300</pubDate><guid>https://creio.github.io/posts/bspwm-0-1/</guid><description>&lt;p&gt;Создано в рамках &lt;a href="https://ctlos.github.io/" target="_blank" rel="nofollow noopener noreferrer" &gt;Ctlos Linux&lt;/a&gt;, &lt;a href="https://www.youtube.com/watch?v=INOtQJ_yZE4" target="_blank" rel="nofollow noopener noreferrer" &gt;demo Video&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="оформление"&gt;Оформление &lt;a href="#%d0%be%d1%84%d0%be%d1%80%d0%bc%d0%bb%d0%b5%d0%bd%d0%b8%d0%b5" class="anchor" aria-hidden="true"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Тема gtk: модификация Arc-Dark.&lt;/li&gt;
+&lt;li&gt;Иконки: Arc, dui-ico.&lt;/li&gt;
+&lt;li&gt;Курсор: capitaine-cursors.&lt;/li&gt;
+&lt;li&gt;Шрифт: Clear Sans Medium,9 ttf-clear-sans.&lt;/li&gt;
+&lt;li&gt;Шрифт терминала: Hack Nerd Font Mono,9 ttf-nerd-fonts-hack-complete-git.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="панели"&gt;Панели &lt;a href="#%d0%bf%d0%b0%d0%bd%d0%b5%d0%bb%d0%b8" class="anchor" aria-hidden="true"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="верхний-бар-polybar"&gt;Верхний бар: polybar &lt;a href="#%d0%b2%d0%b5%d1%80%d1%85%d0%bd%d0%b8%d0%b9-%d0%b1%d0%b0%d1%80-polybar" class="anchor" aria-hidden="true"&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Элементы:&lt;/p&gt;</description></item><item><title>Zsh Config</title><link>https://creio.github.io/posts/zsh-config/</link><pubDate>Thu, 11 Jul 2019 22:20:38 +0300</pubDate><guid>https://creio.github.io/posts/zsh-config/</guid><description>&lt;p&gt;Разбор конфига &lt;code&gt;~/.zshrc&lt;/code&gt;, конечный результат примерно такой. Рекомендую установить и использовать терминал urxvt о настройке которого я писал в &lt;a href="https://creio.github.io/posts/urxvt-config"&gt;прошлом посте&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="установка-пакетов"&gt;Установка пакетов &lt;a href="#%d1%83%d1%81%d1%82%d0%b0%d0%bd%d0%be%d0%b2%d0%ba%d0%b0-%d0%bf%d0%b0%d0%ba%d0%b5%d1%82%d0%be%d0%b2" class="anchor" aria-hidden="true"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;yay -S zsh oh-my-zsh fast-syntax-highlighting zsh-autosuggestions
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;oh-my-zsh: надстройка над zsh.&lt;/li&gt;
+&lt;li&gt;fast-syntax-highlighting: подсветка синтаксиса.&lt;/li&gt;
+&lt;li&gt;zsh-autosuggestions: автодополнение.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Переключение шелла на zsh: &lt;code&gt;chsh -s /usr/bin/zsh&lt;/code&gt;, обратно на bash: &lt;code&gt;chsh -s /usr/bin/bash&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Arch Urxvt, установка и настройка</title><link>https://creio.github.io/posts/urxvt-config/</link><pubDate>Wed, 10 Jul 2019 22:07:49 +0300</pubDate><guid>https://creio.github.io/posts/urxvt-config/</guid><description>&lt;p&gt;Очень быстрый и функциональный терминал, но немного пугает в настройке.&lt;/p&gt;
+&lt;h2 id="установка"&gt;Установка &lt;a href="#%d1%83%d1%81%d1%82%d0%b0%d0%bd%d0%be%d0%b2%d0%ba%d0%b0" class="anchor" aria-hidden="true"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Я всегда устанавливаю patched версию с аура, некоторые зависимости и шрифт Hack Nerd с набором иконок, &lt;a href="https://github.com/creio/dots/blob/master/.Xresources" target="_blank" rel="nofollow noopener noreferrer" &gt;Мой конфиг github&lt;/a&gt;.&lt;/p&gt;</description></item></channel></rss>
