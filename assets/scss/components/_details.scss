@@ -1,18 +1,10 @@
 details {
   display: block;
-  border: 1px solid $gray-200;
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 0.5rem 1rem 0;
   margin: 0.5rem 0;
 }
-
-/*
-details summary {
-  &::marker {
-    content: "";
-  }
-}
-*/
 
 summary {
   list-style: none;
@@ -27,7 +19,7 @@ summary::-webkit-details-marker {
 }
 
 summary:hover {
-  background: $gray-100;
+  background: var(--secondary);
 }
 
 details summary::before {
@@ -42,18 +34,12 @@ details[open] > summary::before {
   transform: rotate(90deg);
 }
 
-/*
-details summary > * {
-  display: inline-block;
-}
-*/
-
 details[open] {
   padding: 0.5rem 1rem;
 }
 
 details[open] > summary {
-  border-bottom: 1px solid $gray-300;
+  border-bottom: 1px solid var(--border);
   margin-bottom: 0.5rem;
 }
 
@@ -64,11 +50,6 @@ details h4 {
 }
 
 details p:last-child {
-  margin-bottom: 0;
-}
-
-details ul,
-details ol {
   margin-bottom: 0;
 }
 

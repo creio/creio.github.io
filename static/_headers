@@ -1,0 +1,22 @@
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=self
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*.css
+/*.js
+/*.woff2
+/*.woff
+/*.ttf
+/*.png
+/*.jpg
+/*.webp
+/*.svg
+/*.mp4
+/*.webm
+  Cache-Control: public, max-age=31536000, immutable

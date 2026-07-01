@@ -159,10 +159,6 @@ pre {
   margin-bottom: 0.125rem;
 }
 
-.btn-toggle[aria-expanded="true"] {
-  color: var(--foreground);
-}
-
 .btn-toggle[aria-expanded="true"]::before {
   transform: rotate(90deg);
 }
@@ -187,12 +183,6 @@ pre {
 
 .dropdown-menu {
   width: auto;
-}
-
-@include media-breakpoint-up(lg) {
-  .dropdown-menu {
-    width: auto;
-  }
 }
 
 .doks-navbar .dropdown-menu,

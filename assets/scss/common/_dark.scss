@@ -25,6 +25,7 @@ $button-color-dark: lighten($brand, 1%);
   --accent-foreground: var(--color-light);
   --ring: var(--color-primary);
   --color-beige: var(--color-dark-secondary);
+  --syntax-string: #77a5d3;
 }
 
 // === Base ===
@@ -116,7 +117,7 @@ $button-color-dark: lighten($brand, 1%);
 }
 
 [data-dark-mode] body .btn-menu svg {
-  color: $body-color-dark;
+  color: var(--foreground);
 }
 
 [data-dark-mode] body .btn-menu:hover,
@@ -249,37 +250,8 @@ $button-color-dark: lighten($brand, 1%);
   }
 }
 
-[data-dark-mode] body .docs-links h3:not(:first-child),
-[data-dark-mode] body .docs-navigation,
-[data-dark-mode] body .border-top,
-[data-dark-mode] body .footer {
+[data-dark-mode] body .border-top {
   border-color: var(--border) !important;
-}
-
-[data-dark-mode] body .docs-link:hover,
-[data-dark-mode] body .docs-link.active,
-[data-dark-mode] body .page-links a:hover {
-  text-decoration: none;
-  color: var(--primary);
-}
-
-[data-dark-mode] body .page-links li:not(:first-child) {
-  border-top: 1px dashed var(--border);
-}
-
-// === Scrollbar ===
-[data-dark-mode] body .docs-links,
-[data-dark-mode] body .docs-toc {
-  scrollbar-width: thin;
-  scrollbar-color: var(--background) var(--background);
-}
-
-[data-dark-mode] body pre code::-webkit-scrollbar-thumb {
-  background: var(--muted-foreground);
-}
-
-[data-dark-mode] body pre code:hover {
-  scrollbar-color: var(--border) transparent;
 }
 
 // === Code ===
@@ -400,25 +372,13 @@ $button-color-dark: lighten($brand, 1%);
   }
 
   &.disabled .page-link {
-    color: $pagination-disabled-color;
+    color: var(--muted-foreground);
     background-color: var(--secondary);
     border-color: var(--border);
   }
 }
 
 // === Details ===
-[data-dark-mode] details {
-  border: 1px solid var(--border);
-}
-
-[data-dark-mode] summary:hover {
-  background: var(--secondary);
-}
-
-[data-dark-mode] details[open] > summary {
-  border-bottom: 1px solid var(--border);
-}
-
 [data-dark-mode] details summary::before {
   content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%28222, 226, 230, 0.75%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
 }

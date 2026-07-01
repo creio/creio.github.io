@@ -71,24 +71,13 @@ body.docs {
 }
 
 @include media-breakpoint-up(md) {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  .h1,
-  .h2,
-  .h3,
-  .h4,
-  .h5,
-  .h6 {
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
     margin-bottom: 1.125rem;
   }
 }
 
 .home h1 {
-  /* font-size: calc(1.375rem + 1.5vw); */
   font-size: calc(1.875rem + 1.5vw);
 }
 
@@ -138,21 +127,6 @@ a.btn:focus {
   padding-bottom: 1rem;
 }
 
-/*
-.section svg {
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  vertical-align: text-top;
-}
-*/
-
-/*
-body {
-  padding-top: 3.5625rem;
-}
-*/
-
 .docs-sidebar {
   order: 2;
 }
@@ -161,20 +135,23 @@ body {
   .docs-sidebar {
     order: 0;
     border-right: 1px solid var(--border);
+    position: sticky;
+    top: 4rem;
+    z-index: 1000;
+    height: calc(100vh - 4rem);
   }
 
-  @supports ((position:-webkit-sticky) or (position:sticky)) {
-    .docs-sidebar {
-      position: -webkit-sticky;
-      position: sticky;
-      top: 4rem;
-      z-index: 1000;
-      height: calc(100vh - 4rem);
-    }
+  .docs-sidebar-top {
+    top: 0;
+  }
 
-    .docs-sidebar-top {
-      top: 0;
-    }
+  .docs-links {
+    display: block;
+    width: auto;
+    margin-right: -1.5rem;
+    padding-bottom: 4rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: scroll;
   }
 }
 
@@ -188,45 +165,21 @@ body {
   padding-bottom: 5rem;
 }
 
-@include media-breakpoint-up(lg) {
-  @supports ((position: -webkit-sticky) or (position: sticky)) {
-    .docs-links {
-      max-height: calc(100vh - 4rem);
-      overflow-y: scroll;
-    }
-  }
-}
-
-@include media-breakpoint-up(lg) {
-  .docs-links {
-    display: block;
-    width: auto;
-    margin-right: -1.5rem;
-    padding-bottom: 4rem;
-  }
-}
-
 .docs-toc {
   order: 2;
+  position: sticky;
+  top: 4rem;
+  height: calc(100vh - 4rem);
+  overflow-y: auto;
+
+  .h6 {
+    text-transform: uppercase;
+    font-weight: 300;
+  }
 }
 
-@supports ((position:-webkit-sticky) or (position:sticky)) {
-  .docs-toc {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 4rem;
-    height: calc(100vh - 4rem);
-    overflow-y: auto;
-
-    .h6 {
-      text-transform: uppercase;
-      font-weight: 300;
-    }
-  }
-
-  .docs-toc-top {
-    top: 0;
-  }
+.docs-toc-top {
+  top: 0;
 }
 
 .docs-content {
@@ -295,16 +248,15 @@ body {
   margin-top: -12rem;
 }
 
-// https://fossheim.io/writing/posts/css-text-gradient/
 .gradient-text {
-  background-color: $primary;
-  background-image: linear-gradient(90deg, $primary, $blue-300 50%, $pink-500);
+  background-color: var(--color-primary);
+  background-image: linear-gradient(90deg, var(--color-primary), #77a5d3 50%, #d32e9d);
   background-size: 100%;
   background-repeat: repeat;
   -webkit-background-clip: text;
-  -moz-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
+  color: transparent;
 }
 
 .katex {
@@ -313,7 +265,7 @@ body {
 
 .card-bar {
   border-top: 4px solid;
-  border-image-source: linear-gradient(90deg, $primary, $brand 50%, $blue-300);
+  border-image-source: linear-gradient(90deg, var(--color-primary), var(--color-primary) 50%, #77a5d3);
   border-image-slice: 1;
 }
 

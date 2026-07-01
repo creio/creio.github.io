@@ -29,7 +29,7 @@ h4:hover a {
 
 .edit-page,
 .last-modified {
-  font-size: $font-size-sm;
+  font-size: 0.875rem;
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
 }
@@ -37,7 +37,7 @@ h4:hover a {
 @include media-breakpoint-up(md) {
   .edit-page,
   .last-modified {
-    font-size: $font-size-base;
+    font-size: 1rem;
     margin-top: 0.75rem;
     margin-bottom: 0.25rem;
   }
@@ -51,12 +51,12 @@ h4:hover a {
 
 p.meta {
   margin-top: 0.5rem;
-  font-size: $font-size-base;
+  font-size: 1rem;
 }
 
 .breadcrumb {
   margin-top: 2.25rem;
-  font-size: $font-size-base;
+  font-size: 1rem;
 }
 
 .page-link:hover {

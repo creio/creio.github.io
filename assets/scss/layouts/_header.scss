@@ -41,30 +41,14 @@ header {
 }
 
 .brand-logo:hover .brand-logo__image {
-  background-color: $brand;
+  background-color: var(--color-primary);
   transform: rotate(2turn);
 }
-
-/*
-.navbar-light .navbar-brand,
-.navbar-light .navbar-brand:hover,
-.navbar-light .navbar-brand:active {
-  color: $body-color;
-}
-
-.navbar-light .navbar-nav .active .nav-link {
-  color: $primary;
-}
-*/
 
 .navbar {
   z-index: 1000;
   background-color: var(--navbar-bg);
   border-bottom: 1px solid var(--border);
-
-  /*
-  margin-top: 4px;
-  */
 }
 
 @include media-breakpoint-up(lg) {
@@ -95,14 +79,6 @@ header {
   }
 }
 
-/*
-@include media-breakpoint-down(sm) {
-  .nav-item:first-child {
-    margin-left: 0;
-  }
-}
-*/
-
 @include media-breakpoint-down(md) {
   .navbar .container {
     padding-left: 1.5rem;
@@ -115,14 +91,7 @@ header {
   height: 0;
 }
 
-button#doks-languages {
-  margin: 0.25rem 0 0;
-
-  @include media-breakpoint-up(lg) {
-    margin: 0.25rem 0.5rem 0 0.25rem;
-  }
-}
-
+button#doks-languages,
 button#doks-versions {
   margin: 0.25rem 0 0;
 
@@ -144,22 +113,15 @@ button#doks-versions {
   padding: 0.5rem 1.5rem 0.5rem 0;
 }
 
-.doks-subnavbar .nav-link:first-child {
-  padding: 0.5rem 1.5rem 0.5rem 0;
-}
-
 .offcanvas .nav-link:hover,
-.offcanvas .nav-link:focus {
-  color: var(--primary);
-}
-
+.offcanvas .nav-link:focus,
 .offcanvas .nav-link.active {
   color: var(--primary);
 }
 
 .header-bar {
   border-top: 2px solid;
-  border-image-source: linear-gradient(90deg, $blue-300, $purple 30%, $brand);
+  border-image-source: linear-gradient(90deg, #77a5d3, #6f42c1 30%, var(--color-primary));
   border-image-slice: 1;
 }
 
@@ -170,13 +132,6 @@ button#doks-versions {
 .home .navbar {
   border-bottom: 0;
 }
-
-/*
-.navbar-form {
-  position: relative;
-  margin-top: 0.25rem;
-}
-*/
 
 @include media-breakpoint-up(lg) {
   .navbar-brand {
@@ -198,14 +153,6 @@ button#doks-versions {
     margin-top: 0.125rem;
     margin-bottom: 0.125rem;
   }
-
-  /*
-  .navbar-form {
-    margin-top: 0;
-    margin-left: 6rem;
-    margin-right: 1.5rem;
-  }
-  */
 }
 
 .form-control {
@@ -215,10 +162,6 @@ button#doks-versions {
 
 .form-control.is-search {
   padding-right: 4rem;
-
-  @include media-breakpoint-up(lg) {
-    width: calc(100% + 2rem);
-  }
 
   @include media-breakpoint-up(lg) {
     width: 100%;
@@ -246,71 +189,9 @@ button#doks-versions {
   border-radius: var(--radius);
 
   @include media-breakpoint-up(lg) {
-    right: -1.4625rem;
-  }
-
-  @include media-breakpoint-up(lg) {
     right: 0.3125rem;
   }
 }
-
-/*
-@include media-breakpoint-up(lg) {
-  .navbar-form {
-    margin-left: 15rem;
-  }
-}
-
-@include media-breakpoint-up(xl) {
-  .navbar-form {
-    margin-left: 30rem;
-  }
-}
-*/
-
-/*
-.form-control.is-search {
-*/
-
-/*
-  padding-right: calc(1.5em + 0.75rem);
-  */
-
-/*
-  padding-right: 2.5rem;
-  background: $gray-100;
-  border: 0;
-  */
-
-/*
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-search'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right calc(0.375em + 0.1875rem) center;
-  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
-  */
-
-/*
-}
-*/
-
-/*
-.navbar-form::after {
-  position: absolute;
-  top: 0.4625rem;
-  right: 0.5375rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.5rem;
-  padding-right: 0.4375rem;
-  padding-left: 0.4375rem;
-  font-size: $font-size-base * 0.75;
-  color: $gray-700;
-  content: "/";
-  border: 1px solid $gray-300;
-  border-radius: 0.25rem;
-}
-*/
 
 /*! purgecss start ignore */
 .algolia-autocomplete {
@@ -358,22 +239,10 @@ button#doks-versions {
 
 /*! purgecss end ignore */
 
-/*
- * Source: https://medium.com/creative-technology-concepts-code/responsive-mobile-dropdown-navigation-using-css-only-7218e4498a99
-*/
-
-/* Style the menu icon for the dropdown */
-
 .navbar .menu-icon {
   cursor: pointer;
-
-  /* display: inline-block; */
-
-  /* float: right; */
   padding: 1.125rem 0.625rem;
   margin: 0 0 0 -0.625rem;
-
-  /* position: relative; */
   user-select: none;
 }
 
@@ -404,8 +273,6 @@ button#doks-versions {
 .navbar .menu-icon .navicon::after {
   top: -5px;
 }
-
-/* Add the icon and menu animations when the checkbox is clicked */
 
 .navbar .menu-btn {
   display: none;
@@ -452,7 +319,7 @@ button#doks-versions {
 .btn-menu:hover,
 .btn-doks-light:hover,
 .doks-sidebar-toggle:hover {
-  background: $pink-100;
+  background: var(--secondary);
   border: transparent;
 }
 

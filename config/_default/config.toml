@@ -18,7 +18,7 @@ disableLanguages = ["en", "de", "nl"]
 
 # add redirects/headers
 [outputs]
-home = ["HTML", "RSS", "REDIRECTS", "HEADERS"]
+home = ["HTML", "RSS", "REDIRECTS"]
 section = ["HTML", "RSS", "SITEMAP"]
 
 # remove .{ext} from text/netlify
@@ -30,13 +30,6 @@ delimiter = ""
 [outputFormats.REDIRECTS]
 mediaType = "text/netlify"
 baseName = "_redirects"
-isPlainText = true
-notAlternative = true
-
-# add output format for netlify _headers
-[outputFormats.HEADERS]
-mediaType = "text/netlify"
-baseName = "_headers"
 isPlainText = true
 notAlternative = true
 

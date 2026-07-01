@@ -4,7 +4,7 @@
   --serif-font-family: georgia, serif;
   --code-font-family: "JetBrains Mono", monospace;
 
-  // Type scale: /* @link https://utopia.fyi/type/calculator?c=320,16,1.25,1240,20,1.333,7,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
+  // Type scale
   --size-step-minus-2: clamp(0.64rem, 0.6179rem + 0.1104vw, 0.7035rem);
   --size-step-minus-1: clamp(0.8rem, 0.7521rem + 0.2395vw, 0.9377rem);
   --size-step-0: clamp(1rem, 0.913rem + 0.4348vw, 1.25rem);
@@ -89,6 +89,9 @@
   --muted-foreground: #71717a;
   --muted: 240, 240, 240;
 
+  // Syntax highlighting
+  --syntax-string: #d32e9d;
+
   // Semantic aliases
   --color-beige: #fbf7f0;
   --navbar-bg: rgba(var(--muted), 0.95);
@@ -115,16 +118,7 @@ $pink-500: #d32e9d;
 
 $primary: $brand;
 
-$secondary-dark: $gray-700;
-
-$color-btn-bg: $brand;
-$color-btn-border: darken($brand, 5%);
-$color-btn-text: $gray-900;
-
-// Options
-//
-// Quickly modify global styling by enabling or disabling optional features.
-
+// Bootstrap overrides
 $enable-caret:                true;
 $enable-rounded:              true;
 $enable-shadows:              false;
@@ -140,33 +134,13 @@ $enable-negative-margins:     true;
 $enable-deprecation-messages: true;
 $enable-important-utilities:  true;
 
-/** Bootstrap navbar fix (https://git.io/fADqW) */
 $navbar-dark-toggler-icon-bg: none;
 $navbar-light-toggler-icon-bg: none;
 
-// Options
-//
-// Quickly modify global styling by enabling or disabling optional features.
-
-// $enable-responsive-font-sizes: true;
-
-// Body
-//
-// Settings for the `<body>` element.
-
 $body-bg:                   $white;
 $body-color:                $black;
-
-// Links
-//
-// Style anchor elements.
-
-$link-color:                              $primary;
-$link-decoration:                         none;
-
-// Grid containers
-//
-// Define the maximum width of `.container` for different screen sizes.
+$link-color:                $primary;
+$link-decoration:           none;
 
 $container-max-widths: (
   sm: 540px,
@@ -178,23 +152,11 @@ $container-max-widths: (
 
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 
-// Grid columns
-//
-// Set the number of columns and specify the width of the gutters.
-
 $grid-columns:                16;
 $grid-gutter-width:           48px;
 $grid-row-columns:            6;
 
-// Components
-//
-// Define common padding and border radius sizes and more.
-
 $border-color:                $gray-200;
-
-// Typography
-//
-// Font, line-height, and color for body text, headings, and more.
 
 // stylelint-disable value-keyword-case
 $font-family-sans-serif:      "Roboto", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -202,45 +164,26 @@ $font-family-monospace:       "JetBrains Mono", sfmono-regular, menlo, monaco, c
 $font-family-base:            $font-family-sans-serif;
 // stylelint-enable value-keyword-case
 
-$font-size-base:              1rem; // Assumes the browser default, typically `16px`
+$font-size-base:              1rem;
 $font-size-xl:                $font-size-base * 1.375;
 $font-size-lg:                $font-size-base * 1.25;
 $font-size-md:                $font-size-base * 1.125;
 $font-size-sm:                $font-size-base * 0.875;
 
-// $line-height-base:            1.5;
-
 $headings-font-family:        null;
 $headings-font-weight:        700;
-
 $lead-font-weight:            400;
-
-// Spacing
-//
-// Control the default styling of most Bootstrap elements by modifying these
-// variables. Mostly focused on spacing.
-// You can add more entries to the $spacers map, should you need more variation.
 
 $spacer: 1rem;
 
-// Navbar
-
 $navbar-padding-y:                  $spacer / 2;
 $navbar-padding-x:                  null;
-
 $navbar-nav-link-padding-x:         0.5rem;
-
 $navbar-light-color:                $black;
 $navbar-light-hover-color:          $primary;
 $navbar-light-active-color:         $primary;
 
-// Cards
-
 $card-border-color:                 $gray-200;
-
-// Alerts
-//
-// Define alert colors, border radius, and padding.
 
 $alert-padding-y:                   $spacer;
 $alert-padding-x:                   $spacer * 1.5;
@@ -248,12 +191,10 @@ $alert-margin-bottom:               0;
 $alert-border-radius:               0;
 $alert-link-font-weight:            $headings-font-weight;
 $alert-border-width:                0;
-
 $alert-bg-scale:                    0;
 $alert-border-scale:                0;
 $alert-color-scale:                 0;
 
-// docsearch
 $dropdown-config: (
   main-color: $brand,
   layout-type: normal,

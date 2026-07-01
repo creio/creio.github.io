@@ -2,14 +2,14 @@ pre,
 code,
 kbd,
 samp {
-  font-family: $font-family-monospace;
-  font-size: $font-size-sm;
-  border-radius: $border-radius;
+  font-family: var(--code-font-family);
+  font-size: 0.875rem;
+  border-radius: var(--radius);
 }
 
 code {
   background: var(--color-beige);
-  color: $black;
+  color: var(--foreground);
   padding: 0.25rem 0.5rem;
 }
 
@@ -20,7 +20,7 @@ pre {
 pre code {
   display: block;
   overflow-x: auto;
-  line-height: $line-height-base;
+  line-height: 1.5;
   padding: 1.25rem 1.5rem;
   tab-size: 4;
   scrollbar-width: thin;
@@ -49,16 +49,16 @@ pre code::-webkit-scrollbar {
 }
 
 pre code::-webkit-scrollbar-thumb {
-  background: $gray-400;
+  background: var(--muted-foreground);
 }
 
 pre code:hover {
   scrollbar-width: thin;
-  scrollbar-color: $gray-500 transparent;
+  scrollbar-color: var(--muted-foreground) transparent;
 }
 
 pre code::-webkit-scrollbar-thumb:hover {
-  background: $gray-500;
+  background: var(--muted-foreground);
 }
 
 code.language-mermaid {
