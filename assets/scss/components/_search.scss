@@ -84,9 +84,11 @@
     padding-right: 1rem;
     border-right: 1px solid var(--border);
     display: inline-block;
+
     // text-align: right;
     flex-shrink: 0;
     overflow: hidden;
+
     // text-overflow: ellipsis;
     // white-space: nowrap;
   }
@@ -95,6 +97,7 @@
     width: 19rem;
     padding-left: 1rem;
     overflow: hidden;
+
     // text-overflow: ellipsis;
     white-space: wrap;
   }
