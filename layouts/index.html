@@ -2,8 +2,7 @@
 <section class="section container-fluid p-0">
   <div class="home-layout__hero">
     <div class="profile-image">
-        {{- .Scratch.Set "fillImage" "600x670 Center" -}}
-        {{ partial "content/figure.html" . }}
+        {{ partial "content/figure.html" (dict "context" . "fillImage" "600x670 Center") }}
     </div>
     <div class="home-greeting">
       <h1 class="home-h1">Hi!</h1>

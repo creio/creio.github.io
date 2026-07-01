@@ -64,7 +64,7 @@ singleSize = false
 imageAddClass = "img-fluid lazyload blur-up"
 
 ### Image template
-profileImage = "profile.png" # put in `./assets/images/`
+profileImage = "profile.webp" # put in `./assets/images/`
 defaultImage = "default-image.png" # put in `./assets/images/`
 fillImage = "1270x740 Center" # normalize image size
 

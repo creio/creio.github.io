@@ -4,6 +4,7 @@
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=self
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://giscus.app https://cloud.umami.is https://substackapi.com https://f.convertkit.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://giscus.app https://cloud.umami.is; frame-src https://giscus.app https://ctlos.substack.com; base-uri 'self'; form-action 'self'
 
 /*.html
   Cache-Control: public, max-age=0, must-revalidate

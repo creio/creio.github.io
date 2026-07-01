@@ -35,7 +35,7 @@ $button-color-dark: lighten($brand, 1%);
 }
 
 [data-dark-mode] .content {
-  background: var(--background) !important;
+  background: var(--background);
 }
 
 // === Links ===
@@ -153,7 +153,7 @@ $button-color-dark: lighten($brand, 1%);
 }
 
 [data-dark-mode] body .navbar-brand {
-  color: var(--foreground) !important;
+  color: var(--foreground);
 }
 
 [data-dark-mode] body .navbar-light .navbar-nav .nav-link:hover,
@@ -251,7 +251,7 @@ $button-color-dark: lighten($brand, 1%);
 }
 
 [data-dark-mode] body .border-top {
-  border-color: var(--border) !important;
+  border-color: var(--border);
 }
 
 // === Code ===
@@ -277,7 +277,7 @@ $button-color-dark: lighten($brand, 1%);
 
 [data-dark-mode] body .card.bg-light,
 [data-dark-mode] body .bg-light {
-  background: var(--secondary) !important;
+  background: var(--secondary);
 }
 
 // === Utility ===

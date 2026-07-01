@@ -63,6 +63,11 @@
 {{ $custom := resources.Get "js/custom.js" | js.Build -}}
 {{ $slice = $slice | append $custom -}}
 
+{{ if .IsHome -}}
+  {{ $stars := resources.Get "js/stars.js" | js.Build -}}
+  {{ $slice = $slice | append $stars -}}
+{{ end -}}
+
 {{ $js := $slice | resources.Concat "main.js" -}}
 
 {{ if and (eq (default .Type .Section) "posts") (eq .Kind "page") (ne .Params.comments false) (ne .Site.Params.options.comments false) -}}

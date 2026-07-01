@@ -17,8 +17,7 @@
           {{ end -}}
           {{ if $.Params.image -}}
           <div>
-              {{- .Scratch.Set "fillImage" "1270x715 Center" -}}
-              {{ partial "content/figure.html" . }}
+              {{ partial "content/figure.html" (dict "context" . "fillImage" "1270x715 Center") }}
           </div>
           {{ end -}}
             <p class="lead">{{ .Params.lead | safeHTML }}</p>
