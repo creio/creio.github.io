@@ -1,11 +1,11 @@
 ---
 title: "Psiphon linux, обходим блокировку трафика"
-description: ""
+description: "Обход блокировок сайтов в Linux с помощью Psiphon. Установка, настройка прокси в браузере и Telegram."
 date: 2020-08-10T22:01:13+03:00
 draft: false
-weight: 50
 image: ""
-categories: []
+categories:
+  - Network
 tags:
     - network
 contributors: []
@@ -14,7 +14,7 @@ toc: true
 edit: true
 ---
 
-Обходим блокировку сайтов с помощью psiphon.
+Psiphon — бесплатный инструмент для обхода блокировок сайтов. Работает через прокси-серверы, не требует настройки VPN. Устанавливается из AUR и сразу готов к работе.
 
 ## Archlinux
 
@@ -95,3 +95,8 @@ Help.
 ```bash
 sudo brainfuck-psiphon-pro-go -h
 ```
+
+## Читайте также
+
+- [Tor проксирование в Arch Linux](/posts/tor) — настройка доступа к .onion сайтам
+- [VPN сервер в Linux](/posts/vpn) — WireGuard, SSH-туннель, Sshuttle

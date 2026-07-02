@@ -66,7 +66,7 @@ imageAddClass = "img-fluid lazyload blur-up"
 ### Image template
 profileImage = "profile.webp" # put in `./assets/images/`
 defaultImage = "default-image.png" # put in `./assets/images/`
-fillImage = "1270x740 Center" # normalize image size
+fillImage = "1280x720 Center" # normalize image size
 
 # Footer
 footer = "Powered by <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://www.netlify.com/\">Netlify</a>, <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://gohugo.io/\">Hugo</a>, fork <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://getdoks.org/\">Doks</a> | <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://cloud.umami.is/share/UrYcvYQYoCSNcee4/creio.github.io\">Analytics</a>"

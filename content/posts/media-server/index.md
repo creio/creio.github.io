@@ -1,11 +1,11 @@
 ---
 title: "Настройка автоматической загрузки фильмов с торрентов"
-description: ""
+description: "Автоматическая загрузка фильмов с торрентов: связка Radarr + Sonarr + Jackett + qBittorrent + Telegram-бот в Docker."
 date: 2021-09-27T21:51:28+03:00
 draft: false
-weight: 50
 image: "/images/radarr.png"
-categories: []
+categories:
+  - Docker
 tags:
   - dev
 contributors: []
@@ -359,6 +359,10 @@ docker compose up -d
 - [Тут немного про sonarr sprut.ai](https://sprut.ai/client/article/3169)
 - [habr](https://habr.com/ru/post/505814/)
 - [connect.smartliving.ru](https://connect.smartliving.ru/profile/225/blog/ustanovka-i-nastroyka-sonarr-radarr-qbittorrent-jackett-torproxy-v-docker.html)
-- [Поблагодарить меня можно тут](https://ctlos.github.io/donat/)
 
 PSS:) Вопросы и предложения можно оставить в чате [@ctlos](https://telegram.me/ctlos).
+
+## Читайте также
+
+- [Настройка Nginx и Docker Portainer](/posts/web-server) — reverse proxy и управление контейнерами
+- [Настройка сервера Ubuntu 24.04](/posts/ubuntu-docker) — Docker, Nginx, Dockge, UFW

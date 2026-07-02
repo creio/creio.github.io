@@ -63,7 +63,12 @@ p.meta {
   text-decoration: none;
 }
 
-.article-list a {
+.home .article-list a {
   text-decoration: underline;
   text-decoration-style: dashed;
+}
+
+.home .article-list a:hover {
+  text-decoration: underline;
+  text-decoration-style: solid;
 }

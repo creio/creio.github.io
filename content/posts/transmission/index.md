@@ -1,11 +1,11 @@
 ---
 title: "Transmission — раздача торрентов со своего сервера"
-description: ""
+description: "Настройка Transmission-daemon для раздачи торрентов со своего сервера: установка, конфигурация, Docker и скрипт создания torrent-файлов."
 date: 2021-10-22T22:04:41+03:00
 draft: false
-weight: 50
 image: "/images/transmission.png"
-categories: []
+categories:
+  - Linux
 tags:
   - dev
   - linux
@@ -297,3 +297,8 @@ PrintLastLog no
 
 sudo systemctl restart sshd
 ```
+
+## Читайте также
+
+- [Настройка медиа-сервера в Docker](/posts/media-server) — Radarr, Sonarr, Jackett, qBittorrent
+- [Настройка сервера Ubuntu 24.04](/posts/ubuntu-docker) — Docker, Nginx, UFW

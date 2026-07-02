@@ -1,8 +1,8 @@
 ---
-title: "{{ replace .Name "-" " " | title }}"
-description: ""
+title: '{{ replace .Name "-" " " | title }}'
+description: ''
+image: ''
 date: {{ .Date }}
 draft: true
-image: ""
 toc: false
 ---

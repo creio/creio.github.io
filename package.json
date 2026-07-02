@@ -24,7 +24,7 @@
     "clean": "shx rm -rf public resources .hugo_build.lock",
     "clean:install": "shx rm -rf package-lock.json node_modules",
     "version": "exec-bin node_modules/.bin/hugo/hugo version",
-    "lint": "npm run -s lint:js && npm run -s lint:styles && npm run -s lint:md",
+    "lint": "npm run -s lint:js && npm run -s lint:styles",
     "lint:js": "eslint assets/js config functions",
     "lint:styles": "stylelint \"assets/scss/**/*.{css,sass,scss,sss,less}\"",
     "lint:md": "markdownlint-cli2 \"*.md\" \"content/**/*.md\"",

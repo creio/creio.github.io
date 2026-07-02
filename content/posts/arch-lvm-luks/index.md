@@ -1,12 +1,13 @@
 ---
 title: "Установка Arch Linux на зашифрованный раздел, LVM на LUKS"
-description: ""
+description: "Установка Arch Linux на зашифрованный раздел LVM на LUKS: шифрование диска, настройка grub, резервное копирование заголовка."
 date: 2020-03-23T20:14:38+03:00
 draft: false
-weight: 50
 image: "/images/lvm-luks.png"
 tags:
     - archlinux
+categories:
+  - Arch Linux
 contributors: []
 pinned: false
 toc: true

@@ -1,0 +1,18 @@
+[languages.en]
+  contentDir = 'content/en'
+  direction = 'ltr'
+  disabled = true
+  label = 'English'
+  locale = 'en-US'
+  title = 'Project Documentation'
+  weight = 2
+  [languages.en.params]
+    subtitle = 'Reference, Tutorials, and Explanations'
+[languages.de]
+  contentDir = 'content/de'
+  direction = 'ltr'
+  disabled = true
+[languages.nl]
+  contentDir = 'content/nl'
+  direction = 'ltr'
+  disabled = true

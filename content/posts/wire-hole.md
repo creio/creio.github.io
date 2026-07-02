@@ -1,12 +1,12 @@
 ---
-weight: 50
 title: 'Wireguard, pihole, unbound | предотвращаем утечку dns'
-description: ''
+description: 'Настройка WireGuard + Pi-hole + Unbound для приватного DNS без утечек. Полная конфигурация VPN-сервера с блокировкой рекламы.'
 image: ''
 date: 2022-12-17T19:18:35.000Z
 tags:
   - network
-categories: []
+categories:
+  - Network
 contributors: []
 draft: false
 pinned: false
@@ -202,6 +202,11 @@ sudo ufw reject https
 ss -tulpn
 ```
 
-* 45.138.72.135/admin
-* [http://pi.hole/admin](http://pi.hole/admin)
-* [https://dnsleak.com](https://dnsleak.com)
+- 45.138.72.135/admin
+- [http://pi.hole/admin](http://pi.hole/admin)
+- [https://dnsleak.com](https://dnsleak.com)
+
+## Читайте также
+
+- [VPN сервер в Linux](/posts/vpn) — WireGuard, SSH-туннель, Sshuttle
+- [Tor проксирование в Arch Linux](/posts/tor) — настройка onion-трафика

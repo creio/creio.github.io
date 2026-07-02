@@ -1,11 +1,11 @@
 ---
 title: "Установка Arch Linux в Oracle Cloud"
-description: ""
+description: "Установка Arch Linux в Oracle Cloud Free с нуля: bootstrap, btrfs, LVM, настройка SSH и загрузчика grub. Полное руководство с Console Connection."
 date: 2021-03-22T21:59:05+03:00
 draft: false
-weight: 50
 image: ""
-categories: []
+categories:
+  - Arch Linux
 tags:
     - archlinux
 contributors: []
@@ -562,15 +562,18 @@ sudo nano /etc/fstab
 
 ### Ссылки
 
-- [Настройка zsh](/posts/zsh-config)
 - [Еще некоторые конфиги и скрипты в моем репозитории](https://github.com/creio/dots)
-- [VPN сервер в Linux](/posts/vpn)
 
 ## Итог
 
-Таким способом можно переделать любую систему и практически на любом облачном решении, главное знать детали загрузки и хорошо бы иметь ssh подключение выше, как тут (Console connection), или некий режим восстановления. Если Вам понравился мой бред:) по этому поводу, то поблагодарить меня можно тут.
+Таким способом можно переделать любую систему и практически на любом облачном решении, главное знать детали загрузки и хорошо бы иметь ssh подключение выше, как тут (Console connection), или некий режим восстановления.
 
-- [ctlos.github.io/donat](https://ctlos.github.io/donat/)
 - Вступай в чат [@ctlos](https://telegram.me/ctlos)
 
 Всем Добра.
+
+## Читайте также
+
+- [Настройка zsh](/posts/zsh-config)
+- [Установка Arch Linux на LVM на LUKS](/posts/arch-lvm-luks) — шифрование диска при установке
+- [VPN сервер в Linux](/posts/vpn) — настройка WireGuard

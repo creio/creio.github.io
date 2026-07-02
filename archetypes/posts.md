@@ -1,13 +1,13 @@
 ---
-title: "{{ replace .Name "-" " " | title }}"
-description: ""
+title: '{{ replace .Name "-" " " | title }}'
+description: ''
+excerpt: ''
 date: {{ .Date }}
-draft: false
-weight: 50
-image: ""
+image: ''
 categories: []
 tags: []
 contributors: []
+draft: false
 pinned: false
 toc: true
 edit: true

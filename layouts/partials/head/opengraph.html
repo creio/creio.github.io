@@ -33,32 +33,44 @@
 {{- end -}}
 
 {{- $ogImage := "" -}}
-{{- with $.Params.image -}}
-  {{- $ogImage = . -}}
-  <meta property="og:image" content="{{ . }}">
-  <meta property="og:image:alt" content="{{ $ogTitle }}">
-{{- else -}}
-  {{- $images := $.Resources.ByType "image" -}}
-  {{- $featured := $images.GetMatch "*feature*" -}}
-  {{- if not $featured -}}
-    {{- $featured = $images.GetMatch "{*cover*,*thumbnail*}" -}}
-  {{- end -}}
-  {{- with $featured -}}
-    {{- $ogImage = $featured.Permalink -}}
-    <meta property="og:image" content="{{ $featured.Permalink }}"/>
-    <meta property="og:image:alt" content="{{ $ogTitle }}">
-  {{- else -}}
-    {{- with $.Site.Params.images -}}
-      {{- $ogImage = index . 0 | absURL -}}
-      <meta property="og:image" content="{{ index . 0 | absURL }}"/>
-      <meta property="og:image:alt" content="{{ $.Site.Params.title }}">
+{{- $ogAlt := $.Site.Title -}}
+
+{{- if $.Params.image -}}
+    {{/* 1. Пытаемся найти картинку как ресурс рядом с постом */}}
+    {{- $localImage := $.Resources.GetMatch $.Params.image -}}
+
+    {{- if $localImage -}}
+        {{/* Если нашли файл рядом (например, "zsh-cfg.png") */}}
+        {{- $ogImage = $localImage.Permalink -}}
+    {{- else -}}
+        {{/* Если не нашли рядом, значит это внешняя ссылка или путь от корня (например, "/images/pic.png") */}}
+        {{- $ogImage = $.Params.image | absURL -}}
     {{- end -}}
-  {{- end -}}
+
+    {{- $ogAlt = $ogTitle | default $.Title -}}
+
+{{- else if $.Resources.ByType "image" -}}
+    {{/* 2. Если в front matter ничего не указано, ищем по маске (feature, cover...) */}}
+    {{- $images := $.Resources.ByType "image" -}}
+    {{- $featured := or ($images.GetMatch "*feature*") ($images.GetMatch "{*cover*,*thumbnail*}") -}}
+
+    {{- with $featured -}}
+        {{- $ogImage = .Permalink -}}
+        {{- $ogAlt = $ogTitle | default $.Title -}}
+    {{- end -}}
 {{- end -}}
 
-{{- $primaryImage := "" -}}
-{{- with $.Site.Params.images -}}
-  {{- $primaryImage = index . 0 | absURL -}}
+{{/* 3. Если вообще ничего не нашли, берем глобальную картинку сайта */}}
+{{- if not $ogImage -}}
+    {{- with $.Site.Params.images -}}
+        {{- $ogImage = index . 0 | absURL -}}
+    {{- end -}}
+{{- end -}}
+
+{{/* ФИНАЛЬНЫЙ ВЫВОД */}}
+{{- if $ogImage -}}
+    <meta property="og:image" content="{{ $ogImage }}">
+    <meta property="og:image:alt" content="{{ $ogAlt }}">
 {{- end -}}
 
 {{ with .Params.audio -}}

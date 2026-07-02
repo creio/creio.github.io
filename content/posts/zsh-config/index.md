@@ -1,11 +1,11 @@
 ---
 title: "Zsh Config"
-description: ""
+description: "Настройка Zsh в Arch Linux: установка oh-my-zsh, плагины fast-syntax-highlighting и zsh-autosuggestions, конфигурация ~/.zshrc."
 date: 2019-07-11T22:20:38+03:00
 draft: false
-weight: 50
 image: "/images/zsh-cfg.png"
-categories: []
+categories:
+  - Linux
 tags:
   - linux
 contributors: []
@@ -91,3 +91,7 @@ export FZF_COMPLETION_TRIGGER="~~"
 ```
 
 В момент набора и появления автодополнения можно перемещаться по словам Ctrl+стрелка вправо, а просто стрелка вправо прыжок в конец подсвеченной строки. Вот собственно и все.
+
+## Читайте также
+
+- [Настройка терминала Urxvt](/posts/urxvt-config) — установка, шрифты, цвета, плагины

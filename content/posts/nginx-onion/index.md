@@ -1,11 +1,11 @@
 ---
 title: "Доступность веб сервера в tor и создание onion домена | Nginx tor onion"
-description: ""
+description: "Как запустить веб-сервер в Tor и создать onion-домен: настройка Nginx, генерация v3 ключей, reverse proxy и Onion-Location."
 date: 2021-09-13T21:55:04+03:00
 draft: false
-weight: 50
 image: "/images/nginx-onion.png"
-categories: []
+categories:
+  - Network
 tags:
     - dev
     - linux
@@ -184,5 +184,10 @@ server {
 }
 ```
 
-- [Поблагодарить меня можно тут](https://ctlos.github.io/donat/)
 - Вопросы и предложения можно оставить в чате [@ctlos](https://telegram.me/ctlos)
+
+## Читайте также
+
+- [Tor проксирование в Arch Linux](/posts/tor) — настройка onion-трафика
+- [VPN сервер в Linux](/posts/vpn) — WireGuard, SSH-туннель, Sshuttle
+- [Настройка Nginx и Docker Portainer](/posts/web-server) — reverse proxy и контейнеры

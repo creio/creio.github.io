@@ -1,13 +1,13 @@
 ---
 title: "Перенос форума fluxbb на discourse"
-description: ""
+description: "Пошаговая инструкция по переносу форума FluxBB на Discourse: экспорт базы MySQL, импорт данных, настройка домена и обновление."
 date: 2021-06-19T21:48:04+03:00
 draft: false
-weight: 50
 image: ""
-categories: []
+categories:
+  - Development
 tags:
-    - dev
+  - dev
 contributors: []
 pinned: false
 toc: true
@@ -149,3 +149,7 @@ docker rmi 7281bf55ce46
 apt-get autoclean
 apt-get autoremove
 ```
+
+## Читайте также
+
+- [Настройка Nginx и Docker Portainer](/posts/web-server) — reverse proxy и управление контейнерами

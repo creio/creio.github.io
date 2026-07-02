@@ -1,11 +1,11 @@
 ---
 title: "Как Создать и Настроить VPN сервер в Linux | Wireguard"
-description: ""
+description: "Как создать VPN-сервер в Linux с помощью WireGuard, SSH-туннеля и Sshuttle. Пошаговая инструкция по настройке сервера и клиента."
 date: 2021-01-31T09:19:42+01:00
 draft: false
-weight: 50
 image: ""
-categories: []
+categories:
+  - Network
 tags:
     - network
 contributors: []
@@ -254,3 +254,9 @@ curl ident.me
 ```bash
 curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
 ```
+
+## Читайте также
+
+- [Tor проксирование в Arch Linux](/posts/tor) — настройка доступа к .onion сайтам
+- [WireGuard + Pi-hole + Unbound](/posts/wire-hole) — приватный DNS без утечек
+- [Nginx onion: веб-сервер в Tor](/posts/nginx-onion) — создание onion-домена

@@ -1,14 +1,13 @@
 ---
-excerpt: ''
-weight: 50
-homepage: false
-title: Backup
-description: ''
+# homepage: false
+title: 'Backup'
+description: 'Сравнение инструментов резервного копирования в Linux: Restic, Borg, Kopia. Примеры команд, настройка cron и отправка уведомлений.'
 image: ''
 date: 2022-05-10T17:12:00.000Z
 tags:
   - linux
-categories: []
+categories:
+  - Linux
 contributors: []
 draft: true
 pinned: false
@@ -189,3 +188,7 @@ kopia repository status
 kopia snapshot delete --delete k2716fab9b1d1ef4336133b06c9d9a79c
 
 kopia repository disconnect
+
+## Читайте также
+
+- [Rclone: работа с облачными хранилищами](/posts/rclone) — монтирование и синхронизация данных

@@ -3,14 +3,28 @@
   <div class="col-md-12">
     <h1 class="">{{ .Title }}</h1>
     {{ with .Content -}}<div class="">{{ . }}</div>{{ end -}}
-    <details class="details-tags" data-id="global-tags">
-        <summary class="fw-normal">теги блога</summary>
-        {{ range $name, $items := .Site.Taxonomies.tags }}
-            <a class="btn btn-light my-1" role="button" href="/tags/{{ $name | urlize }}">
-                {{ $name }} <span class="badge bg-secondary">{{ len $items }}</span>
-            </a>
-        {{ end }}
+    {{ $isPosts := eq .Section "posts" -}}
+    {{/* Блок ТЕГОВ: выводим если мы в posts ИЛИ на странице тегов */ -}}
+    {{ if or $isPosts (eq .Data.Plural "tags") -}}
+    <details class="details-tags" data-id="tags">
+      <summary class="fw-normal">теги блога</summary>
+      {{ range $name, $items := .Site.Taxonomies.tags -}}
+      <a class="btn btn-light my-1" role="button" href="/tags/{{ $name | urlize }}">
+        {{ $name }} <span class="badge bg-secondary">{{ len $items }}</span>
+      </a>
+      {{ end -}}
     </details>
+    {{ end -}}
+    {{ if or $isPosts (eq .Data.Plural "categories") -}}
+    <details class="details-categories" data-id="categories">
+      <summary class="fw-normal">категории блога</summary>
+      {{ range $name, $items := .Site.Taxonomies.categories -}}
+      <a class="btn btn-light my-1" role="button" href="/categories/{{ $name | urlize }}">
+        {{ $name }} <span class="badge bg-secondary">{{ len $items }}</span>
+      </a>
+      {{ end -}}
+    </details>
+    {{ end -}}
   </div>
 </div>
 
@@ -18,30 +32,36 @@
     <div class="col-md-12">
         <div class="card-list">
             {{ $pinnedPosts := where .Site.RegularPages "Params.pinned" "==" true }}
-            {{ range $pinnedPosts }}
+            {{ range $pinnedPosts -}}
             <div class="card card-terms my-3">
                 <div class="card-body">
                     <article>
                         <h2 class="h4 fw-light m-0">
                             <a class="hover-underline-animation stretched-link" href="{{ .RelPermalink }}">{{ .Params.title }}</a>
                         </h2>
-                        <span class="d-block fs-6 mt-1">{{ .PublishDate.Format "02 01 2006" }}, {{ .ReadingTime -}}&nbsp;min на чтение</span>
-                    </article>
-                </div>
-            </div>
-            {{ end }}
-            {{ range where .Paginator.Pages "Params.pinned" "!=" true }}
-            <div class="card card-terms my-3">
-                <div class="card-body">
-                    <article>
-                        <h2 class="h4 fw-light m-0">
-                            <a class="hover-underline-animation stretched-link" href="{{ .RelPermalink }}">{{ .Params.title }}</a>
-                        </h2>
+                        {{ if .Params.excerpt -}}
+                        <p class="text-light d-block fs-6 mt-1">{{ .Params.excerpt }}</p>
+                        {{ end -}}
                         <span class="text-primary d-block fs-6 mt-1">{{ .PublishDate.Format "02 01 2006" }}, {{ .ReadingTime -}}&nbsp;min на чтение</span>
                     </article>
                 </div>
             </div>
-            {{ end }}
+            {{ end -}}
+            {{ range where .Paginator.Pages "Params.pinned" "!=" true -}}
+            <div class="card card-terms my-3">
+                <div class="card-body">
+                    <article>
+                        <h2 class="h4 fw-light m-0">
+                            <a class="hover-underline-animation stretched-link" href="{{ .RelPermalink }}">{{ .Params.title }}</a>
+                        </h2>
+                        {{ if .Params.excerpt -}}
+                        <p class="text-light d-block fs-6 mt-1">{{ .Params.excerpt }}</p>
+                        {{ end -}}
+                        <span class="text-muted d-block fs-6 mt-1">{{ .PublishDate.Format "02 01 2006" }}, {{ .ReadingTime -}}&nbsp;min на чтение</span>
+                    </article>
+                </div>
+            </div>
+            {{ end -}}
         </div>
     </div>
 </div>
@@ -51,4 +71,4 @@
     {{ template "_internal/pagination.html" . }}
   </div>
 </div>
-{{ end }}
+{{ end -}}

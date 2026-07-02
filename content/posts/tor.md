@@ -1,11 +1,11 @@
 ---
 title: "Tor проксирование"
-description: ""
+description: "Настройка проксирования onion-трафика через Tor в Arch Linux: dnsmasq, dhcpcd, iptables. Пошаговая инструкция для доступа к .onion сайтам."
 date: 2022-05-26T22:02:34+03:00
 draft: false
-weight: 50
 image: ""
-categories: []
+categories:
+  - Network
 tags:
     - network
 contributors: []
@@ -14,7 +14,7 @@ toc: true
 edit: true
 ---
 
-Задача заставить локально обрабатывать все запросы к onion, через тор, а все остальное в обычном режиме. В этом деле поможет dnsmasq, но заставить его работать я смог только с dhcpcd, не знаю возможно ли это сделать через networkmanager, не пользуюсь им. Выключаем и удаляем все сетевое, ставим dnsmasq и dhcpcd.
+Эта настройка позволяет обращаться к .onion адресам напрямую из браузера, не используя Tor Browser. Все запросы к onion-сайтам будут проходить через Tor, а остальной трафик останется обычным. В этом деле поможет dnsmasq, но заставить его работать я смог только с dhcpcd, не знаю возможно ли это сделать через networkmanager, не пользуюсь им. Выключаем и удаляем все сетевое, ставим dnsmasq и dhcpcd.
 
 ```bash
 sudo pacman -S dnsmasq dhcpcd tor
@@ -140,3 +140,8 @@ sudo toriptables3.py -h
 - [Dhcpcd](https://wiki.archlinux.org/title/Dhcpcd)
 - [Using_TorDNS_for_all_DNS_queries](https://wiki.archlinux.org/title/Tor#Using_TorDNS_for_all_DNS_queries)
 - [Dnsmasq](https://wiki.archlinux.org/title/Dnsmasq)
+
+## Читайте также
+
+- [Psiphon в Linux: обход блокировок](/posts/psiphon) — ещё один способ обойти цензуру
+- [VPN сервер в Linux](/posts/vpn) — настройка собственного VPN

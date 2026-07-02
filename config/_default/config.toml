@@ -5,16 +5,21 @@ disableHugoGeneratorInject = true
 enableEmoji = true
 enableGitInfo = true
 enableRobotsTXT = true
-paginate = 12
 rssLimit = 10
-
 summaryLength = 25
+[pagination]
+  disableAliases = true
+  pagerSize = 10
+  path = 'page'
+
 locale = 'ru'
 
-# Multilingual
-defaultContentLanguage = "ru"
-disableLanguages = ["en", "de", "nl"]
+## Multilingual
+defaultContentLanguage = 'ru'
 # defaultContentLanguageInSubdir = true
+# disableDefaultLanguageRedirect = false
+# disableLanguages = ['en', 'de', 'nl']
+## check ./config/languages.toml
 
 # add redirects/headers
 [outputs]

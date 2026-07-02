@@ -1,11 +1,11 @@
 ---
 title: "Firewall в linux | iptables | ufw"
-description: ""
+description: "Базовая настройка файрвола в Linux: установка UFW, управление портами, разрешение SSH. Решение проблем с netfilter-persistent на Ubuntu."
 date: 2021-10-23T21:45:16+03:00
 draft: false
-weight: 50
 image: ""
-categories: []
+categories:
+  - Linux
 tags:
   - linux
   - network
@@ -15,7 +15,7 @@ toc: true
 edit: true
 ---
 
-Firewall — межсетевой экран. Просмотр инфы по портам, в пакете iproute2.
+Firewall — межсетевой экран. UFW (Uncomplicated Firewall) — простая обёртка над iptables, которая упрощает управление правилами. Просмотр инфы по портам, в пакете iproute2.
 
 ```bash
 ss -tulpn
@@ -73,3 +73,8 @@ sudo systemctl status ufw.service
 # правила, после
 sudo iptables -L
 ```
+
+## Читайте также
+
+- [Настройка сервера Ubuntu 24.04 с Docker](/posts/ubuntu-docker) — полная настройка сервера с UFW
+- [Настройка Nginx и Docker Portainer](/posts/web-server) — reverse proxy и управление контейнерами

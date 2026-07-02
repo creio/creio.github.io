@@ -3,7 +3,7 @@
  * Only rules that need explicit overrides (mixins, SVG icons, hover states) stay here.
  */
 
-$button-color-dark: lighten($brand, 1%);
+$button-color-dark: lighten($primary-dark, 1%);
 
 // === CSS Custom Properties ===
 [data-dark-mode] {
@@ -92,7 +92,7 @@ $button-color-dark: lighten($brand, 1%);
 [data-dark-mode] body .btn-primary {
   @include button-variant($button-color-dark, $button-color-dark);
 
-  color: var(--foreground);
+  color: var(--background);
 }
 
 [data-dark-mode] body .btn-outline-primary {

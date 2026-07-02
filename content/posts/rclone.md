@@ -1,16 +1,16 @@
 ---
-# excerpt: ''
-weight: 50
-homepage: true
 title: Настройка и использование Rclone для работы с облачными хранилищами
 description: 'Rclone: Монтирование облачных хранилищ, синхронизация и управление файлами. Пошаговое руководство по использованию Rclone для работы с Google Drive, Yandex Disk и другими облачными провайдерами.'
+# excerpt: ''
 # image: false
 date: 2025-03-04T07:12:00.000Z
 tags:
   - linux
   - backup
-categories: []
+categories:
+  - Linux
 contributors: []
+homepage: true
 draft: false
 pinned: false
 toc: true
@@ -240,3 +240,8 @@ systemctl --user enable --now rclone-mount@<rclone-remote>
 ## Итог
 
 Rclone — это универсальный инструмент для работы с облачными хранилищами. С его помощью можно легко монтировать облачные диски, синхронизировать данные и управлять файлами. Настройка через systemd позволяет автоматизировать процесс монтирования при загрузке системы.
+
+## Читайте также
+
+- [Backup в Linux: Restic, Borg, Kopia](/posts/backup) — сравнение инструментов резервного копирования
+- [Настройка медиа-сервера в Docker](/posts/media-server) — автоматизация загрузки фильмов с торрентов

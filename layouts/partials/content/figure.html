@@ -1,14 +1,28 @@
 {{- $ctx := .context -}}
 {{- $fillImage := .fillImage | default site.Params.fillImage -}}
 
-{{- $image := resources.GetMatch $ctx.Params.Image -}}
+{{- $image := "" -}}
 
+{{/* Логика выбора картинки */}}
 {{- if $ctx.IsHome -}}
-  {{- $image = resources.Get (printf "%s%s" "images/" site.Params.profileImage) -}}
-{{- else if not $image -}}
-  {{- $image = resources.Get (printf "%s%s" "images/" site.Params.defaultImage) -}}
+    {{/* На главной берем аватарку из assets/images/ */}}
+    {{- $image = resources.Get (printf "images/%s" site.Params.profileImage) -}}
+{{- else if $ctx.Params.Image -}}
+    {{/* 1. Пытаемся найти картинку как ресурс рядом с постом */}}
+    {{- $image = $ctx.Resources.GetMatch $ctx.Params.Image -}}
+
+    {{/* 2. Если рядом нет, ищем в глобальной папке assets/ */}}
+    {{- if not $image -}}
+        {{- $image = resources.GetMatch $ctx.Params.Image -}}
+    {{- end -}}
 {{- end -}}
 
+{{/* 3. Если вообще ничего не нашлось, берем заглушку по умолчанию из assets/images/ */}}
+{{- if not $image -}}
+    {{- $image = resources.Get (printf "images/%s" site.Params.defaultImage) -}}
+{{- end -}}
+
+{{/* --- КОД РЕСАЙЗА --- */}}
 {{- $image = $image.Fill $fillImage -}}
 {{- $webp := $image.Resize (printf "%dx%d webp q90" $image.Width $image.Height) -}}
 {{- $lqip := $image.Resize site.Params.lqipWidth -}}

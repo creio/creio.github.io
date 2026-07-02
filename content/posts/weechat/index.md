@@ -1,12 +1,13 @@
 ---
-weight: 50
 title: Настройка и использование weechat в linux
-description: ''
+description: 'Настройка WeeChat в Linux: подключение к IRC (Libera.Chat), регистрация ника, Matrix, мосты и скрипты.'
 image: /images/weechat.png
 date: 2022-05-12T19:15:06.000Z
 tags:
   - linux
   - network
+categories:
+  - Linux
 contributors: []
 draft: false
 pinned: false

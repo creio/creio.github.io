@@ -1,11 +1,11 @@
 ---
 title: "Arch Urxvt, установка и настройка"
-description: ""
+description: "Установка и настройка терминала Urxvt в Arch Linux: шрифты, цвета, копирование/вставка, perl-плагины и горячие клавиши."
 date: 2019-07-10T22:07:49+03:00
 draft: false
-weight: 50
 image: "/images/urxvt-cfg.png"
-categories: []
+categories:
+  - Linux
 tags:
     - linux
 contributors: []
@@ -111,3 +111,7 @@ sudo ln -s /usr/bin/urxvt /usr/bin/rxvt
 ```bash
 xrdb -merge ~/.Xresources
 ```
+
+## Читайте также
+
+- [Настройка Zsh](/posts/zsh-config) — oh-my-zsh, плагины, конфигурация ~/.zshrc

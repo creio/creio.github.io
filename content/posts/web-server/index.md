@@ -1,11 +1,11 @@
 ---
 title: "Настройка и использование Nginx в Arch Linux | Docker Portainer"
-description: ""
+description: "Настройка Nginx reverse proxy в Arch Linux, проброс локальной сети через WireGuard, Docker Portainer для управления контейнерами."
 date: 2021-04-05T22:12:42+03:00
 draft: false
-weight: 50
 image: "/images/web-server.png"
-categories: []
+categories:
+  - Linux
 tags:
     - linux
     - dev
@@ -291,3 +291,9 @@ docker volume rm portainer_data
 ```
 
 Многое можно делать в терминале, точнее все. Рекомендую детальней изучить docker-compose, [docs.docker.com/](https://docs.docker.com/).
+
+## Читайте также
+
+- [Медиа-сервер в Docker](/posts/media-server) — Radarr, Sonarr, Jackett, qBittorrent
+- [Настройка сервера Ubuntu 24.04](/posts/ubuntu-docker) — Docker, Nginx, Dockge, UFW
+- [VPN сервер в Linux](/posts/vpn) — проброс локальной сети через WireGuard

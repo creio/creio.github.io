@@ -4,9 +4,9 @@ description: "Весьма не плохой оконный менеджер"
 excerpt: ""
 date: 2020-03-13T20:23:06+03:00
 draft: false
-weight: 50
 image: "/images/bspwm.png"
-categories: []
+categories:
+  - Arch Linux
 tags:
     - archlinux
 contributors: []
@@ -168,3 +168,8 @@ neofetch, fetch, pfetch | информация о системе. `~/.bin/fetch`
 - Еще некоторые скрипты: `~/.bin`.
 - Полный список пакетов: [packages.both](https://github.com/ctlos/ctlosiso/blob/bd44d18928ff28d33251e5af1efb93da303eba36/packages.both).
 - Вступай в telegram чат: [t.me/ctlos](https://t.me/ctlos).
+
+## Читайте также
+
+- [Настройка Zsh](/posts/zsh-config) — oh-my-zsh, плагины, конфигурация
+- [Настройка терминала Urxvt](/posts/urxvt-config) — шрифты, цвета, плагины

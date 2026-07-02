@@ -1,32 +1,29 @@
-var element = document.querySelector('.details-tags');
+document.querySelectorAll('.details-tags, .details-categories').forEach(element => {
+  const stateKey = element.getAttribute('data-id') + 'State'; // Получим 'tagsState' или 'categoriesState'
+  const attrName = 'data-global-' + element.getAttribute('data-id'); // 'data-global-tags' или 'data-global-categories'
 
-if (element !== null) {
-  if (localStorage.getItem('tagsState') === null || localStorage.getItem('tagsState') === 'open') {
-    localStorage.setItem('tagsState', 'open');
-    document.documentElement.setAttribute('data-global-tags', '');
-    element.setAttribute('open', true);
+  // 1. Восстанавливаем состояние при загрузке
+  const savedState = localStorage.getItem(stateKey);
+  if (savedState === null || savedState === 'open') {
+    localStorage.setItem(stateKey, 'open');
+    document.documentElement.setAttribute(attrName, '');
+    element.setAttribute('open', '');
     element.classList.add('active');
-  }
-
-  if (localStorage.getItem('tagsState') === 'closed') {
+  } else {
     element.classList.remove('active');
     element.removeAttribute('open');
   }
 
-  element.addEventListener('click', () => {
-    const isActive = element.classList.contains('active');
-    document.documentElement.toggleAttribute('data-global-tags');
-
-    if (event.target.closest('a')) {
-      return; // Прерываем выполнение обработчика для вложенных ссылок
-    }
-
-    if (!isActive) {
+  // 2. Отслеживаем изменение состояния (toggle срабатывает только при открытии/закрытии самого details)
+  element.addEventListener('toggle', () => {
+    if (element.open) {
       element.classList.add('active');
-      localStorage.setItem('tagsState', 'open');
+      document.documentElement.setAttribute(attrName, '');
+      localStorage.setItem(stateKey, 'open');
     } else {
       element.classList.remove('active');
-      localStorage.setItem('tagsState', 'closed');
+      document.documentElement.removeAttribute(attrName);
+      localStorage.setItem(stateKey, 'closed');
     }
   });
-}
+});
