@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Network | Alex Creio</title><link>https://creio.github.io/categories/network/</link><description>Recent content in Network on Alex Creio</description><language>ru</language><copyright>Copyright (c) @creio</copyright><lastBuildDate>Sat, 17 Dec 2022 19:18:35 +0000</lastBuildDate><atom:link href="https://creio.github.io/categories/network/index.xml" rel="self" type="application/rss+xml"/><item><title>Wireguard, pihole, unbound | предотвращаем утечку dns</title><link>https://creio.github.io/posts/wire-hole/</link><pubDate>Sat, 17 Dec 2022 19:18:35 +0000</pubDate><guid>https://creio.github.io/posts/wire-hole/</guid><description>&lt;p&gt;Смотри видео с детальной настройкой &lt;a href="https://www.youtube.com/watch?v=iTozi7KE904" target="_blank" rel="nofollow noopener noreferrer" &gt;youtube.com&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;45.138.72.135
+root
+747AuBOZ7WNt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;unbound&lt;/li&gt;
+&lt;li&gt;wireguard&lt;/li&gt;
+&lt;li&gt;pihole&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;apt install wg...
+wget https://raw.githubusercontent.com/burghardt/easy-wg-quick/master/easy-wg-quick
+chmod +x easy-wg-quick
+./easy-wg-quick
+sudo cp wghub.conf /etc/wireguard/wghub.conf
+sudo systemctl enable --now wg-quick@wghub
+# new client
+./easy-wg-quick bla
+sudo cp -r wghub.conf /etc/wireguard/wghub.conf
+sudo systemctl restart wg-quick@wghub
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;sudo wg-quick down ./wghub.conf # if already configured
+sudo wg-quick up ./wghub.conf
+sudo wg show
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;# sudo nano /etc/sysctl.conf
+net.core.default_qdisc = fq
+net.ipv4.tcp_congestion_control = bbr
+net.ipv4.ip_forward = 1
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.tcp_syncookies = 1
+# sudo sysctl -p
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;sudo cat /etc/wireguard/wghub.conf
+# open port
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;curl -o /var/lib/unbound/root.hints https://www.internic.net/domain/named.cache
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;# mv access-control: 10.134.99.0/24 &amp;gt; wg network | ip a
+# sudo nano /etc/unbound/unbound.conf.d/pi-hole.conf
+server:
+# if no logfile is specified, syslog is used
+# logfile: &amp;quot;/var/log/unbound/unbound.log&amp;quot;
+verbosity: 1
+port: 5353
+do-ip4: yes
+do-udp: yes
+do-tcp: yes
+# may be set to yes if you have IPv6 connectivity
+do-ip6: no
+# use this only when you downloaded the list of primary root servers
+root-hints: &amp;quot;/var/lib/unbound/root.hints&amp;quot;
+# respond to DNS requests on all interfaces
+interface: 0.0.0.0
+max-udp-size: 3072
+# IPs authorised to access the DNS Server
+access-control: 0.0.0.0/0 refuse
+access-control: 127.0.0.1 allow
+access-control: 10.134.99.0/24 allow
+# hide DNS Server info
+hide-identity: yes
+hide-version: yes
+# limit DNS fraud and use DNSSEC
+harden-glue: yes
+harden-dnssec-stripped: yes
+harden-referral-path: yes
+# add an unwanted reply threshold to clean the cache and avoid, when possible, DNS poisoning
+unwanted-reply-threshold: 10000000
+# have the validator print validation failures to the log val-log-level: 1
+# don't use Capitalisation randomisation as it known to cause DNSSEC issues sometimes
+# see https://discourse.pi-hole.net/t/unbound-stubby-or-dnscrypt-proxy/9378 for further details
+use-caps-for-id: no
+# reduce EDNS reassembly buffer size
+# suggested by the unbound man page to reduce fragmentation reassembly problems
+edns-buffer-size: 1472
+# TTL bounds for cache
+cache-min-ttl: 3600
+cache-max-ttl: 86400
+# perform prefetching of close to expired message cache entries
+# this only applies to domains that have been frequently queried
+prefetch: yes
+prefetch-key: yes
+# one thread should be sufficient, can be increased on beefy machines
+num-threads: 1
+# ensure kernel buffer is large enough to not lose messages in traffic spikes
+so-rcvbuf: 1m
+# ensure privacy of local IP ranges
+private-address: 192.168.0.0/16
+private-address: 169.254.0.0/16
+private-address: 172.16.0.0/12
+private-address: 10.0.0.0/8
+private-address: fd00::/8
+private-address: fe80::/10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;sudo systemctl enable --now unbound
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;# intfs wghub
+curl -sSL https://install.pi-hole.net | bash
+http://ip/admin
+# Settings - DNS наш Unbound 127.0.0.1#5353
+# open port 5353
+dig pi-hole.net @127.0.0.1 -p 5353 # NOERROR
+dig sigok.verteiltesysteme.net @127.0.0.1 -p 5353
+dig sigfail.verteiltesysteme.net @127.0.0.1 -p 5353 # SERFAIL
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;# wg client conf dns &amp;gt; wghub | ip a
+# wg
+nano intnetdns.txt
+# replace ip 1.1.1.1 default &amp;gt; wghub ip : 10.148.135.1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;# dns wghub ip : 10.148.135.1
+# 10: 10 &amp;gt; wgclient_10.conf
+[Interface]
+Address = 10.148.135.10/24
+DNS = 10.148.135.1
+PrivateKey = oBj9b47cvZaGaCdHQUl1tu6in6L4yoL8hXxUd1EpU1c=
+MTU = 1280
+[Peer]
+PublicKey = G7VcOHBqXYFPppKNUZ25RJLjEXEDq+Gsn/jmczX5HB0=
+PresharedKey = LDgByqF8J/TgBI9vE+17aRNWnlJwQoD6i6xZCbwbdBk=
+AllowedIPs = 0.0.0.0/0, ::/0
+Endpoint = 45.138.72.135:44828
+PersistentKeepalive = 25
+# open ports
+ufw allow ssh
+ufw allow 44828/udp
+# net
+ufw allow 80/tcp
+ufw allow 53/udp
+# wg
+sudo ufw allow from 10.134.99.0/24 to any port 80
+sudo ufw allow from 10.134.99.0/24 to any port 53
+sudo ufw reject https
+ss -tulpn
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;45.138.72.135/admin&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://pi.hole/admin" target="_blank" rel="nofollow noopener noreferrer" &gt;http://pi.hole/admin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dnsleak.com" target="_blank" rel="nofollow noopener noreferrer" &gt;https://dnsleak.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="читайте-также"&gt;Читайте также &lt;a href="#%d1%87%d0%b8%d1%82%d0%b0%d0%b9%d1%82%d0%b5-%d1%82%d0%b0%d0%ba%d0%b6%d0%b5" class="anchor" aria-hidden="true"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://creio.github.io/posts/vpn"&gt;VPN сервер в Linux&lt;/a&gt; — WireGuard, SSH-туннель, Sshuttle&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://creio.github.io/posts/tor"&gt;Tor проксирование в Arch Linux&lt;/a&gt; — настройка onion-трафика&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Tor проксирование</title><link>https://creio.github.io/posts/tor/</link><pubDate>Thu, 26 May 2022 22:02:34 +0300</pubDate><guid>https://creio.github.io/posts/tor/</guid><description>&lt;p&gt;Эта настройка позволяет обращаться к .onion адресам напрямую из браузера, не используя Tor Browser. Все запросы к onion-сайтам будут проходить через Tor, а остальной трафик останется обычным. В этом деле поможет dnsmasq, но заставить его работать я смог только с dhcpcd, не знаю возможно ли это сделать через networkmanager, не пользуюсь им. Выключаем и удаляем все сетевое, ставим dnsmasq и dhcpcd.&lt;/p&gt;</description></item><item><title>Доступность веб сервера в tor и создание onion домена | Nginx tor onion</title><link>https://creio.github.io/posts/nginx-onion/</link><pubDate>Mon, 13 Sep 2021 21:55:04 +0300</pubDate><guid>https://creio.github.io/posts/nginx-onion/</guid><description>&lt;p&gt;Как запустить веб приложение и открыть доступность через tor в доменной зоне onion.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=1ioGn-2JaiM" target="_blank" rel="nofollow noopener noreferrer" &gt;Video&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Все действия выполняются на Arch Linux, но суть везде одинакова, разница только в пакетном менеджере.&lt;/p&gt;</description></item><item><title>Как Создать и Настроить VPN сервер в Linux | Wireguard</title><link>https://creio.github.io/posts/vpn/</link><pubDate>Sun, 31 Jan 2021 09:19:42 +0100</pubDate><guid>https://creio.github.io/posts/vpn/</guid><description>&lt;p&gt;Речь пойдет о шифровании трафика в сети и обходе блокировок, рассмотрю несколько способов.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=4FmWp04auX4" target="_blank" rel="nofollow noopener noreferrer" &gt;Video&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://m.do.co/c/49c4dbf3d0ca" target="_blank" rel="nofollow noopener noreferrer" &gt;Всё реализовано в дроплете Digital Ocean&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Psiphon linux, обходим блокировку трафика</title><link>https://creio.github.io/posts/psiphon/</link><pubDate>Mon, 10 Aug 2020 22:01:13 +0300</pubDate><guid>https://creio.github.io/posts/psiphon/</guid><description>&lt;p&gt;Psiphon — бесплатный инструмент для обхода блокировок сайтов. Работает через прокси-серверы, не требует настройки VPN. Устанавливается из AUR и сразу готов к работе.&lt;/p&gt;
+&lt;h2 id="archlinux"&gt;Archlinux &lt;a href="#archlinux" class="anchor" aria-hidden="true"&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;В aur лежит пакет.&lt;/p&gt;</description></item></channel></rss>
