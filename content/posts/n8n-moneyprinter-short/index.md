@@ -3,7 +3,7 @@ title: "Автоматизация Shorts: n8n, MoneyPrinterTurbo, Postiz, Baser
 description: "Полный пайплайн автоматической генерации и публикации коротких видео на 5 соцсетей с помощью n8n, AI и открытых инструментов."
 excerpt: "Полный пайплайн автоматической генерации и публикации коротких видео"
 date: 2026-07-01T12:00:00+03:00
-image: 'post.png'
+image: 'cover.png'
 categories:
   - Automation
 tags:
@@ -15,11 +15,18 @@ draft: false
 pinned: false
 toc: true
 edit: true
+params:
+  sitemap_exclude: false
+  seo:
+    title: "" # custom title (optional)
+    description: "" # custom description (recommended)
+    canonical: "" # custom canonical URL (optional)
+    robots: "" # custom robot tags (optional)
 ---
 
 Одна кнопка — и короткое видео автоматически генерируется AI, загружается и публикуется на TikTok, YouTube Shorts, Instagram, Facebook и Threads. В этом посте покажу полный пайплайн, собранный на четырёх открытых инструментах.
 
-![](post.png)
+![](/cover.png)
 
 ## Зачем автоматизировать Shorts
 

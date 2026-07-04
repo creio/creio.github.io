@@ -1,22 +1,80 @@
-{{ $fillImage := .Scratch.Get "fillImageCard" }}
-{{ if not $fillImage -}}
-  {{ $fillImage = site.Params.fillImage }}
-{{ end -}}
+{{- $ctx := .context -}}
 
-{{ $image := .Resources.GetMatch (printf "**%s" (index .Params.images 0)) }}
-{{ if not $image -}}
-  {{ $image = resources.Get (printf "%s%s" "images/" site.Params.defaultImage) }}
-{{ end -}}
+{{- /* 1. Читаем параметры из вашего нового конфига [site_images.defaults] */}}
+{{- $defaults := site.Params.site_images.defaults -}}
 
-{{ $webp := printf "%s%s" $fillImage " webp" }}
-{{ $image = $image.Resize $webp}}
+{{- /* Настройка кропа: из вызова -> из конфига -> дефолт */}}
+{{- $processRule := .process | default $defaults.process | default "fill 1280x720 Center" -}}
 
-{{ $lqip := $image.Resize site.Params.lqipWidth -}}
+{{- $image := "" -}}
+{{- $rawSrc := "" -}}
 
-<img
-  class="card-img-top img-fluid lazyload blur-up"
-  src="{{ $lqip.Permalink }}"
-  data-src="{{ $image.Permalink }}"
-  width="{{ $image.Width }}"
-  height="{{ $image.Height }}"
-  alt="{{ .Title }}">
+{{- /* Читаем images из переданного контекста страницы ($ctx) */}}
+{{- if $ctx.Params.images -}}
+    {{- $rawSrc = index $ctx.Params.images 0 -}}
+{{- end -}}
+
+{{- if $rawSrc -}}
+    {{- /* Безопасно очищаем путь от ведущих слэшей и точек */}}
+    {{- $cleanSrc := strings.TrimPrefix "/" $rawSrc -}}
+    {{- $cleanSrc = strings.TrimPrefix "./" $cleanSrc -}}
+
+    {{- /* Ищем как ресурс внутри папки с постом через $ctx */}}
+    {{- $image = $ctx.Resources.GetMatch $cleanSrc -}}
+
+    {{- /* Если не нашли, ищем глобально в assets/ */}}
+    {{- if not $image -}}
+        {{- $cleanSrc = strings.TrimPrefix "assets/" $cleanSrc -}}
+        {{- $image = resources.Get $cleanSrc -}}
+    {{- end -}}
+{{- end -}}
+
+{{- /* 3. Если картинка у поста не задана или не найдена, берем дефолтную заглушку */}}
+{{- if not $image -}}
+    {{- $defaultImg := $defaults.defaultImage | default "default-image.png" -}}
+    {{- $image = resources.Get (printf "images/%s" $defaultImg) -}}
+{{- end -}}
+
+{{- /* --- ОБРАБОТКА ИЗОБРАЖЕНИЯ --- */}}
+{{- if $image -}}
+    {{- /* Кропаем картинку под размер карточки */}}
+    {{- $image = $image.Fill $processRule -}}
+
+    {{- /* Собираем адаптивный srcset из ширин вашего конфига */}}
+    {{- $imgSrcSet := slice -}}
+    {{- $widths := $defaults.widths | default (slice 480 576 768 1025 1200) -}}
+
+    {{- range $widths -}}
+        {{- if le . $image.Width -}}
+            {{- $webpUrl := (printf "%dx webp" . | $image.Resize).RelPermalink -}}
+            {{- $imgSrcSet = $imgSrcSet | append (printf "%s %dw" $webpUrl .) -}}
+        {{- end -}}
+    {{- end -}}
+    {{- $imgSrcSet = (delimit $imgSrcSet ", ") -}}
+
+    {{- /* Безопасная генерация микро-картинки LQIP (blur-up) */}}
+    {{- $lqipWidth := $defaults.lqip | default "20x webp q20" -}}
+    {{- if not (in (string $lqipWidth) " ") -}}
+        {{- $lqipWidth = printf "%sx webp q20" (strings.TrimSuffix "x" (string $lqipWidth)) -}}
+    {{- end -}}
+    {{- $lqip := $image.Resize (string $lqipWidth) -}}
+
+    {{- /* Настройки классов и sizes */}}
+    {{- $addClass := $defaults.imageAddClass | default "card-img-top img-fluid lazyload blur-up" -}}
+    {{- /* Для карточек в сетке (grid) размеры обычно меньше, например 33vw или 50vw, берем из конфига или ставим 40vw */}}
+    {{- $sizesAttr := $defaults.sizes | default "40vw" -}}
+
+    {{- /* --- РЕНДЕРИНГ HTML --- */}}
+    <img
+      class="{{ $addClass }}"
+      src="{{ $lqip.RelPermalink }}"
+      data-src="{{ ($image.Resize (printf "%dx%d webp" $image.Width $image.Height)).RelPermalink }}"
+      data-srcset="{{ $imgSrcSet }}"
+      sizes="{{ $sizesAttr }}"
+      width="{{ $image.Width }}"
+      height="{{ $image.Height }}"
+      alt="{{ .Title }}"
+    >
+{{- else -}}
+    {{- errorf "Card image failed: No file found for page '%s'" .File.Path -}}
+{{- end -}}

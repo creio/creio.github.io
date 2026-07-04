@@ -9,16 +9,16 @@
   # HUGO_VERSION = "0.107.0"
 
 [context.production]
-  command = "npm run build || true"
+  command = "npm run build -- -b $URL || true"
 
 [context.deploy-preview]
   command = "npm run build -- -b $DEPLOY_PRIME_URL || true"
 
 [context.branch-deploy]
-  command = "npm run build -- -b $DEPLOY_PRIME_URL"
+  command = "npm run build -- -b $DEPLOY_PRIME_URL || true"
 
 [context.next]
-  command = "npm run build"
+  command = "npm run build || true"
 
 [context.next.environment]
   HUGO_ENV = "next"
@@ -37,8 +37,26 @@
 
 [dev]
   framework = "#custom"
-  command = "npm run start"
+  command = "npm run dev"
   targetPort = 1313
   port = 8888
   publish = "public"
   autoLaunch = false
+
+# Redirects and rewrites — https://docs.netlify.com/routing/redirects/#syntax-for-the-netlify-configuration-file
+
+# Custom headers — https://docs.netlify.com/routing/headers/#syntax-for-the-netlify-configuration-file
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Content-Security-Policy = "default-src 'self'; manifest-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://giscus.app https://cloud.umami.is https://substackapi.com https://f.convertkit.com 'nonce-dXNlcj0iaGVsbG8iLGRvbWFpbj0iaGVua3ZlcmxpbmRlLmNvbSIsZG9jdW1lbnQud3JpdGUodXNlcisiQCIrZG9tYWluKTs=' 'sha256-aWZ3y/RxbBYKHXH0z8+8ljrHG1mSBvyzSfxSMjBSaXk=' 'sha256-pGfut8CxcXWzGV34Mlo+zUGXuWG1c4buljedWxWWlks='; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: https://avatars.githubusercontent.com; font-src 'self' data:; connect-src 'self' https://giscus.app https://cloud.umami.is; frame-src https://giscus.app https://ctlos.substack.com; base-uri 'self'; form-action 'self';"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin"
+    Permissions-Policy = "geolocation=(self), microphone=(), camera=()"
+    Cache-Control= '''
+    public,
+    max-age=31536000'''
+    Access-Control-Allow-Origin = "*"

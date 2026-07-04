@@ -21,6 +21,17 @@ defaultContentLanguage = 'ru'
 # disableLanguages = ['en', 'de', 'nl']
 ## check ./config/languages.toml
 
+[imaging]
+  anchor = "Center"
+  bgColor = "#ffffff"
+  compression = "lossy"
+  quality = 85
+  resampleFilter = "Lanczos"
+  [imaging.webp]
+    hint = "photo"
+    method = 2
+    useSharpYuv = false
+
 # add redirects/headers
 [outputs]
 home = ["HTML", "RSS", "REDIRECTS", "SITEMAP"]
@@ -101,5 +112,8 @@ rel  = "sitemap"
     source = "node_modules/flexsearch"
     target = "assets/js/vendor/flexsearch"
   [[module.mounts]]
-    source = "node_modules/@hyas/images/layouts"
+    source = "node_modules/@thulite/images/layouts"
+    target = "layouts"
+  [[module.mounts]]
+    source = "node_modules/@thulite/seo/layouts"
     target = "layouts"

@@ -70,6 +70,11 @@ body.docs {
   padding-top: 0 !important;
 }
 
+table {
+  font-size: var(--size-step-minus-1);
+  font-weight: 400;
+}
+
 @include media-breakpoint-up(md) {
   h1, h2, h3, h4, h5, h6,
   .h1, .h2, .h3, .h4, .h5, .h6 {

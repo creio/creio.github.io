@@ -1,62 +1,114 @@
 {{- $ctx := .context -}}
-{{- $fillImage := .fillImage | default site.Params.fillImage -}}
+
+{{- /* Читаем параметры из вашего нового блока конфигурации [site_images.defaults] */}}
+{{- $defaults := site.Params.site_images.defaults -}}
+
+{{- /* Приоритет настройки кропа process: из вызова -> из конфига -> дефолт */}}
+{{- $processRule := .process | default $defaults.process | default "1280x720 Center" -}}
 
 {{- $image := "" -}}
+{{- $rawSrc := $ctx.Params.image -}}
 
-{{/* Логика выбора картинки */}}
 {{- if $ctx.IsHome -}}
-    {{/* На главной берем аватарку из assets/images/ */}}
-    {{- $image = resources.Get (printf "images/%s" site.Params.profileImage) -}}
-{{- else if $ctx.Params.Image -}}
-    {{/* 1. Пытаемся найти картинку как ресурс рядом с постом */}}
-    {{- $image = $ctx.Resources.GetMatch $ctx.Params.Image -}}
+    {{- /* На главной странице берем аватарку из конфига */}}
+    {{- $profileImg := $defaults.profileImage | default "profile.png" -}}
+    {{- $image = resources.Get (printf "images/%s" $profileImg) -}}
+{{- else if $rawSrc -}}
+    {{- /* ИСПРАВЛЕНИЕ: Безопасно очищаем путь от ведущих слэшей и точек */}}
+    {{- $cleanSrc := strings.TrimPrefix "/" $rawSrc -}}
+    {{- $cleanSrc = strings.TrimPrefix "./" $cleanSrc -}}
 
-    {{/* 2. Если рядом нет, ищем в глобальной папке assets/ */}}
+    {{- /* 1. Пытаемся найти картинку как ресурс внутри папки с постом */}}
+    {{- $image = $ctx.Resources.GetMatch $cleanSrc -}}
+
+    {{- /* 2. Если рядом с постом нет, ищем глобально в assets/ */}}
     {{- if not $image -}}
-        {{- $image = resources.GetMatch $ctx.Params.Image -}}
+        {{- $cleanSrc = strings.TrimPrefix "assets/" $cleanSrc -}}
+        {{- $image = resources.Get $cleanSrc -}}
     {{- end -}}
 {{- end -}}
 
-{{/* 3. Если вообще ничего не нашлось, берем заглушку по умолчанию из assets/images/ */}}
+{{- /* 3. Если файл вообще не найден на диске, берем заглушку по умолчанию */}}
 {{- if not $image -}}
-    {{- $image = resources.Get (printf "images/%s" site.Params.defaultImage) -}}
+    {{- $defaultImg := $defaults.defaultImage | default "default-image.png" -}}
+    {{- $image = resources.Get (printf "images/%s" $defaultImg) -}}
 {{- end -}}
 
-{{/* --- КОД РЕСАЙЗА --- */}}
-{{- $image = $image.Fill $fillImage -}}
-{{- $webp := $image.Resize (printf "%dx%d webp q90" $image.Width $image.Height) -}}
-{{- $lqip := $image.Resize site.Params.lqipWidth -}}
+{{- /* --- ОБРАБОТКА ИЗОБРАЖЕНИЯ (Ресайз и оптимизация) --- */}}
+{{- if $image -}}
+    {{- /* Обрезаем картинку под нужные пропорции (например, 1280x720) */}}
+    {{- $image = $image.Fill $processRule -}}
 
-{{- $imgSrc := "" -}}
-{{- $imgSrcSet := slice -}}
+    {{- /* Генерируем базовый качественный WebP оригинального размера */}}
+    {{- $webp := $image.Resize (printf "%dx%d webp q90" $image.Width $image.Height) -}}
 
-{{- $widths := site.Params.landscapePhotoWidths -}}
-{{- if gt $image.Height $image.Width -}}
-  {{- $widths = site.Params.portraitPhotoWidths -}}
-{{- end -}}
+    {{- /* Генерируем микро-картинку (LQIP) для эффекта размытия blur-up */}}
+    {{- $lqipParam := $defaults.lqip | default "20x webp q20" -}}
+    {{- /* На случай, если в конфиге указали просто цифру вроде 20 или 20x, приведем к полному формату */}}
+    {{- if not (in (string $lqipParam) " ") }}
+        {{- $lqipParam = printf "%sx webp q20" (strings.TrimSuffix "x" (string $lqipParam)) -}}
+    {{- end }}
+    {{- $lqip := $image.Resize (string $lqipParam) -}}
 
-{{- range $widths -}}
-  {{- $srcUrl := (printf "%dx" . | $image.Resize).Permalink -}}
-  {{- if eq $imgSrc "" -}}{{- $imgSrc = $srcUrl -}}{{- end -}}
-  {{- $imgSrcSet = $imgSrcSet | append (printf "%s %dw" $srcUrl .) -}}
-{{- end -}}
-{{- $imgSrcSet = (delimit $imgSrcSet ",") -}}
+    {{- $imgSrc := "" -}}
+    {{- $imgSrcSet := slice -}}
 
-{{- if gt $image.Width site.Params.smallLimit -}}
-<figure class="figure">
-    <picture>
-        <source media="(min-width: 901px)" srcset="{{ $webp.Permalink }}" type="image/webp">
-        {{- range $widths -}}
-          {{- $webpUrl := (printf "%dx webp" . | $image.Resize).Permalink -}}
-          <source media="(max-width: {{ . }}px)" srcset="{{ $webpUrl }}" type="image/webp">
+    {{- /* Читаем массив ширин (widths) и размеры (sizes) из вашего конфига */}}
+    {{- $widths := $defaults.widths | default (slice 480 768 1024 1366) -}}
+    {{- $stdSizes := $defaults.sizes | default "auto" -}}
+    {{- $addClass := $defaults.imageAddClass | default "img-fluid lazyload blur-up" -}}
+
+    {{- range $widths -}}
+        {{- /* Создаем адаптивные копии только если оригинал шире этого шага */}}
+        {{- if le . $image.Width -}}
+            {{- $srcUrl := (printf "%dx" . | $image.Resize).Permalink -}}
+            {{- if eq $imgSrc "" -}}{{- $imgSrc = $srcUrl -}}{{- end -}}
+            {{- $imgSrcSet = $imgSrcSet | append (printf "%s %dw" $srcUrl .) -}}
         {{- end -}}
-        <img class="figure-img img-fluid lazyload blur-up" data-sizes="auto" src="{{ $lqip.Permalink }}" data-srcset="{{ $imgSrcSet }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ $ctx.Title }}">
-        <noscript><img class="figure-img img-fluid" sizes="100vw" srcset="{{ $imgSrcSet }}" src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ $ctx.Title }}"></noscript>
+    {{- end -}}
+    {{- $imgSrcSet = (delimit $imgSrcSet ", ") -}}
+
+    {{- /* --- РЕНДЕРИНГ HTML-КОДА --- */}}
+    {{- $smallLimit := int (site.Params.smallLimit | default 300) -}}
+
+    {{- if gt $image.Width $smallLimit -}}
+    {{- /* Крупные изображения оборачиваем в <figure> с адаптивными <source> */}}
+    <figure class="figure">
+        <picture>
+            {{- /* Качественный WebP для экранов от 901px */}}
+            <source media="(min-width: 901px)" srcset="{{ $webp.Permalink }}" type="image/webp">
+
+            {{- /* Адаптивные версии WebP под мобильные и планшеты */}}
+            {{- range $widths -}}
+                {{- if le . $image.Width -}}
+                    {{- $webpUrl := (printf "%dx webp" . | $image.Resize).Permalink -}}
+                    <source media="(max-width: {{ . }}px)" srcset="{{ $webpUrl }}" type="image/webp">
+                {{- end -}}
+            {{- end -}}
+
+            {{- /* Основной тег img (src содержит Base64 микро-заглушку, реальные наборы в data-srcset) */}}
+            <img class="figure-img {{ $addClass }}"
+                 data-sizes="{{ $stdSizes }}"
+                 src="data:image/webp;base64,{{ $lqip.Content | base64Encode }}"
+                 data-srcset="{{ $imgSrcSet }}"
+                 width="{{ $image.Width }}"
+                 height="{{ $image.Height }}"
+                 alt="{{ $ctx.Title }}">
+
+            {{- /* Резервный вариант без JS (для SEO-ботов и старых браузеров) */}}
+            <noscript>
+                <img class="figure-img img-fluid" sizes="100vw" srcset="{{ $imgSrcSet }}" src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ $ctx.Title }}">
+            </noscript>
+        </picture>
+    </figure>
+    {{- else -}}
+    {{- /* Для маленьких картинок выводим упрощенный вариант без figure */}}
+    <picture>
+        <source srcset="{{ $webp.Permalink }}" type="image/webp">
+        <img class="{{ $addClass }}" src="data:image/webp;base64,{{ $lqip.Content | base64Encode }}" data-src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ $ctx.Title }}">
     </picture>
-</figure>
+    {{- end -}}
 {{- else -}}
-<picture>
-    <source srcset="{{ $webp.Permalink }}" type="image/webp">
-    <img class="img-fluid lazyload blur-up" src="{{ $lqip.Permalink }}" data-src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ $ctx.Title }}">
-</picture>
+    {{- /* Если картинка не найдена вообще и даже дефолтная заглушка отсутствует */}}
+    {{- errorf "Image process failed: No file found for page '%s'" $ctx.File.Path -}}
 {{- end -}}

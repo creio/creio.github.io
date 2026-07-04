@@ -1,0 +1,95 @@
+{{- $defaults := site.Params.site_images.defaults -}}
+{{- $addClass := $defaults.imageAddClass | default "img-fluid lazyload blur-up" -}}
+{{- $sizesAttr := $defaults.sizes | default "80vw" -}}
+
+{{- /* Настраиваем счетчик и авто-alt на основе заголовка страницы */}}
+{{- $pageTitle := .Page.Title -}}
+{{- $imgIndex := .Page.Scratch.Get "image_counter" | default 0 -}}
+{{- $imgIndex = add $imgIndex 1 -}}
+{{- .Page.Scratch.Set "image_counter" $imgIndex -}}
+
+{{- $altText := .PlainText -}}
+{{- if not $altText -}}
+    {{- $altText = printf "%s - %d" $pageTitle $imgIndex -}}
+{{- end -}}
+{{- $titleText := .Title | default $altText -}}
+
+{{- /* Проверяем, является ли ссылка внешней (начинается с http/https) */}}
+{{- $isRemote := or (hasPrefix .Destination "http://") (hasPrefix .Destination "https://") -}}
+{{- if $isRemote -}}
+    <a href="{{ .Destination | safeURL }}" class="lightbox-trigger" title="{{ $titleText }}">
+      <img
+        class="img-md {{ $addClass }}"
+        src="{{ .Destination | safeURL }}"
+        loading="{{ $defaults.loading | default "lazy" }}"
+        alt="{{ $altText }}"
+        title="{{ $titleText }}"
+      >
+    </a>
+
+{{- else -}}
+    {{- $rawSrc := .Destination -}}
+    {{- $cleanSrc := strings.TrimPrefix "/" $rawSrc -}}
+    {{- $cleanSrc = strings.TrimPrefix "./" $cleanSrc -}}
+
+    {{- $image := .Page.Resources.GetMatch $cleanSrc -}}
+    {{- if not $image -}}
+        {{- $cleanSrc = strings.TrimPrefix "assets/" $cleanSrc -}}
+        {{- $image = resources.Get $cleanSrc -}}
+    {{- end -}}
+
+    {{- if fileExists (printf "static/%s" $cleanSrc) -}}
+        {{- /* Если файл найден в static, выводим его напрямую */}}
+        <a href="{{ $rawSrc | safeURL }}" class="lightbox-trigger" title="{{ $titleText }}">
+          <img
+            class="img-md {{ $addClass }}"
+            src="{{ $rawSrc | safeURL }}"
+            loading="{{ $defaults.loading | default "lazy" }}"
+            alt="{{ $altText }}"
+            title="{{ $titleText }}"
+          >
+        </a>
+    {{- else if $image -}}
+        {{- $ext := lower (path.Ext $image.Name) -}}
+
+        {{- if or (eq $ext ".svg") (eq $ext ".gif") }}
+            <a href="{{ $image.RelPermalink }}" class="lightbox-trigger" title="{{ $titleText }}">
+              <img
+                class="img-md {{ $addClass }}"
+                src="{{ $image.RelPermalink }}"
+                alt="{{ $altText }}"
+                title="{{ $titleText }}"
+              >
+            </a>
+        {{- else -}}
+            {{- $processRule := $defaults.process | default "fill 1280x720 Center" -}}
+            {{- $processedImage := $image.Fill $processRule -}}
+
+            {{- $imgSrcSet := slice -}}
+            {{- $widths := $defaults.widths | default (slice 480 768 1025 1200) -}}
+            {{- range $widths -}}
+                {{- if le . $processedImage.Width -}}
+                    {{- $webpUrl := (printf "%dx webp" . | $processedImage.Resize).RelPermalink -}}
+                    {{- $imgSrcSet = $imgSrcSet | append (printf "%s %dw" $webpUrl .) -}}
+                {{- end -}}
+            {{- end -}}
+
+            {{- $imgSrcSet = (delimit $imgSrcSet ", ") -}}
+            {{- $finalSrc := (printf "%dx%d webp" $processedImage.Width $processedImage.Height | $processedImage.Resize).RelPermalink -}}
+            <a href="{{ $image.RelPermalink }}" class="lightbox-trigger" title="{{ $titleText }}">
+              <img
+                class="img-md {{ $addClass }}"
+                srcset="{{ $imgSrcSet }}"
+                sizes="{{ $sizesAttr }}"
+                src="{{ $finalSrc }}"
+                width="{{ $processedImage.Width }}"
+                height="{{ $processedImage.Height }}"
+                alt="{{ $altText }}"
+                title="{{ $titleText }}"
+              >
+            </a>
+        {{- end -}}
+    {{- else -}}
+        <img src="{{ .Destination | safeURL }}" alt="{{ $altText }} (Файл не найден)">
+    {{- end -}}
+{{- end -}}

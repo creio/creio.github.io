@@ -1,34 +1,95 @@
-{{ $image := .Resources.GetMatch (printf "**%s" (index .Params.images 0)) }}
-{{ if .IsHome -}}
-  {{ $image = resources.Get (printf "%s%s" "images/" site.Params.profileImage) }}
-{{ else if not $image -}}
-  {{ $image = resources.Get (printf "%s%s" "images/" site.Params.defaultImage) }}
-{{ end -}}
+{{- $ctx := .context -}}
 
-{{ $image = $image.Fill site.Params.fillImage }}
-{{ $lqip := $image.Resize site.Params.lqipWidth -}}
+{{- /* 1. Читаем параметры из вашего нового конфига [site_images.defaults] */}}
+{{- $defaults := site.Params.site_images.defaults -}}
 
-{{ $imgSrc := "" -}}
-{{ $imgSrcSet := slice -}}
+{{- /* Настройка кропа: из вызова -> из конфига -> дефолт */}}
+{{- $processRule := .process | default $defaults.process | default "fill 1280x720 Center" -}}
 
-{{ $widths := site.Params.landscapePhotoWidths -}}
-{{ if gt $image.Height $image.Width -}}
-  {{ $widths = site.Params.portraitPhotoWidths -}}
-{{ end -}}
+{{- $image := "" -}}
+{{- $rawSrc := "" -}}
 
-{{ range $widths -}}
-  {{ $srcUrl := (printf "%dx" . | $image.Resize).Permalink -}}
-  {{ if eq $imgSrc "" -}}{{ $imgSrc = $srcUrl -}}{{ end -}}
-  {{ $imgSrcSet = $imgSrcSet | append (printf "%s %dw" $srcUrl .) -}}
-{{ end -}}
-{{ $imgSrcSet = (delimit $imgSrcSet ",") -}}
+{{- /* Читаем images из переданного контекста страницы ($ctx) */}}
+{{- if $ctx.Params.images -}}
+    {{- $rawSrc = index $ctx.Params.images 0 -}}
+{{- end -}}
 
-{{ if gt $image.Width site.Params.smallLimit -}}
-  <figure class="figure">
-    <img class="figure-img img-fluid lazyload blur-up" data-sizes="auto" src="{{ $lqip.Permalink }}" data-srcset="{{ $imgSrcSet }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ .Title }}">
-    <noscript><img class="figure-img img-fluid" sizes="100vw" srcset="{{ $imgSrcSet }}" src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ .Title }}"></noscript>
-    <!-- {{ with .Title }}<figcaption class="figure-caption">{{ . | safeHTML }}</figcaption>{{ end -}} -->
-  </figure>
-{{ else -}}
-  <img class="img-fluid lazyload blur-up" src="{{ $lqip.Permalink }}" data-src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ .Title }}">
-{{ end -}}
+{{- if $rawSrc -}}
+    {{- /* Безопасно очищаем путь от ведущих слэшей и точек */}}
+    {{- $cleanSrc := strings.TrimPrefix "/" $rawSrc -}}
+    {{- $cleanSrc = strings.TrimPrefix "./" $cleanSrc -}}
+
+    {{- /* Ищем как ресурс внутри папки с постом через $ctx */}}
+    {{- $image = $ctx.Resources.GetMatch $cleanSrc -}}
+
+    {{- /* Если не нашли, ищем глобально в assets/ */}}
+    {{- if not $image -}}
+        {{- $cleanSrc = strings.TrimPrefix "assets/" $cleanSrc -}}
+        {{- $image = resources.Get $cleanSrc -}}
+    {{- end -}}
+{{- end -}}
+
+{{- /* 2. Если файл не найден на диске, берем заглушку по умолчанию */}}
+{{- if not $image -}}
+    {{- $defaultImg := $defaults.defaultImage | default "default-image.png" -}}
+    {{- $image = resources.Get (printf "images/%s" $defaultImg) -}}
+{{- end -}}
+
+{{- /* --- ОБРАБОТКА ИЗОБРАЖЕНИЯ --- */}}
+{{- if $image -}}
+    {{- /* Обрезаем картинку под нужные пропорции */}}
+    {{- $image = $image.Fill $processRule -}}
+
+    {{- /* Собираем адаптивный srcset из ширин вашего нового конфига */}}
+    {{- $imgSrcSet := slice -}}
+    {{- $widths := $defaults.widths | default (slice 480 576 768 1025 1200) -}}
+
+    {{- range $widths -}}
+        {{- if le . $image.Width -}}
+            {{- $webpUrl := (printf "%dx webp" . | $image.Resize).RelPermalink -}}
+            {{- $imgSrcSet = $imgSrcSet | append (printf "%s %dw" $webpUrl .) -}}
+        {{- end -}}
+    {{- end -}}
+    {{- $imgSrcSet = (delimit $imgSrcSet ", ") -}}
+
+    {{- /* БЕЗОПАСНАЯ ГЕНЕРАЦИЯ LQIP */}}
+    {{- $lqipWidth := $defaults.lqip | default "20x webp q20" -}}
+    {{- if not (in (string $lqipWidth) " ") -}}
+        {{- $lqipWidth = printf "%sx webp q20" (strings.TrimSuffix "x" (string $lqipWidth)) -}}
+    {{- end -}}
+    {{- $lqip := $image.Resize (string $lqipWidth) -}}
+
+    {{- /* Настройки классов и размеров */}}
+    {{- $addClass := $defaults.imageAddClass | default "img-fluid lazyload blur-up" -}}
+    {{- $sizesAttr := $defaults.sizes | default "80vw" -}}
+
+    {{- /* Дефолтный src */}}
+    {{- $finalSrc := (printf "%dx%d webp" $image.Width $image.Height | $image.Resize).RelPermalink -}}
+
+    {{- /* --- РЕНДЕРИНГ HTML (используем $ctx.Title для alt) --- */}}
+    {{- $smallLimit := int (site.Params.smallLimit | default 300) -}}
+
+    {{- if gt $image.Width $smallLimit -}}
+        <img
+          class="{{ $addClass }}"
+          srcset="{{ $imgSrcSet }}"
+          sizes="{{ $sizesAttr }}"
+          src="{{ $finalSrc }}"
+          width="{{ $image.Width }}"
+          height="{{ $image.Height }}"
+          alt="{{ $ctx.Title }}"
+        >
+    {{- else -}}
+        <img
+          class="{{ $addClass }}"
+          src="{{ $lqip.RelPermalink }}"
+          data-src="{{ $finalSrc }}"
+          width="{{ $image.Width }}"
+          height="{{ $image.Height }}"
+          alt="{{ $ctx.Title }}"
+        >
+    {{- end -}}
+
+{{- else -}}
+    {{- errorf "Image layout failed: No file found for page '%s'" $ctx.File.Path -}}
+{{- end -}}

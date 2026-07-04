@@ -13,9 +13,9 @@
         {{ end -}}
             <h1>{{ .Title }}</h1>
             {{ partial "main/blog-meta.html" . }}
-            {{ if $.Params.image -}}
+            {{- if $.Params.image }}
             <div>
-              {{ partial "content/figure.html" (dict "context" . "fillImage" "1280x720 Center") }}
+              {{- partial "content/figure.html" (dict "context" . "process" "1280x640") }}
             </div>
             {{ end -}}
             {{ with $.Params.lead -}}

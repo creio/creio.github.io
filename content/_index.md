@@ -1,8 +1,11 @@
 ---
 title : "Alex Creio. I’m root :)"
-description: "Personal website & blog. Web developer & linux enthusiast."
+description: "AI-автоматизация, веб-разработка и настройка Linux-серверов. Более 5 лет развиваю Ctlos Linux. Практические кейсы и инструкции без воды."
 date: 2020-10-06T08:47:36+00:00
 draft: false
+params:
+  seo:
+    title: "Alex Creio. I’m root :)" # custom title (optional)
 ---
 
 **Я Alex**. Разрабатываю AI-автоматизации, настраиваю Linux-серверы и создаю веб-сервисы, которые экономят время и деньги. Более 5 лет развиваю проект [Ctlos Linux](https://ctlos.github.io) и делюсь практическим опытом без воды. Здесь вы найдёте статьи, инструкции и реальные кейсы.

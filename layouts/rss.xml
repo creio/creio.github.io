@@ -1,16 +1,16 @@
 {{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>" | safeHTML }}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{ if .IsHome }}{{ site.Params.Title }}{{ else }}{{ .Title }} {{ site.Params.titleSeparator | default "|" }} {{ site.Params.Title }}{{ end }}</title>
+    <title>{{ if .IsHome }}{{ site.Params.Title }}{{ else }}{{ .Title }} {{ site.Params.seo.title.separator | default "|" }} {{ site.Params.Title }}{{ end }}</title>
     <link>{{ .Permalink }}</link>
     <description>{{ if .IsHome }}{{ site.Params.description }}{{ else }}Recent content in {{ .Title }} on {{ site.Params.Title }}{{ end }}</description>
     {{ with .Site.Params.languageTag | default "en-US" -}}
     <language>{{.}}</language>
-    {{ end -}}
-    {{ with .Site.Params.email -}}
-    <managingEditor>{{.}}{{ with $.Site.Params.name }} ({{.}}){{end}}</managingEditor>
-    <webMaster>{{.}}{{ with $.Site.Params.name }} ({{.}}){{end}}</webMaster>
-    {{ end -}}
+    {{- end -}}
+    {{- with .Site.Params.email }}
+    <managingEditor>{{.}}{{ with $.Site.Params.Title }} ({{.}}){{end}}</managingEditor>
+    <webMaster>{{.}}{{ with $.Site.Params.Title }} ({{.}}){{end}}</webMaster>
+    {{- end -}}
     {{ with .Site.Params.copyRight -}}
     <copyright>{{ . | safeHTML }}</copyright>{{end}}
     {{ if not .Date.IsZero -}}
@@ -24,7 +24,7 @@
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
       <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
-      {{ with .Site.Params.author.email -}}<author>{{.}}{{ with $.Site.Params.author.name -}} ({{.}}){{ end -}}</author>{{ end -}}
+      {{- with .Site.Params.email }}<author>{{.}}{{ with $.Site.Params.Title }} ({{.}}){{ end -}}</author>{{ end }}
       <guid>{{ .Permalink }}</guid>
       <description>{{ .Summary | html }}</description>
     </item>

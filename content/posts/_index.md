@@ -1,6 +1,6 @@
 ---
-title: Blog posts
-description: Статьи и инструкции по Linux, Docker, безопасности и DevOps
+title: 'Blog posts'
+description: 'Практические инструкции, статьи и кейсы по AI-автоматизации, администрированию Linux и веб-разработке от автора Ctlos Linux. Понятно, по делу и без воды.'
 image: ''
 date: 2020-10-06T08:49:55.000Z
 draft: false

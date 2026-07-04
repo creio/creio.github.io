@@ -1,72 +1,65 @@
-# Meta Data for SEO
-
-## Homepage
 title = "Alex Creio"
-titleSeparator = "|"
-titleAddition = "I’m root :)"
+domainTLD = "creio.github.io"
 description = "Personal website & blog. Web developer & linux enthusiast."
-name = "Alex Creio"
+
 email = ""
 
+ogLocale = "ru_RU"
 languageTag = "ru"
 
 yandexVerification = "16c69e69225504ca"
 
-## Open Graph
-images = ["cover.png"]
-ogLocale = "ru_RU"
-domainTLD = "creio.github.io"
-titleHome = "creio"
-
-## Twitter Cards
-twitterSite = "https://creio.github.io"
-twitterCreator = "creio"
-
-## JSON-LD
-schemaType = "Person"
-# schemaType = "Organization"
-schemaName = "creio"
-schemaAuthor = "Alex Creio"
-schemaAuthorTwitter = ""
-schemaAuthorLinkedIn = ""
-schemaAuthorGitHub = "https://github.com/creio"
-schemaLocale = "ru-RU"
-schemaLogo = "apple-touch-icon.png"
-schemaLogoWidth = 512
-schemaLogoHeight = 512
-schemaImage = "cover.png"
-schemaImageWidth = 1280
-schemaImageHeight = 640
-schemaTwitter = ""
-schemaLinkedIn = ""
-schemaGitHub = "https://github.com/creio/creio.github.io"
-schemaSection = "blog"
-
 ## Sitelinks Search Box
 siteLinksSearchBox = false
-
 ## Chrome Browser
 themeColor = "#4b64b4"
 
-# Images
-quality = 85
-bgColor = "#fff"
-landscapePhotoWidths = [900, 800, 700, 600, 500]
-portraitPhotoWidths = [900, 800, 700, 600, 500]
-lqipWidth = "20x"
-smallLimit = "300"
+## Open Graph
+images = ["cover.png"]
 
-# Images
-imageResponsive = true
-imageConvertTo = "webp"
-imageImageSizes = ["480","720","1080","1280","1600","2048"]
-singleSize = false
-imageAddClass = "img-fluid lazyload blur-up"
+[social]
+  twitter = "creio"
+  # facebook_admin = ""
 
-### Image template
-profileImage = "profile.webp" # put in `./assets/images/`
-defaultImage = "default-image.png" # put in `./assets/images/`
-fillImage = "1280x720 Center" # normalize image size
+## SEO (@thulite/seo)
+[seo]
+  [seo.title]
+    separator = "|"
+    suffix = "Alex Creio"
+  [seo.description]
+    summaryFallback = "" # "" (default)
+  [seo.description.length]
+    errorlevel = "ignore" # warning (default), error, or ignore
+    min = 110
+    max = 160
+  [seo.favicons]
+    icon = "favicon.png" # favicon.png (default)
+    svgIcon = "favicon.svg" # favicon.svg (default)
+  [seo.schemas]
+    type = "Person" # Organization (default) or Person
+    logo = "favicon-512x512.png" # Logo of Organization — favicon-512x512.png (default)
+    name = "Alex Creio" # Name of Organization or Person
+    sameAs = ["https://github.com/creio"] # E.g. ["https://github.com/thuliteio/thulite", "https://fosstodon.org/@thulite"]
+    images = ["profile_logo.png"] # ["cover.png"] (default)
+    article = [] # Article sections
+    newsArticle = [] # NewsArticle sections
+    blogPosting = ["posts"] # BlogPosting sections
+    product = [] # Product sections
+
+### imgs conf
+[site_images]
+  [site_images.defaults]
+    decoding = "async" # sync, async, or auto (default)
+    fetchpriority = "auto" # high, low, or auto (default)
+    loading = "lazy" # eager or lazy (default)
+    widths = [480, 768, 1024, 1366] # [640, 768, 1024, 1366, 1600, 1920] for example
+    sizes = "auto" # 100vw (default), 75vw, or auto for example
+    ## https://gohugo.io/content-management/image-processing/
+    process = "fill 1280x720" # "fill 1600x900" or "fill 1280x720" for example
+    lqip = "16x webp q20" # "16x webp q20" or "21x webp q20" for example
+    profileImage = "profile.png" # put in `./assets/images/`
+    defaultImage = "default-image.png" # put in `./assets/images/`
+    imageAddClass = "img-fluid lazyload blur-up"
 
 # Footer
 footer = "Powered by <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://www.netlify.com/\">Netlify</a>, <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://gohugo.io/\">Hugo</a>, fork <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://getdoks.org/\">Doks</a> | <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://cloud.umami.is/share/UrYcvYQYoCSNcee4/creio.github.io\">Analytics</a>"
@@ -78,7 +71,7 @@ copyRight = "Copyright (c) @creio"
 alert = true
 alertDismissable = true
 # alertText = "Introducing the Doks child theme, several DX + UX updates, and more! <a class=\"alert-link stretched-link\" href=\"https://getdoks.org/blog/doks-v0.2/\" target=\"_blank\" rel=\"noopener\">Check out Doks v0.2</a>"
-alertText = "<a target=\"_blank\" rel=\"nofollow noopener noreferrer\" class=\"alert-link stretched-link fw-normal\" href=\"https://adv.ctlos.ru/go/84060b6fe5fea720?erid=LdtCK6FVq\">Топовые IT курсы с трудоустройством.</a>"
+alertText = "<a target=\"_blank\" rel=\"nofollow noopener noreferrer\" class=\"alert-link stretched-link fw-normal\" href=\"https://go.2038.pro/8aa17c9fd9fc0371?erid=LdtCK4uVh&m=6\">Топовые IT курсы с трудоустройством.</a>"
 
 # Edit Page
 # repoHost [Github | Gitea | GitLab | Bitbucket | BitbucketServer ] is used for building the edit link based on git hoster
