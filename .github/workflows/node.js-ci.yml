@@ -38,8 +38,8 @@ jobs:
     - name: Install dependencies
       run: npm ci --legacy-peer-deps
 
-    - name: Run test script
-      run: npm test
+    - name: Check code formatting
+      run: npm run format
 
     - name: Build production website
       run: npm run build

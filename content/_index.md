@@ -1,5 +1,5 @@
 ---
-title : "Alex Creio. I’m root :)"
+title: "Alex Creio. I’m root :)"
 description: "AI-автоматизация, веб-разработка и настройка Linux-серверов. Более 5 лет развиваю Ctlos Linux. Практические кейсы и инструкции без воды."
 date: 2020-10-06T08:47:36+00:00
 draft: false

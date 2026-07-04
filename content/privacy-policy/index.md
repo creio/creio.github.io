@@ -9,7 +9,7 @@ edit: false
 page_meta: false
 ---
 
-__TLDR__: We do not use cookies and we do not collect any personal data.
+**TLDR**: We do not use cookies and we do not collect any personal data.
 
 ## Website visitors
 

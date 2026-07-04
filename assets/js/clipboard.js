@@ -1,37 +1,30 @@
-import Clipboard from 'clipboard';
-
 var pre = document.getElementsByTagName('pre');
 
-for (var i = 0; i < pre.length; ++ i)
-{
-  var element = pre[i];
-  var mermaid = element.getElementsByClassName('language-mermaid')[0];
+for (var i = 0; i < pre.length; ++i) {
+    var element = pre[i];
+    var mermaid = element.getElementsByClassName('language-mermaid')[0];
 
-  if (mermaid == null) {
-    element.insertAdjacentHTML('afterbegin', '<button class="btn btn-copy"></button>');
-  }
+    if (mermaid == null) {
+        element.insertAdjacentHTML('afterbegin', '<button class="btn btn-copy" type="button"></button>');
+    }
 }
 
-var clipboard = new Clipboard('.btn-copy', {
+document.addEventListener('click', function (event) {
+    var trigger = event.target.closest('.btn-copy');
+    if (!trigger) return;
 
-  target: function(trigger) {
-    return trigger.nextElementSibling;
-  },
+    var targetElement = trigger.nextElementSibling;
+    if (!targetElement) return;
 
-});
+    var textToCopy = targetElement.innerText;
 
-clipboard.on('success', function(e) {
-
-    /*
-    console.info('Action:', e.action);
-    console.info('Text:', e.text);
-    console.info('Trigger:', e.trigger);
-    */
-
-    e.clearSelection();
-});
-
-clipboard.on('error', function(e) {
-    console.error('Action:', e.action);
-    console.error('Trigger:', e.trigger);
+    navigator.clipboard
+        .writeText(textToCopy)
+        .then(function () {
+            // Сюда можно добавить визуальный фидбек, (например, trigger.classList.add('copied'))
+        })
+        .catch(function (err) {
+            console.error('Ошибка копирования:', err);
+            console.error('Trigger:', trigger);
+        });
 });

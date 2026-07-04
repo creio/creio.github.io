@@ -1,5 +1,5 @@
 .img-md {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 /* Стили для Lightbox оверлея */
@@ -44,64 +44,64 @@
 }
 
 figure {
-  margin: 0 0 1rem;
-  display: inline-block;
+    margin: 0 0 1rem;
+    display: inline-block;
 }
 
 figure img {
-  margin-bottom: 0.5rem;
-  line-height: 1;
-  max-width: 100%;
-  height: auto;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+    max-width: 100%;
+    height: auto;
 }
 
 figure figcaption {
-  margin: 0.25rem 0 0.75rem;
-  font-size: 0.875em;
-  color: var(--muted-foreground);
+    margin: 0.25rem 0 0.75rem;
+    font-size: 0.875em;
+    color: var(--muted-foreground);
 }
 
 .figure-caption {
-  margin: 0.25rem 0 0.75rem;
+    margin: 0.25rem 0 0.75rem;
 }
 
 figure.wide {
-  margin: 2rem -1.5rem;
+    margin: 2rem -1.5rem;
 }
 
 figure.wide .figure-caption {
-  margin: 0.25rem 1.5rem 0.75rem;
+    margin: 0.25rem 1.5rem 0.75rem;
 }
 
 @include media-breakpoint-up(md) {
-  figure.wide {
-    margin: 2rem -2.5rem;
-  }
+    figure.wide {
+        margin: 2rem -2.5rem;
+    }
 
-  figure.wide .figure-caption {
-    margin: 0.25rem 2.5rem 0.75rem;
-  }
+    figure.wide .figure-caption {
+        margin: 0.25rem 2.5rem 0.75rem;
+    }
 }
 
 @include media-breakpoint-up(lg) {
-  figure.wide {
-    margin: 2rem -5rem;
-  }
+    figure.wide {
+        margin: 2rem -5rem;
+    }
 
-  figure.wide .figure-caption {
-    margin: 0.25rem 5rem 0.75rem;
-  }
+    figure.wide .figure-caption {
+        margin: 0.25rem 5rem 0.75rem;
+    }
 }
 
 .blur-up {
-  filter: blur(5px);
+    filter: blur(5px);
 }
 
 .blur-up.lazyloaded {
-  filter: unset;
+    filter: unset;
 }
 
 .img-simple {
-  margin-top: 0.375rem;
-  margin-bottom: 1.25rem;
+    margin-top: 0.375rem;
+    margin-bottom: 1.25rem;
 }

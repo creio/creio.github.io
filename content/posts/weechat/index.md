@@ -1,6 +1,6 @@
 ---
 title: Настройка и использование weechat в linux
-description: 'Настройка WeeChat в Linux: подключение к IRC (Libera.Chat), регистрация ника, Matrix, мосты и скрипты.'
+description: "Настройка WeeChat в Linux: подключение к IRC (Libera.Chat), регистрация ника, Matrix, мосты и скрипты."
 image: /images/weechat.png
 date: 2022-05-12T19:15:06.000Z
 tags:
@@ -213,9 +213,9 @@ yay -S weechat-matrix-rs-git
 
 Не забудь заглянуть в чаты Ctlos Linux:
 
-* [Matrix](https://matrix.to)
-* [Matrix Libera](https://matrix.to)
-* [Web Kiwiirc](https://web.libera.chat)
+- [Matrix](https://matrix.to)
+- [Matrix Libera](https://matrix.to)
+- [Web Kiwiirc](https://web.libera.chat)
 
 ```bash
 /join #ctlos

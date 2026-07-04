@@ -7,8 +7,8 @@ image: ""
 categories:
   - Linux
 tags:
-    - ubuntu
-    - docker
+  - ubuntu
+  - docker
 contributors: []
 pinned: false
 toc: true

@@ -20,7 +20,7 @@ hljs.registerLanguage('md', markdown);
 hljs.registerLanguage('python', python);
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('pre code:not(.language-mermaid)').forEach((block) => {
-    hljs.highlightElement(block);
-  });
+    document.querySelectorAll('pre code:not(.language-mermaid)').forEach((block) => {
+        hljs.highlightElement(block);
+    });
 });

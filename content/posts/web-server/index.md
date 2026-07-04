@@ -7,8 +7,8 @@ image: "/images/web-server.png"
 categories:
   - Linux
 tags:
-    - linux
-    - dev
+  - linux
+  - dev
 contributors: []
 pinned: false
 toc: true

@@ -5,7 +5,7 @@ date: 2020-03-23T20:14:38+03:00
 draft: false
 image: "/images/lvm-luks.png"
 tags:
-    - archlinux
+  - archlinux
 categories:
   - Arch Linux
 contributors: []
@@ -222,6 +222,6 @@ openssl enc -d -aes-256-cbc -in luksheader.bac.enc -out luksheader.bac
 cryptsetup luksHeaderRestore --header-backup-file luksheader.bac /dev/sda1
 ```
 
-Сохраняем в надёжное место `luksheader.bac.enc`, например на usb. [Стеганографируем и в публичный доступ (video)](https://www.youtube.com/watch?v=sGIrre2OVt4&amp;t=238s).
+Сохраняем в надёжное место `luksheader.bac.enc`, например на usb. [Стеганографируем и в публичный доступ (video)](https://www.youtube.com/watch?v=sGIrre2OVt4&t=238s).
 
 Profit!

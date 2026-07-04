@@ -1,53 +1,52 @@
-document.querySelectorAll('.details-tags, .details-categories').forEach(element => {
-  const dataId = element.getAttribute('data-id');
-  if (!dataId) return;
+document.querySelectorAll('.details-tags, .details-categories').forEach((element) => {
+    const dataId = element.getAttribute('data-id');
+    if (!dataId) return;
 
-  const stateKey = dataId + 'State'; // 'tagsState' or 'categoriesState'
-  const attrName = 'data-global-' + dataId;
-  const savedState = localStorage.getItem(stateKey);
-  let shouldBeOpen = false;
+    const stateKey = dataId + 'State'; // 'tagsState' or 'categoriesState'
+    const attrName = 'data-global-' + dataId;
+    const savedState = localStorage.getItem(stateKey);
+    let shouldBeOpen = false;
 
-  if (savedState !== null) {
-    shouldBeOpen = savedState === 'open';
-  } else {
-    if (dataId === 'categories') {
-      shouldBeOpen = true;
-      localStorage.setItem(stateKey, 'open');
+    if (savedState !== null) {
+        shouldBeOpen = savedState === 'open';
     } else {
-      shouldBeOpen = false;
-      localStorage.setItem(stateKey, 'closed');
+        if (dataId === 'categories') {
+            shouldBeOpen = true;
+            localStorage.setItem(stateKey, 'open');
+        } else {
+            shouldBeOpen = false;
+            localStorage.setItem(stateKey, 'closed');
+        }
     }
-  }
 
-  if (shouldBeOpen) {
-    document.documentElement.setAttribute(attrName, '');
-    element.setAttribute('open', '');
-    element.classList.add('active');
-  } else {
-    document.documentElement.removeAttribute(attrName);
-    element.removeAttribute('open');
-    element.classList.remove('active');
-  }
-
-  element.addEventListener('toggle', () => {
-    if (element.open) {
-      element.classList.add('active');
-      document.documentElement.setAttribute(attrName, '');
-      localStorage.setItem(stateKey, 'open');
+    if (shouldBeOpen) {
+        document.documentElement.setAttribute(attrName, '');
+        element.setAttribute('open', '');
+        element.classList.add('active');
     } else {
-      element.classList.remove('active');
-      document.documentElement.removeAttribute(attrName);
-      localStorage.setItem(stateKey, 'closed');
+        document.documentElement.removeAttribute(attrName);
+        element.removeAttribute('open');
+        element.classList.remove('active');
     }
-  });
+
+    element.addEventListener('toggle', () => {
+        if (element.open) {
+            element.classList.add('active');
+            document.documentElement.setAttribute(attrName, '');
+            localStorage.setItem(stateKey, 'open');
+        } else {
+            element.classList.remove('active');
+            document.documentElement.removeAttribute(attrName);
+            localStorage.setItem(stateKey, 'closed');
+        }
+    });
 });
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const triggers = document.querySelectorAll('.lightbox-trigger');
 
-    triggers.forEach(trigger => {
-        trigger.addEventListener('click', function(e) {
+    triggers.forEach((trigger) => {
+        trigger.addEventListener('click', function (e) {
             e.preventDefault(); // Отменяем стандартный переход по ссылке
 
             const origSrc = this.getAttribute('href');

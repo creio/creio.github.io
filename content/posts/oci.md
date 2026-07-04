@@ -7,7 +7,7 @@ image: ""
 categories:
   - Arch Linux
 tags:
-    - archlinux
+  - archlinux
 contributors: []
 pinned: false
 toc: true
@@ -46,7 +46,7 @@ ssh-keygen -t rsa -b 4096 -C "ctlos@protonmail.com"
 
 ## Arch bootstrap
 
-Методы описаны в вики archlinux [wiki.archlinux.org](https://wiki.archlinux.org/index.php/Install_Arch_Linux_from_existing_Linux#Method_A:_Using_the_bootstrap_image_(recommended)).
+Методы описаны в вики archlinux [wiki.archlinux.org](<https://wiki.archlinux.org/index.php/Install_Arch_Linux_from_existing_Linux#Method_A:_Using_the_bootstrap_image_(recommended)>).
 
 Копируем ссылку на bootstrap .tar.gz. Скачиваем и раскрываем архив в корень [http://mirrors.evowise.com/](http://mirrors.evowise.com/archlinux/iso/latest/).
 

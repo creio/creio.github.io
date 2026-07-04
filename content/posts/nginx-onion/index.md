@@ -7,8 +7,8 @@ image: "/images/nginx-onion.png"
 categories:
   - Network
 tags:
-    - dev
-    - linux
+  - dev
+  - linux
 contributors: []
 pinned: false
 toc: true

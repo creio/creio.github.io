@@ -1,14 +1,14 @@
 {
-  "name": "@hyas/doks",
-  "description": "Doks theme",
-  "version": "0.5.0",
+  "name": "creio-blog",
+  "description": "Blogs theme hugo",
+  "version": "0.1.0",
   "engines": {
     "node": ">=22.0.0"
   },
   "browserslist": [
     "defaults"
   ],
-  "repository": "https://github.com/h-enk/doks",
+  "repository": "https://github.com/creio/hugo-blog",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -16,6 +16,7 @@
   "scripts": {
     "create": "exec-bin node_modules/.bin/hugo/hugo new",
     "dev": "exec-bin node_modules/.bin/hugo/hugo server --bind=0.0.0.0 --disableFastRender --noHTTPCache",
+    "format": "prettier **/** -w -c",
     "tina": "tinacms dev --noTelemetry -c \"exec-bin node_modules/.bin/hugo/hugo server --bind=0.0.0.0 --disableFastRender --noHTTPCache\"",
     "prebuild": "npm run clean",
     "build": "exec-bin node_modules/.bin/hugo/hugo --gc --minify",
@@ -25,11 +26,6 @@
     "clean": "shx rm -rf public resources .hugo_build.lock",
     "clean:install": "shx rm -rf package-lock.json node_modules",
     "version": "exec-bin node_modules/.bin/hugo/hugo version",
-    "lint": "npm run -s lint:js && npm run -s lint:styles",
-    "lint:js": "eslint assets/js config functions",
-    "lint:styles": "stylelint \"assets/scss/**/*.{css,sass,scss,sss,less}\"",
-    "lint:md": "markdownlint-cli2 \"*.md\" \"content/**/*.md\"",
-    "lint:md-fix": "markdownlint-cli2-fix \"*.md\" \"content/**/*.md\"",
     "server": "exec-bin node_modules/.bin/hugo/hugo server",
     "test": "npm run -s lint",
     "copy:katex-fonts": "shx cp ./node_modules/katex/dist/fonts/* ./static/fonts/"
@@ -44,7 +40,6 @@
     "auto-changelog": "^2.4.0",
     "autoprefixer": "^10.4.19",
     "bootstrap": "^5.3.3",
-    "eslint": "^8.57.0",
     "exec-bin": "^1.0.0",
     "flexsearch": "^0.8.31",
     "highlight.js": "^11.9.0",
@@ -52,14 +47,12 @@
     "instant.page": "^5.2.0",
     "katex": "^0.17.0",
     "lazysizes": "^5.3.2",
-    "markdownlint-cli2": "^0.13.0",
     "netlify-plugin-submit-sitemap": "^0.4.0",
     "postcss": "^8.4.38",
     "postcss-cli": "^11.0.1",
     "purgecss-whitelister": "^2.4.0",
     "shx": "^0.4.0",
-    "stylelint": "^16.6.0",
-    "stylelint-config-standard-scss": "^13.1.0",
+    "prettier": "^3.3.0",
     "vite": "^5.2.12"
   },
   "otherDependencies": {

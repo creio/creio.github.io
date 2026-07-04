@@ -1,8 +1,8 @@
 ---
 # homepage: false
-title: 'Backup'
-description: 'Сравнение инструментов резервного копирования в Linux: Restic, Borg, Kopia. Примеры команд, настройка cron и отправка уведомлений.'
-image: ''
+title: "Backup"
+description: "Сравнение инструментов резервного копирования в Linux: Restic, Borg, Kopia. Примеры команд, настройка cron и отправка уведомлений."
+image: ""
 date: 2022-05-10T17:12:00.000Z
 tags:
   - linux

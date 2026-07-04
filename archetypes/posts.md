@@ -1,9 +1,9 @@
 ---
 title: '{{ replace .Name "-" " " | title }}'
-description: ''
-excerpt: ''
-date: {{ .Date }}
-image: ''
+description: ""
+excerpt: ""
+date: { { .Date } }
+image: ""
 categories: []
 tags: []
 contributors: []

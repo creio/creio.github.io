@@ -1,7 +1,7 @@
 ---
-title: 'Wireguard, pihole, unbound | предотвращаем утечку dns'
-description: 'Настройка WireGuard + Pi-hole + Unbound для приватного DNS без утечек. Полная конфигурация VPN-сервера с блокировкой рекламы.'
-image: ''
+title: "Wireguard, pihole, unbound | предотвращаем утечку dns"
+description: "Настройка WireGuard + Pi-hole + Unbound для приватного DNS без утечек. Полная конфигурация VPN-сервера с блокировкой рекламы."
+image: ""
 date: 2022-12-17T19:18:35.000Z
 tags:
   - network
@@ -22,9 +22,9 @@ root
 747AuBOZ7WNt
 ```
 
-* unbound
-* wireguard
-* pihole
+- unbound
+- wireguard
+- pihole
 
 ```bash
 apt install wg...

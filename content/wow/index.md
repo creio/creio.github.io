@@ -66,7 +66,9 @@ edit: false
 - [BingX](https://bingx.com/invite/QLGJ0Z)
 - [OKX](https://www.okx.com/join/7547847)
 - [Kucoin](https://www.kucoin.com/r/rf/QBA6MNZ6)
+
 <!-- - [Dex биржа](https://dydx.exchange/r/WWPFCWVK) -->
+
 - [Phemex](https://phemex.com/ru/register?referralCode=CPVJH5)
 - [Опционы](https://www.delta.exchange/?code=LYAYNF)
 
@@ -84,6 +86,7 @@ edit: false
 ## Money
 
 <!-- - Лучшая дебетовая карта [tinkoff](https://partners.tinkoff.ru/click/c859a1f7-5d98-4566-aa39-d671c01b22d4?sub1=blog) -->
+
 - Вирт карты, для оплаты зарубежных сервисов [wanttopay.net](https://wanttopay.net/?pid=XH7ME), [telegram bot](https://t.me/WantToPayBot?start=w17851188--XH7ME)
 - Вирт карты, практически для любых пополнений [epn.net](https://epn.net/)
 - Платежная система [capitalist](https://capitalist.net/reg?from=6644498e31)

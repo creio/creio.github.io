@@ -7,7 +7,7 @@ image: "/images/urxvt-cfg.png"
 categories:
   - Linux
 tags:
-    - linux
+  - linux
 contributors: []
 pinned: false
 toc: true
