@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: main
 
+# Устанавливаем права для загрузки артефактов Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -17,6 +23,7 @@ jobs:
 
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
 
     steps:
     - name: Checkout project
@@ -26,9 +33,10 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node }}
+        cache: 'npm'
 
     - name: Install dependencies
-      run: npm ci
+      run: npm ci --legacy-peer-deps
 
     - name: Run test script
       run: npm test
@@ -36,12 +44,16 @@ jobs:
     - name: Build production website
       run: npm run build
 
-    - name: Disable Jekyll
-      run: touch ./public/.nojekyll
-
-    - name: Deploy
+    - name: Upload Artifact
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      uses: peaceiris/actions-gh-pages@v4
+      uses: actions/upload-pages-artifact@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
+        path: ./public
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v4

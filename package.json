@@ -34,40 +34,40 @@
     "test": "npm run -s lint",
     "copy:katex-fonts": "shx cp ./node_modules/katex/dist/fonts/* ./static/fonts/"
   },
+  "dependencies": {
+    "@thulite/seo": "^2.4.3"
+  },
   "devDependencies": {
-    "@babel/cli": "^7.18",
-    "@babel/core": "^7.18",
-    "@babel/preset-env": "^7.18",
+    "@babel/cli": "^7.24.0",
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
     "@fullhuman/postcss-purgecss": "^8.0.0",
     "@tinacms/cli": "^1.5.45",
     "@types/node": "^20.12.12",
-    "auto-changelog": "^2.4",
-    "autoprefixer": "^10.4",
-    "bootstrap": "^5.2.0-beta1",
-    "clipboard": "^2.0",
-    "eslint": "^10.6.0",
+    "auto-changelog": "^2.4.0",
+    "autoprefixer": "^10.4.19",
+    "bootstrap": "^5.3.3",
+    "clipboard": "^2.0.11",
+    "eslint": "^8.57.0",
     "exec-bin": "^1.0.0",
-    "flexsearch": "^0.8.212",
-    "highlight.js": "^11.5",
-    "hugo-installer": ">=4.0.1",
-    "instant.page": "^5.1",
+    "flexsearch": "^0.8.31",
+    "highlight.js": "^11.9.0",
+    "hugo-installer": "^4.0.1",
+    "instant.page": "^5.2.0",
     "katex": "^0.17.0",
-    "lazysizes": "^5.3",
-    "markdownlint-cli2": "^0.22.1",
+    "lazysizes": "^5.3.2",
+    "markdownlint-cli2": "^0.13.0",
     "netlify-plugin-submit-sitemap": "^0.4.0",
-    "node-fetch": "^3.2",
-    "postcss": "^8.4",
+    "node-fetch": "^3.3.2",
+    "postcss": "^8.4.38",
     "postcss-cli": "^11.0.1",
-    "purgecss-whitelister": "^2.4",
+    "purgecss-whitelister": "^2.4.0",
     "shx": "^0.4.0",
-    "stylelint": "^17.14.0",
-    "stylelint-config-standard-scss": "^17.0.0",
-    "vite": "^4.5.14"
+    "stylelint": "^16.6.0",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "vite": "^5.2.12"
   },
   "otherDependencies": {
     "hugo": "0.163.0"
-  },
-  "dependencies": {
-    "@thulite/seo": "^2.4.3"
   }
 }
