@@ -25,7 +25,7 @@ defaultContentLanguage = 'ru'
   anchor = "Center"
   bgColor = "#ffffff"
   compression = "lossy"
-  quality = 85
+  quality = 80
   resampleFilter = "Lanczos"
   [imaging.webp]
     hint = "photo"

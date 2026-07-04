@@ -1,5 +1,5 @@
 .card {
-    transition: var(--transition);
+  transition: var(--transition);
 }
 
 .home .card,
@@ -8,9 +8,9 @@
 .blog.single .card,
 .categories.list .card,
 .tags.list .card {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    transition: var(--transition);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  transition: var(--transition);
 }
 
 .home .card:hover,
@@ -19,35 +19,35 @@
 .blog.single .card:hover,
 .categories.list .card:hover,
 .tags.list .card:hover {
-    transform: scale(1.025);
+  transform: scale(1.025);
 }
 
 .posts.list .card:hover {
-    background: var(--secondary);
+  background: var(--secondary);
 }
 
 .contributors.list .card.card-terms:hover,
 .categories.list .card.card-terms:hover,
 .tags.list .card.card-terms:hover {
-    transform: none;
+  transform: none;
 }
 
 .related-posts-card {
-    min-width: 100%;
+  min-width: 100%;
 }
 
 .pagination a {
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 .related-posts-card a,
 .related-posts-card a:hover {
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 .card.card-terms a:hover,
 .card.card-terms a:focus {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .home .card-body,
@@ -56,24 +56,24 @@
 .blog.single .card-body,
 .categories.list .card-body,
 .tags.list .card-body {
-    padding: 0 2rem 1rem;
+  padding: 0 2rem 1rem;
 }
 
 .contributors.list .card-terms .card-body,
 .categories.list .card-terms .card-body,
 .tags.list .card-terms .card-body {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .blog-header {
-    text-align: center;
-    margin-bottom: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .blog-footer {
-    text-align: center;
+  text-align: center;
 }
 
 h2.section-title {
-    margin-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
 }

@@ -1,104 +1,104 @@
 .navbar-form {
-    position: relative;
+  position: relative;
 }
 
 #suggestions {
-    position: absolute;
-    right: 0;
-    margin-top: 0.2rem;
-    width: calc(100vw - 3rem);
-    max-width: calc(400px - 3rem);
-    z-index: $zindex-dropdown;
-    background: var(--card);
-    border: 1px solid var(--border);
+  position: absolute;
+  right: 0;
+  margin-top: 0.2rem;
+  width: calc(100vw - 3rem);
+  max-width: calc(400px - 3rem);
+  z-index: $zindex-dropdown;
+  background: var(--card);
+  border: 1px solid var(--border);
 
-    @include media-breakpoint-up(lg) {
-        right: 0;
-    }
+  @include media-breakpoint-up(lg) {
+    right: 0;
+  }
 }
 
 #suggestions a,
 .suggestion__no-results {
-    padding: 0.75rem;
-    margin: 0 0.5rem;
+  padding: 0.75rem;
+  margin: 0 0.5rem;
 }
 
 #suggestions a {
-    display: block;
-    text-decoration: none;
+  display: block;
+  text-decoration: none;
 }
 
 #suggestions a:focus {
-    background: var(--secondary);
-    outline: 0;
+  background: var(--secondary);
+  outline: 0;
 }
 
 #suggestions div:not(:first-child) {
-    border-top: 1px dashed var(--border);
+  border-top: 1px dashed var(--border);
 }
 
 #suggestions div:first-child {
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 #suggestions div:last-child {
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 #suggestions a:hover {
-    background: var(--secondary);
+  background: var(--secondary);
 }
 
 #suggestions span {
-    display: flex;
-    font-size: 1rem;
+  display: flex;
+  font-size: 1rem;
 }
 
 .suggestion__title {
-    font-weight: 700;
-    color: var(--foreground);
+  font-weight: 700;
+  color: var(--foreground);
 }
 
 .suggestion__description,
 .suggestion__no-results {
-    color: var(--muted-foreground);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  color: var(--muted-foreground);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 @include media-breakpoint-up(lg) {
-    #suggestions {
-        width: 31.125rem;
-        max-width: 31.125rem;
-        max-height: 85vh;
-        overflow: auto;
-    }
+  #suggestions {
+    width: 31.125rem;
+    max-width: 31.125rem;
+    max-height: 85vh;
+    overflow: auto;
+  }
 
-    #suggestions a {
-        display: flex;
-    }
+  #suggestions a {
+    display: flex;
+  }
 
-    .suggestion__title {
-        width: 9rem;
-        padding-right: 1rem;
-        border-right: 1px solid var(--border);
-        display: inline-block;
+  .suggestion__title {
+    width: 9rem;
+    padding-right: 1rem;
+    border-right: 1px solid var(--border);
+    display: inline-block;
 
-        // text-align: right;
-        flex-shrink: 0;
-        overflow: hidden;
+    // text-align: right;
+    flex-shrink: 0;
+    overflow: hidden;
 
-        // text-overflow: ellipsis;
-        // white-space: nowrap;
-    }
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
+  }
 
-    .suggestion__description {
-        width: 19rem;
-        padding-left: 1rem;
-        overflow: hidden;
+  .suggestion__description {
+    width: 19rem;
+    padding-left: 1rem;
+    overflow: hidden;
 
-        // text-overflow: ellipsis;
-        white-space: wrap;
-    }
+    // text-overflow: ellipsis;
+    white-space: wrap;
+  }
 }

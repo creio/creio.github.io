@@ -87,13 +87,13 @@
             {{- end -}}
 
             {{- /* Основной тег img (src содержит Base64 микро-заглушку, реальные наборы в data-srcset) */}}
-            <img class="figure-img {{ $addClass }}"
-                 data-sizes="{{ $stdSizes }}"
-                 src="data:image/webp;base64,{{ $lqip.Content | base64Encode }}"
-                 data-srcset="{{ $imgSrcSet }}"
-                 width="{{ $image.Width }}"
-                 height="{{ $image.Height }}"
-                 alt="{{ $ctx.Title }}">
+            <img fetchpriority="high" class="figure-img {{ $addClass }}"
+                data-sizes="{{ $stdSizes }}"
+                src="data:image/webp;base64,{{ $lqip.Content | base64Encode }}"
+                data-srcset="{{ $imgSrcSet }}"
+                width="{{ $image.Width }}"
+                height="{{ $image.Height }}"
+                alt="{{ $ctx.Title }}">
 
             {{- /* Резервный вариант без JS (для SEO-ботов и старых браузеров) */}}
             <noscript>

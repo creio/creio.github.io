@@ -1,20 +1,20 @@
 html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    font-weight: 300;
-    font-size: var(--size-step-0);
-    font-kerning: normal;
-    line-height: 1.65;
-    text-rendering: optimizespeed;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
+  font-weight: 300;
+  font-size: var(--size-step-0);
+  font-kerning: normal;
+  line-height: 1.65;
+  text-rendering: optimizespeed;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .wrap {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 .contributors .content,
@@ -27,12 +27,12 @@ body {
 .showcase.list .content,
 .categories.list .content,
 .tags.list .content {
-    padding-top: 1rem;
-    padding-bottom: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
 }
 
 .content img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 h1,
@@ -47,266 +47,266 @@ h6,
 .h4,
 .h5,
 .h6 {
-    font-weight: 500;
-    margin: 2rem 0 1rem;
+  font-weight: 500;
+  margin: 2rem 0 1rem;
 }
 
 .h1,
 h1 {
-    font-size: var(--size-step-3);
+  font-size: var(--size-step-3);
 }
 
 .offcanvas-header {
-    border-bottom: 1px solid var(--border);
-    padding-top: 1.0625rem;
-    padding-bottom: 0.8125rem;
+  border-bottom: 1px solid var(--border);
+  padding-top: 1.0625rem;
+  padding-bottom: 0.8125rem;
 }
 
 h5.offcanvas-title {
-    margin: 0;
+  margin: 0;
 }
 
 body.docs {
-    padding-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 table {
-    font-size: var(--size-step-minus-1);
-    font-weight: 400;
+  font-size: var(--size-step-minus-1);
+  font-weight: 400;
 }
 
 @include media-breakpoint-up(md) {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    .h1,
-    .h2,
-    .h3,
-    .h4,
-    .h5,
-    .h6 {
-        margin-bottom: 1.125rem;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
+    margin-bottom: 1.125rem;
+  }
 }
 
 .home h1 {
-    font-size: calc(1.875rem + 1.5vw);
+  font-size: calc(1.875rem + 1.5vw);
 }
 
 a {
-    color: $brand;
+  color: $brand;
 
-    // text-decoration-color: var(--color-middle-gray);
-    text-decoration-style: solid;
-    text-decoration-thickness: 0.1ex;
-    text-underline-offset: 6px;
+  // text-decoration-color: var(--color-middle-gray);
+  text-decoration-style: solid;
+  text-decoration-thickness: 0.1ex;
+  text-underline-offset: 6px;
 
-    // transition: var(--transition);
+  // transition: var(--transition);
 }
 
 a:hover {
-    // text-decoration-color: var(--color-primary);
+  // text-decoration-color: var(--color-primary);
 
-    text-decoration-style: solid;
-    text-decoration-thickness: 0.2ex;
-    text-underline-offset: 6px;
+  text-decoration-style: solid;
+  text-decoration-thickness: 0.2ex;
+  text-underline-offset: 6px;
 }
 
 button,
 .btn {
-    transition: var(--transition);
+  transition: var(--transition);
 }
 
 a:hover,
 a:focus {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 a.btn:hover,
 a.btn:focus {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .section {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
 .section-md {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .section-sm {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .docs-sidebar {
-    order: 2;
+  order: 2;
 }
 
 @include media-breakpoint-up(lg) {
-    .docs-sidebar {
-        order: 0;
-        border-right: 1px solid var(--border);
-        position: sticky;
-        top: 4rem;
-        z-index: 1000;
-        height: calc(100vh - 4rem);
-    }
+  .docs-sidebar {
+    order: 0;
+    border-right: 1px solid var(--border);
+    position: sticky;
+    top: 4rem;
+    z-index: 1000;
+    height: calc(100vh - 4rem);
+  }
 
-    .docs-sidebar-top {
-        top: 0;
-    }
+  .docs-sidebar-top {
+    top: 0;
+  }
 
-    .docs-links {
-        display: block;
-        width: auto;
-        margin-right: -1.5rem;
-        padding-bottom: 4rem;
-        max-height: calc(100vh - 4rem);
-        overflow-y: scroll;
-    }
+  .docs-links {
+    display: block;
+    width: auto;
+    margin-right: -1.5rem;
+    padding-bottom: 4rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: scroll;
+  }
 }
 
 @include media-breakpoint-up(xl) {
-    .docs-sidebar {
-        flex: 0 1 320px;
-    }
+  .docs-sidebar {
+    flex: 0 1 320px;
+  }
 }
 
 .docs-links {
-    padding-bottom: 5rem;
+  padding-bottom: 5rem;
 }
 
 .docs-toc {
-    order: 2;
-    position: sticky;
-    top: 4rem;
-    height: calc(100vh - 4rem);
-    overflow-y: auto;
+  order: 2;
+  position: sticky;
+  top: 4rem;
+  height: calc(100vh - 4rem);
+  overflow-y: auto;
 
-    .h6 {
-        text-transform: uppercase;
-        font-weight: 300;
-    }
+  .h6 {
+    text-transform: uppercase;
+    font-weight: 300;
+  }
 }
 
 .docs-toc-top {
-    top: 0;
+  top: 0;
 }
 
 .docs-content {
-    padding-bottom: 3rem;
-    order: 1;
+  padding-bottom: 3rem;
+  order: 1;
 }
 
 .docs-navigation {
-    border-top: 1px solid var(--border);
-    margin-top: 2rem;
-    margin-bottom: 0;
-    padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+  margin-bottom: 0;
+  padding-top: 2rem;
 }
 
 .docs-navigation a {
-    font-size: 0.9rem;
+  font-size: 0.9rem;
 }
 
 @include media-breakpoint-up(lg) {
-    .docs-navigation {
-        margin-bottom: -1rem;
-    }
+  .docs-navigation {
+    margin-bottom: -1rem;
+  }
 
-    .docs-navigation a {
-        font-size: 1rem;
-    }
+  .docs-navigation a {
+    font-size: 1rem;
+  }
 }
 
 .navbar a:hover,
 .navbar a:focus {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 #TableOfContents ul,
 #toc ul {
-    padding-left: 0;
-    list-style: none;
+  padding-left: 0;
+  list-style: none;
 }
 
 #toc a.active {
-    color: var(--primary);
-    font-weight: 500;
+  color: var(--primary);
+  font-weight: 500;
 }
 
 ::selection {
-    background: rgba(212, 53, 159, 0.2);
+  background: rgba(212, 53, 159, 0.2);
 }
 
 .bg-dots {
-    background-image: radial-gradient(var(--border) 15%, transparent 15%);
-    background-position: 0 0;
-    background-size: 1rem 1rem;
-    -webkit-mask: linear-gradient(to top, #fff, transparent);
-    mask: linear-gradient(to top, #fff, transparent);
-    width: 100%;
-    height: 9rem;
-    margin-top: -10rem;
-    z-index: -1;
+  background-image: radial-gradient(var(--border) 15%, transparent 15%);
+  background-position: 0 0;
+  background-size: 1rem 1rem;
+  -webkit-mask: linear-gradient(to top, #fff, transparent);
+  mask: linear-gradient(to top, #fff, transparent);
+  width: 100%;
+  height: 9rem;
+  margin-top: -10rem;
+  z-index: -1;
 }
 
 .bg-dots-md {
-    margin-top: -11rem;
+  margin-top: -11rem;
 }
 
 .bg-dots-lg {
-    margin-top: -12rem;
+  margin-top: -12rem;
 }
 
 .gradient-text {
-    background-color: var(--color-primary);
-    background-image: linear-gradient(90deg, var(--color-primary), #77a5d3 50%, #d32e9d);
-    background-size: 100%;
-    background-repeat: repeat;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+  background-color: var(--color-primary);
+  background-image: linear-gradient(90deg, var(--color-primary), #77a5d3 50%, #d32e9d);
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .katex {
-    font-size: 1.125rem;
+  font-size: 1.125rem;
 }
 
 .card-bar {
-    border-top: 4px solid;
-    border-image-source: linear-gradient(90deg, var(--color-primary), var(--color-primary) 50%, #77a5d3);
-    border-image-slice: 1;
+  border-top: 4px solid;
+  border-image-source: linear-gradient(90deg, var(--color-primary), var(--color-primary) 50%, #77a5d3);
+  border-image-slice: 1;
 }
 
 .modal-backdrop {
-    background-color: var(--background);
+  background-color: var(--background);
 }
 
 .modal-backdrop.show {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 @include media-breakpoint-up(md) {
-    .modal-backdrop.show {
-        opacity: 0;
-    }
+  .modal-backdrop.show {
+    opacity: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

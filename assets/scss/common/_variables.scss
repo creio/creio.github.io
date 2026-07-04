@@ -1,100 +1,100 @@
 :root {
-    // Typography
-    --sans-font-family: "Roboto", helvetica, sans-serif;
-    --serif-font-family: georgia, serif;
-    --code-font-family: "JetBrains Mono", monospace;
+  // Typography
+  --sans-font-family: "Roboto", helvetica, sans-serif;
+  --serif-font-family: georgia, serif;
+  --code-font-family: "JetBrains Mono", monospace;
 
-    // Type scale
-    --size-step-minus-2: clamp(0.64rem, 0.6179rem + 0.1104vw, 0.7035rem);
-    --size-step-minus-1: clamp(0.8rem, 0.7521rem + 0.2395vw, 0.9377rem);
-    --size-step-0: clamp(1rem, 0.913rem + 0.4348vw, 1.25rem);
-    --size-step-1: clamp(1.25rem, 1.1052rem + 0.7239vw, 1.6663rem);
-    --size-step-2: clamp(1.5625rem, 1.3334rem + 1.1454vw, 2.2211rem);
-    --size-step-3: clamp(1.9531rem, 1.6026rem + 1.7524vw, 2.9607rem);
-    --size-step-4: clamp(2.4414rem, 1.9178rem + 2.6178vw, 3.9467rem);
-    --size-step-5: clamp(3.0518rem, 2.2834rem + 3.842vw, 5.2609rem);
-    --size-step-6: clamp(3.8147rem, 2.7023rem + 5.5619vw, 7.0128rem);
-    --size-step-7: clamp(4.7684rem, 3.1754rem + 7.9647vw, 9.3481rem);
+  // Type scale
+  --size-step-minus-2: clamp(0.64rem, 0.6179rem + 0.1104vw, 0.7035rem);
+  --size-step-minus-1: clamp(0.8rem, 0.7521rem + 0.2395vw, 0.9377rem);
+  --size-step-0: clamp(1rem, 0.913rem + 0.4348vw, 1.25rem);
+  --size-step-1: clamp(1.25rem, 1.1052rem + 0.7239vw, 1.6663rem);
+  --size-step-2: clamp(1.5625rem, 1.3334rem + 1.1454vw, 2.2211rem);
+  --size-step-3: clamp(1.9531rem, 1.6026rem + 1.7524vw, 2.9607rem);
+  --size-step-4: clamp(2.4414rem, 1.9178rem + 2.6178vw, 3.9467rem);
+  --size-step-5: clamp(3.0518rem, 2.2834rem + 3.842vw, 5.2609rem);
+  --size-step-6: clamp(3.8147rem, 2.7023rem + 5.5619vw, 7.0128rem);
+  --size-step-7: clamp(4.7684rem, 3.1754rem + 7.9647vw, 9.3481rem);
 
-    // Utilities - sizing
-    --sizing-xxxs: 0.0315rem;
-    --sizing-xxs: 0.063rem;
-    --sizing-xs: 0.125;
-    --sizing-sm: 0.313rem;
-    --sizing-md: 0.625rem;
-    --sizing-lg: 0.938rem;
-    --sizing-xl: 1.25rem;
-    --sizing-xxl: 1.875rem;
-    --sizing-xxxl: 3.125rem;
+  // Utilities - sizing
+  --sizing-xxxs: 0.0315rem;
+  --sizing-xxs: 0.063rem;
+  --sizing-xs: 0.125;
+  --sizing-sm: 0.313rem;
+  --sizing-md: 0.625rem;
+  --sizing-lg: 0.938rem;
+  --sizing-xl: 1.25rem;
+  --sizing-xxl: 1.875rem;
+  --sizing-xxxl: 3.125rem;
 
-    // Utilities - global
-    --max-width: 92.3125rem;
+  // Utilities - global
+  --max-width: 92.3125rem;
 
-    // Utilities - transitions
-    --transition: all 0.35s ease;
-    --transition-fast: all 0.125s cubic-bezier(0.62, 0.16, 0.13, 1.01);
-    --transition-med: all 0.5s cubic-bezier(0.62, 0.16, 0.13, 1.01);
-    --transition-cubic: all 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --transition-cubic-med: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --transition-cubic-slow: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    --transition-slow: all 1.25s cubic-bezier(0.68, 0, 0.265, 1.55);
-    --transition-slow-ease: all 1.25s cubic-bezier(0.62, 0.16, 0.13, 1.01);
+  // Utilities - transitions
+  --transition: all 0.35s ease;
+  --transition-fast: all 0.125s cubic-bezier(0.62, 0.16, 0.13, 1.01);
+  --transition-med: all 0.5s cubic-bezier(0.62, 0.16, 0.13, 1.01);
+  --transition-cubic: all 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-cubic-med: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-cubic-slow: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-slow: all 1.25s cubic-bezier(0.68, 0, 0.265, 1.55);
+  --transition-slow-ease: all 1.25s cubic-bezier(0.62, 0.16, 0.13, 1.01);
 
-    // Color palette
-    --color-dark: #0a0a0a;
-    --color-dark-t: #16161c;
-    --color-dark-bg-border: #0b0b0d;
-    --color-dark-secondary: #141419;
-    --color-light: #fafafa;
-    --color-light-t: #efefef;
-    --color-light-bg-border: #e5e5e5;
-    --color-light-bg: #f9f9f9;
-    --color-primary: #b3c7ff;
-    --color-primary-hover: #5a74ca;
-    --color-primary-hover-t: #364160;
-    --color-middle-gray: #72748c;
-    --color-middle-hover: #5b5e71;
-    --color-middle-gray-t: #454857;
+  // Color palette
+  --color-dark: #0a0a0a;
+  --color-dark-t: #16161c;
+  --color-dark-bg-border: #0b0b0d;
+  --color-dark-secondary: #141419;
+  --color-light: #fafafa;
+  --color-light-t: #efefef;
+  --color-light-bg-border: #e5e5e5;
+  --color-light-bg: #f9f9f9;
+  --color-primary: #b3c7ff;
+  --color-primary-hover: #5a74ca;
+  --color-primary-hover-t: #364160;
+  --color-middle-gray: #72748c;
+  --color-middle-hover: #5b5e71;
+  --color-middle-gray-t: #454857;
 
-    // Baseline theme colors
-    --background-color: var(--color-dark-bg-border);
-    --font-color: var(--color-light-t);
-    --headline-font-color: var(--color-light);
-    --background-border-color: var(--color-dark-bg-border);
-    --border-color: #25252c;
-    --gradient-1: linear-gradient(160.41deg, #272b33 3.84%, #1a1b21 54.62%, #141419 79.18%);
-    --image-background: var(--color-primary);
+  // Baseline theme colors
+  --background-color: var(--color-dark-bg-border);
+  --font-color: var(--color-light-t);
+  --headline-font-color: var(--color-light);
+  --background-border-color: var(--color-dark-bg-border);
+  --border-color: #25252c;
+  --gradient-1: linear-gradient(160.41deg, #272b33 3.84%, #1a1b21 54.62%, #141419 79.18%);
+  --image-background: var(--color-primary);
 
-    // DESIGN.md tokens — Light mode
-    --background: #fff;
-    --foreground: #0a0a0a;
-    --card: #fff;
-    --card-foreground: #0a0a0a;
-    --primary: #3347ff;
-    --primary-foreground: #fff;
-    --secondary: #f5f5f5;
-    --secondary-foreground: #18181b;
-    --accent: #f4f4f5;
-    --accent-foreground: #18181b;
-    --destructive: #ef4444;
-    --border: #e4e4e7;
-    --input: #e4e4e7;
-    --ring: #3347ff;
-    --radius: 0.375rem;
-    --radius-sm: calc(var(--radius) * 0.6);
-    --radius-md: calc(var(--radius) * 0.8);
-    --radius-lg: var(--radius);
-    --radius-xl: calc(var(--radius) * 1.4);
-    --radius-2xl: calc(var(--radius) * 1.8);
-    --muted-foreground: #71717a;
-    --muted: 240, 240, 240;
+  // DESIGN.md tokens — Light mode
+  --background: #fff;
+  --foreground: #0a0a0a;
+  --card: #fff;
+  --card-foreground: #0a0a0a;
+  --primary: #3347ff;
+  --primary-foreground: #fff;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #18181b;
+  --accent: #f4f4f5;
+  --accent-foreground: #18181b;
+  --destructive: #ef4444;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --ring: #3347ff;
+  --radius: 0.375rem;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --muted-foreground: #71717a;
+  --muted: 240, 240, 240;
 
-    // Syntax highlighting
-    --syntax-string: #d32e9d;
+  // Syntax highlighting
+  --syntax-string: #d32e9d;
 
-    // Semantic aliases
-    --color-beige: #fbf7f0;
-    --navbar-bg: rgba(var(--muted), 0.95);
+  // Semantic aliases
+  --color-beige: #fbf7f0;
+  --navbar-bg: rgba(var(--muted), 0.95);
 }
 
 // Color system
@@ -144,11 +144,11 @@ $link-color: $primary;
 $link-decoration: none;
 
 $container-max-widths: (
-    sm: 540px,
-    md: 720px,
-    lg: 960px,
-    xl: 1240px,
-    xxl: 1320px
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1240px,
+  xxl: 1320px
 );
 
 @include _assert-ascending($container-max-widths, "$container-max-widths");
@@ -161,19 +161,19 @@ $border-color: $gray-200;
 
 // stylelint-disable value-keyword-case
 $font-family-sans-serif:
-    "Roboto",
-    -apple-system,
-    blinkmacsystemfont,
-    "Segoe UI",
-    roboto,
-    "Helvetica Neue",
-    arial,
-    "Noto Sans",
-    sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol",
-    "Noto Color Emoji";
+  "Roboto",
+  -apple-system,
+  blinkmacsystemfont,
+  "Segoe UI",
+  roboto,
+  "Helvetica Neue",
+  arial,
+  "Noto Sans",
+  sans-serif,
+  "Apple Color Emoji",
+  "Segoe UI Emoji",
+  "Segoe UI Symbol",
+  "Noto Color Emoji";
 $font-family-monospace: "JetBrains Mono", sfmono-regular, menlo, monaco, consolas, "Liberation Mono", "Courier New", monospace;
 $font-family-base: $font-family-sans-serif;
 // stylelint-enable value-keyword-case
@@ -210,27 +210,27 @@ $alert-border-scale: 0;
 $alert-color-scale: 0;
 
 $dropdown-config: (
-    main-color: $brand,
-    layout-type: normal,
-    layout-width: normal,
-    layout-alignment: align,
-    background-color: $white,
-    border-radius: 4,
-    border-width: 1,
-    border-color: $gray-200,
-    box-shadow: none,
-    branding-position: bottom,
-    spacing: normal,
-    include-desc: yes,
-    background-category-header: $white,
-    font-size: normal,
-    header-color: $black,
-    title-color: $black,
-    subtitle-color: $black,
-    text-color: $black,
-    highlight-color: $brand,
-    highlight-opacity: 0.1,
-    highlight-type: underline
+  main-color: $brand,
+  layout-type: normal,
+  layout-width: normal,
+  layout-alignment: align,
+  background-color: $white,
+  border-radius: 4,
+  border-width: 1,
+  border-color: $gray-200,
+  box-shadow: none,
+  branding-position: bottom,
+  spacing: normal,
+  include-desc: yes,
+  background-category-header: $white,
+  font-size: normal,
+  header-color: $black,
+  title-color: $black,
+  subtitle-color: $black,
+  text-color: $black,
+  highlight-color: $brand,
+  highlight-opacity: 0.1,
+  highlight-type: underline
 );
 
 $input-btn-focus-width: 0;

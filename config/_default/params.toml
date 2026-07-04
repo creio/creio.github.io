@@ -91,7 +91,6 @@ images = ["cover.png"]
   searchSectionsIndex = []
   darkMode = true
   bootStrapJs = true
-  breadCrumb = false
   highLight = true
   kaTex = false
   multilingualMode = false

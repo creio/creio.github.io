@@ -1,20 +1,20 @@
 .footer {
-    border-top: 1px solid var(--border);
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .footer ul {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .footer li {
-    font-size: 0.875rem;
-    margin-bottom: 0;
+  font-size: 0.875rem;
+  margin-bottom: 0;
 }
 
 @include media-breakpoint-up(md) {
-    .footer li {
-        font-size: 1rem;
-    }
+  .footer li {
+    font-size: 1rem;
+  }
 }
