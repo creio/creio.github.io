@@ -1,16 +1,10 @@
-name: Hyas CI
+name: Node CI
 
 on:
   push:
     branches: main
   pull_request:
     branches: main
-
-# Устанавливаем права для загрузки артефактов Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
 
 jobs:
   build:
@@ -36,7 +30,7 @@ jobs:
         cache: 'npm'
 
     - name: Install dependencies
-      run: npm ci --legacy-peer-deps
+      run: npm ci
 
     - name: Check code formatting
       run: npm run format
@@ -44,16 +38,9 @@ jobs:
     - name: Build production website
       run: npm run build
 
-    - name: Upload Artifact
+    - name: Deploy
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      uses: actions/upload-pages-artifact@v4
+      uses: peaceiris/actions-gh-pages@v4
       with:
-        path: ./public
-
-  deploy:
-    needs: build
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    runs-on: ubuntu-latest
-    steps:
-    - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v5
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
