@@ -36,6 +36,9 @@ jobs:
     - name: Build production website
       run: npm run build
 
+    - name: Disable Jekyll
+      run: touch ./public/.nojekyll
+
     - name: Deploy
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       uses: peaceiris/actions-gh-pages@v4
