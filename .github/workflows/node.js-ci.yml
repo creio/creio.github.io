@@ -46,7 +46,7 @@ jobs:
 
     - name: Upload Artifact
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v4
       with:
         path: ./public
 
@@ -56,4 +56,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v4
+      uses: actions/deploy-pages@v5
