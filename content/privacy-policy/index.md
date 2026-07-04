@@ -2,8 +2,11 @@
 title: "Privacy Policy"
 description: "We do not use cookies and we do not collect any personal data."
 date: 2020-08-27T19:23:18+02:00
-draft: true
 image: ""
+draft: false
+toc: false
+edit: false
+page_meta: false
 ---
 
 __TLDR__: We do not use cookies and we do not collect any personal data.
@@ -17,8 +20,8 @@ __TLDR__: We do not use cookies and we do not collect any personal data.
 - No information is mined and harvested for personal and behavioral trends.
 - No information is monetized.
 
-## Contact us
+<!-- ## Contact us -->
 
-<!-- [Contact us]({{< relref "contact/index.md" >}}) if you have any questions. -->
+<!-- [Contact us]({{ /*< relref "contact/index.md" >*/ }}) if you have any questions. -->
 
 Effective Date: _27th August 2020_

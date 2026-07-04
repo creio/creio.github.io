@@ -1,7 +1,7 @@
 (() => {
   const canvas = document.createElement('canvas');
   canvas.id = 'stars-canvas';
-  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none';
+  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:3;pointer-events:none';
 
   if (document.body.classList.contains('home')) {
     document.body.prepend(canvas);
@@ -18,9 +18,9 @@
   window.addEventListener('resize', resize);
 
   const layers = [
-    { count: 200, sizeMin: 0.5, sizeMax: 1, speed: 0.15, opacity: 0.6 },
-    { count: 80, sizeMin: 1, sizeMax: 2, speed: 0.08, opacity: 0.8 },
-    { count: 30, sizeMin: 1.5, sizeMax: 3, speed: 0.04, opacity: 1 },
+    { count: 200, sizeMin: 0.5, sizeMax: 1, speed: 0.30, opacity: 0.6 },
+    { count: 80, sizeMin: 1, sizeMax: 1.5, speed: 0.16, opacity: 0.8 },
+    { count: 30, sizeMin: 1.5, sizeMax: 2, speed: 0.08, opacity: 1 },
   ];
 
   const stars = [];

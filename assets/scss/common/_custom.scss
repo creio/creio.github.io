@@ -28,7 +28,7 @@
 .home .figure img {
   margin: 0;
   border-radius: 1rem;
-  opacity: 0.8;
+  opacity: 1;
   mix-blend-mode: multiply;
   z-index: 2;
   position: absolute;
@@ -55,7 +55,7 @@
 }
 
 .home .figure::after {
-  background-color: var(--color-primary);
+  background-color: var(--color-light-bg);
   mix-blend-mode: screen;
   z-index: 1;
   opacity: 1;
@@ -65,7 +65,7 @@
   background: var(--gradient-1);
   mix-blend-mode: normal;
   z-index: 3;
-  opacity: 0;
+  opacity: 0.1;
 }
 
 .home-content {

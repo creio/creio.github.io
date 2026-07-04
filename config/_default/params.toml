@@ -1,7 +1,7 @@
 title = "Alex Creio"
 domainTLD = "creio.github.io"
 description = "Personal website & blog. Web developer & linux enthusiast."
-
+copyRight = "Copyright (c) @creio"
 email = ""
 
 ogLocale = "ru_RU"
@@ -13,6 +13,23 @@ yandexVerification = "16c69e69225504ca"
 siteLinksSearchBox = false
 ## Chrome Browser
 themeColor = "#4b64b4"
+
+## Alert
+alert = true
+alertDismissable = true
+alertText = '<a target="_blank" rel="nofollow noopener noreferrer" class="alert-link stretched-link fw-normal" href="https://go.2038.pro/8aa17c9fd9fc0371?erid=LdtCK4uVh&m=6">Топовые IT курсы с трудоустройством.</a>'
+
+## Edit Page
+# repoHost [Github | Gitea | GitLab | Bitbucket | BitbucketServer ] is used for building the edit link based on git hoster
+repoHost = "GitHub"
+docsRepo = "https://github.com/creio/creio.github.io"
+docsRepoBranch = "main"
+docsRepoSubPath = "content"
+editPage = true
+lastMod = true
+
+footer = 'Powered by <a class="text-muted" target="_blank" rel="nofollow noopener noreferrer" href="https://www.netlify.com/">Netlify</a>, <a class="text-muted" target="_blank" rel="nofollow noopener noreferrer" href="https://gohugo.io/">Hugo</a>, fork <a class="text-muted" target="_blank" rel="nofollow noopener noreferrer" href="https://getdoks.org/">Doks</a> | <a class="text-muted" target="_blank" rel="nofollow noopener noreferrer" href="https://cloud.umami.is/share/UrYcvYQYoCSNcee4/creio.github.io">Analytics</a>'
+
 
 ## Open Graph
 images = ["cover.png"]
@@ -61,26 +78,6 @@ images = ["cover.png"]
     defaultImage = "default-image.png" # put in `./assets/images/`
     imageAddClass = "img-fluid lazyload blur-up"
 
-# Footer
-footer = "Powered by <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://www.netlify.com/\">Netlify</a>, <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://gohugo.io/\">Hugo</a>, fork <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://getdoks.org/\">Doks</a> | <a class=\"text-muted\" target=\"_blank\" rel=\"nofollow noopener noreferrer\" href=\"https://cloud.umami.is/share/UrYcvYQYoCSNcee4/creio.github.io\">Analytics</a>"
-
-# Feed
-copyRight = "Copyright (c) @creio"
-
-# Alert
-alert = true
-alertDismissable = true
-# alertText = "Introducing the Doks child theme, several DX + UX updates, and more! <a class=\"alert-link stretched-link\" href=\"https://getdoks.org/blog/doks-v0.2/\" target=\"_blank\" rel=\"noopener\">Check out Doks v0.2</a>"
-alertText = "<a target=\"_blank\" rel=\"nofollow noopener noreferrer\" class=\"alert-link stretched-link fw-normal\" href=\"https://go.2038.pro/8aa17c9fd9fc0371?erid=LdtCK4uVh&m=6\">Топовые IT курсы с трудоустройством.</a>"
-
-# Edit Page
-# repoHost [Github | Gitea | GitLab | Bitbucket | BitbucketServer ] is used for building the edit link based on git hoster
-repoHost = "GitHub"
-docsRepo = "https://github.com/creio/creio.github.io"
-docsRepoBranch = "main"
-docsRepoSubPath = "content"
-editPage = true
-lastMod = true
 
 [sections]
   sectionNav = ["docs", "guides"]

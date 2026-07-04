@@ -1,20 +1,34 @@
 document.querySelectorAll('.details-tags, .details-categories').forEach(element => {
-  const stateKey = element.getAttribute('data-id') + 'State'; // Получим 'tagsState' или 'categoriesState'
-  const attrName = 'data-global-' + element.getAttribute('data-id'); // 'data-global-tags' или 'data-global-categories'
+  const dataId = element.getAttribute('data-id');
+  if (!dataId) return;
 
-  // 1. Восстанавливаем состояние при загрузке
+  const stateKey = dataId + 'State'; // 'tagsState' or 'categoriesState'
+  const attrName = 'data-global-' + dataId;
   const savedState = localStorage.getItem(stateKey);
-  if (savedState === null || savedState === 'open') {
-    localStorage.setItem(stateKey, 'open');
+  let shouldBeOpen = false;
+
+  if (savedState !== null) {
+    shouldBeOpen = savedState === 'open';
+  } else {
+    if (dataId === 'categories') {
+      shouldBeOpen = true;
+      localStorage.setItem(stateKey, 'open');
+    } else {
+      shouldBeOpen = false;
+      localStorage.setItem(stateKey, 'closed');
+    }
+  }
+
+  if (shouldBeOpen) {
     document.documentElement.setAttribute(attrName, '');
     element.setAttribute('open', '');
     element.classList.add('active');
   } else {
-    element.classList.remove('active');
+    document.documentElement.removeAttribute(attrName);
     element.removeAttribute('open');
+    element.classList.remove('active');
   }
 
-  // 2. Отслеживаем изменение состояния (toggle срабатывает только при открытии/закрытии самого details)
   element.addEventListener('toggle', () => {
     if (element.open) {
       element.classList.add('active');

@@ -20,14 +20,16 @@
               {{ partial "content/figure.html" (dict "context" . "fillImage" "1270x715 Center") }}
           </div>
           {{ end -}}
+          {{ if $.Params.lead -}}
             <p class="lead">{{ .Params.lead | safeHTML }}</p>
-            {{ if ne .Params.toc false -}}
+          {{ end -}}
+          {{ if ne .Params.toc false -}}
             <nav class="d-md-none" aria-label="Quaternary navigation">
                 {{ partial "sidebar/docs-toc.html" . }}
             </nav>
-            {{ end -}}
+          {{ end -}}
             {{ .Content }}
-            {{ if not .Params.disableShare -}}
+          {{ if not .Params.disableShare -}}
             <div>
               <a class="btn btn-outline-primary my-2"
                 data-bs-toggle="collapse" href="#collapseExample" role="button"
@@ -40,14 +42,14 @@
                 {{ partial "main/share-buttons.html" . }}
               </div>
             </div>
-            {{ end -}}
-            {{ if .Site.Params.editPage -}}
-              {{ if ne .Params.edit false -}}
+          {{ end -}}
+          {{ if .Site.Params.editPage -}}
+            {{ if ne .Params.edit false -}}
               <div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between">
                 {{ partial "main/edit-page.html" . }}
               </div>
-              {{ end -}}
             {{ end -}}
+          {{ end -}}
         </main>
     </div>
 {{ end }}
