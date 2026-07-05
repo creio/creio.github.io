@@ -1,6 +1,6 @@
 {{- $defaults := site.Params.site_images.defaults -}}
 {{- $addClass := $defaults.imageAddClass | default "img-fluid lazyload blur-up" -}}
-{{- $sizesAttr := $defaults.sizes | default "80vw" -}}
+{{- $sizesAttr := $defaults.sizes | default "auto" -}}
 
 {{- /* Настраиваем счетчик и авто-alt на основе заголовка страницы */}}
 {{- $pageTitle := .Page.Title -}}
@@ -16,76 +16,89 @@
 
 {{- /* Проверяем, является ли ссылка внешней (начинается с http/https) */}}
 {{- $isRemote := or (hasPrefix .Destination "http://") (hasPrefix .Destination "https://") -}}
+
 {{- if $isRemote -}}
+    {{- /* ВАРИАНТ 1: Внешнее изображение */}}
     <a href="{{ .Destination | safeURL }}" class="lightbox-trigger" title="{{ $titleText }}">
       <img
-        fetchpriority="high"
         class="img-md {{ $addClass }}"
+        fetchpriority="{{ $defaults.fetchpriority | default "auto" }}"
         src="{{ .Destination | safeURL }}"
         loading="{{ $defaults.loading | default "lazy" }}"
         alt="{{ $altText }}"
         title="{{ $titleText }}"
       >
     </a>
-
 {{- else -}}
+    {{- /* ВАРИАНТ 2: Локальное изображение */}}
     {{- $rawSrc := .Destination -}}
+
+    {{- /* Очищаем пути для безопасного поиска */}}
     {{- $cleanSrc := strings.TrimPrefix "/" $rawSrc -}}
     {{- $cleanSrc = strings.TrimPrefix "./" $cleanSrc -}}
 
-    {{- $image := .Page.Resources.GetMatch $cleanSrc -}}
+    {{- /* Инициализируем переменную пустой, чтобы она была доступна везде ниже */}}
+    {{- $image := "" -}}
+
+    {{- /* 1. Пытаемся найти в ресурсах страницы (Page Bundle) */}}
+    {{- $image = .Page.Resources.GetMatch $rawSrc -}}
+
+    {{- /* 2. Если не нашли, ищем глобально в assets/ */}}
     {{- if not $image -}}
-        {{- $cleanSrc = strings.TrimPrefix "assets/" $cleanSrc -}}
-        {{- $image = resources.Get $cleanSrc -}}
+        {{- $assetsSrc := strings.TrimPrefix "assets/" $cleanSrc -}}
+        {{- $image = resources.Get $assetsSrc -}}
     {{- end -}}
 
-    {{- if fileExists (printf "static/%s" $cleanSrc) -}}
-        {{- /* Если файл найден в static, выводим его напрямую */}}
-        <a href="{{ $rawSrc | safeURL }}" class="lightbox-trigger" title="{{ $titleText }}">
-          <img
-            fetchpriority="high"
-            class="img-md {{ $addClass }}"
-            fetchpriority="high"
-            src="{{ $rawSrc | safeURL }}"
-            loading="{{ $defaults.loading | default "lazy" }}"
-            alt="{{ $altText }}"
-            title="{{ $titleText }}"
-          >
-        </a>
-    {{- else if $image -}}
+    {{- if $image -}}
+        {{- /* Картинка успешно найдена в ресурсах, обрабатываем форматы */}}
         {{- $ext := lower (path.Ext $image.Name) -}}
-
         {{- if or (eq $ext ".svg") (eq $ext ".gif") }}
+            {{- /* Для SVG и GIF ресайз не нужен */}}
             <a href="{{ $image.RelPermalink }}" class="lightbox-trigger" title="{{ $titleText }}">
               <img
-                fetchpriority="high"
                 class="img-md {{ $addClass }}"
-                fetchpriority="high"
+                fetchpriority="{{ $defaults.fetchpriority | default "auto" }}"
                 src="{{ $image.RelPermalink }}"
+                loading="{{ $defaults.loading | default "lazy" }}"
                 alt="{{ $altText }}"
                 title="{{ $titleText }}"
               >
             </a>
         {{- else -}}
-            {{- $processRule := $defaults.process | default "fill 1280x720 Center" -}}
-            {{- $processedImage := $image.Fill $processRule -}}
+            {{- /* Для стандартных растровых картинок (PNG, JPG, WebP) */}}
+            {{- /* УМНАЯ ОБРАБОТКА ДЕФОЛТНОГО ПРАВИЛА ИЗ КОНФИГА (940px) */}}
+            {{- $processRule := $defaults.process | default "resize 940x" -}}
+            {{- $processedImage := "" -}}
 
+            {{- if hasPrefix $processRule "resize" -}}
+                {{- $cleanRule := strings.TrimPrefix "resize " $processRule -}}
+                {{- $processedImage = $image.Resize $cleanRule -}}
+            {{- else if hasPrefix $processRule "fill" -}}
+                {{- $cleanRule := strings.TrimPrefix "fill " $processRule -}}
+                {{- $processedImage = $image.Fill $cleanRule -}}
+            {{- else -}}
+                {{- $processedImage = $image.Resize $processRule -}}
+            {{- end -}}
+
+            {{- /* ГЕНЕРАЦИЯ АДАПТИВНЫХ ОПТИМИЗИРОВАННЫХ НАБОРОВ SHIFT-WIDTHS (webp q75) */}}
             {{- $imgSrcSet := slice -}}
-            {{- $widths := $defaults.widths | default (slice 480 768 1025 1200) -}}
+            {{- $widths := $defaults.widths | default (slice 480 768 940 1024 1366 1600) -}}
             {{- range $widths -}}
-                {{- if le . $processedImage.Width -}}
-                    {{- $webpUrl := (printf "%dx webp" . | $processedImage.Resize).RelPermalink -}}
+                {{- if le . $image.Width -}}
+                    {{- $webpUrl := (printf "%dx webp q75" . | $image.Resize).RelPermalink -}}
                     {{- $imgSrcSet = $imgSrcSet | append (printf "%s %dw" $webpUrl .) -}}
                 {{- end -}}
             {{- end -}}
-
             {{- $imgSrcSet = (delimit $imgSrcSet ", ") -}}
-            {{- $finalSrc := (printf "%dx%d webp" $processedImage.Width $processedImage.Height | $processedImage.Resize).RelPermalink -}}
+
+            {{- /* Финальный src (дефолтный размер 940px, сжатый в webp q80) */}}
+            {{- $finalSrc := (printf "%dx%d webp q80" $processedImage.Width $processedImage.Height | $processedImage.Resize).RelPermalink -}}
+
             <a href="{{ $image.RelPermalink }}" class="lightbox-trigger" title="{{ $titleText }}">
               <img
-                fetchpriority="high"
                 class="img-md {{ $addClass }}"
-                fetchpriority="high"
+                fetchpriority="{{ $defaults.fetchpriority | default "auto" }}"
+                decoding="{{ $defaults.decoding | default "async" }}"
                 srcset="{{ $imgSrcSet }}"
                 sizes="{{ $sizesAttr }}"
                 src="{{ $finalSrc }}"
@@ -97,6 +110,15 @@
             </a>
         {{- end -}}
     {{- else -}}
-        <img src="{{ .Destination | safeURL }}" alt="{{ $altText }} (Файл не найден)">
+        {{- /* ФОЛБЕК: Если файл лежит в папке static/ или просто не найден в ресурсах */}}
+        <a href="{{ $rawSrc | safeURL }}" class="lightbox-trigger" title="{{ $titleText }}">
+          <img
+            class="img-md {{ $addClass }}"
+            fetchpriority="{{ $defaults.fetchpriority | default "auto" }}"
+            src="{{ $rawSrc | safeURL }}"
+            loading="{{ $defaults.loading | default "lazy" }}"
+            alt="{{ $altText }}"
+          >
+        </a>
     {{- end -}}
 {{- end -}}

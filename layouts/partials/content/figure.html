@@ -87,7 +87,8 @@
             {{- end -}}
 
             {{- /* Основной тег img (src содержит Base64 микро-заглушку, реальные наборы в data-srcset) */}}
-            <img class="figure-img {{ $addClass }}" fetchpriority="high"
+            <img class="figure-img {{ $addClass }}"
+                fetchpriority="{{ $defaults.fetchpriority }}"
                 data-sizes="{{ $stdSizes }}"
                 src="data:image/webp;base64,{{ $lqip.Content | base64Encode }}"
                 data-srcset="{{ $imgSrcSet }}"
@@ -97,7 +98,7 @@
 
             {{- /* Резервный вариант без JS (для SEO-ботов и старых браузеров) */}}
             <noscript>
-                <img class="figure-img img-fluid" fetchpriority="high" sizes="100vw" srcset="{{ $imgSrcSet }}" src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ $ctx.Title }}">
+                <img class="figure-img img-fluid" fetchpriority="{{ $defaults.fetchpriority }}" sizes="100vw" srcset="{{ $imgSrcSet }}" src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ $ctx.Title }}">
             </noscript>
         </picture>
     </figure>
@@ -105,7 +106,7 @@
     {{- /* Для маленьких картинок выводим упрощенный вариант без figure */}}
     <picture>
         <source srcset="{{ $webp.Permalink }}" type="image/webp">
-        <img class="{{ $addClass }}" fetchpriority="high" src="data:image/webp;base64,{{ $lqip.Content | base64Encode }}" data-src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ $ctx.Title }}">
+        <img class="{{ $addClass }}" fetchpriority="{{ $defaults.fetchpriority }}" src="data:image/webp;base64,{{ $lqip.Content | base64Encode }}" data-src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ $ctx.Title }}">
     </picture>
     {{- end -}}
 {{- else -}}

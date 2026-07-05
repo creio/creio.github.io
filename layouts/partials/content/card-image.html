@@ -66,8 +66,8 @@
 
     {{- /* --- РЕНДЕРИНГ HTML --- */}}
     <img
-      fetchpriority="high"
       class="{{ $addClass }}"
+      fetchpriority="{{ $defaults.fetchpriority }}"
       src="{{ $lqip.RelPermalink }}"
       data-src="{{ ($image.Resize (printf "%dx%d webp" $image.Width $image.Height)).RelPermalink }}"
       data-srcset="{{ $imgSrcSet }}"

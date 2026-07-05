@@ -71,8 +71,8 @@
 
     {{- if gt $image.Width $smallLimit -}}
         <img
-          fetchpriority="high"
           class="{{ $addClass }}"
+          fetchpriority="{{ $defaults.fetchpriority }}"
           srcset="{{ $imgSrcSet }}"
           sizes="{{ $sizesAttr }}"
           src="{{ $finalSrc }}"
@@ -82,8 +82,8 @@
         >
     {{- else -}}
         <img
-          fetchpriority="high"
           class="{{ $addClass }}"
+          fetchpriority="{{ $defaults.fetchpriority }}"
           src="{{ $lqip.RelPermalink }}"
           data-src="{{ $finalSrc }}"
           width="{{ $image.Width }}"
