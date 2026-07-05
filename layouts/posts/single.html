@@ -15,7 +15,7 @@
             {{ partial "main/blog-meta.html" . }}
             {{- if $.Params.image }}
             <div>
-              {{- partial "content/figure.html" (dict "context" . "process" "1280x640") }}
+              {{- partial "content/figure.html" (dict "context" . "process" "resize 940x") }}
             </div>
             {{ end -}}
             {{ with $.Params.lead -}}
