@@ -1,6 +1,7 @@
 {{- $defaults := site.Params.site_images.defaults -}}
 {{- $addClass := $defaults.imageAddClass | default "img-fluid lazyload blur-up" -}}
-{{- $sizesAttr := $defaults.sizes | default "auto" -}}
+{{- $sizesAttr := $defaults.sizes | default "100vw" -}}
+{{- $quality := $defaults.quality | default 80 -}}
 
 {{- /* Настраиваем счетчик и авто-alt на основе заголовка страницы */}}
 {{- $pageTitle := .Page.Title -}}
@@ -66,6 +67,16 @@
             </a>
         {{- else -}}
             {{- /* Для стандартных растровых картинок (PNG, JPG, WebP) */}}
+
+            {{- /* ГЕНЕРАЦИЯ LQIP ПЛЕЙСХОЛДЕРА */}}
+            {{- $lqipRule := $defaults.lqip | default "16x webp q20" -}}
+            {{- $lqipCleanRule := strings.TrimPrefix "resize " $lqipRule -}} {{/* На случай если в конфиге написано "resize 16x..." */}}
+            {{- $lqipCleanRule = strings.TrimSuffix " webp q20" $lqipCleanRule -}} {{/* Отрезаем лишнее для простоты, если нужно */}}
+
+            {{- /* Генерируем микро-картинку 16px */}}
+            {{- $lqipImage := $image.Resize "16x webp q20" -}}
+            {{- $lqipSrc := $lqipImage.RelPermalink -}}
+
             {{- /* УМНАЯ ОБРАБОТКА ДЕФОЛТНОГО ПРАВИЛА ИЗ КОНФИГА (940px) */}}
             {{- $processRule := $defaults.process | default "resize 940x" -}}
             {{- $processedImage := "" -}}
@@ -82,26 +93,27 @@
 
             {{- /* ГЕНЕРАЦИЯ АДАПТИВНЫХ ОПТИМИЗИРОВАННЫХ НАБОРОВ SHIFT-WIDTHS (webp q75) */}}
             {{- $imgSrcSet := slice -}}
-            {{- $widths := $defaults.widths | default (slice 480 768 940 1024 1366 1600) -}}
+            {{- $widths := $defaults.widths | default (slice 480 768 940 1024 1366 1440) -}}
             {{- range $widths -}}
                 {{- if le . $image.Width -}}
-                    {{- $webpUrl := (printf "%dx webp q75" . | $image.Resize).RelPermalink -}}
+                    {{- $webpUrl := (printf "%dx webp q%d" . $quality | $image.Resize).RelPermalink -}}
                     {{- $imgSrcSet = $imgSrcSet | append (printf "%s %dw" $webpUrl .) -}}
                 {{- end -}}
             {{- end -}}
             {{- $imgSrcSet = (delimit $imgSrcSet ", ") -}}
 
-            {{- /* Финальный src (дефолтный размер 940px, сжатый в webp q80) */}}
-            {{- $finalSrc := (printf "%dx%d webp q80" $processedImage.Width $processedImage.Height | $processedImage.Resize).RelPermalink -}}
+            {{- /* Финальный src (дефолтный размер 940px, сжатый в webp q75) */}}
+            {{- $finalSrc := (printf "%dx webp q%d" $processedImage.Width $quality | $processedImage.Resize).RelPermalink -}}
 
             <a href="{{ $image.RelPermalink }}" class="lightbox-trigger" title="{{ $titleText }}">
               <img
                 class="img-md {{ $addClass }}"
                 fetchpriority="{{ $defaults.fetchpriority | default "auto" }}"
                 decoding="{{ $defaults.decoding | default "async" }}"
-                srcset="{{ $imgSrcSet }}"
+                src="{{ $lqipSrc }}"
+                data-src="{{ $finalSrc }}"
+                data-srcset="{{ $imgSrcSet }}"
                 sizes="{{ $sizesAttr }}"
-                src="{{ $finalSrc }}"
                 width="{{ $processedImage.Width }}"
                 height="{{ $processedImage.Height }}"
                 alt="{{ $altText }}"
