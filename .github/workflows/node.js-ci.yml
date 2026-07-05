@@ -27,6 +27,9 @@ jobs:
     steps:
     - name: Checkout project
       uses: actions/checkout@v4
+      with:
+        submodules: recursive
+        fetch-depth: 0
 
     - name: Setup Node.js ${{ matrix.node }}
       uses: actions/setup-node@v4
@@ -44,6 +47,7 @@ jobs:
       run: npm run build
 
     - name: Deploy to GitHub Pages
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
