@@ -63,6 +63,11 @@
 {{ $stars := resources.Get "js/stars.js" | js.Build -}}
 {{ $slice = $slice | append $stars -}}
 
+{{ if and (.Site.Params.options.tawkEmbed) (ne (hugo.Environment) "development") -}}
+  {{ $tawkEmbed := resources.Get "js/tawk-embed.js" | js.Build -}}
+  {{ $slice = $slice | append $tawkEmbed -}}
+{{ end -}}
+
 {{ $custom := resources.Get "js/custom.js" | js.Build -}}
 {{ $slice = $slice | append $custom -}}
 

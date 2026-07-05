@@ -17,13 +17,10 @@ function inputFocus(e) {
 }
 
 document.addEventListener('click', function(event) {
-
   var isClickInsideElement = suggestions.contains(event.target);
-
   if (!isClickInsideElement) {
     suggestions.classList.add('d-none');
   }
-
 });
 
 /*
@@ -46,13 +43,11 @@ function suggestionFocus(e) {
     e.preventDefault();
     const nextIndex = index > 0 ? index - 1 : 0;
     focusableSuggestions[nextIndex].focus();
-  }
-  else if (e.key === "ArrowDown") {
+  } else if (e.key === "ArrowDown") {
     e.preventDefault();
     const nextIndex= index + 1 < focusableSuggestions.length ? index + 1 : index;
     focusableSuggestions[nextIndex].focus();
   }
-
 }
 
 /*
@@ -62,7 +57,6 @@ Source:
 */
 
 (function(){
-
   var index = new FlexSearch.Document({
     tokenize: "forward",
     cache: 100,
@@ -74,7 +68,6 @@ Source:
       index: ["title", "description", "content"]
     }
   });
-
 
   // Not yet supported: https://github.com/nextapps-de/flexsearch#complex-documents
 
@@ -174,7 +167,6 @@ Source:
         a.appendChild(description);
 
         suggestions.appendChild(entry);
-
         if(suggestions.childElementCount == maxResult) break;
     }
   }

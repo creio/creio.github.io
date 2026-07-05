@@ -98,7 +98,8 @@ images = ["cover.png"]
   fullWidth = false
   navbarSticky = true
   toTopButton = true
-  scrollSpy = false # experimental; needs Bootstrap >= 5.2.0-beta1
+  scrollSpy = false
+  tawkEmbed = true
 
 [shareButtons]
   networks = ["telegram", "vk", "facebook", "twitter", "email", "reddit"]
