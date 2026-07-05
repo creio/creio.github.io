@@ -43,6 +43,7 @@
         <a href="{{ $rawSrc | safeURL }}" class="lightbox-trigger" title="{{ $titleText }}">
           <img
             class="img-md {{ $addClass }}"
+            fetchpriority="high"
             src="{{ $rawSrc | safeURL }}"
             loading="{{ $defaults.loading | default "lazy" }}"
             alt="{{ $altText }}"
@@ -56,6 +57,7 @@
             <a href="{{ $image.RelPermalink }}" class="lightbox-trigger" title="{{ $titleText }}">
               <img
                 class="img-md {{ $addClass }}"
+                fetchpriority="high"
                 src="{{ $image.RelPermalink }}"
                 alt="{{ $altText }}"
                 title="{{ $titleText }}"
@@ -79,6 +81,7 @@
             <a href="{{ $image.RelPermalink }}" class="lightbox-trigger" title="{{ $titleText }}">
               <img
                 class="img-md {{ $addClass }}"
+                fetchpriority="high"
                 srcset="{{ $imgSrcSet }}"
                 sizes="{{ $sizesAttr }}"
                 src="{{ $finalSrc }}"

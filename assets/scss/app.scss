@@ -1,3 +1,5 @@
+@import "common/fonts";
+
 /** Import Bootstrap functions */
 @import "bootstrap/scss/functions";
 
@@ -15,7 +17,6 @@
 // @import "katex/dist/katex";
 
 /** Import theme styles */
-@import "common/fonts";
 @import "common/global";
 @import "common/dark";
 @import "components/alerts";
