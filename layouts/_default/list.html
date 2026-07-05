@@ -8,22 +8,22 @@
       {{ if or $isPosts (eq .Data.Plural "categories") -}}
       <details class="details-categories" data-id="categories" open>
         <summary class="fw-normal">категории блога</summary>
-        {{ range $name, $items := .Site.Taxonomies.categories -}}
-        <a class="btn btn-light my-1" role="button" href="/categories/{{ $name | urlize }}">
+        {{- range $name, $items := .Site.Taxonomies.categories -}}
+        <a class="btn btn-light m-1" role="button" href="/categories/{{ $name | urlize }}">
           {{ $name }} <span class="badge bg-secondary">{{ len $items }}</span>
         </a>
-        {{ end -}}
+        {{- end -}}
       </details>
       {{ end -}}
       {{/* Блок ТЕГОВ: выводим если мы в posts ИЛИ на странице тегов */ -}}
       {{ if or $isPosts (eq .Data.Plural "tags") -}}
       <details class="details-tags" data-id="tags">
         <summary class="fw-normal">теги блога</summary>
-        {{ range $name, $items := .Site.Taxonomies.tags -}}
-        <a class="btn btn-light my-1" role="button" href="/tags/{{ $name | urlize }}">
+        {{- range $name, $items := .Site.Taxonomies.tags -}}
+        <a class="btn btn-light m-1" role="button" href="/tags/{{ $name | urlize }}">
           {{ $name }} <span class="badge bg-secondary">{{ len $items }}</span>
         </a>
-        {{ end -}}
+        {{- end -}}
       </details>
       {{ end -}}
     </div>

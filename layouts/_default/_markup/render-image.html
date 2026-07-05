@@ -19,6 +19,7 @@
 {{- if $isRemote -}}
     <a href="{{ .Destination | safeURL }}" class="lightbox-trigger" title="{{ $titleText }}">
       <img
+        fetchpriority="high"
         class="img-md {{ $addClass }}"
         src="{{ .Destination | safeURL }}"
         loading="{{ $defaults.loading | default "lazy" }}"
@@ -42,6 +43,7 @@
         {{- /* Если файл найден в static, выводим его напрямую */}}
         <a href="{{ $rawSrc | safeURL }}" class="lightbox-trigger" title="{{ $titleText }}">
           <img
+            fetchpriority="high"
             class="img-md {{ $addClass }}"
             fetchpriority="high"
             src="{{ $rawSrc | safeURL }}"
@@ -56,6 +58,7 @@
         {{- if or (eq $ext ".svg") (eq $ext ".gif") }}
             <a href="{{ $image.RelPermalink }}" class="lightbox-trigger" title="{{ $titleText }}">
               <img
+                fetchpriority="high"
                 class="img-md {{ $addClass }}"
                 fetchpriority="high"
                 src="{{ $image.RelPermalink }}"
@@ -80,6 +83,7 @@
             {{- $finalSrc := (printf "%dx%d webp" $processedImage.Width $processedImage.Height | $processedImage.Resize).RelPermalink -}}
             <a href="{{ $image.RelPermalink }}" class="lightbox-trigger" title="{{ $titleText }}">
               <img
+                fetchpriority="high"
                 class="img-md {{ $addClass }}"
                 fetchpriority="high"
                 srcset="{{ $imgSrcSet }}"
