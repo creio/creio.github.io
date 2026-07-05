@@ -1,7 +1,7 @@
 :root {
   // Typography
   --sans-font-family: "Roboto", helvetica, sans-serif;
-  --serif-font-family: georgia, serif;
+  --serif-font-family: "Roboto", georgia, serif;
   --code-font-family: "JetBrains Mono", monospace;
 
   // Type scale
@@ -184,7 +184,7 @@ $font-size-lg: $font-size-base * 1.25;
 $font-size-md: $font-size-base * 1.125;
 $font-size-sm: $font-size-base * 0.875;
 
-$headings-font-family: null;
+$headings-font-family: $font-family-sans-serif;
 $headings-font-weight: 700;
 $lead-font-weight: 400;
 

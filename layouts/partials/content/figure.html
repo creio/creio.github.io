@@ -61,7 +61,7 @@
     {{- range $widths -}}
         {{- /* Создаем адаптивные копии только если оригинал шире этого шага */}}
         {{- if le . $image.Width -}}
-            {{- $srcUrl := (printf "%dx webp" . | $image.Resize).Permalink -}}
+            {{- $srcUrl := (printf "%dx webp q70" . | $image.Resize).Permalink -}}
             {{- if eq $imgSrc "" -}}{{- $imgSrc = $srcUrl -}}{{- end -}}
             {{- $imgSrcSet = $imgSrcSet | append (printf "%s %dw" $srcUrl .) -}}
         {{- end -}}

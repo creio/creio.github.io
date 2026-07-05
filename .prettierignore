@@ -2,9 +2,9 @@ node_modules/
 public/
 .hugo_build.lock
 package-lock.json
-layouts/_default/index.js
-layouts/_default/index.json
-assets/js/index.js
+layouts/_default/search.js
+layouts/_default/search.json
+assets/js/search.js
 layouts/index.redirects
 layouts/robots.txt
 static/_headers

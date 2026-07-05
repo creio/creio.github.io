@@ -1,5 +1,5 @@
-{{ $indexTemplate := resources.Get "js/index.js" -}}
-{{ $index := $indexTemplate | resources.ExecuteAsTemplate "index.js" . -}}
+{{ $searchTemplate := resources.Get "js/search.js" -}}
+{{ $search := $searchTemplate | resources.ExecuteAsTemplate "search.js" . -}}
 
 {{ $bs := resources.Get "js/bootstrap.js" -}}
 {{ $bs := $bs | js.Build -}}
@@ -71,7 +71,38 @@
 {{ $custom := resources.Get "js/custom.js" | js.Build -}}
 {{ $slice = $slice | append $custom -}}
 
-{{ $js := $slice | resources.Concat "main.js" -}}
+{{ $main := $slice | resources.Concat "main.js" -}}
+
+{{ if eq (hugo.Environment) "development" -}}
+  {{ if .Site.Params.options.bootStrapJs -}}
+    <script src="{{ $bs.RelPermalink }}" defer></script>
+  {{ end -}}
+  {{ if .Site.Params.options.highLight -}}
+    <script src="{{ $highlight.RelPermalink }}" defer></script>
+  {{ end -}}
+  <script src="{{ $main.RelPermalink }}" defer></script>
+  {{ if $showFlexSearch -}}
+    <script src="{{ $search.RelPermalink }}" defer></script>
+  {{ end -}}
+{{ else -}}
+  {{ $bs := $bs | minify | fingerprint "sha512" -}}
+  {{ $highlight := $highlight | minify | fingerprint "sha512" -}}
+  {{ $main := $main | minify | fingerprint "sha512" -}}
+  {{ $search := $search | minify | fingerprint "sha512" -}}
+  {{ if .Site.Params.options.bootStrapJs -}}
+    <script src="{{ $bs.RelPermalink }}" integrity="{{ $bs.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ end -}}
+  {{ if .Site.Params.options.highLight -}}
+    <script src="{{ $highlight.RelPermalink }}" integrity="{{ $highlight.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ end -}}
+  <script src="{{ $main.RelPermalink }}" integrity="{{ $main.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ if $showFlexSearch -}}
+    <script src="{{ $search.Permalink }}" integrity="{{ $search.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ end -}}
+
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="14f0c79d-f311-45fa-a287-8a5a983916d0"></script>
+{{ end -}}
+
 
 {{ if and (eq (default .Type .Section) "posts") (eq .Kind "page") (ne .Params.comments false) (ne .Site.Params.options.comments false) -}}
 <script src="https://giscus.app/client.js"
@@ -90,33 +121,4 @@
   crossorigin="anonymous"
   async>
 </script>
-{{ end -}}
-
-{{ if eq (hugo.Environment) "development" -}}
-  {{ if .Site.Params.options.bootStrapJs -}}
-    <script src="{{ $bs.RelPermalink }}" defer></script>
-  {{ end -}}
-  {{ if .Site.Params.options.highLight -}}
-    <script src="{{ $highlight.RelPermalink }}" defer></script>
-  {{ end -}}
-  <script src="{{ $js.RelPermalink }}" defer></script>
-  {{ if $showFlexSearch -}}
-    <script src="{{ $index.RelPermalink }}" defer></script>
-  {{ end -}}
-{{ else -}}
-  {{ $js := $js | minify | fingerprint "sha512" -}}
-  {{ $index := $index | minify | fingerprint "sha512" -}}
-  {{ $bs := $bs | minify | fingerprint "sha512" -}}
-  {{ $highlight := $highlight | minify | fingerprint "sha512" -}}
-  {{ if .Site.Params.options.bootStrapJs -}}
-    <script src="{{ $bs.RelPermalink }}" integrity="{{ $bs.Data.Integrity }}" crossorigin="anonymous" defer></script>
-  {{ end -}}
-  {{ if .Site.Params.options.highLight -}}
-    <script src="{{ $highlight.RelPermalink }}" integrity="{{ $highlight.Data.Integrity }}" crossorigin="anonymous" defer></script>
-  {{ end -}}
-  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" defer></script>
-  {{ if $showFlexSearch -}}
-    <script src="{{ $index.Permalink }}" integrity="{{ $index.Data.Integrity }}" crossorigin="anonymous" defer></script>
-  {{ end -}}
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="14f0c79d-f311-45fa-a287-8a5a983916d0"></script>
 {{ end -}}
