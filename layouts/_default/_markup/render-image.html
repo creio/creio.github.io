@@ -1,6 +1,6 @@
 {{- $defaults := site.Params.site_images.defaults -}}
 {{- $addClass := $defaults.imageAddClass | default "img-fluid lazyload blur-up" -}}
-{{- $sizesAttr := $defaults.sizes | default "100vw" -}}
+{{- $sizesAttr := $defaults.sizes | default "(max-width: 940px) 100vw, 940px" -}}
 {{- $quality := $defaults.quality | default 80 -}}
 
 {{- /* Настраиваем счетчик и авто-alt на основе заголовка страницы */}}

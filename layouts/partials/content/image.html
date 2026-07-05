@@ -1,16 +1,21 @@
+{{- $isStaticFallback := false -}}
 {{- $ctx := .context -}}
 
-{{- /* 1. Читаем параметры из вашего нового конфига [site_images.defaults] */}}
+{{- /* 1. Читаем параметры из конфига [site_images.defaults] */}}
 {{- $defaults := site.Params.site_images.defaults -}}
+
+{{- /* Читаем качество из конфига, если его там нет — ставим дефолт */}}
+{{- $quality := $defaults.quality | default 80 -}}
 
 {{- /* Настройка кропа: из вызова -> из конфига -> дефолт */}}
 {{- $processRule := .process | default $defaults.process | default "fill 1280x720 Center" -}}
 
 {{- $image := "" -}}
-{{- $rawSrc := "" -}}
+{{- /* Сначала проверяем, передали ли src напрямую в partial, если нет — берем из Front Matter страницы */}}
+{{- $rawSrc := .src | default "" -}}
+{{- $altText := .alt | default $ctx.Title -}}
 
-{{- /* Читаем images из переданного контекста страницы ($ctx) */}}
-{{- if $ctx.Params.images -}}
+{{- if and (not $rawSrc) $ctx.Params.images -}}
     {{- $rawSrc = index $ctx.Params.images 0 -}}
 {{- end -}}
 
@@ -19,79 +24,119 @@
     {{- $cleanSrc := strings.TrimPrefix "/" $rawSrc -}}
     {{- $cleanSrc = strings.TrimPrefix "./" $cleanSrc -}}
 
-    {{- /* Ищем как ресурс внутри папки с постом через $ctx */}}
+    {{- /* ШАГ 1: Ищем как ресурс внутри папки с постом через $ctx (Page Bundle) */}}
     {{- $image = $ctx.Resources.GetMatch $cleanSrc -}}
 
-    {{- /* Если не нашли, ищем глобально в assets/ */}}
+    {{- /* ШАГ 2: Если не нашли, ищем глобально в assets/ */}}
     {{- if not $image -}}
-        {{- $cleanSrc = strings.TrimPrefix "assets/" $cleanSrc -}}
-        {{- $image = resources.Get $cleanSrc -}}
+        {{- $assetsSrc := strings.TrimPrefix "assets/" $cleanSrc -}}
+        {{- $image = resources.Get $assetsSrc -}}
+    {{- end -}}
+
+    {{- /* ШАГ 3: Если всё ещё не нашли, проверяем, не указывает ли путь на static/images */}}
+    {{- if not $image -}}
+        {{- /* Убираем префикс static/, если пользователь случайно указал его вручную */}}
+        {{- $staticClean := strings.TrimPrefix "static/" $cleanSrc -}}
+        {{- /* Проверяем физическое существование файла в папке static/ */}}
+        {{- if fileExists (printf "static/%s" $staticClean) -}}
+            {{- $isStaticFallback = true -}}
+            {{- /* Формируем прямую ссылку на static-файл для вывода на сайт */}}
+            {{- $rawSrc = printf "/%s" $staticClean -}}
+        {{- end -}}
     {{- end -}}
 {{- end -}}
 
-{{- /* 2. Если файл не найден на диске, берем заглушку по умолчанию */}}
-{{- if not $image -}}
+{{- /* ШАГ 4: Если файл вообще нигде не найден, берем заглушку из assets/images/ */}}
+{{- if and (not $image) (not $isStaticFallback) -}}
     {{- $defaultImg := $defaults.defaultImage | default "default-image.png" -}}
     {{- $image = resources.Get (printf "images/%s" $defaultImg) -}}
 {{- end -}}
 
-{{- /* --- ОБРАБОТКА ИЗОБРАЖЕНИЯ --- */}}
-{{- if $image -}}
-    {{- /* Обрезаем картинку под нужные пропорции */}}
-    {{- $image = $image.Fill $processRule -}}
+{{- /* Настройки классов и размеров */}}
+{{- $addClass := $defaults.imageAddClass | default "img-fluid lazyload blur-up" -}}
 
-    {{- /* Собираем адаптивный srcset из ширин вашего нового конфига */}}
+{{- /* Умный расчет адаптивных sizes на основе processRule */}}
+{{- $sizesAttr := "" -}}
+{{- if eq $defaults.sizes "auto" -}}
+    {{- $sizesAttr = "auto" -}}
+{{- else if $defaults.sizes -}}
+    {{- $sizesAttr = $defaults.sizes -}}
+{{- else -}}
+    {{- $widthNum := replace (replace (replace $processRule "resize " "") "fill " "") "x" "" -}}
+    {{- /* Отсекаем высоту и параметры кропа, если передано например "1280x720 Center" */}}
+    {{- $widthNum = index (split $widthNum " ") 0 -}}
+    {{- $widthNum = index (split $widthNum "x") 0 -}}
+    {{- $sizesAttr = printf "(max-width: %spx) 100vw, %spx" $widthNum $widthNum -}}
+{{- end -}}
+
+
+{{- /* --- РЕНДЕРИНГ HTML --- */}}
+
+{{- if $isStaticFallback -}}
+    {{- /* ВАРИАНТ А: Картинка из /static/. Выводим как обычный тег, так как ресайз невозможен */}}
+    <img
+      class="{{ $addClass }}"
+      fetchpriority="{{ $defaults.fetchpriority | default "auto" }}"
+      loading="{{ $defaults.loading | default "lazy" }}"
+      src="{{ $rawSrc | safeURL }}"
+      alt="{{ $altText }}"
+    >
+{{- else if $image -}}
+    {{- /* ВАРИАНТ Б: Картинка обработана через ресурсы (Page Bundle или Assets) */}}
+
+    {{- /* Применяем кроп/fill из параметров */}}
+    {{- $processedImage := $image.Fill $processRule -}}
+
+    {{- /* Собираем адаптивный srcset из ширин вашего конфига с качеством $quality */}}
     {{- $imgSrcSet := slice -}}
     {{- $widths := $defaults.widths | default (slice 480 576 768 1025 1200) -}}
 
     {{- range $widths -}}
         {{- if le . $image.Width -}}
-            {{- $webpUrl := (printf "%dx webp" . | $image.Resize).RelPermalink -}}
+            {{- $webpUrl := (printf "%dx webp q%d" . $quality | $image.Resize).RelPermalink -}}
             {{- $imgSrcSet = $imgSrcSet | append (printf "%s %dw" $webpUrl .) -}}
         {{- end -}}
     {{- end -}}
     {{- $imgSrcSet = (delimit $imgSrcSet ", ") -}}
 
-    {{- /* БЕЗОПАСНАЯ ГЕНЕРАЦИЯ LQIP */}}
-    {{- $lqipWidth := $defaults.lqip | default "20x webp q20" -}}
-    {{- if not (in (string $lqipWidth) " ") -}}
-        {{- $lqipWidth = printf "%sx webp q20" (strings.TrimSuffix "x" (string $lqipWidth)) -}}
+    {{- /* БЕЗОПАСНАЯ ГЕНЕРАЦИЯ LQIP (микро-превью для эффекта размытия) */}}
+    {{- $lqipRule := $defaults.lqip | default "16x webp q20" -}}
+    {{- /* На случай, если в конфиге передали просто число, приводим к формату */}}
+    {{- if not (in (string $lqipRule) " ") -}}
+        {{- $lqipRule = printf "%sx webp q20" (strings.TrimSuffix "x" (string $lqipRule)) -}}
     {{- end -}}
-    {{- $lqip := $image.Resize (string $lqipWidth) -}}
+    {{- $lqip := $image.Resize (string $lqipRule) -}}
 
-    {{- /* Настройки классов и размеров */}}
-    {{- $addClass := $defaults.imageAddClass | default "img-fluid lazyload blur-up" -}}
-    {{- $sizesAttr := $defaults.sizes | default "80vw" -}}
+    {{- /* Дефолтный src (наш пожатый webp) */}}
+    {{- $finalSrc := (printf "%dx webp q%d" $processedImage.Width $quality | $processedImage.Resize).RelPermalink -}}
 
-    {{- /* Дефолтный src */}}
-    {{- $finalSrc := (printf "%dx%d webp" $image.Width $image.Height | $image.Resize).RelPermalink -}}
-
-    {{- /* --- РЕНДЕРИНГ HTML (используем $ctx.Title для alt) --- */}}
     {{- $smallLimit := int (site.Params.smallLimit | default 300) -}}
 
-    {{- if gt $image.Width $smallLimit -}}
+    {{- if gt $processedImage.Width $smallLimit -}}
+        {{- /* Для больших картинок используем ленивую загрузку с LQIP через data-src */}}
         <img
           class="{{ $addClass }}"
-          fetchpriority="{{ $defaults.fetchpriority }}"
-          srcset="{{ $imgSrcSet }}"
-          sizes="{{ $sizesAttr }}"
-          src="{{ $finalSrc }}"
-          width="{{ $image.Width }}"
-          height="{{ $image.Height }}"
-          alt="{{ $ctx.Title }}"
-        >
-    {{- else -}}
-        <img
-          class="{{ $addClass }}"
-          fetchpriority="{{ $defaults.fetchpriority }}"
+          fetchpriority="{{ $defaults.fetchpriority | default "auto" }}"
+          decoding="{{ $defaults.decoding | default "async" }}"
           src="{{ $lqip.RelPermalink }}"
           data-src="{{ $finalSrc }}"
-          width="{{ $image.Width }}"
-          height="{{ $image.Height }}"
-          alt="{{ $ctx.Title }}"
+          data-srcset="{{ $imgSrcSet }}"
+          sizes="{{ $sizesAttr }}"
+          width="{{ $processedImage.Width }}"
+          height="{{ $processedImage.Height }}"
+          alt="{{ $altText }}"
+        >
+    {{- else -}}
+        {{- /* Для мелких иконок/картинок srcset и ленивая загрузка не нужны */}}
+        <img
+          class="{{ $addClass }}"
+          fetchpriority="{{ $defaults.fetchpriority | default "auto" }}"
+          src="{{ $finalSrc }}"
+          width="{{ $processedImage.Width }}"
+          height="{{ $processedImage.Height }}"
+          alt="{{ $altText }}"
         >
     {{- end -}}
-
 {{- else -}}
     {{- errorf "Image layout failed: No file found for page '%s'" $ctx.File.Path -}}
 {{- end -}}

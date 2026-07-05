@@ -55,7 +55,7 @@
 
     {{- /* Читаем массив ширин (widths) и размеры (sizes) из вашего конфига */}}
     {{- $widths := $defaults.widths | default (slice 480 768 1024 1366) -}}
-    {{- $stdSizes := $defaults.sizes | default "auto" -}}
+    {{- $sizesAttr := $defaults.sizes | default "auto" -}}
     {{- $addClass := $defaults.imageAddClass | default "img-fluid lazyload blur-up" -}}
 
     {{- range $widths -}}
@@ -89,9 +89,9 @@
             {{- /* Основной тег img (src содержит Base64 микро-заглушку, реальные наборы в data-srcset) */}}
             <img class="figure-img {{ $addClass }}"
                 fetchpriority="{{ $defaults.fetchpriority }}"
-                data-sizes="{{ $stdSizes }}"
                 src="data:image/webp;base64,{{ $lqip.Content | base64Encode }}"
                 data-srcset="{{ $imgSrcSet }}"
+                data-sizes="{{ $sizesAttr }}"
                 width="{{ $image.Width }}"
                 height="{{ $image.Height }}"
                 alt="{{ $ctx.Title }}">
