@@ -61,6 +61,10 @@ pre {
   }
 }
 
+.btn-light {
+  background-color: var(--input);
+}
+
 .btn-copy {
   transition: var(--transition-fast);
   visibility: hidden !important;

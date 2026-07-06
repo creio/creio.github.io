@@ -32,9 +32,9 @@
             {{ .Content }}
             {{ if .Params.tags -}}
             <div class="mt-4">
-              Теги: {{ range $index, $tag := .Params.tags }}
-                <a class="btn btn-light" href="{{ "/tags/" | absURL }}{{ . | urlize }}/" role="button">{{ . }}</a>
-              {{ end -}}
+              Теги: {{- range $index, $tag := .Params.tags -}}
+                <a class="btn btn-light m-1" href="{{ "/tags/" | absURL }}{{ . | urlize }}/" role="button">{{ . }}</a>
+              {{- end -}}
             </div>
             {{ end -}}
             {{ if ne .Params.donate false -}}
