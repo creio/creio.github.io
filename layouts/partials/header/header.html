@@ -111,7 +111,7 @@
         <ul class="nav flex-column flex-lg-row">
           {{ range .Site.Menus.social -}}
             <li class="nav-item">
-              <a class="nav-link social-link" href="{{ .URL | relURL }}" target="_blank" rel="nofollow noopener noreferrer">
+              <a class="nav-link social-link" href="{{ .URL | relURL }}" target="_blank" rel="nofollow noopener noreferrer" aria-label="{{ .Name | safeHTML }}">
                 {{ .Pre | safeHTML }}<small class="ms-2 d-lg-none">{{ .Name | safeHTML }}</small>
               </a>
             </li>
