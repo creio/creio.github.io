@@ -9,6 +9,18 @@
 {{- $image := "" -}}
 {{- $rawSrc := $ctx.Params.image -}}
 
+{{- /* Настраиваем счетчик и авто-alt на основе заголовка страницы */}}
+{{- $pageTitle := $ctx.Title -}}
+{{- $imgIndex := .Page.Scratch.Get "image_counter" | default 0 -}}
+{{- $imgIndex = add $imgIndex 1 -}}
+{{- .Page.Scratch.Set "image_counter" $imgIndex -}}
+
+{{- $altText := .PlainText -}}
+{{- if not $altText -}}
+    {{- $altText = printf "%s - %d" $pageTitle $imgIndex -}}
+{{- end -}}
+{{- $titleText := .Title | default $altText -}}
+
 {{- if $ctx.IsHome -}}
     {{- /* На главной странице берем аватарку из конфига */}}
     {{- $profileImg := $defaults.profileImage | default "profile.png" -}}
@@ -94,19 +106,31 @@
                 data-sizes="{{ $sizesAttr }}"
                 width="{{ $image.Width }}"
                 height="{{ $image.Height }}"
-                alt="{{ $ctx.Title }}">
+                alt="{{ $titleText }}">
 
             {{- /* Резервный вариант без JS (для SEO-ботов и старых браузеров) */}}
             <noscript>
-                <img class="figure-img img-fluid" fetchpriority="{{ $defaults.fetchpriority }}" sizes="100vw" srcset="{{ $imgSrcSet }}" src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ $ctx.Title }}">
+                <img class="figure-img img-fluid"
+                  fetchpriority="{{ $defaults.fetchpriority }}"
+                  src="{{ $image.Permalink }}"
+                  srcset="{{ $imgSrcSet }}"
+                  sizes="940px"
+                  width="{{ $image.Width }}"
+                  height="{{ $image.Height }}"
+                  alt="{{ $titleText }}">
             </noscript>
         </picture>
     </figure>
     {{- else -}}
-    {{- /* Для маленьких картинок выводим упрощенный вариант без figure */}}
+    {{- /* Для маленьких картинок нативный вариант без JS и lazyload */}}
     <picture>
         <source srcset="{{ $webp.Permalink }}" type="image/webp">
-        <img class="{{ $addClass }}" fetchpriority="{{ $defaults.fetchpriority }}" src="data:image/webp;base64,{{ $lqip.Content | base64Encode }}" data-src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ $ctx.Title }}">
+        <img class="img-small" decoding="async"
+          fetchpriority="{{ $defaults.fetchpriority }}"
+          src="{{ $image.Permalink }}"
+          width="{{ $image.Width }}"
+          height="{{ $image.Height }}"
+          alt="{{ $titleText }}">
     </picture>
     {{- end -}}
 {{- else -}}

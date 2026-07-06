@@ -60,9 +60,9 @@
     {{- $lqip := $image.Resize (string $lqipWidth) -}}
 
     {{- /* Настройки классов и sizes */}}
-    {{- $addClass := $defaults.imageAddClass | default "card-img-top img-fluid lazyload blur-up" -}}
-    {{- /* Для карточек в сетке (grid) размеры обычно меньше, например 33vw или 50vw, берем из конфига или ставим 40vw */}}
-    {{- $sizesAttr := $defaults.sizes | default "40vw" -}}
+    {{- $addClass := $defaults.imageAddClass | default "card-img img-fluid lazyload blur-up" -}}
+    {{- /* в сетке (grid) размеры меньше, 33vw или 50vw */}}
+    {{- $sizesAttr := $defaults.sizes | default "auto" -}}
 
     {{- /* --- РЕНДЕРИНГ HTML --- */}}
     <img
@@ -71,7 +71,7 @@
       src="{{ $lqip.RelPermalink }}"
       data-src="{{ ($image.Resize (printf "%dx%d webp" $image.Width $image.Height)).RelPermalink }}"
       data-srcset="{{ $imgSrcSet }}"
-      sizes="{{ $sizesAttr }}"
+      data-sizes="{{ $sizesAttr }}"
       width="{{ $image.Width }}"
       height="{{ $image.Height }}"
       alt="{{ .Title }}"
