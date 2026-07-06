@@ -26,6 +26,7 @@ $button-color-dark: lighten($primary-dark, 1%);
   --ring: var(--color-primary);
   --color-beige: var(--color-dark-secondary);
   --syntax-string: #77a5d3;
+  --gradient-1: linear-gradient(160.41deg, #141419 3.84%, #1a1b21 54.62%, #141419 79.18%);
 }
 
 // === Base ===
@@ -261,7 +262,7 @@ $button-color-dark: lighten($primary-dark, 1%);
 }
 
 [data-dark-mode] body blockquote {
-  border-left: 3px solid var(--border);
+  border-left: 3px solid var(--foreground);
   background-color: var(--secondary);
 }
 
@@ -271,8 +272,12 @@ $button-color-dark: lighten($primary-dark, 1%);
 
 // === Cards ===
 [data-dark-mode] body .card {
-  background: var(--card);
+  background: var(--secondary);
   border: 1px solid var(--border);
+}
+
+[data-dark-mode] body .card:hover {
+  background: var(--gradient-1);
 }
 
 [data-dark-mode] body .card.bg-light,

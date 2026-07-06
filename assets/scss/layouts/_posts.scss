@@ -23,7 +23,7 @@
 }
 
 .posts.list .card:hover {
-  background: var(--secondary);
+  background: var(--gradient-1);
 }
 
 .contributors.list .card.card-terms:hover,
@@ -33,7 +33,12 @@
 }
 
 .related-posts-card {
+  background: var(--secondary);
   min-width: 100%;
+}
+
+.related-posts-card:hover {
+  background: var(--gradient-1);
 }
 
 .pagination a {

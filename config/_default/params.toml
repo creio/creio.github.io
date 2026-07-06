@@ -25,7 +25,7 @@ repoHost = "GitHub"
 docsRepo = "https://github.com/creio/creio.github.io"
 docsRepoBranch = "main"
 docsRepoSubPath = "content"
-editPage = true
+editPage = false
 lastMod = true
 
 footer = 'Powered by <a class="text-muted" target="_blank" rel="nofollow noopener noreferrer" href="https://www.netlify.com/">Netlify</a>, <a class="text-muted" target="_blank" rel="nofollow noopener noreferrer" href="https://gohugo.io/">Hugo</a>, fork <a class="text-muted" target="_blank" rel="nofollow noopener noreferrer" href="https://getdoks.org/">Doks</a> | <a class="text-muted" target="_blank" rel="nofollow noopener noreferrer" href="https://cloud.umami.is/share/UrYcvYQYoCSNcee4/creio.github.io">Analytics</a>'

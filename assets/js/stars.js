@@ -1,7 +1,8 @@
 (() => {
     const canvas = document.createElement('canvas');
     canvas.id = 'stars-canvas';
-    canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:3;pointer-events:none';
+    // canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none';
+    canvas.style.cssText = 'top:0;left:0;width:100%;height:100%;';
 
     if (document.body.classList.contains('home')) {
         document.body.prepend(canvas);

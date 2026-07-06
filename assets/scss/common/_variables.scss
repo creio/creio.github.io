@@ -41,7 +41,7 @@
   --transition-slow-ease: all 1.25s cubic-bezier(0.62, 0.16, 0.13, 1.01);
 
   // Color palette
-  --color-dark: #0a0a0a;
+  --color-dark: #17181c;
   --color-dark-t: #16161c;
   --color-dark-bg-border: #0b0b0d;
   --color-dark-secondary: #141419;
@@ -62,7 +62,6 @@
   --headline-font-color: var(--color-light);
   --background-border-color: var(--color-dark-bg-border);
   --border-color: #25252c;
-  --gradient-1: linear-gradient(160.41deg, #272b33 3.84%, #1a1b21 54.62%, #141419 79.18%);
   --image-background: var(--color-primary);
 
   // DESIGN.md tokens — Light mode
@@ -80,6 +79,8 @@
   --border: #e4e4e7;
   --input: #e4e4e7;
   --ring: #3347ff;
+  --muted: 240, 240, 240;
+
   --radius: 0.375rem;
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -87,7 +88,8 @@
   --radius-xl: calc(var(--radius) * 1.4);
   --radius-2xl: calc(var(--radius) * 1.8);
   --muted-foreground: #71717a;
-  --muted: 240, 240, 240;
+
+  --gradient-1: linear-gradient(160.41deg, #fbf7f0 3.84%, #fff 54.62%, #fbf7f0 79.18%);
 
   // Syntax highlighting
   --syntax-string: #d32e9d;
