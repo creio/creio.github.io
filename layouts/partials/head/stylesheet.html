@@ -1,17 +1,12 @@
 {{ if eq (hugo.Environment) "development" -}}
   {{ $options := (dict "targetPath" "main.css" "enableSourceMap" true "includePaths" (slice "node_modules")) -}}
   {{ $css := resources.Get "scss/app.scss" | toCSS $options -}}
-  {{- $options := (dict "targetPath" "main.css" "enableSourceMap" true "includePaths" (slice "node_modules")) -}}
-  {{- $css := resources.Get "scss/app.scss" | toCSS $options -}}
-  <link rel="preload" href="{{ $css.RelPermalink }}" as="style">
   <link rel="stylesheet" href="{{ $css.RelPermalink }}">
-  {{/*<style>{{ $css.Content | safeCSS }}</style>*/}}
 {{ else -}}
   {{ $options := (dict "targetPath" "main.css" "outputStyle" "compressed" "includePaths" (slice "node_modules")) -}}
   {{ $css := resources.Get "scss/app.scss" | toCSS $options | postCSS (dict "config" "config/postcss.config.js") -}}
   {{ $secureCSS := $css | resources.Fingerprint "sha512" -}}
-  <link rel="preload" href="{{ $secureCSS.RelPermalink }}" as="style" integrity="{{ $secureCSS.Data.Integrity }}" crossorigin="anonymous">
   <link rel="stylesheet" href="{{ $secureCSS.RelPermalink }}" integrity="{{ $secureCSS.Data.Integrity }}" crossorigin="anonymous">
-  {{/*<style>{{ $secureCSS.Content | safeCSS }}</style>*/}}
+  <style>{{ $secureCSS.Content | safeCSS }}</style>
 {{ end -}}
 <noscript><style>img.lazyload { display: none; }</style></noscript>
