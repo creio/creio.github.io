@@ -71,7 +71,7 @@
     {{- $lqip := $image.Resize (string $lqipParam) -}}
 
     {{- /* Читаем из конфига */}}
-    {{- $widths := $defaults.widths | default (slice 480 768 940 1024 1366 1440) -}}
+    {{- $widths := $defaults.widths | default (slice 360 480 640 768 940 1024 1366) -}}
     {{- $sizesAttr := $defaults.sizes | default "auto" -}}
     {{- $addClass := $defaults.imageAddClass | default "img-fluid lazyload blur-up" -}}
     {{- $quality := $defaults.quality | default 80 -}}

@@ -93,7 +93,7 @@
 
             {{- /* ГЕНЕРАЦИЯ АДАПТИВНЫХ ОПТИМИЗИРОВАННЫХ НАБОРОВ SHIFT-WIDTHS (webp q75) */}}
             {{- $imgSrcSet := slice -}}
-            {{- $widths := $defaults.widths | default (slice 480 768 940 1024 1366 1440) -}}
+            {{- $widths := $defaults.widths | default (slice 360 480 640 768 940 1024 1366) -}}
             {{- range $widths -}}
                 {{- if le . $image.Width -}}
                     {{- $webpUrl := (printf "%dx webp q%d" . $quality | $image.Resize).RelPermalink -}}

@@ -42,7 +42,7 @@
 
     {{- /* Собираем адаптивный srcset из ширин вашего конфига */}}
     {{- $imgSrcSet := slice -}}
-    {{- $widths := $defaults.widths | default (slice 480 576 768 1025 1200) -}}
+    {{- $widths := $defaults.widths | default (slice 360 480 640 768 940 1024 1366) -}}
 
     {{- range $widths -}}
         {{- if le . $image.Width -}}
