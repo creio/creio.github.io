@@ -88,7 +88,7 @@
                 {{- $cleanRule := strings.TrimPrefix "fill " $processRule -}}
                 {{- $processedImage = $image.Fill $cleanRule -}}
             {{- else -}}
-                {{- $processedImage = $image.Resize $processRule -}}
+                {{- $processedImage = $image.Fill $processRule -}}
             {{- end -}}
 
             {{- /* ГЕНЕРАЦИЯ АДАПТИВНЫХ ОПТИМИЗИРОВАННЫХ НАБОРОВ SHIFT-WIDTHS (webp q75) */}}

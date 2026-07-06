@@ -56,7 +56,7 @@
         {{- $cleanRule := strings.TrimPrefix "fill " $processRule -}}
         {{- $image = $image.Fill $cleanRule -}}
     {{- else -}}
-        {{- $image = $image.Resize $processRule -}}
+        {{- $image = $image.Fill $processRule -}}
     {{- end -}}
 
     {{- /* Генерируем базовый качественный WebP оригинального размера */}}
