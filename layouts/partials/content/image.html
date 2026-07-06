@@ -127,7 +127,7 @@
           alt="{{ $altText }}"
         >
     {{- else -}}
-        {{- /* Для мелких иконок/картинок srcset и ленивая загрузка не нужны */}}
+        {{- /* Для мелких иконок/картинок srcset не нужны */}}
         <img
           class="{{ $addClass }}"
           fetchpriority="{{ $defaults.fetchpriority | default "auto" }}"

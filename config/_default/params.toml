@@ -69,7 +69,7 @@ images = ["cover.png"]
     decoding = "async" # sync, async, or auto (default)
     fetchpriority = "high" # high, low, or auto (default)
     loading = "lazy" # eager or lazy (default)
-    widths = [480, 768, 940, 1024, 1366, 1600]
+    widths = [360, 480, 640, 768, 940, 1024, 1366]
     sizes = "auto" # 100vw, 75vw, or auto; default "(max-width: 940px) 100vw, 940px"
     ## https://gohugo.io/content-management/image-processing/
     process = "resize 940x" # "fill 1600x900" or "fill 1280x720" for example

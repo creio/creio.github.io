@@ -49,7 +49,15 @@
 {{- /* --- ОБРАБОТКА ИЗОБРАЖЕНИЯ (Ресайз и оптимизация) --- */}}
 {{- if $image -}}
     {{- /* Обрезаем картинку под нужные пропорции (например, 1280x720) */}}
-    {{- $image = $image.Fill $processRule -}}
+    {{- if hasPrefix $processRule "resize" -}}
+        {{- $cleanRule := strings.TrimPrefix "resize " $processRule -}}
+        {{- $image = $image.Resize $cleanRule -}}
+    {{- else if hasPrefix $processRule "fill" -}}
+        {{- $cleanRule := strings.TrimPrefix "fill " $processRule -}}
+        {{- $image = $image.Fill $cleanRule -}}
+    {{- else -}}
+        {{- $image = $image.Resize $processRule -}}
+    {{- end -}}
 
     {{- /* Генерируем базовый качественный WebP оригинального размера */}}
     {{- $webp := $image.Resize (printf "%dx%d webp q90" $image.Width $image.Height) -}}
@@ -62,18 +70,20 @@
     {{- end }}
     {{- $lqip := $image.Resize (string $lqipParam) -}}
 
+    {{- /* Читаем из конфига */}}
+    {{- $widths := $defaults.widths | default (slice 480 768 940 1024 1366 1440) -}}
+    {{- $sizesAttr := $defaults.sizes | default "auto" -}}
+    {{- $addClass := $defaults.imageAddClass | default "img-fluid lazyload blur-up" -}}
+    {{- $quality := $defaults.quality | default 80 -}}
+
     {{- $imgSrc := "" -}}
     {{- $imgSrcSet := slice -}}
 
-    {{- /* Читаем массив ширин (widths) и размеры (sizes) из вашего конфига */}}
-    {{- $widths := $defaults.widths | default (slice 480 768 1024 1366) -}}
-    {{- $sizesAttr := $defaults.sizes | default "auto" -}}
-    {{- $addClass := $defaults.imageAddClass | default "img-fluid lazyload blur-up" -}}
-
+    {{- /* ГЕНЕРАЦИЯ АДАПТИВНЫХ ОПТИМИЗИРОВАННЫХ НАБОРОВ SHIFT-WIDTHS (webp q75) */}}
+    {{- $imgSrcSet := slice -}}
     {{- range $widths -}}
-        {{- /* Создаем адаптивные копии только если оригинал шире этого шага */}}
         {{- if le . $image.Width -}}
-            {{- $srcUrl := (printf "%dx webp" . | $image.Resize).Permalink -}}
+            {{- $srcUrl := (printf "%dx webp q%d" . $quality | $image.Resize).Permalink -}}
             {{- if eq $imgSrc "" -}}{{- $imgSrc = $srcUrl -}}{{- end -}}
             {{- $imgSrcSet = $imgSrcSet | append (printf "%s %dw" $srcUrl .) -}}
         {{- end -}}
@@ -87,13 +97,13 @@
     {{- /* Крупные изображения оборачиваем в <figure> с адаптивными <source> */}}
     <figure class="figure">
         <picture>
-            {{- /* Качественный WebP для экранов от 901px */}}
-            <source media="(min-width: 901px)" srcset="{{ $webp.Permalink }}" type="image/webp">
+            {{- /* Качественный WebP для экранов от 900px */}}
+            <source media="(min-width: 900px)" srcset="{{ $webp.Permalink }}" type="image/webp">
 
             {{- /* Адаптивные версии WebP под мобильные и планшеты */}}
             {{- range $widths -}}
                 {{- if le . $image.Width -}}
-                    {{- $webpUrl := (printf "%dx webp" . | $image.Resize).Permalink -}}
+                    {{- $webpUrl := (printf "%dx webp q%d" . $quality | $image.Resize).Permalink -}}
                     <source media="(max-width: {{ . }}px)" srcset="{{ $webpUrl }}" type="image/webp">
                 {{- end -}}
             {{- end -}}
@@ -101,6 +111,7 @@
             {{- /* Основной тег img (src содержит Base64 микро-заглушку, реальные наборы в data-srcset) */}}
             <img class="figure-img {{ $addClass }}"
                 fetchpriority="{{ $defaults.fetchpriority }}"
+                decoding="async"
                 src="data:image/webp;base64,{{ $lqip.Content | base64Encode }}"
                 data-srcset="{{ $imgSrcSet }}"
                 data-sizes="{{ $sizesAttr }}"
@@ -112,7 +123,7 @@
             <noscript>
                 <img class="figure-img img-fluid"
                   fetchpriority="{{ $defaults.fetchpriority }}"
-                  src="{{ $image.Permalink }}"
+                  src="{{ $webp.Permalink }}"
                   srcset="{{ $imgSrcSet }}"
                   sizes="940px"
                   width="{{ $image.Width }}"
@@ -125,7 +136,7 @@
     {{- /* Для маленьких картинок нативный вариант без JS и lazyload */}}
     <picture>
         <source srcset="{{ $webp.Permalink }}" type="image/webp">
-        <img class="img-small" decoding="async"
+        <img class="img-md img-fluid" decoding="async"
           fetchpriority="{{ $defaults.fetchpriority }}"
           src="{{ $image.Permalink }}"
           width="{{ $image.Width }}"
