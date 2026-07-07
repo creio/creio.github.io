@@ -1,11 +1,13 @@
+{{- $isMainDomain := hasPrefix .Site.BaseURL (printf "https://%s" .Site.Params.domainTLD) -}}
 User-agent: *
-{{ if eq (hugo.Environment) "production" -}}
+{{ if and (eq (hugo.Environment) "production") $isMainDomain -}}
 Allow: /
-{{ else -}}
-Disallow: /
-{{ end }}
 Disallow: /admin/
-Sitemap: {{ .Site.BaseURL }}sitemap.xml
+{{ else }}
+Disallow: /
+{{ end -}}
+Sitemap: https://{{ .Site.Params.domainTLD }}/sitemap.xml
 {{/*
+Sitemap: {{ .Site.BaseURL }}sitemap.xml
 Sitemap: {{ "sitemap.xml" | absURL -}}
 */ -}}
