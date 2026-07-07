@@ -12,8 +12,10 @@
 
 {{- $image := "" -}}
 {{- /* Сначала проверяем, передали ли src напрямую в partial, если нет — берем из Front Matter страницы */}}
-{{- $rawSrc := .src | default "" -}}
+{{- $rawSrc := .src | default $ctx.Params.image | default "" -}}
 {{- $altText := .alt | default $ctx.Title -}}
+{{- $customClass := .class | default "" -}}
+{{- $addClass := printf "%s %s" ($defaults.imageAddClass | default "img-fluid lazyload blur-up") $customClass | strings.TrimSpace -}}
 
 {{- if and (not $rawSrc) $ctx.Params.images -}}
     {{- $rawSrc = index $ctx.Params.images 0 -}}
@@ -51,9 +53,6 @@
     {{- $defaultImg := $defaults.defaultImage | default "default-image.png" -}}
     {{- $image = resources.Get (printf "images/%s" $defaultImg) -}}
 {{- end -}}
-
-{{- /* Настройки классов и размеров */}}
-{{- $addClass := $defaults.imageAddClass | default "img-fluid lazyload blur-up" -}}
 
 {{- /* Умный расчет адаптивных sizes на основе processRule */}}
 {{- $sizesAttr := "" -}}

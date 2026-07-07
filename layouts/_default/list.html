@@ -40,6 +40,9 @@
               <h2 class="h4 fw-light m-0">
                 <a class="hover-underline-animation stretched-link" href="{{ .RelPermalink }}">{{ .Params.title }}</a>
               </h2>
+              {{ if .Params.image -}}
+                {{- partial "content/image.html" (dict "context" . "process" "fill 100x100 Left" "class" "rounded-circle me-3") }}
+              {{ end -}}
               {{ if .Params.excerpt -}}
               <p class="text-muted d-block fs-6 mt-1">{{ .Params.excerpt }}</p>
               {{ end -}}
@@ -55,6 +58,11 @@
               <h2 class="h4 fw-light m-0">
                 <a class="hover-underline-animation stretched-link" href="{{ .RelPermalink }}">{{ .Params.title }}</a>
               </h2>
+              {{/*- if .Params.image }}
+              <div class="d-flex align-items-center my-3">
+                {{- partial "content/image.html" (dict "context" . "process" "fill 100x100 Left" "class" "rounded-circle me-3") }}
+              </div>
+              {{ end -*/}}
               {{ if .Params.excerpt -}}
               <p class="text-muted d-block fs-6 mt-1">{{ .Params.excerpt }}</p>
               {{ end -}}
