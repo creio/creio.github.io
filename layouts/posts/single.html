@@ -4,7 +4,7 @@
         <nav class="docs-toc{{ if ne .Site.Params.options.navbarSticky true }} docs-toc-top{{ end }} d-none d-md-block col-md-4" aria-label="Secondary navigation">
           <a href="https://aeza.net/?ref=681303" target="_blank" rel="nofollow noopener noreferrer" class="d-block">
             <!-- <img src="/images/aeza-sidebar.jpg" alt="promo"> -->
-            {{ partial "content/image.html" (dict "context" . "src" "/images/aeza-baner.jpg" "alt" "promo" "process" "250x250") }}
+            {{ partial "content/image.html" (dict "context" . "src" "/images/aeza-baner.jpg" "alt" "promo" "process" "fill 300x115 Left") }}
           </a>
           {{ partial "sidebar/docs-toc.html" . }}
         </nav>
@@ -16,13 +16,13 @@
         {{ end -}}
             <h1>{{ .Title }}</h1>
             {{ partial "main/blog-meta.html" . }}
+            {{/* if .Params.excerpt -}}
+                <p class="lead">{{ .Params.excerpt | safeHTML }}</p>
+            {{ end -*/}}
             {{- if $.Params.image }}
             <div>
               {{- partial "content/figure.html" (dict "context" . "process" "resize 940x") }}
             </div>
-            {{ end -}}
-            {{ with $.Params.lead -}}
-                <p class="lead">{{ .Params.lead | safeHTML }}</p>
             {{ end -}}
             {{ if ne .Params.toc false -}}
             <nav class="d-md-none" aria-label="Quaternary navigation">
