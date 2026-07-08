@@ -32,7 +32,7 @@ footer = 'Powered by <a class="text-muted" target="_blank" rel="nofollow noopene
 
 
 ## Open Graph
-images = ["cover.png"]
+images = ["cover.jpg"]
 
 [social]
   twitter = "creio"
@@ -57,7 +57,7 @@ images = ["cover.png"]
     logo = "favicon-512x512.png" # Logo of Organization — favicon-512x512.png (default)
     name = "Alex Creio" # Name of Organization or Person
     sameAs = ["https://github.com/creio"] # E.g. ["https://github.com/thuliteio/thulite", "https://fosstodon.org/@thulite"]
-    images = ["profile_logo.png"] # ["cover.png"] (default)
+    images = ["profile_logo.jpg"] # ["cover.png"] (default)
     article = [] # Article sections
     newsArticle = [] # NewsArticle sections
     blogPosting = ["posts"] # BlogPosting sections
