@@ -1,2 +1,7 @@
 <!-- Custom head -->
+{{ if .Site.Params.yandexVerification -}}
 <meta name="yandex-verification" content="{{ .Site.Params.yandexVerification }}">
+{{ end -}}
+{{ if .Site.Params.googleVerification -}}
+<meta name="google-site-verification" content="{{ .Site.Params.googleVerification }}">
+{{ end -}}

@@ -7,7 +7,8 @@ email = ""
 ogLocale = "ru_RU"
 languageTag = "ru"
 
-yandexVerification = "16c69e69225504ca"
+googleVerification = "6GXUozcEfaPdh8Qcr-0qBY2AV8MkL-QoQ66FpbytieM"
+# yandexVerification = "16c69e69225504ca"
 
 ## Sitelinks Search Box
 siteLinksSearchBox = false
