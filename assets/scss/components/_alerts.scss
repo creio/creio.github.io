@@ -1,7 +1,11 @@
 .alert {
   font-family: var(--code-font-family);
-  font-size: 0.875rem;
+  font-size: 1rem;
   --bs-alert-padding-y: 0.7rem;
+}
+
+.alert span {
+  font-size: 0.5rem;
 }
 
 .alert-icon {

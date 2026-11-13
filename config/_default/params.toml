@@ -18,7 +18,7 @@ themeColor = "#4b64b4"
 ## Alert
 alert = true
 alertDismissable = true
-alertText = '<a target="_blank" rel="nofollow noopener noreferrer" class="alert-link stretched-link fw-normal" href="https://go.2038.pro/8aa17c9fd9fc0371?erid=LdtCK4uVh&m=6">Топовые IT курсы с трудоустройством.</a>'
+alertText = '<a target="_blank" rel="nofollow noopener noreferrer" class="alert-link stretched-link fw-bold" href="https://go.2038.pro/8aa17c9fd9fc0371?erid=LdtCK4uVh&m=6">Топовые IT курсы с трудоустройством.</a><br><span>Реклама. ООО ЭДЮСОН, ИНН 7729779476, erid: LdtCK4uVh<span/>'
 
 ## Edit Page
 # repoHost [Github | Gitea | GitLab | Bitbucket | BitbucketServer ] is used for building the edit link based on git hoster

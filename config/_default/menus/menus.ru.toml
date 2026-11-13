@@ -9,6 +9,11 @@
   weight = 20
 
 [[main]]
+  name = "Статьи"
+  url = "/articles/"
+  weight = 20
+
+[[main]]
   name = "Полезно"
   url = "/wow/"
   weight = 35

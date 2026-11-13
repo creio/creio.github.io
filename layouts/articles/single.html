@@ -1,0 +1,114 @@
+{{ define "main" }}
+    <div class="row justify-content-center">
+        {{ if ne .Params.toc false -}}
+        <nav class="docs-toc{{ if ne .Site.Params.options.navbarSticky true }} docs-toc-top{{ end }} d-none d-md-block col-md-4" aria-label="Secondary navigation">
+          <a href="https://aeza.net/?ref=681303" target="_blank" rel="nofollow noopener noreferrer" class="d-block">
+            <!-- <img src="/images/aeza-sidebar.jpg" alt="promo"> -->
+            {{ partial "content/image.html" (dict "context" . "src" "/images/aeza-baner.jpg" "alt" "promo" "process" "fill 300x115 Left") }}
+          </a>
+          {{ partial "sidebar/docs-toc.html" . }}
+        </nav>
+        {{ end -}}
+        {{ if .Params.toc -}}
+        <main class="docs-content col-md{{ if eq .Site.Params.options.fullWidth false }}-12{{ end }}">
+        {{ else -}}
+        <main class="docs-content col-lg-12 col-xl-12 mx-xl-auto">
+        {{ end -}}
+            <h1>{{ .Title }}</h1>
+            {{ partial "main/article-meta.html" . }}
+            {{/* if .Params.excerpt -}}
+                <p class="lead">{{ .Params.excerpt | safeHTML }}</p>
+            {{ end -*/}}
+            {{- if $.Params.image }}
+            <div>
+              {{- partial "content/figure.html" (dict "context" . "process" "resize 940x") }}
+            </div>
+            {{ end -}}
+            {{ if ne .Params.toc false -}}
+            <nav class="d-md-none" aria-label="Quaternary navigation">
+                {{ partial "sidebar/docs-toc.html" . }}
+            </nav>
+            {{ end -}}
+            {{ .Content }}
+            {{ if .Params.article_tags -}}
+            <div class="mt-4">
+              Теги: {{- range $index, $tag := .Params.article_tags -}}
+                <a class="btn btn-light m-1" href="{{ "/article_tags/" | absURL }}{{ . | urlize }}/" role="button">{{ . }}</a>
+              {{- end -}}
+            </div>
+            {{ end -}}
+            {{ if ne .Params.donate false -}}
+              <blockquote>
+                Поддержать проект или купить мне кофе можно <a href="{{ "/donate/" }}">тут</a>. Без него я начинаю путать терминал с телепортом. 🚀☕️
+              </blockquote>
+            {{ end -}}
+            {{ if not .Params.disableShare -}}
+            <div>
+              <a class="btn btn-outline-primary my-2"
+                data-bs-toggle="collapse" href="#collapseExample" role="button"
+                aria-expanded="false" aria-controls="collapseExample"
+              >
+                Поделиться
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>
+              </a>
+              <div class="collapse" id="collapseExample">
+                {{ partial "main/share-buttons.html" . }}
+              </div>
+            </div>
+            {{ end -}}
+
+            {{ partial "main/kit.html" . }}
+
+            {{ if or (.Site.Params.lastMod) (and (.Site.Params.editPage) (ne .Params.edit false)) -}}
+              <div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between">
+              {{ if .Site.Params.lastMod -}}
+                {{ partial "main/last-modified.html" . }}
+              {{ end -}}
+              {{ if and (.Site.Params.editPage) (ne .Params.edit false) -}}
+                {{ partial "main/edit-page.html" . }}
+              {{ end -}}
+              </div>
+            {{ end -}}
+            <!--
+            {{ if not .Site.Params.options.collapsibleSidebar -}}
+                {{ partial "main/docs-navigation.html" . }}
+            {{ else -}}
+                <div class="my-n3"></div>
+            {{ end -}}
+            -->
+        </main>
+    </div>
+
+{{ $related := .Site.RegularPages.Related . | first 3 }}
+{{ with $related }}
+<div class="related-posts">
+  <div class="row justify-content-center">
+    <div class="col">
+      <div class="section-title h4">Похожие записи</div>
+    </div>
+  </div>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
+    {{ range . }}
+    <div class="col d-flex align-items-stretch">
+      <div class="card related-posts-card">
+        <div class="card-body">
+          <article>
+            <h2 class="h5 mt-3"><a class="stretched-link text-body" href="{{ .RelPermalink }}">{{ .Params.title }}</a></h2>
+            {{ if .Params.excerpt -}}
+            <p class="text-muted d-block fs-6 mt-1">{{ .Params.excerpt | safeHTML }}</p>
+            {{ end -}}
+            {{ partial "main/blog-meta.html" . -}}
+          </article>
+        </div>
+      </div>
+    </div>
+    {{ end -}}
+  </div>
+</div>
+{{ end -}}
+
+{{ if and (ne .Params.comments false) (ne .Site.Params.options.comments false) -}}
+  <div class="giscus my-5"></div>
+{{ end -}}
+
+{{ end }}

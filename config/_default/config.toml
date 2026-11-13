@@ -72,8 +72,12 @@ rel  = "sitemap"
   contributor = "contributors"
   category = "categories"
   tag = "tags"
+  # Отдельные таксономии для articles
+  article_category = "article_categories"
+  article_tag = "article_tags"
 
 [permalinks]
+  articles = "/articles/:slugorcontentbasename/"
   posts = "/posts/:slugorcontentbasename/"
 # docs = "/docs/1.0/:sections[1:]/:title/"
 
@@ -97,7 +101,7 @@ rel  = "sitemap"
 [module]
   [module.hugoVersion]
     extended = true
-    min = "0.103.0"
+    min = "0.163.0"
     max = ""
   [[module.mounts]]
     source = "assets"

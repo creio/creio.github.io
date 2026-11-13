@@ -3,29 +3,60 @@
   <div class="row justify-content-center">
     <div class="col-md-12">
       <h1 class="">{{ .Title }}</h1>
-      {{ with .Content -}}<div class="">{{ . }}</div>{{ end -}}
-      {{ $isPosts := eq .Section "posts" -}}
-      {{ if or $isPosts (eq .Data.Plural "categories") -}}
+    {{ with .Content -}}
+      <div class="">{{ . }}</div>
+    {{ end -}}
+    {{ $isPosts := or (eq .Section "posts") (eq .Type "posts") -}}
+    {{ $isArticles := or (eq .Section "articles") (eq .Type "articles") -}}
+    {{/* КАТЕГОРИИ БЛОГА */}}
+    {{ if or $isPosts (eq .Data.Plural "categories") -}}
       <details class="details-categories" data-id="categories" open>
         <summary class="fw-normal">категории блога</summary>
         {{- range $name, $items := .Site.Taxonomies.categories -}}
-        <a class="btn btn-light m-1" role="button" href="/categories/{{ $name | urlize }}">
-          {{ $name }} <span class="badge bg-secondary">{{ len $items }}</span>
-        </a>
+          <a class="btn btn-light m-1" role="button"
+             href="/categories/{{ $name | urlize }}">
+            {{ $name }} <span class="badge bg-secondary">{{ len $items }}</span>
+          </a>
         {{- end -}}
       </details>
-      {{ end -}}
-      {{/* Блок ТЕГОВ: выводим если мы в posts ИЛИ на странице тегов */ -}}
-      {{ if or $isPosts (eq .Data.Plural "tags") -}}
+    {{ end -}}
+    {{/* ТЕГИ БЛОГА */}}
+    {{ if or $isPosts (eq .Data.Plural "tags") -}}
       <details class="details-tags" data-id="tags">
         <summary class="fw-normal">теги блога</summary>
         {{- range $name, $items := .Site.Taxonomies.tags -}}
-        <a class="btn btn-light m-1" role="button" href="/tags/{{ $name | urlize }}">
-          {{ $name }} <span class="badge bg-secondary">{{ len $items }}</span>
-        </a>
+          <a class="btn btn-light m-1" role="button"
+             href="/tags/{{ $name | urlize }}">
+            {{ $name }} <span class="badge bg-secondary">{{ len $items }}</span>
+          </a>
         {{- end -}}
       </details>
-      {{ end -}}
+    {{ end -}}
+
+    {{/* КАТЕГОРИИ СТАТЕЙ */}}
+    {{ if or $isArticles (eq .Data.Plural "article_categories") -}}
+      <details class="details-categories" data-id="article-categories" open>
+        <summary class="fw-normal">категории статей</summary>
+        {{- range $name, $items := .Site.Taxonomies.article_categories -}}
+          <a class="btn btn-light m-1" role="button"
+             href="/article_categories/{{ $name | urlize }}">
+            {{ $name }} <span class="badge bg-secondary">{{ len $items }}</span>
+          </a>
+        {{- end -}}
+      </details>
+    {{ end -}}
+    {{/* ТЕГИ СТАТЕЙ */}}
+    {{ if or $isArticles (eq .Data.Plural "article_tags") -}}
+      <details class="details-tags" data-id="article-tags">
+        <summary class="fw-normal">теги статей</summary>
+        {{- range $name, $items := .Site.Taxonomies.article_tags -}}
+          <a class="btn btn-light m-1" role="button"
+             href="/article_tags/{{ $name | urlize }}">
+            {{ $name }} <span class="badge bg-secondary">{{ len $items }}</span>
+          </a>
+        {{- end -}}
+      </details>
+    {{ end -}}
     </div>
   </div>
 
