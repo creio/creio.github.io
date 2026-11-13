@@ -171,9 +171,9 @@ Nod помечает данные, полученные извне, как не�
 
 Документация:
 
-- Модель безопасности: https://nod.n8n.io/docs/trust/
-- Защита от prompt injection: https://nod.n8n.io/docs/trust/untrusted-content/
-- Vault и сохранённые логины: https://nod.n8n.io/docs/trust/vault/
+- [Модель безопасности](https://nod.n8n.io/docs/trust/)
+- [Защита от prompt injection](https://nod.n8n.io/docs/trust/untrusted-content/)
+- [Vault и сохранённые логины](https://nod.n8n.io/docs/trust/vault/)
 
 ## Что показывают тесты n8n
 
@@ -276,7 +276,7 @@ Nod ответил с точностью 93,2% на наборе из 500 воп
 
 Более разумный подход:
 
-1. Скачать Nod с официального сайта (https://nod.n8n.io/).
+1. Скачать Nod с [официального сайта](https://nod.n8n.io/).
 2. Подключить одну модель - платный API или локальный вариант.
 3. Добавить один сервис, например Gmail.
 4. Проверить работу с одним почтовым ящиком и одним сохранённым логином.
