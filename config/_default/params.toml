@@ -8,7 +8,7 @@ ogLocale = "ru_RU"
 languageTag = "ru"
 
 googleVerification = "6GXUozcEfaPdh8Qcr-0qBY2AV8MkL-QoQ66FpbytieM"
-# yandexVerification = "16c69e69225504ca"
+yandexVerification = "db59274fa4919f98"
 
 ## Sitelinks Search Box
 siteLinksSearchBox = false
