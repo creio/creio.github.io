@@ -1,16 +1,18 @@
+{{ if .Site.Params.gtm_id -}}
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ .Site.Params.gtm_id }}"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+{{ end -}}
 {{ if .Site.Params.alert -}}
   {{ partial "header/alert.html" . }}
 {{ end -}}
-
 {{ if eq .Site.Params.options.navbarSticky true -}}
 <div class="sticky-top">
 {{ end -}}
-
 <div class="header-bar"></div>
-
 <header class="navbar navbar-expand-lg navbar-light doks-navbar py-0">
   <nav class="container-{{ if .Site.Params.options.fullWidth }}fluid{{ else }}xxl{{ end }} flex-wrap flex-lg-nowrap" aria-label="Main navigation">
-
     <a class="navbar-brand order-0" href="{{ .Site.BaseURL | relLangURL }}" aria-label="{{ .Site.Params.Title }}">
         <div class="brand-logo">
             <svg class="brand-logo__image" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 50 50">
